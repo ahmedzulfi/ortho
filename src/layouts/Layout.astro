@@ -1,0 +1,132 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Gilda+Display&display=swap" rel="stylesheet">
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<slot />
+
+		<script>
+			import Lenis from 'lenis';
+
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom exponential easing
+				lerp: 0.08,             // Low lerp for more "weight" and smoothness
+				wheelMultiplier: 1.1,   // Slight responsiveness boost
+				smoothWheel: true
+			});
+
+			function raf(time: number) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+
+			/* IntersectionObserver for scroll-based enter animations */
+			const observerOptions = {
+				root: null,
+				rootMargin: '0px 0px -50px 0px',
+				threshold: 0.1
+			};
+
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						observer.unobserve(entry.target); // Animate once
+					}
+				});
+			}, observerOptions);
+
+			document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+				observer.observe(el);
+			});
+
+			/* Global Premium Button Animation Initialization */
+			const initPremiumButtons = () => {
+				// Select buttons and potentially button-like links
+				const elements = document.querySelectorAll('button, a[href^="/"], a[href^="#"], .btn-premium-morph');
+				
+				elements.forEach(el => {
+					// Detect if it should have the premium animation (heuristic: is it styled like a button or has a specific background?)
+					const style = window.getComputedStyle(el);
+					const isButtonLike = el.tagName === 'BUTTON' || 
+										el.classList.contains('p-[') || 
+										style.borderRadius !== '0px' || 
+										style.backgroundColor !== 'rgba(0, 0, 0, 0)';
+					
+					if (isButtonLike && !el.classList.contains('btn-premium-morph')) {
+						// Don't apply to pure text links that don't look like buttons
+						if (style.backgroundColor === 'rgba(0, 0, 0, 0)' && el.tagName === 'A') return;
+
+						el.classList.add('btn-premium-morph');
+						
+						// Check background to apply contrast variation
+						const bgColor = style.backgroundColor;
+						// Match chartreuse green (#D1FC71)
+						if (bgColor.includes('209, 252, 113') || bgColor.includes('rgb(209, 252, 113)')) {
+							el.classList.add('btn-green-bg');
+						}
+
+						// WRAP RAW TEXT NODES for correct z-index layering
+						// (Moves nodes into a wrapper span if they aren't already wrapped)
+						const nodes = Array.from(el.childNodes);
+						if (nodes.length > 0) {
+							// Filter actual content nodes (text or other tags)
+							const fragment = document.createDocumentFragment();
+							let hasUnwrappedText = false;
+							
+							nodes.forEach(node => {
+								if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+									hasUnwrappedText = true;
+								}
+								fragment.appendChild(node);
+							});
+
+							if (hasUnwrappedText) {
+								const span = document.createElement('span');
+								span.style.zIndex = '10';
+								span.style.position = 'relative';
+								span.style.pointerEvents = 'none';
+								span.appendChild(fragment);
+								el.appendChild(span);
+							} else {
+								// Re-append if we didn't wrap
+								el.appendChild(fragment);
+							}
+						}
+					}
+				});
+			};
+
+			// Initial run
+			initPremiumButtons();
+			
+			// Re-run after any dynamic content changes or page transitions
+			document.addEventListener('astro:after-swap', initPremiumButtons);
+		</script>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

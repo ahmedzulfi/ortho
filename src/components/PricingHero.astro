@@ -1,0 +1,71 @@
+---
+/**
+ * PricingHero Section
+ * Same split-layout pattern as ServicesHero with a large heading,
+ * description block, and a wide hero image below.
+ */
+---
+
+<section
+  class="w-full flex flex-col items-center justify-start bg-[#F6F7FF] overflow-hidden pt-48 pb-20 relative"
+>
+  <!-- Top: Split Heading & Description -->
+  <div
+    class="w-full max-w-[1540px] px-[50px] flex flex-col lg:flex-row justify-between items-end gap-10 lg:gap-20 mb-20 z-10 relative reveal-on-scroll"
+  >
+    <!-- Left: Large Heading -->
+    <div class="shrink-0 w-full lg:w-[600px]">
+      <h1
+        class="m-0 text-(--color-spring-green-8) font-bricolage text-[72px] lg:text-[96px] font-medium leading-none tracking-tight"
+      >
+        Simple Pricing
+      </h1>
+    </div>
+
+    <!-- Right: Description & Year -->
+    <div class="flex w-full lg:w-auto items-end gap-6 pb-2">
+      <div class="flex flex-col">
+        <p
+          class="m-0 text-(--color-grey-36) font-inter text-base leading-[1.7] max-w-[390px]"
+        >
+          No hidden fees, no surprises. Just<br />straightforward pricing for
+          premium care.
+        </p>
+      </div>
+      <div class="flex flex-col mb-[-10px]">
+        <span
+          class="text-(--color-spring-green-8) font-bricolage text-[86px] font-medium leading-[0.8] tracking-tight"
+        >
+          ©25
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: Hero Image with Background SVG -->
+  <div
+    class="w-full max-w-[1540px] px-[50px] relative reveal-on-scroll stagger-1"
+  >
+    <!-- Background SVG (pinned to bottom) -->
+    <div
+      style="position: absolute; bottom: 0; left: 0; right: 0; height: 430px; pointer-events: none; overflow: hidden; z-index: 1;"
+    >
+      <img
+        src="https://framerusercontent.com/images/5wu706iRUO1goYAgVmD86OpBUVw.svg"
+        alt=""
+        style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+      />
+    </div>
+
+    <!-- Main Dentist Image -->
+    <div
+      style="border-radius: 20px; overflow: hidden; filter: brightness(0.8); height: 550px; width: 100%; position: relative; z-index: 2;"
+    >
+      <img
+        src="https://framerusercontent.com/images/vFDZpkWiCWHzsbiY5t09wlxpOg.png"
+        alt="Dental team at work"
+        style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
+      />
+    </div>
+  </div>
+</section>

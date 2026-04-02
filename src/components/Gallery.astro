@@ -1,0 +1,128 @@
+---
+const galleryImages = [
+  "https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512",
+  "https://framerusercontent.com/images/3fKqpTuR1TuGSP6iX2BAfRvmD4g.png?scale-down-to=512",
+  "https://framerusercontent.com/images/mNnfxtlCi5hp2ZvLyYUsscSSTc.png?scale-down-to=1024",
+  "https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512",
+  "https://framerusercontent.com/images/3fKqpTuR1TuGSP6iX2BAfRvmD4g.png?scale-down-to=512",
+  "https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512",
+  "https://framerusercontent.com/images/3fKqpTuR1TuGSP6iX2BAfRvmD4g.png?scale-down-to=512",
+  "https://framerusercontent.com/images/mNnfxtlCi5hp2ZvLyYUsscSSTc.png?scale-down-to=1024",
+];
+---
+<section class="gallery-section" style="width: 100%; padding: 112px 0; overflow: hidden; background: #F6F7FF; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+  
+  <!-- Top Marquee Row (Staggered Offsets) -->
+  <div class="marquee-container" style="height: 270px;">
+    <div class="marquee-track">
+      {Array(8).fill(galleryImages).flat().map((img, i) => {
+        const offsets = [0, 40, 80, 120, 160, 120, 80, 40];
+        const topOffset = offsets[i % offsets.length];
+        return (
+          <div class="gallery-item" style={`margin-top: ${topOffset}px;`}>
+            <img src={img} alt="Patient smile" />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- Center Content -->
+  <div style="width: 100%; max-width: 610px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; padding: 40px 24px; z-index: 10;">
+    <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: center; gap: 24.01px; display: flex;">
+      
+      <!-- Label -->
+      <div style="align-self: stretch; flex-direction: column; justify-content: center; align-items: center; display: flex;">
+        <div style="justify-content: center; align-items: center; gap: 8px; display: inline-flex;">
+          <div style="width: 4px; height: 4px; background: #0D1B15; border-radius: 30px;"></div>
+          <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;">
+            <div style="color: #0D1B15; font-size: 16px; font-family: 'Jost'; font-weight: 400; line-height: 27.20px;">Our Smile Gallery</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Heading & Paragraph -->
+      <div class="reveal-on-scroll" style="align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 24px; text-align: center;">
+        <h2 style="margin: 0; color: #0D1B15; font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 1.2;">
+          Discover the Beautiful Smiles We’ve Created Over the Years
+        </h2>
+        <p style="margin: 0; max-width: 540px; color: #0D1B15; font-size: 18px; font-family: 'Inter'; font-weight: 400; line-height: 1.6;">
+          Check out our gallery featuring real patient transformations, from teeth whitening to complete smile makeovers!
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Button -->
+    <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;">
+      <a href="#contact" style="padding: 11px 16px 12px; background: #D1FC71; border-radius: 100px; color: #0D1B15; font-family: 'Inter'; font-size: 16px; font-weight: 400; line-height: 27.20px; text-decoration: none; transition: transform 0.3s ease;">
+        Make an Appointment
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom Marquee Row (Reverse Staggered) -->
+  <div class="marquee-container" style="height: 270px;">
+    <div class="marquee-track reverse">
+      {Array(8).fill(galleryImages.reverse()).flat().map((img, i) => {
+        const offsets = [160, 120, 80, 40, 0, 40, 80, 120];
+        const topOffset = offsets[i % offsets.length];
+        return (
+          <div class="gallery-item" style={`margin-top: ${topOffset}px;`}>
+            <img src={img} alt="Patient smile" />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+  }
+
+  .marquee-track.reverse {
+    animation: scroll-reverse 60s linear infinite;
+  }
+
+  .gallery-item {
+    width: 115px;
+    height: 110px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes scroll-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  @media (max-width: 768px) {
+    h2 { font-size: 32px !important; }
+    p { font-size: 16px !important; }
+  }
+</style>

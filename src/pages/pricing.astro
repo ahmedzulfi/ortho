@@ -1,0 +1,30 @@
+---
+/**
+ * Pricing Page
+ * Transparent pricing tiers for dental services.
+ */
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import PricingHero from '../components/PricingHero.astro';
+import PricingTables from '../components/PricingTables.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Pricing | OralCare - Transparent Dental Care">
+	<main class="min-h-screen bg-[#F6F7FF]">
+		<Navbar />
+		
+		<PricingHero />
+
+		<PricingTables />
+
+		<FAQ />
+
+		<Footer />
+	</main>
+</Layout>
+
+<style is:global>
+  /* Page specific transitions or overrides if needed */
+</style>

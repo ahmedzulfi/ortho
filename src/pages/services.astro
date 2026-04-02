@@ -1,0 +1,30 @@
+---
+/**
+ * Services Page
+ * Detailed list of dental services with high-fidelity grid.
+ */
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ServicesHero from '../components/ServicesHero.astro';
+import Services from '../components/Services.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Services | OralCare - Advanced Dental Solutions">
+	<main class="min-h-screen bg-[#F6F7FF]">
+		<Navbar />
+		
+		<ServicesHero />
+
+		<Services />
+
+		<FAQ />
+
+		<Footer />
+	</main>
+</Layout>
+
+<style is:global>
+  /* Page specific transitions or overrides if needed */
+</style>

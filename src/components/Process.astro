@@ -1,0 +1,120 @@
+---
+/**
+ * Process Section - High Fidelity Version
+ * Illustrates the working process with an accordion-like or step-by-step layout.
+ */
+
+const steps = [
+  {
+    index: "01",
+    title: "Schedule Your Appointment",
+    description: "Don't wait to give your smile the care it deserves. Whether it's a routine check-up, cosmetic treatment, or dental emergency — our expert team is here for you. Book your visit in just a few clicks and experience personalized dental care in a comfortable, modern setting.",
+    image: "https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200", // Using existing content image or placeholder
+    features: ["Easy booking", "Flexible timings", "Friendly dentists", "Instant confirmations"],
+    isExpanded: true
+  },
+  {
+    index: "02",
+    title: "Consultation & Assessment",
+    isExpanded: false
+  },
+  {
+    index: "03",
+    title: "Personalized Treatment Plan",
+    isExpanded: false
+  },
+  {
+    index: "04",
+    title: "Treatment & Follow-Up",
+    isExpanded: false
+  }
+];
+---
+
+<section style="width: 100%; background: var(--color-white-solid, white); overflow: hidden; justify-content: center; alignItems: center; display: flex; padding-top: 120px; padding-bottom: 120px;">
+  <div style="width: 100%; max-width: 1540px; padding-left: 50px; padding-right: 50px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: center; gap: 80px; display: inline-flex;">
+    
+    <!-- Section Header -->
+    <div class="reveal-on-scroll" style="width: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: flex;">
+      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 16px; display: flex;">
+        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 8px; display: inline-flex;">
+          <div style="width: 4px; height: 4px; position: relative; background: var(--color-spring-green-8); border-radius: 30px;"></div>
+          <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex;">
+            <div style="align-self: stretch; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px;">Our Process</div>
+          </div>
+        </div>
+        <div style="align-self: stretch; height: 1px; background: transparent;"></div>
+      </div>
+      
+      <div style="align-self: stretch; position: relative; display: flex; justify-content: space-between; align-items: flex-end;">
+        <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 57.60px;">Working Process</h2>
+        <div style="max-width: 571px; color: var(--color-grey-36); font-size: 18px; font-family: 'Inter'; font-weight: 400; line-height: 30.60px;">
+          From your first visit to your final check-up, we simplify dental care. <br/>Our team ensures you achieve the smile you deserve—hassle-free.
+        </div>
+      </div>
+    </div>
+
+    <!-- Steps List -->
+    <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: center; gap: 16px; display: flex;">
+      {steps.map((step, idx) => (
+        step.isExpanded ? (
+          /* Expanded Step (Step 01 style) */
+          <div class={`reveal-on-scroll stagger-${idx + 1}`} style="align-self: stretch; padding: 24px 70px 100px 70px; background: var(--color-spring-green-8); border-radius: 40px; position: relative; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: flex;">
+            <div style="width: 100%; flex-direction: column; justify-content: center; align-items: center; gap: 10px; display: flex;">
+              <!-- Step Header Row -->
+              <div style="align-self: stretch; justify-content: space-between; align-items: center; display: inline-flex; margin-bottom: 24px;">
+                <div style="flex: 1 1 0; justify-content: flex-start; align-items: center; gap: 24px; display: flex;">
+                  <div style="width: 60px; height: 60px; position: relative; border-radius: 100px; border: 2px white solid; display: flex; align-items: center; justify-content: center;">
+                    <div style="color: white; font-size: 16px; font-family: 'Inter'; font-weight: 400;">{step.index}</div>
+                  </div>
+                  <h3 style="margin: 0; color: white; font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 45px;">{step.title}</h3>
+                </div>
+                <!-- Toggle Button Placeholder -->
+                <div style="width: 80px; height: 80px; background: #F7F7F7; border-radius: 40px; border: 1px var(--color-grey-78) solid; display: flex; align-items: center; justify-content: center;">
+                   <div style="width: 12px; height: 12px; background: #0A0B0B;"></div>
+                </div>
+              </div>
+
+              <!-- Content Row -->
+              <div style="align-self: stretch; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;">
+                <div style="width: 348px; height: 281px; border-radius: 32px; overflow: hidden;">
+                  <img src={step.image} alt={step.title} style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
+                <div style="flex: 1; flex-direction: column; gap: 24px; display: flex;">
+                  <p style="margin: 0; color: #F5F4F7; font-size: 20px; font-family: 'Inter'; font-weight: 400; line-height: 34px;">{step.description}</p>
+                  <div>
+                    <h4 style="margin: 0 0 8px 0; color: var(--color-grey-78); font-size: 16px; font-family: 'Inter'; font-weight: 600;">Features</h4>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                      {step.features?.map(feature => (
+                        <div style="padding: 8px 16px; background: white; border-radius: 32px; color: var(--color-spring-green-8); font-size: 14px; font-family: 'Inter';">
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style="margin-top: 24px;">
+                    <a href="#" style="padding: 11px 16px; background: var(--color-chartreuse-green-72); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; text-decoration: none; display: inline-block;">Make an Appointment</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Collapsed Step (Steps 02-04 style) */
+          <div class={`reveal-on-scroll stagger-${idx + 1} hover-lift`} style="align-self: stretch; padding: 32px 70px; background: white; border-radius: 40px; border: 1px var(--color-grey-78) solid; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+            <div style="flex: 1; justify-content: flex-start; align-items: center; gap: 24px; display: flex;">
+              <div style="width: 60px; height: 60px; position: relative; border-radius: 100px; border: 2px var(--color-spring-green-8) solid; display: flex; align-items: center; justify-content: center;">
+                <div style="color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400;">{step.index}</div>
+              </div>
+              <h3 style="margin: 0; color: var(--color-spring-green-8); font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 45px;">{step.title}</h3>
+            </div>
+            <!-- Toggle Icon -->
+            <div style="width: 64px; height: 64px; background: var(--color-chartreuse-green-72); border-radius: 40px; transform: rotate(45deg); display: flex; align-items: center; justify-content: center;">
+               <div style="width: 16px; height: 16px; background: #0A0B0B;"></div>
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+  </div>
+</section>

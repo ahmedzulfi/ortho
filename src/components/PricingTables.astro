@@ -1,0 +1,108 @@
+---
+/**
+ * PricingTables Section
+ * Grid of pricing options for different dental services.
+ */
+
+const tiers = [
+  {
+    name: "General Checkup",
+    price: "$99",
+    period: "per visit",
+    description: "The essential foundation for maintaining excellent oral health and catching issues early.",
+    features: [
+      "Comprehensive digital x-rays",
+      "Full oral exam by a doctor",
+      "Professional teeth cleaning",
+      "Gum disease screening",
+      "Personalized care plan"
+    ],
+    highlight: false,
+    cta: "Book Checkup"
+  },
+  {
+    name: "Advanced Whitening",
+    price: "$249",
+    period: "per session",
+    description: "Professional-grade cosmetic whitening to brighten your smile up to 8 shades in one visit.",
+    features: [
+      "Laser-assisted whitening",
+      "Desensitizing treatment",
+      "Take-home touch-up kit",
+      "Before & after imaging",
+      "Enamel-safe materials"
+    ],
+    highlight: true,
+    cta: "Schedule Whitening"
+  },
+  {
+    name: "Invisalign Basics",
+    price: "$2,500",
+    period: "starting at",
+    description: "Clear, comfortable aligners custom-made to straighten your teeth discreetly.",
+    features: [
+      "Initial 3D digital scan",
+      "Custom treatment roadmap",
+      "All required tray sets",
+      "Routine progress checks",
+      "Retainer after treatment"
+    ],
+    highlight: false,
+    cta: "Free Consultation"
+  }
+];
+---
+
+<section class="w-full flex flex-col items-center justify-start bg-white py-24">
+  
+  <div class="w-full max-w-[1540px] px-[50px] flex flex-col lg:flex-row justify-center items-stretch gap-8 relative z-10">
+    
+    {tiers.map((tier, idx) => (
+      <div class={`reveal-on-scroll stagger-${idx + 1} flex-1 rounded-3xl p-10 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 border ${tier.highlight ? 'border-[var(--color-chartreuse-green-72)] bg-[var(--color-chartreuse-green-72)]' : 'border-[var(--color-grey-78)] bg-white'}`}>
+        
+        <div>
+          <h3 class={`m-0 font-bricolage text-2xl font-medium mb-4 ${tier.highlight ? 'text-[var(--color-spring-green-8)]' : 'text-[var(--color-spring-green-8)]'}`}>
+            {tier.name}
+          </h3>
+          
+          <div class="flex items-end gap-2 mb-6">
+            <span class={`font-bricolage text-5xl font-medium leading-none ${tier.highlight ? 'text-[var(--color-spring-green-8)]' : 'text-[var(--color-spring-green-8)]'}`}>
+              {tier.price}
+            </span>
+            <span class={`font-inter text-sm pb-1 ${tier.highlight ? 'text-[var(--color-spring-green-8)] opacity-70' : 'text-[var(--color-grey-36)]'}`}>
+              {tier.period}
+            </span>
+          </div>
+
+          <p class={`m-0 font-inter text-base mb-8 leading-[1.6] ${tier.highlight ? 'text-[var(--color-spring-green-8)] opacity-90' : 'text-[var(--color-grey-36)]'}`}>
+            {tier.description}
+          </p>
+
+          <hr class={`border-t mb-8 ${tier.highlight ? 'border-[var(--color-spring-green-8)] opacity-20' : 'border-[var(--color-grey-78)]'}`} />
+
+          <ul class="p-0 m-0 list-none flex flex-col gap-4">
+            {tier.features.map(feature => (
+              <li class="flex items-center gap-3">
+                <div class={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${tier.highlight ? 'bg-[var(--color-spring-green-8)] text-[var(--color-chartreuse-green-72)]' : 'bg-[#EAF1EE] text-[var(--color-spring-green-8)]'}`}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class={`font-inter text-base ${tier.highlight ? 'text-[var(--color-spring-green-8)]' : 'text-[var(--color-grey-36)]'}`}>
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <button class={`mt-10 w-full rounded-[100px] py-4 font-inter text-base font-medium transition-transform active:scale-95 ${tier.highlight ? 'bg-[var(--color-spring-green-8)] text-[var(--color-chartreuse-green-72)] hover:bg-[#1A2E26]' : 'bg-[#F6F7FF] text-[var(--color-spring-green-8)] hover:bg-[#EAEBFA]'}`}>
+          {tier.cta}
+        </button>
+
+      </div>
+    ))}
+
+  </div>
+
+</section>

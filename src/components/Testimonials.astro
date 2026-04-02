@@ -1,0 +1,76 @@
+---
+const testimonials = [
+  {
+    author: "Lisa Miles",
+    service: "Orthodontic Service",
+    quote: "“Wonderful Experience!”",
+    text: "I’ve been visiting Dental for years, and I’ve always had a great experience. The staff is friendly, the office is clean and modern, and Dr. Martinez always takes the time to explain my treatment options. I’m so happy with my smile!",
+    image: "https://framerusercontent.com/images/BobOk65j6uDzBORMNee0gKRWGk.jpg",
+    badgePosition: "bottom", // bottom or top
+  },
+  {
+    author: "Daniel Dalen",
+    service: "Orthodontic Service",
+    quote: "“Highly Recommended!”",
+    text: "Dr. Wilson and his team made my orthodontic journey smooth and stress-free. The results are incredible, and I feel more confident than ever. I highly recommend Dental for anyone looking for top-notch dental care!",
+    image: "https://framerusercontent.com/images/cPnLmzkyXcZEojXUlOLK54T0yw.jpg",
+    badgePosition: "top",
+  },
+  {
+    author: "Anna Frost",
+    service: "Orthodontic Service",
+    quote: "“Amazing Experience!”",
+    text: "I was nervous about getting my first root canal, but Dr. Martinez and the whole team were so reassuring, kind, and professional. The procedure was quick, and I felt no pain. I’m grateful for the excellent care I received!",
+    image: "https://framerusercontent.com/images/G45vgYrNZfse4JlMfG3uP8wg.jpg",
+    badgePosition: "bottom",
+  }
+];
+---
+
+<section style="box-sizing: border-box; display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; padding: 75px 0 0; position: relative; background: transparent;">
+  <div style="width: 100%; max-width: 1540px; padding: 0 50px; display: flex; justify-content: center;">
+    <div style="width: 100%; background: white; border-radius: 20px; padding: 80px 40px 130px; display: flex; flex-direction: column; align-items: center; gap: 100px; position: relative;">
+      
+      <!-- Header -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; text-align: center;">
+        <p style="margin: 0; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400;">Testimonials</p>
+        <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500;">What our patients say.</h2>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%;">
+        {testimonials.map((t, index) => (
+          <div style="position: relative; width: 100%;">
+            <!-- Card -->
+            <div style="background: #f6f7ff; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; min-height: 280px;">
+              <h4 style="margin: 0; font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500; color: var(--color-spring-green-8);">{t.quote}</h4>
+              <p style="margin: 0; font-size: 16px; font-family: 'Inter'; color: var(--color-grey-36); line-height: 1.6;">{t.text}</p>
+            </div>
+
+            <!-- Floating Badge -->
+            <div style={`
+              position: absolute;
+              ${t.badgePosition === 'bottom' ? 'bottom: -50px; left: 40px;' : 'top: -55px; right: 30px;'}
+              background: white;
+              border-radius: 60px;
+              padding: 10px 30px 10px 10px;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              box-shadow: rgba(64, 65, 209, 0.1) 0px 4px 34px 0px;
+              z-index: 10;
+            `}>
+              <div style="width: 46px; height: 46px; border-radius: 50%; overflow: hidden;">
+                <img src={t.image} alt={t.author} style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <h6 style="margin: 0; font-size: 16px; font-family: 'Inter'; font-weight: 600; color: var(--color-spring-green-8);">{t.author}</h6>
+                <p style="margin: 0; font-size: 13px; font-family: 'Inter'; color: var(--color-grey-36);">{t.service}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

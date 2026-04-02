@@ -1,0 +1,75 @@
+---
+/**
+ * Main Navbar Component
+ * Floating white pill design with interactive hover states.
+ */
+---
+
+<header class="fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-start pointer-events-none reveal-on-scroll">
+  <div class="pointer-events-auto flex flex-col items-center w-full pb-4 pt-6 px-[50px]">
+    <!-- Inner Pill Container -->
+    <div style="width: 100%; max-width: 1440px; padding: 12px 40px; background: var(--color-white-solid, white); box-shadow: 0px 4px 20px rgba(13, 27, 21, 0.04); border-radius: 16px; display: flex; justify-content: space-between; align-items: center;">
+      
+      <!-- Left: Logo -->
+      <a href="/" class="hover-lift" style="display: flex; align-items: center; justify-content: center;">
+        <img
+          src="https://framerusercontent.com/images/NafeJntPk9Cf7IEgmwlyEySfeRk.svg"
+          alt="OralCare Logo"
+          style="width: 148px; object-fit: contain; filter: brightness(0);"
+        />
+      </a>
+
+      <!-- Center: Navigation Links -->
+      <nav style="display: flex; align-items: center; gap: 8px;">
+        {[ 
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about-us' },
+          { name: 'Services', path: '/services' },
+          { name: 'Pricing', path: '/pricing' },
+          { name: 'Blog', path: '/blog' }
+        ].map(link => (
+          <a href={link.path} class="nav-link group" style="position: relative; height: 36px; padding: 0 16px; display: flex; align-items: center; gap: 8px; border-radius: 50px; text-decoration: none; overflow: hidden;">
+            <!-- Hover Background -->
+            <div class="nav-bg" style="position: absolute; inset: 0; background: var(--color-chartreuse-green-72, #D1FC71); opacity: 0; transition: opacity var(--dur-normal) var(--ease-out); border-radius: 50px;"></div>
+            
+            <!-- Dot -->
+            <div class="nav-dot" style="width: 5px; height: 5px; background: var(--color-grey-36, #595E5C); border-radius: 50px; position: relative; z-index: 10; transition: background var(--dur-normal) var(--ease-out);"></div>
+            
+            <!-- Text -->
+            <span class="nav-text" style="color: var(--color-grey-36, #595E5C); font-size: 16px; font-family: 'Inter'; font-weight: 500; position: relative; z-index: 10; transition: color var(--dur-normal) var(--ease-out);">
+              {link.name}
+            </span>
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right: CTA Button -->
+      <a href="/contact-us" class="hover-lift" style="padding: 12px 24px; background: var(--color-chartreuse-green-72, #D1FC71); border-radius: 100px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+        <span style="color: var(--color-spring-green-8, #0D1B15); font-size: 16px; font-family: 'Inter'; font-weight: 500;">
+          Book Appointment
+        </span>
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Navigation Hover States */
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover .nav-bg {
+      opacity: 1 !important;
+    }
+    .nav-link:hover .nav-dot {
+      background: var(--color-spring-green-8, #0D1B15) !important;
+    }
+    .nav-link:hover .nav-text {
+      color: var(--color-spring-green-8, #0D1B15) !important;
+    }
+  }
+
+  /* Make sure the navbar stays above everything */
+  header {
+    z-index: 100;
+  }
+</style>

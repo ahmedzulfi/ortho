@@ -1,0 +1,188 @@
+<div
+  class="video-scroll-container bg-[#F6F7FF]"
+  style="height: 250vh; position: relative; width: 100%;"
+>
+  <div
+    class="sticky-wrapper sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden"
+  >
+    <!-- Animation Layer (Centered 1440px container) -->
+    <div
+      class="animation-content relative w-full h-full flex items-center justify-center pointer-events-none"
+      style="max-width: 1440px; margin: 0 auto;"
+    >
+      <!-- Side Text Left (Absolute) -->
+      <div
+        class="sliding-text text-left absolute left-0 pr-8 lg:pr-12 pointer-events-none"
+        style="will-change: transform, opacity; z-index: 5;"
+      >
+        <h3 class="font-bricolage text-(--color-spring-green-8) font-medium text-4xl lg:text-5xl whitespace-nowrap">©2025</h3>
+      </div>
+
+      <!-- Centered Video Container -->
+      <div
+        class="expanding-video-frame pointer-events-auto bg-white rounded-2xl shadow-[0_40px_100px_rgba(0,0,0,0.1)] overflow-hidden shrink-0"
+        style="width: 255px; height: 120px; transition: box-shadow 0.5s ease; z-index: 10; will-change: width, height, transform;"
+      >
+        <video
+          id="scroll-video"
+          class="w-full h-full object-cover"
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          src="https://framerusercontent.com/assets/iCYvdsdQu2TD6Hdibd0CQ34AxfM.mp4"
+        ></video>
+
+        <!-- Main Play Button Overlay -->
+        <div
+          class="play-button-overlay absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-500 cursor-pointer pointer-events-none"
+        >
+          <div
+            class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="var(--color-spring-green-8)"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 6L17 12L7 18V6Z"
+                stroke="var(--color-spring-green-8)"
+                stroke-width="2"
+                stroke-linejoin="round"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Secondary Control Button (Pause icon) -->
+        <div
+          id="video-controls"
+          class="absolute bottom-4 right-4 cursor-pointer opacity-0 transition-opacity duration-300 pointer-events-none"
+          style="width: 24px; height: 24px; z-index: 15;"
+        >
+          <div style="width: 24px; height: 24px; background-size: 100% 100%; background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot;><g><path d=&quot;M 12 24 C 5.373 24 0 18.627 0 12 C 0 5.373 5.373 0 12 0 C 18.627 0 24 5.373 24 12 C 24 18.627 18.627 24 12 24 Z&quot; fill=&quot;rgb(166,226,36)&quot;></path><path d=&quot;M 11.25 6.75 L 11.25 17.25 L 7.5 17.25 L 7.5 6.75 Z M 16.5 6.75 L 16.5 17.25 L 12.75 17.25 L 12.75 6.75 Z&quot; fill=&quot;rgb(12,81,55)&quot;></path></g></svg>');"></div>
+        </div>
+      </div>
+
+      <!-- Side Text Right (Absolute) -->
+      <div
+        class="sliding-text text-right absolute right-0 pl-8 lg:pl-12 pointer-events-none"
+        style="will-change: transform, opacity; z-index: 5;"
+      >
+        <h3 class="font-bricolage text-(--color-spring-green-8) font-medium text-4xl lg:text-5xl whitespace-nowrap">Teeth Whitening</h3>
+      </div>
+    </div>
+
+    <!-- Background Fallback -->
+    <div class="absolute inset-0 bg-[#F6F7FF] -z-10"></div>
+  </div>
+</div>
+
+<script>
+  function initVideoScroll() {
+    const container = document.querySelector(".video-scroll-container");
+    const videoFrame = document.querySelector(".expanding-video-frame") as HTMLElement;
+    const playOverlay = document.querySelector(".play-button-overlay") as HTMLElement;
+    const controls = document.getElementById("video-controls") as HTMLElement;
+    const leftText = document.querySelector(".text-left") as HTMLElement;
+    const rightText = document.querySelector(".text-right") as HTMLElement;
+    const video = document.getElementById("scroll-video") as HTMLVideoElement;
+
+    if (!container || !videoFrame || !leftText || !rightText || !playOverlay || !controls) return;
+
+    window.addEventListener("scroll", () => {
+      const rect = container.getBoundingClientRect();
+      const scrollHeight = rect.height - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, -rect.top / scrollHeight));
+
+      const expansion = Math.min(1, progress / 0.7);
+      
+      const finalWidth = 1440;
+      const initialWidth = 255;
+      const finalHeight = 678;
+      const initialHeight = 120;
+      
+      const currentWidth = initialWidth + (finalWidth - initialWidth) * expansion;
+      const currentHeight = initialHeight + (finalHeight - initialHeight) * expansion;
+      
+      videoFrame.style.width = `${currentWidth}px`;
+      videoFrame.style.height = `${currentHeight}px`;
+
+      const textProgress = Math.min(1, progress * 1.5);
+      leftText.style.transform = `translateX(${-textProgress * 400}px)`;
+      leftText.style.opacity = `${Math.max(0, 1 - textProgress * 2.5)}`;
+      
+      rightText.style.transform = `translateX(${textProgress * 400}px)`;
+      rightText.style.opacity = `${Math.max(0, 1 - textProgress * 2.5)}`;
+
+      if (progress > 0.8) {
+        const overlayFade = Math.min(1, (progress - 0.8) / 0.2);
+        // Only show play button if paused
+        if (video.paused) {
+          playOverlay.style.opacity = `${overlayFade}`;
+          playOverlay.style.pointerEvents = "auto";
+          controls.style.opacity = "0";
+          controls.style.pointerEvents = "none";
+        } else {
+          playOverlay.style.opacity = "0";
+          playOverlay.style.pointerEvents = "none";
+          controls.style.opacity = `${overlayFade}`;
+          controls.style.pointerEvents = "auto";
+        }
+        videoFrame.style.boxShadow = "0 60px 120px rgba(0,0,0,0.15)";
+      } else {
+        playOverlay.style.opacity = "0";
+        playOverlay.style.pointerEvents = "none";
+        controls.style.opacity = "0";
+        controls.style.pointerEvents = "none";
+        videoFrame.style.boxShadow = "0 40px 100px rgba(0,0,0,0.1)";
+      }
+    });
+
+    playOverlay.addEventListener("click", (e) => {
+      e.stopPropagation();
+      video.play();
+      playOverlay.style.opacity = "0";
+      playOverlay.style.pointerEvents = "none";
+      controls.style.opacity = "1";
+      controls.style.pointerEvents = "auto";
+    });
+
+    controls.addEventListener("click", (e) => {
+      e.stopPropagation();
+      video.pause();
+      controls.style.opacity = "0";
+      controls.style.pointerEvents = "none";
+      playOverlay.style.opacity = "1";
+      playOverlay.style.pointerEvents = "auto";
+    });
+  }
+
+  initVideoScroll();
+  document.addEventListener("astro:after-swap", initVideoScroll);
+</script>
+
+<style>
+  .video-scroll-container {
+    /* Ensure no scrollbars inside the sticky module */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .expanding-video-frame {
+    /* Smooth transitions for the styles if needed, though scroll listener handles most */
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .animation-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .expanding-video-frame {
+      max-width: 90vw;
+    }
+  }
+</style>

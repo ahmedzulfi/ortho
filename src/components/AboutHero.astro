@@ -1,0 +1,116 @@
+---
+/**
+ * AboutHero Section
+ * Complex layout with absolute-positioned floating elements and headline letters.
+ */
+import { Image } from 'astro:assets';
+
+// Image paths from the local assets
+const images = [
+  "/images/patient_smile.png",
+  "/images/dentist_friendly.png",
+  "/images/dental_clinic.png"
+];
+---
+
+<section style="width: 100%; height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #F6F7FF; padding-top: 100px;">
+  
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Floating Background Elements Layer -->
+  <div style="position: absolute; inset: 0; pointer-events: none; max-width: 1440px; margin: 0 auto;">
+    
+    <!-- Badges -->
+
+
+
+    <!-- Floating Images (Repositioned closer to center) -->
+    <div class="floating" style="width: 140px; height: 141px; left: 349px; top: 256px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation-delay: 0s;">
+      <img src={images[0]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+    
+    <div class="floating" style="width: 140px; height: 141px; left: 636px; top: 257px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation-delay: 0.5s;">
+      <img src={images[1]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 931px; top: 238px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation-delay: 1s;">
+      <img src={images[2]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 1060px; top: 467px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); animation-delay: 1.5s;">
+        <img src={images[0]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 1033px; top: 889px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); animation-delay: 2s;">
+        <img src={images[1]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 1075px; top: 926px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); animation-delay: 0.2s;">
+        <img src={images[2]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 772px; top: 977px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation-delay: 0.8s;">
+        <img src={images[0]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 484px; top: 956px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation-delay: 1.2s;">
+        <img src={images[1]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 239px; top: 828px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); animation-delay: 0.4s;">
+        <img src={images[2]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+    <div class="floating" style="width: 140px; height: 141px; left: 147px; top: 453px; position: absolute; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); animation-delay: 1s;">
+        <img src={images[0]} style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+
+
+  </div>
+
+
+  <!-- Main Content Center Stack -->
+  <div class="reveal-on-scroll" style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; gap: 24px; position: relative; z-index: 10;">
+    
+    <!-- Headline with individual letters (for staggered entry) -->
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+      <div style="width: 100%; height: 120px; position: relative; display: flex; justify-content: center;">
+          <h1 style="display: flex; gap: 4px; margin: 0; padding: 0;">
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">A</span>
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">b</span>
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">o</span>
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">u</span>
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">t</span>
+             <span style="width: 24px;"></span>
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">U</span>
+             <span class="letter" style="color: var(--color-spring-green-8); font-size: 96px; font-family: 'Bricolage Grotesque'; font-weight: 500;">s</span>
+          </h1>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="reveal-on-scroll stagger-1" style="width: 100%; max-width: 480px; text-align: center;">
+       <p style="margin: 0; color: var(--color-spring-green-8); font-size: 18px; font-family: 'Inter'; font-weight: 400; line-height: 1.7; opacity: 0.9;">
+         We are committed to improving oral health with trusted dental services, modern technology, and a caring team.
+       </p>
+    </div>
+
+    <!-- Call to Action Button -->
+    <div class="reveal-on-scroll stagger-2" style="margin-top: 16px;">
+        <a href="/contact" class="btn-premium-morph btn-green-bg" style="padding: 16px 32px; background: var(--color-chartreuse-green-72); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 500; text-decoration: none; display: flex; align-items: center; justify-content: center;">
+          Book an Appointment
+        </a>
+    </div>
+
+  </div>
+
+</section>
