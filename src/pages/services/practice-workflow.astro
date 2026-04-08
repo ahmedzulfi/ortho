@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "We help businesses and clinics modernize their operations. Transitioning to a digital workflow for clear aligners saves time, reduces inventory costs, and increases accuracy.",
+  "Our expertise covers the entire digital stream, from intra-oral scanners (Medit, iTero) to the final 3D print and thermoforming. We help your team gain confidence and scale with the right tools.",
+  "Custom setup planning is the foundation for an efficient practice. We ensure your data flow is secure, fast, and scalable."
+];
+
+const benefits = [
+  "Reduced Chair-Time",
+  "Higher Patient Conversion",
+  "Practice Scalability",
+  "Digital Record Keeping"
+];
+
+const specs = [
+  { label: "Integration", value: "Medit, iTero, 3Shape" },
+  { label: "Onboarding", value: "Remote Staff Training" },
+  { label: "Data Path", value: "Cloud-Based Digital Vault" },
+  { label: "ROI", value: "Proven 30% Efficiency Gain" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="Practice Workflow Setup"
+  description="Designing and scaling the digital backbone of modern dental clinics."
+  heroImage="https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512&width=4600&height=3200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

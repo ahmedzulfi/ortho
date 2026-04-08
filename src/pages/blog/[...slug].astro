@@ -1,0 +1,56 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import BlogDetailsHero from '../../components/BlogDetailsHero.astro';
+import BlogProse from '../../components/BlogProse.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+import Contact from '../../components/Contact.astro';
+import FAQ from '../../components/FAQ.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.mdx?$/, '') },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} | Orthodontics Align`} description={post.data.excerpt}>
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <BlogDetailsHero 
+      title={post.data.title}
+      excerpt={post.data.excerpt}
+      authorName={post.data.author.name}
+      authorImage={post.data.author.image}
+      publishDate={new Date(post.data.publishDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+      featuredImage={post.data.image}
+    />
+
+    <BlogProse>
+      <div class="flex flex-col items-center gap-20 w-full mx-auto text-[#0D1B15]">
+        <div class="w-full">
+          <Content />
+        </div>
+      </div>
+    </BlogProse>
+
+    <RelatedPosts currentSlug={post.id} />
+
+    <Contact />
+    <FAQ />
+    <Footer />
+  </div>
+</Layout>

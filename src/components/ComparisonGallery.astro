@@ -1,12 +1,12 @@
 ---
 /**
  * ComparisonGallery Section - High Fidelity Version
- * Features a high-fidelity Before & After image comparison slider.
+ * Features a high-fidelity Before & After image comparison slider with drag support.
  */
 ---
 
-<section style="box-sizing: border-box; overflow: visible; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; max-width: 1540px; margin: 0 auto; padding: 120px 50px; gap: 10px; position: relative;">
-  <div style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 64px; position: relative;">
+<section id="comparison-gallery" style="box-sizing: border-box; overflow: visible; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; max-width: 1540px; margin: 0 auto; padding: 120px 50px; gap: 10px; position: relative;">
+  <div class="gallery-container" style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 64px; position: relative;">
     
     <!-- Left Content Column -->
     <div class="reveal-on-scroll" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 48px; min-width: 1px;">
@@ -18,7 +18,7 @@
           <!-- Section Label -->
           <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
             <div style="width: 4px; height: 4px; background: var(--color-spring-green-8); border-radius: 30px;"></div>
-            <div style="color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400;">Why us?</div>
+            <div style="color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400;">Results</div>
           </div>
           <div style="width: 100%; height: 1px; background: var(--color-grey-78);"></div>
 
@@ -26,7 +26,7 @@
           <div style="width: 100%; display: flex; flex-direction: column; gap: 20px;">
             <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 57.60px;">Before & After Gallery</h2>
             <p style="margin: 0; color: var(--color-grey-36); font-size: 18px; font-family: 'Inter'; font-weight: 400; line-height: 30.60px; max-width: 600px;">
-              Check out our Before & After Gallery, highlighting amazing smile transformations that boost confidence and dental care.
+              Witness the precision of our 3D planning. We help you visualize the final outcome before the first aligner is even printed.
             </p>
           </div>
         </div>
@@ -36,24 +36,24 @@
           <!-- Item 1 -->
           <div style="display: flex; gap: 16px; align-items: flex-start; width: 100%;">
             <div style="width: 48px; height: 48px; flex-shrink: 0; background: var(--color-chartreuse-green-72); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <h4 style="margin: 0; color: var(--color-spring-green-8); font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Free Consultation</h4>
+              <h4 style="margin: 0; color: var(--color-spring-green-8); font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Predictable Outcomes</h4>
               <p style="margin: 0; color: var(--color-grey-36); font-size: 16px; font-family: 'Inter'; line-height: 27.20px;">
-                At OralCare, we’ve got your back! Our awesome team uses the latest techniques to get to know what you want and need.
+                Our simulations are backed by clinical data to ensure the physical results match the digital plan perfectly.
               </p>
             </div>
           </div>
           <!-- Item 2 -->
           <div style="display: flex; gap: 16px; align-items: flex-start; width: 100%;">
             <div style="width: 48px; height: 48px; flex-shrink: 0; background: var(--color-chartreuse-green-72); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"></path></svg>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <h4 style="margin: 0; color: var(--color-spring-green-8); font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Smiles Made Simple!</h4>
+              <h4 style="margin: 0; color: var(--color-spring-green-8); font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Clinical Precision</h4>
               <p style="margin: 0; color: var(--color-grey-36); font-size: 16px; font-family: 'Inter'; line-height: 27.20px;">
-                Anxious about your dentist visit? Relax! Our friendly dentists make every appointment stress-free.
+                Advanced orthodontists review every single setup to guarantee anatomical safety and tooth health.
               </p>
             </div>
           </div>
@@ -61,73 +61,135 @@
       </div>
 
       <!-- CTA Button -->
-      <a href="#" style="padding: 12px 24px; background: var(--color-chartreuse-green-72); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 500; text-decoration: none;">
-        Make an Appointment
+      <a href="/contact" class="btn-premium" style="padding: 16px 32px; background: var(--color-spring-green-8); border-radius: 100px; color: white; font-size: 16px; font-family: 'Inter'; font-weight: 500; text-decoration: none; transition: all 0.3s var(--ease-out);">
+        Start Your Free Case
       </a>
     </div>
 
     <!-- Right Image Comparison Column -->
     <div class="reveal-on-scroll stagger-1" style="flex: 1.1; max-width: 688px; width: 53%; position: relative;">
-      <div id="comparison-slider" style="width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; position: relative; cursor: ew-resize; background: #f5f5f5; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+      <div id="comparison-slider" class="slider-container" style="width: 100%; aspect-ratio: 1/1.1; border-radius: 24px; overflow: hidden; position: relative; cursor: ew-resize; background: #EEE; box-shadow: 0 40px 80px rgba(13, 27, 21, 0.12); touch-action: none; -webkit-user-select: none; user-select: none;">
+        
         <!-- After Image (Base) -->
-        <img 
-          src="https://framerusercontent.com/images/6uxB1oYI7Dra1nq97NIcTA8r1fA.png?width=2756&height=2560" 
-          alt="After" 
-          style="width: 100%; height: 100%; object-fit: cover; display: block;"
-        />
-        <!-- Before Image (Overlay) -->
-        <div id="before-image" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; border-right: 2px solid white;">
+        <div class="image-after" style="position: absolute; inset: 0;">
           <img 
-            src="https://framerusercontent.com/images/p182OaybQK9EiLdW2ihxzGI2x9E.png?width=2752&height=2560" 
-            alt="Before" 
-            style="width: 688px; height: 100%; object-fit: cover; display: block;"
+            src="https://framerusercontent.com/images/6uxB1oYI7Dra1nq97NIcTA8r1fA.png?width=1000" 
+            alt="After treatment" 
+            style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
           />
+          <span class="label" style="position: absolute; bottom: 20px; right: 20px; background: rgba(255,255,255,0.9); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: #0D1B15; text-transform: uppercase;">After</span>
         </div>
+
+        <!-- Before Image (Overlay) -->
+        <div id="before-image-layer" class="image-before" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; border-right: 2px solid #D1FC71; z-index: 5;">
+          <img 
+            id="before-img-node"
+            src="https://framerusercontent.com/images/p182OaybQK9EiLdW2ihxzGI2x9E.png?width=1000" 
+            alt="Before treatment" 
+            style="width: 100%; height: 100%; object-fit: cover; position: absolute; left: 0; top: 0; pointer-events: none;"
+          />
+          <span class="label" style="position: absolute; bottom: 20px; left: 20px; background: rgba(13,27,21,0.9); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: #FFF; text-transform: uppercase;">Before</span>
+        </div>
+
         <!-- Handle -->
-        <div id="slider-handle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10; pointer-events: none;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline><polyline points="9 18 3 12 9 6"></polyline><polyline points="21 18 15 12 21 6"></polyline></svg>
+        <div id="slider-handle" class="slider-handle" style="position: absolute; top: 0; left: 50%; bottom: 0; width: 4px; background: #D1FC71; transform: translateX(-50%); z-index: 10; pointer-events: none;">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; background: #D1FC71; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.3); border: 4px solid white;">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D1B15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(0deg)"><polyline points="15 18 9 12 15 6"></polyline><polyline points="21 18 15 12 21 6"></polyline></svg>
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D1B15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg) translate(0, 0)"><polyline points="15 18 9 12 15 6"></polyline><polyline points="21 18 15 12 21 6"></polyline></svg>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<style>
+  @media (max-width: 991px) {
+    .gallery-container {
+      flex-direction: column !important;
+      gap: 40px !important;
+    }
+    .reveal-on-scroll {
+      width: 100% !important;
+    }
+    .slider-container {
+      width: 100% !important;
+      height: 400px !important;
+      aspect-ratio: auto !important;
+    }
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(13, 27, 21, 0.2);
+  }
+</style>
+
 <script>
-  const slider = document.getElementById('comparison-slider');
-  const beforeImage = document.getElementById('before-image');
-  const handle = document.getElementById('slider-handle');
-  const beforeImgTag = beforeImage?.querySelector('img');
+  function initComparisonSlider() {
+    const slider = document.getElementById('comparison-slider');
+    const beforeImageLayer = document.getElementById('before-image-layer');
+    const beforeImgNode = document.getElementById('before-img-node');
+    const handle = document.getElementById('slider-handle');
 
-  if (slider && beforeImage && handle && beforeImgTag) {
-    const move = (e: MouseEvent | TouchEvent) => {
+    if (!slider || !beforeImageLayer || !beforeImgNode || !handle) return;
+
+    let isDragging = false;
+
+    const setPosition = (x: number) => {
       const rect = slider.getBoundingClientRect();
-      const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+      let pos = (x - rect.left) / rect.width;
       
-      let x = clientX - rect.left;
+      if (pos < 0) pos = 0;
+      if (pos > 1) pos = 1;
 
-      if (x < 0) x = 0;
-      if (x > rect.width) x = rect.width;
-
-      const percentage = (x / rect.width) * 100;
-      beforeImage.style.width = `${percentage}%`;
+      const percentage = pos * 100;
+      beforeImageLayer.style.width = `${percentage}%`;
       handle.style.left = `${percentage}%`;
       
-      const currentWidth = slider.offsetWidth;
-      beforeImgTag.style.width = `${currentWidth}px`;
+      // Keep the width of the before image consistent with the slider
+      beforeImgNode.style.width = `${rect.width}px`;
     };
 
-    slider.addEventListener('mousemove', move);
-    slider.addEventListener('touchmove', (e) => {
-      move(e);
-      e.preventDefault();
-    }, { passive: false });
-    
-    // Initial sync
-    const syncSize = () => {
+    // Update image width based on container width
+    const syncImageWidth = () => {
       const rect = slider.getBoundingClientRect();
-      beforeImgTag.style.width = `${rect.width}px`;
+      beforeImgNode.style.width = `${rect.width}px`;
     };
-    window.addEventListener('resize', syncSize);
-    syncSize();
+
+    const onStart = (e: MouseEvent | TouchEvent) => {
+      isDragging = true;
+      onMove(e);
+    };
+
+    const onEnd = () => {
+      isDragging = false;
+    };
+
+    const onMove = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+      setPosition(clientX);
+    };
+
+    // Events for the slider itself (for click to jump)
+    slider.addEventListener('mousedown', onStart);
+    slider.addEventListener('touchstart', onStart, { passive: false });
+
+    // Global events for smoother dragging
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, { passive: false });
+    window.addEventListener('mouseup', onEnd);
+    window.addEventListener('touchend', onEnd);
+
+    // Initial sync
+    syncImageWidth();
+    window.addEventListener('resize', syncImageWidth);
   }
+
+  // Initial load
+  initComparisonSlider();
+
+  // Handle Astro page transitions
+  document.addEventListener('astro:after-swap', initComparisonSlider);
 </script>

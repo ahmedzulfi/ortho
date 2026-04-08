@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import BlogDetailsHero from '../../components/BlogDetailsHero.astro';
+import BlogProse from '../../components/BlogProse.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+import Contact from '../../components/Contact.astro';
+import FAQ from '../../components/FAQ.astro';
+import Footer from '../../components/Footer.astro';
+
+const post = {
+  id: "the-role-of-digital-scans-in-orthodontics",
+  data: {
+    title: "The Role of Digital Scans in Orthodontics",
+    excerpt: "Say goodbye to gooey impressions. Digital intraoral scanners offer greater patient comfort and precise 3D models.",
+    publishDate: "2026-04-12",
+    image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg",
+    author: {
+      name: "Mohammad Imran",
+      image: "https://framerusercontent.com/images/et3GxfYry1OVFWCEFEwd2cMhjI.jpg"
+    }
+  }
+};
+---
+
+<Layout title={`${post.data.title} | Orthodontics Align`} description={post.data.excerpt}>
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <BlogDetailsHero 
+      title={post.data.title}
+      excerpt={post.data.excerpt}
+      authorName={post.data.author.name}
+      authorImage={post.data.author.image}
+      publishDate={new Date(post.data.publishDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+      featuredImage={post.data.image}
+    />
+
+    <BlogProse>
+      <div class="flex flex-col items-center gap-20 w-full mx-auto text-[#0D1B15]">
+        
+        <div class="w-full">
+          <p class="text-[22px] leading-[1.6em] mb-8 font-inter">
+            If you've ever had braces or orthodontic appliances in the past, you likely remember biting down into a tray filled with gooey, uncomfortable putty. Those days are rapidly coming to an end, thanks to the introduction of 3D intraoral scanners.
+          </p>
+          
+          <h2 style="font-family: 'Bricolage Grotesque'; font-weight: 500; font-size: 48px; letter-spacing: -3px; line-height: 120%; margin-bottom: 16px; margin-top: 32px;">Unmatched Patient Comfort</h2>
+          <p class="text-[22px] leading-[1.6em] font-inter">
+            Intraoral scanners use a small, hand-held wand to take thousands of pictures of your teeth in minutes. It completely eliminates the gag-inducing impressions of the past, offering a comfortable, fast, and completely clean patient experience.
+          </p>
+        </div>
+
+        <!-- Two Column Images Row -->
+        <div 
+          class="framer-1hkazoj"
+          style="box-sizing: border-box; -webkit-font-smoothing: inherit; place-content: center; flex: 0 0 auto; flex-flow: row; gap: 24px; overflow: visible; padding: 0px; align-items: center; display: flex; height: min-content; position: relative; width: 100%;"
+        >
+          <figure
+            class="framer-1lk8qrc"
+            style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; border-radius: 20px; flex: 1 0 0px; overflow: clip; aspect-ratio: 0.97 / 1; position: relative; width: 1px; will-change: transform; opacity: 1; transform: none;"
+          >
+            <div style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; inset: 0px; position: absolute;">
+              <img
+                src="https://framerusercontent.com/images/zcgnQBMu4749dwi5AO2wK2UeJDk.png?width=1512&height=1600"
+                alt="Modern Dental Clinic"
+                style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; display: block; width: 100%; height: 100%; object-position: center center; object-fit: cover;"
+              />
+            </div>
+          </figure>
+          <figure
+            class="framer-jatmll"
+            style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; border-radius: 20px; flex: 1 0 0px; overflow: clip; aspect-ratio: 0.97 / 1; position: relative; width: 1px; will-change: transform; opacity: 1; transform: none;"
+          >
+            <div style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; inset: 0px; position: absolute;">
+              <img
+                src="https://framerusercontent.com/images/I0J7U9HzrLJBJ6C4GYCsAJ98vA.png?width=1512&height=1600"
+                alt="Friendly Dental Professional"
+                style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; display: block; width: 100%; height: 100%; object-position: center center; object-fit: cover;"
+              />
+            </div>
+          </figure>
+        </div>
+
+        <div class="w-full">
+          <h2 style="font-family: 'Bricolage Grotesque'; font-weight: 500; font-size: 48px; letter-spacing: -3px; line-height: 120%; margin-bottom: 16px; margin-top: 32px;">Clinical Precision</h2>
+          <p class="text-[22px] leading-[1.6em] font-inter">
+            Digital scans provide an exact, 1:1 ratio 3D model of a patient's mouth. This unprecedented accuracy means that aligners fit tighter, treatments are more predictable, and adjustments are rarely needed due to hardware issues.
+          </p>
+
+          <h2 style="font-family: 'Bricolage Grotesque'; font-weight: 500; font-size: 48px; letter-spacing: -3px; line-height: 120%; margin-bottom: 16px; margin-top: 48px;">Instant Previews</h2>
+          <p class="text-[22px] leading-[1.6em] font-inter">
+             Perhaps the best feature of a digital workflow is the ability to instantly visualize your future smile. Scan data can be immediately run through a simulator, showing a patient exactly what their teeth will look like post-treatment.
+          </p>
+        </div>
+
+        <div class="w-full">
+          <h2 style="font-family: 'Bricolage Grotesque'; font-weight: 500; font-size: 48px; letter-spacing: -3px; line-height: 120%; margin-bottom: 16px; margin-top: 48px;">Conclusion</h2>
+          <p class="text-[22px] leading-[1.6em] font-inter mb-12">
+            Technology is making orthodontic care faster, cleaner, and far more comfortable. The adoption of 3D scanning marks a massive leap forward in the quality of modern dental care.
+          </p>
+        </div>
+
+      </div>
+    </BlogProse>
+
+    <RelatedPosts currentSlug={post.id} />
+
+    <Contact />
+    <FAQ />
+    <Footer />
+  </div>
+</Layout>

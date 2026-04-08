@@ -1,0 +1,126 @@
+---
+const posts = [
+  {
+    id: "10-tips-for-lifelong-oral-health",
+    data: {
+      title: "10 Simple Tips for Lifelong Oral Health",
+      excerpt: "Maintain a powerful asset—your smile—with these 10 dentist-approved habits for long-term dental wellness.",
+      publishDate: "2026-04-07",
+      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
+    }
+  },
+  {
+    id: "future-of-3d-treatment-planning",
+    data: {
+      title: "The Future of 3D Treatment Planning in Orthodontics",
+      excerpt: "Explore how AI and high-resolution 3D simulations are transforming clear aligner workflows, offering more predictable results in less time.",
+      publishDate: "2026-04-06",
+      image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg"
+    }
+  },
+  {
+    id: "clear-aligners-vs-braces",
+    data: {
+      title: "Clear Aligners vs. Traditional Braces",
+      excerpt: "Wondering whether to choose clear aligners or traditional braces? Here's a comprehensive comparison to help you decide.",
+      publishDate: "2026-04-09",
+      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
+    }
+  },
+  {
+    id: "how-to-care-for-your-aligners",
+    data: {
+      title: "How to Care for Your Clear Aligners",
+      excerpt: "Keep your aligners clean and clear with these easy, practical tips for daily aligner maintenance and care.",
+      publishDate: "2026-04-10",
+      image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg"
+    }
+  },
+  {
+    id: "benefits-of-early-orthodontic-evaluation",
+    data: {
+      title: "The Benefits of Early Orthodontic Evaluation",
+      excerpt: "Why the American Association of Orthodontists recommends your child's first check-up by age 7.",
+      publishDate: "2026-04-11",
+      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
+    }
+  },
+  {
+    id: "the-role-of-digital-scans-in-orthodontics",
+    data: {
+      title: "The Role of Digital Scans in Orthodontics",
+      excerpt: "Say goodbye to gooey impressions. Digital intraoral scanners offer greater patient comfort and precise 3D models.",
+      publishDate: "2026-04-12",
+      image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg"
+    }
+  },
+  {
+    id: "maintaining-your-smile-after-treatment",
+    data: {
+      title: "Maintaining Your Smile After Treatment",
+      excerpt: "Your treatment is complete! Here is how to keep your newly aligned teeth perfectly straight for the rest of your life.",
+      publishDate: "2026-04-13",
+      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
+    }
+  }
+];
+
+const sortedPosts = posts;
+---
+
+<section class="w-full bg-[#F6F7FF] py-20 pb-32">
+  <div class="w-full max-w-[1540px] px-[50px] mx-auto">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]">
+      {sortedPosts.map((post, idx) => (
+        <div class={`reveal-on-scroll stagger-${(idx % 3) + 1}`}>
+          <a
+            href={`/blog/${post.id.replace(/\.mdx?$/, '')}`}
+            class="group flex flex-col items-start gap-5 p-5 bg-white rounded-[20px] no-underline transition-all duration-500 h-full"
+          >
+            {/* Image Container */}
+            <div class="w-full h-[320px] rounded-[16px] overflow-hidden relative">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+
+            {/* Content Container */}
+            <div class="flex flex-col gap-[30px] w-full grow justify-between">
+              <div class="flex flex-col gap-2.5 w-full">
+                {/* Date */}
+                <p class="m-0 text-(--color-grey-36) font-inter text-sm leading-[1.2]">
+                  {new Date(post.data.publishDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </p>
+
+                {/* Title */}
+                <h5 class="m-0 text-(--color-spring-green-8) font-bricolage text-[24px] lg:text-[28px] font-medium leading-[1.2] transition-colors group-hover:text-black/60">
+                  {post.data.title}
+                </h5>
+
+                {/* Excerpt */}
+                <p class="m-0 text-(--color-grey-36) font-inter text-base leading-[1.6]">
+                  {post.data.excerpt}
+                </p>
+              </div>
+
+              {/* Read More Button */}
+              <div class="px-[30px] py-[10px] bg-[#D1FC71] rounded-[60px] cursor-pointer transition-all duration-500 group-hover:bg-black w-fit">
+                <p class="m-0 text-[14px] font-inter font-medium text-[#0D1B15] leading-[1.2] transition-colors duration-500 group-hover:text-white!">
+                  Read More
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

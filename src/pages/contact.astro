@@ -1,0 +1,40 @@
+---
+/**
+ * Dedicated Contact Page
+ * High-fidelity contact experience with hero, info grid, and form.
+ */
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import ContactPageHero from "../components/ContactPageHero.astro";
+import ContactInfoGrid from "../components/ContactInfoGrid.astro";
+import ContactSection from "../components/Contact.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Contact Us | Orthodontics Align - 24/7 Support">
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <main id="main-content">
+      <ContactPageHero />
+      
+      {/* Existing Contact Form Section */}
+      <div class="mt-32 mb-24">
+        <ContactSection />
+      </div>
+
+      <FAQ />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
+
+<style is:global>
+  /* Ensure the existing ContactSection doesn't have too much top margin when used on this page */
+  #contact {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+</style>

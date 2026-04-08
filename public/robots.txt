@@ -1,0 +1,23 @@
+# Orthodontics Align Robots.txt
+# Optimized for Search & AI Indexing (GEO)
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Explicitly allow AI bots for Generative Engine Optimization (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Sitemap
+Sitemap: https://orthodonticsalign.com/sitemap.xml

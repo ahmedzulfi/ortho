@@ -1,0 +1,49 @@
+---
+/**
+ * Custom 404 Error Page - Orthodontics Align
+ */
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="404 - Page Not Found | Orthodontics Align">
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <main class="grow flex flex-col items-center justify-center text-center px-[50px] py-[200px]">
+      
+      <div class="relative mb-12 reveal-on-scroll">
+        <h1 class="m-0 text-[180px] lg:text-[240px] font-bricolage font-bold text-[#D1FC71] leading-none select-none opacity-50">
+          404
+        </h1>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <p class="m-0 text-(--color-spring-green-8) font-bricolage text-[40px] lg:text-[56px] font-medium leading-none mt-12">
+            Oops!
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center gap-6 max-w-[600px] mb-12">
+        <h2 class="m-0 text-(--color-spring-green-8) font-bricolage text-[32px] lg:text-[40px] font-medium leading-[1.2] reveal-on-scroll stagger-1">
+          This page seems to be missing...
+        </h2>
+        <p class="m-0 text-(--color-grey-36) font-inter text-lg lg:text-xl leading-normal reveal-on-scroll stagger-2">
+          The page you're looking for has moved, changed, or never existed. Let's get you back on track to your treatment planning.
+        </p>
+      </div>
+
+      <div class="reveal-on-scroll stagger-3">
+        <a 
+          href="/" 
+          class="px-10 py-5 bg-[#D1FC71] text-(--color-spring-green-8) rounded-[100px] font-inter text-lg font-bold no-underline transition-all duration-500 hover:bg-black hover:text-white hover:scale-105 active:scale-95 shadow-lg"
+        >
+          Return Home
+        </a>
+      </div>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

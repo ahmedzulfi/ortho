@@ -31,34 +31,70 @@ html.lenis body {
 
 /* Emil Design Engineering: Animation Tokens & Micro-interactions */
 :root {
-  /* Easing curves */
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);     /* For entering / snappy UI */
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* For on-screen movement */
-  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);  /* For drawers/modals */
+  /* Easing curves - Physics-based High-Fidelity feel */
+  --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring: cubic-bezier(0.43, 0.13, 0.23, 0.96);
   
-  /* Durations - Keep UI under 300ms */
+  /* Durations */
   --dur-fast: 160ms;
-  --dur-normal: 250ms;
-  --dur-slow: 400ms;
-  --dur-reveal: 600ms;
+  --dur-normal: 280ms;
+  --dur-slow: 450ms;
+  --dur-reveal: 800ms;
+
+  /* Premium Depth Layers */
+  --shadow-sm: 0 2px 4px rgba(13, 27, 21, 0.05);
+  --shadow-md: 0 10px 30px rgba(13, 27, 21, 0.08), 0 4px 12px rgba(13, 27, 21, 0.03);
+  --shadow-lg: 0 40px 100px rgba(13, 27, 21, 0.12), 0 12px 32px rgba(13, 27, 21, 0.04);
+}
+
+/* Premium Typography Overrides */
+h1, h2, h3, h4 {
+  letter-spacing: -0.04em !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { line-height: 1.05 !important; }
+h2 { line-height: 1.1 !important; }
+h3 { line-height: 1.2 !important; }
+
+/* Global Premium Material Layering */
+.premium-noise {
+  position: relative;
+}
+.premium-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Base button and actionable link tactile interactions */
 button, a {
-  transition: transform var(--dur-fast) var(--ease-out), filter var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+  transition: transform var(--dur-fast) var(--ease-out), filter var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
 
 button:active, a:active {
   transform: scale(0.97) !important;
 }
 
-/* Scroll Reveal Utilities */
+/* Enhanced Scroll Reveal Physics */
 @media (prefers-reduced-motion: no-preference) {
   .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(20px) scale(0.96);
+    transform: translateY(30px) scale(0.98);
     transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
-    will-change: opacity, transform;
   }
 
   .reveal-on-scroll.is-visible {
@@ -66,13 +102,11 @@ button:active, a:active {
     transform: translateY(0) scale(1);
   }
 
-  /* Stagger utilities */
-  .stagger-1 { transition-delay: 50ms; }
-  .stagger-2 { transition-delay: 100ms; }
-  .stagger-3 { transition-delay: 150ms; }
-  .stagger-4 { transition-delay: 200ms; }
-  .stagger-5 { transition-delay: 250ms; }
-  .stagger-6 { transition-delay: 300ms; }
+  /* Natural Stagger delays */
+  .stagger-1 { transition-delay: 80ms; }
+  .stagger-2 { transition-delay: 160ms; }
+  .stagger-3 { transition-delay: 240ms; }
+  .stagger-4 { transition-delay: 320ms; }
 }
 
 /* Polished Hover Interactions */
@@ -81,8 +115,8 @@ button:active, a:active {
 }
 @media (hover: hover) and (pointer: fine) {
   .hover-lift:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(13, 27, 21, 0.08);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-lg);
   }
 }
 
@@ -91,7 +125,7 @@ button:active, a:active {
   .mag-btn, .mag-btn-auto {
     position: relative;
     overflow: hidden;
-    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.3s var(--ease-out);
     transform-style: preserve-3d;
     cursor: pointer;
   }
@@ -102,12 +136,12 @@ button:active, a:active {
     inset: 0;
     pointer-events: none;
     background: radial-gradient(
-      circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(255, 255, 255, 0.3),
+      circle 120px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(209, 252, 113, 0.15),
       transparent
     );
     opacity: 0;
-    transition: opacity 300ms var(--ease-out);
+    transition: opacity 400ms var(--ease-out);
     z-index: 10;
   }
 
@@ -116,7 +150,7 @@ button:active, a:active {
   }
 
   .mag-btn:hover, .mag-btn-auto:hover {
-    transform: translate(var(--mag-x, 0), var(--mag-y, 0)) scale(1.02);
+    transform: translate(var(--mag-x, 0), var(--mag-y, 0)) scale(1.04);
   }
 }
 
@@ -183,5 +217,42 @@ button:active, a:active {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 10px 30px rgba(13, 27, 21, 0.15);
   }
+}
+
+/* Accessibility: Skip to Content */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-spring-green-8, #0D1B15);
+  color: var(--color-chartreuse-green-72, #D1FC71);
+  padding: 12px 24px;
+  z-index: 10000;
+  border-radius: 0 0 12px 12px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: top 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 20px rgba(13, 27, 21, 0.1);
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 2px solid var(--color-chartreuse-green-72, #D1FC71);
+  outline-offset: 4px;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 

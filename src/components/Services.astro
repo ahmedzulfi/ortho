@@ -1,112 +1,115 @@
 ---
 /**
- * Services Section - High Fidelity Version
- * Updated to match the requested look and feel with detailed structure.
+ * Services Section - Orthodontics Align
+ * 6 treatment types for clear aligner services.
  */
 
 const services = [
   {
     index: "01",
-    title: "General Dentistry",
-    description: "Routine exams, cleanings, and preventive care to keep your teeth and gums healthy.",
-    bullets: ["Oral Surgery", "Digital Records", "Online Booking", "Multilingual Support"],
-    image: "https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200"
+    title: "3D Treatment Planning",
+    description: "Expert orthodontic technicians create precise 3D simulations using 3Shape and OnyxCeph, ensuring predictable tooth movement and biological safety for every case.",
+    bullets: ["Precise Tooth Movement", "Expert Medical Review", "24-Hour STL Delivery", "Clinically Validated"],
+    image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg",
+    path: "/services/3d-treatment-planning"
   },
   {
     index: "02",
-    title: "Orthodontics Care",
-    description: "Personalized orthodontic solutions designed to align your teeth comfortably and effectively for a confident smile.",
-    bullets: ["Clear Aligners", "Traditional Braces", "Retainer Programs", "3D Treatment Planning"],
-    image: "https://framerusercontent.com/images/pRfDLqmzu07eDPWmYEYmVlmqaXY.png?width=3472&height=3200"
+    title: "CAD/CAM Aligner Design",
+    description: "High-resolution digital design of aligner steps and attachment geometry, optimized for clear aligner materials and industrial-grade 3D printing workflows.",
+    bullets: ["Custom Attachment Design", "Gingival Line Optimization", "Automated STL Export", "Material Calibration"],
+    image: "https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200",
+    path: "/services/aligner-design"
   },
   {
     index: "03",
-    title: "Cosmetic Dentistry",
-    description: "Enhance your natural beauty with advanced cosmetic treatments that create a brighter, more radiant smile.",
-    bullets: ["Teeth Whitening", "Veneers & Bonding", "Smile Makeovers", "Digital Smile Preview"],
-    image: "https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512&width=4600&height=3200"
+    title: "Precision Fabrication",
+    description: "Industrial manufacturing using premium medical-grade plastics like Zendura FLX. Our vacuum thermoforming process ensures incredible clarity and crack resistance.",
+    bullets: ["Zendura FLX Materials", "Crystal Clear Clarity", "High Crack Resistance", "Laser Edge Trimming"],
+    image: "https://framerusercontent.com/images/pRfDLqmzu07eDPWmYEYmVlmqaXY.png?width=3472&height=3200",
+    path: "/services/aligner-fabrication"
   },
   {
     index: "04",
-    title: "Oral Surgery",
-    description: "Comprehensive surgical care performed with precision and comfort to restore and protect your oral health.",
-    bullets: ["Wisdom Tooth Removal", "Dental Implants", "Bone Grafting", "Sedation Options"],
-    image: "https://framerusercontent.com/images/3fKqpTuR1TuGSP6iX2BAfRvmD4g.png?scale-down-to=512&width=1280&height=1180"
+    title: "Workflow Integration",
+    description: "Seamlessly integrate digital orthodontics into your practice. We help you setup scan-to-print workflows that save you time and increase patient throughput.",
+    bullets: ["Scanner Optimization", "Digital File Management", "Practice Training", "End-to-End Support"],
+    image: "https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512&width=4600&height=3200",
+    path: "/services/practice-workflow"
+  },
+  {
+    index: "05",
+    title: "Complex Case Consulting",
+    description: "Strategic planning for high-difficulty cases involving skeletal adjustments or complex sequential distalization. Our experts guide you through every stage.",
+    bullets: ["Skeletal Management", "Expert Consultation", "Custom Staging Plans", "Remote Supervision"],
+    image: "https://framerusercontent.com/images/3fKqpTuR1TuGSP6iX2BAfRvmD4g.png?scale-down-to=512&width=1280&height=1180",
+    path: "/services/case-consultation"
+  },
+  {
+    index: "06",
+    title: "Digital Process Optimization",
+    description: "Advanced repair and optimization of digital impressions. We fix scan noise and holes to ensure the highest possible fit accuracy for the final aligners.",
+    bullets: ["Scan Noise Reduction", "Missing Data Repair", "High-Resolution STL", "Perfect Fit Accuracy"],
+    image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg",
+    path: "/services/digital-optimization"
   }
 ];
 ---
 
-<section 
-  style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: visible; flex-flow: row; flex: 0 0 auto; place-content: center; gap: 0px; padding: 0px; height: min-content; align-items: center; width: 100%; display: flex; position: relative;"
->
-  <div style="width: 100%; max-width: 1540px; padding-left: 50px; padding-right: 50px; padding-top: 120px; padding-bottom: 120px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex;">
+<section class="w-full bg-[#F6F7FF] py-24">
+  <div class="w-full max-w-[1540px] px-[50px] mx-auto flex flex-col items-center">
+    
     <!-- Section Header -->
-    <div class="reveal-on-scroll" style="align-self: stretch; margin-bottom: 80px; justify-content: space-between; align-items: center; display: inline-flex;">
-      <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 57.60px;">Our Services</h2>
-      <div style="padding: 11px 16px; background: var(--color-chartreuse-green-72); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400; cursor: pointer;">
-        View Services
-      </div>
+    <div class="w-full flex flex-col gap-4 mb-16 reveal-on-scroll">
+      <h2 class="m-0 text-[var(--color-spring-green-8)] font-bricolage text-[48px] lg:text-[56px] font-medium leading-[1.1]">
+        Our Services
+      </h2>
+      <p class="m-0 text-black/70 font-inter text-lg leading-[1.6] max-w-[700px]">
+        Offering the best treatment planning and fabrication services for all types of cases for a smooth and hassle-free orthodontic treatment.
+      </p>
     </div>
 
     <!-- Services Grid/List -->
-    <div style="align-self: stretch; flex-direction: column; justify-content: center; align-items: flex-start; gap: 48px; display: flex;">
+    <div class="w-full flex flex-col">
       {services.map((service, idx) => (
-        <div class={`reveal-on-scroll stagger-${idx + 1}`} style="align-self: stretch; justify-content: flex-start; align-items: center; gap: 80px; display: inline-flex;">
+        <div class={`w-full reveal-on-scroll stagger-${(idx % 3) + 1} flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 py-12 lg:py-16 border-t border-black/10 last:border-b`}>
+          
           <!-- Image Block -->
-          <div class="hover-lift" style="width: 320px; height: 295px; max-width: 320px; overflow: hidden; border-radius: 6px; justify-content: flex-start; align-items: center; display: flex;">
-            <div style="width: 320px; height: 295px; position: relative;">
-              <img style="width: 320px; height: 295px; left: 0; top: 0; position: absolute; object-fit: cover;" src={service.image} alt={service.title} />
-            </div>
+          <div class="shrink-0 w-full md:w-[320px] h-[300px] rounded-[24px] overflow-hidden hover-lift hover:shadow-lg transition-all">
+            <img src={service.image} alt={service.title} class="w-full h-full object-cover" />
           </div>
 
           <!-- Content Block -->
-          <div style="max-width: 900px; padding-top: 40px; padding-bottom: 40px; position: relative; justify-content: flex-start; align-items: flex-start; gap: 60px; display: flex; flex: 1;">
+          <div class="flex-1 w-full flex flex-col md:flex-row gap-8 lg:gap-16 pt-2">
+            
             <!-- Left Info (Index & Bullets) -->
-            <div style="max-width: 282px; min-width: 282px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 19px; display: inline-flex;">
-              <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-                <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: var(--color-spring-green-8); font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 45px; word-wrap: break-word;">{service.index}</div>
-                </div>
+            <div class="w-full md:w-[250px] shrink-0 flex flex-col gap-6">
+              <div class="text-[var(--color-spring-green-8)] font-bricolage text-[40px] font-medium leading-none">
+                {service.index}
               </div>
-              <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex;">
+              <ul class="flex flex-col gap-3 m-0 p-0 list-none">
                 {service.bullets.map((bullet) => (
-                  <div style="align-self: stretch; justify-content: center; align-items: center; gap: 6px; display: inline-flex;">
-                    <div style="height: 27.20px; justify-content: center; align-items: flex-start; display: flex;">
-                      <div style="align-self: stretch; padding-top: 11px; justify-content: center; align-items: flex-start; display: flex;">
-                        <div style="width: 5px; height: 5px; position: relative; background: var(--color-grey-36); border-radius: 50px;"></div>
-                      </div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex;">
-                      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-                        <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--color-grey-36); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px; word-wrap: break-word;">{bullet}</div>
-                      </div>
-                    </div>
-                  </div>
+                  <li class="flex items-center gap-3">
+                    <div class="w-[6px] h-[6px] rounded-full bg-black/40 shrink-0"></div>
+                    <span class="text-black/70 font-inter text-base">{bullet}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             <!-- Right Content (Title, Desc, CTA) -->
-            <div style="width: 558px; height: 203.20px; position: relative;">
-              <div style="width: 558px; padding-bottom: 0.59px; left: 0; top: -1px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex;">
-                <div style="justify-content: center; display: flex; flex-direction: column; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 57.60px; word-wrap: break-word;">{service.title}</div>
-              </div>
-              <div style="width: 390.59px; left: 0; top: 76.70px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex;">
-                <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-                  <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--color-grey-36); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px; word-wrap: break-word;">{service.description}</div>
-                </div>
-              </div>
-              <a href="#" style="padding-top: 11px; padding-bottom: 12px; padding-left: 16px; padding-right: 16px; left: 0; top: 152px; position: absolute; background: var(--color-chartreuse-green-72); overflow: hidden; border-radius: 100px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex; text-decoration: none;">
-                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-                  <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-                    <div style="justify-content: center; display: flex; flex-direction: column; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px; word-wrap: break-word;">View Details</div>
-                  </div>
-                </div>
+            <div class="flex-1 flex flex-col gap-6 items-start">
+              <h3 class="m-0 text-[var(--color-spring-green-8)] font-bricolage text-[40px] lg:text-[48px] font-medium leading-[1.1]">
+                {service.title}
+              </h3>
+              <p class="m-0 text-black/70 font-inter text-lg leading-[1.6] max-w-[500px]">
+                {service.description}
+              </p>
+              <a href={service.path} class="mt-4 px-8 py-4 bg-[var(--color-chartreuse-green-72)] text-[var(--color-spring-green-8)] rounded-[60px] font-inter text-base font-medium text-center no-underline transition-transform hover:scale-[0.98]">
+                View Details
               </a>
             </div>
             
-            <!-- Bottom Border (absolute within relative content container) -->
-            <div style="width: 900px; height: 289px; left: 0; top: 0; position: absolute; border-top: 1px var(--color-grey-78) solid; border-bottom: 1px var(--color-grey-78) solid; pointer-events: none;" />
           </div>
         </div>
       ))}

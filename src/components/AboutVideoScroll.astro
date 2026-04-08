@@ -13,7 +13,7 @@
       <!-- Side Text Left (Absolute) -->
       <div
         class="sliding-text text-left absolute left-0 pr-8 lg:pr-12 pointer-events-none"
-        style="will-change: transform, opacity; z-index: 5;"
+        style="z-index: 5;"
       >
         <h3 class="font-bricolage text-(--color-spring-green-8) font-medium text-4xl lg:text-5xl whitespace-nowrap">©2025</h3>
       </div>
@@ -21,7 +21,7 @@
       <!-- Centered Video Container -->
       <div
         class="expanding-video-frame pointer-events-auto bg-white rounded-2xl shadow-[0_40px_100px_rgba(0,0,0,0.1)] overflow-hidden shrink-0"
-        style="width: 255px; height: 120px; transition: box-shadow 0.5s ease; z-index: 10; will-change: width, height, transform;"
+        style="width: 255px; height: 120px; transition: box-shadow 0.5s ease; z-index: 10;"
       >
         <video
           id="scroll-video"
@@ -69,7 +69,7 @@
       <!-- Side Text Right (Absolute) -->
       <div
         class="sliding-text text-right absolute right-0 pl-8 lg:pl-12 pointer-events-none"
-        style="will-change: transform, opacity; z-index: 5;"
+        style="z-index: 5;"
       >
         <h3 class="font-bricolage text-(--color-spring-green-8) font-medium text-4xl lg:text-5xl whitespace-nowrap">Teeth Whitening</h3>
       </div>
@@ -92,54 +92,60 @@
 
     if (!container || !videoFrame || !leftText || !rightText || !playOverlay || !controls) return;
 
+    let ticking = false;
     window.addEventListener("scroll", () => {
-      const rect = container.getBoundingClientRect();
-      const scrollHeight = rect.height - window.innerHeight;
-      const progress = Math.max(0, Math.min(1, -rect.top / scrollHeight));
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const rect = container.getBoundingClientRect();
+        const scrollHeight = rect.height - window.innerHeight;
+        const progress = Math.max(0, Math.min(1, -rect.top / scrollHeight));
 
-      const expansion = Math.min(1, progress / 0.7);
-      
-      const finalWidth = 1440;
-      const initialWidth = 255;
-      const finalHeight = 678;
-      const initialHeight = 120;
-      
-      const currentWidth = initialWidth + (finalWidth - initialWidth) * expansion;
-      const currentHeight = initialHeight + (finalHeight - initialHeight) * expansion;
-      
-      videoFrame.style.width = `${currentWidth}px`;
-      videoFrame.style.height = `${currentHeight}px`;
+        const expansion = Math.min(1, progress / 0.7);
+        
+        const finalWidth = 1440;
+        const initialWidth = 255;
+        const finalHeight = 678;
+        const initialHeight = 120;
+        
+        const currentWidth = initialWidth + (finalWidth - initialWidth) * expansion;
+        const currentHeight = initialHeight + (finalHeight - initialHeight) * expansion;
+        
+        videoFrame.style.width = `${currentWidth}px`;
+        videoFrame.style.height = `${currentHeight}px`;
 
-      const textProgress = Math.min(1, progress * 1.5);
-      leftText.style.transform = `translateX(${-textProgress * 400}px)`;
-      leftText.style.opacity = `${Math.max(0, 1 - textProgress * 2.5)}`;
-      
-      rightText.style.transform = `translateX(${textProgress * 400}px)`;
-      rightText.style.opacity = `${Math.max(0, 1 - textProgress * 2.5)}`;
+        const textProgress = Math.min(1, progress * 1.5);
+        leftText.style.transform = `translateX(${-textProgress * 400}px)`;
+        leftText.style.opacity = `${Math.max(0, 1 - textProgress * 2.5)}`;
+        
+        rightText.style.transform = `translateX(${textProgress * 400}px)`;
+        rightText.style.opacity = `${Math.max(0, 1 - textProgress * 2.5)}`;
 
-      if (progress > 0.8) {
-        const overlayFade = Math.min(1, (progress - 0.8) / 0.2);
-        // Only show play button if paused
-        if (video.paused) {
-          playOverlay.style.opacity = `${overlayFade}`;
-          playOverlay.style.pointerEvents = "auto";
-          controls.style.opacity = "0";
-          controls.style.pointerEvents = "none";
+        if (progress > 0.8) {
+          const overlayFade = Math.min(1, (progress - 0.8) / 0.2);
+          // Only show play button if paused
+          if (video.paused) {
+            playOverlay.style.opacity = `${overlayFade}`;
+            playOverlay.style.pointerEvents = "auto";
+            controls.style.opacity = "0";
+            controls.style.pointerEvents = "none";
+          } else {
+            playOverlay.style.opacity = "0";
+            playOverlay.style.pointerEvents = "none";
+            controls.style.opacity = `${overlayFade}`;
+            controls.style.pointerEvents = "auto";
+          }
+          videoFrame.style.boxShadow = "0 60px 120px rgba(0,0,0,0.15)";
         } else {
           playOverlay.style.opacity = "0";
           playOverlay.style.pointerEvents = "none";
-          controls.style.opacity = `${overlayFade}`;
-          controls.style.pointerEvents = "auto";
+          controls.style.opacity = "0";
+          controls.style.pointerEvents = "none";
+          videoFrame.style.boxShadow = "0 40px 100px rgba(0,0,0,0.1)";
         }
-        videoFrame.style.boxShadow = "0 60px 120px rgba(0,0,0,0.15)";
-      } else {
-        playOverlay.style.opacity = "0";
-        playOverlay.style.pointerEvents = "none";
-        controls.style.opacity = "0";
-        controls.style.pointerEvents = "none";
-        videoFrame.style.boxShadow = "0 40px 100px rgba(0,0,0,0.1)";
-      }
-    });
+      });
+    }, { passive: true });
 
     playOverlay.addEventListener("click", (e) => {
       e.stopPropagation();

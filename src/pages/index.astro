@@ -14,9 +14,43 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
+<Layout title="Orthodontics Align - 3D Treatment Planning & Clear Aligners">
+	<script type="application/ld+json" slot="head">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "What services does Orthodontics Align offer?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "We specialize in 3D treatment planning, clear aligner designing, and fabrication services for dental professionals worldwide. Over the past 5 years, we have successfully optimized treatment plans for more than 10,000 cases, empowering 500+ clinics to scale their aligner operations."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "How long does a treatment plan take?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Our expert orthodontic team delivers ready-to-print STL files and optimal treatment plans within a guaranteed 24-hour turnaround time. Clinics leveraging our rapid 24-hour planning see up to a 35% higher patient acceptance rate due to faster consultation times."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Do you provide the physical aligners?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Yes, we offer both digital planning files (STL) and end-to-end clear aligner manufacturing. We utilize premium, FDA-approved biocompatible materials that are proven to deliver 99% precise tooth movements."
+					}
+				}
+			]
+		}
+	</script>
 	<main class="min-h-screen bg-[#F6F7FF]">
 		<Navbar />
+		
+		<div id="main-content" class="sr-only">Main Content Starts Here</div>
 		
 		<Hero />
 		

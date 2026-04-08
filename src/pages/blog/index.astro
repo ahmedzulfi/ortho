@@ -1,0 +1,34 @@
+---
+/**
+ * Blog Listing Page
+ * Discover dental wellness and latest breakthroughs.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import BlogHero from '../../components/BlogHero.astro';
+import BlogGrid from '../../components/BlogGrid.astro';
+import Contact from '../../components/Contact.astro';
+import FAQ from '../../components/FAQ.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Blog & Insights | Orthodontics Align - 3D Treatment Planning">
+	<main class="min-h-screen bg-[#F6F7FF]">
+		<Navbar />
+		
+    <div id="main-content" class="sr-only">Main Content Starts Here</div>
+
+		<BlogHero />
+
+    <BlogGrid />
+    
+    <Contact />
+    <FAQ />
+
+		<Footer />
+	</main>
+</Layout>
+
+<style is:global>
+  /* Base transitions if needed */
+</style>

@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "Raw digital impression files (STL/OBJ/PLY) often contain noise, gaps, or artifacts that can degrade the fit of the final aligner. We provide an advanced cleanup service.",
+  "Using precision modeling, we optimize your intraoral scans for the high-end 3D printer environment, closing any holes and ensuring perfectly smooth gingival and occlusal surfaces.",
+  "High-resolution digital repair is the final wall of defense before manufacturing. Our optimized files guarantee a 'snap-fit' for every aligner we produce."
+];
+
+const benefits = [
+  "Error-Free STL Models",
+  "Optimized Print Accuracy",
+  "Snap-Fit Precision",
+  "Reduced Fabrication Failure"
+];
+
+const specs = [
+  { label: "Format", value: "STL, OBX, PLY optimized" },
+  { label: "Repair Level", value: "Surface Topology Cleanup" },
+  { label: "Efficiency", value: "Print-Ready in < 2 Hours" },
+  { label: "Scalability", value: "Unlimited Case Capacity" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="Digital Process Optimization"
+  description="Perfecting every micron of your digital impressions for the ultimate fit."
+  heroImage="https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

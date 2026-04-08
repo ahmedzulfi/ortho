@@ -1,0 +1,83 @@
+---
+/**
+ * Blog Prose Component
+ * Handles the main article content styling and layout.
+ */
+---
+
+<section class="w-full bg-[#F6F7FF] pb-24">
+  <div
+    class="w-full max-w-[1100px] px-[50px] mx-auto flex flex-col items-center"
+  >
+    <!-- Main Content Wrapper -->
+    <div class="w-full">
+      <!-- Article Body -->
+      <article class="prose prose-xl max-w-none reveal-on-scroll">
+        <slot />
+      </article>
+
+      <!-- Written By Section Expansion -->
+      <div
+        class="mt-20 pt-12 border-t border-[#E2E8F0] w-full flex flex-col md:flex-row items-center justify-between gap-8"
+        style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: visible; padding-top: 48px; align-items: center; display: flex; height: min-content; position: relative; width: 100%;"
+      >
+        <div
+          class="flex items-center gap-4"
+          style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; flex-flow: row; gap: 16px; overflow: visible; padding: 0px; align-items: center; display: flex; height: min-content; position: relative; width: min-content;"
+        >
+          <figure
+            class="m-0"
+            style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: 16px; flex: 0 0 auto; height: 68px; position: relative; width: 68px; overflow: hidden;"
+          >
+            <div
+              style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; inset: 0px; position: absolute;"
+            >
+              <img
+                src="https://framerusercontent.com/images/7BOVHyT8ljRAuHmbcImH63R2HzI.jpg?width=4000&height=6000"
+                alt="Mohammad Imran"
+                style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; display: block; width: 100%; height: 100%; object-position: center center; object-fit: cover;"
+              />
+            </div>
+          </figure>
+          <div class="flex flex-col justify-center">
+            <p
+              style="margin: 0px; font-family: 'Inter', sans-serif; font-size: 14px; color: #0D1B15/70; line-height: 1.2em;"
+            >
+              Written by
+            </p>
+            <p
+              style="margin: 0px; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; width:210px; color: #0D1B15; line-height: 1.2em;"
+            >
+              Mohammad Imran
+            </p>
+            <p
+              style="margin: 0px; font-family: 'Inter', sans-serif; font-size: 14px; color: #0D1B15/70; line-height: 1.2em;"
+            >
+              Dental Surgeon
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex-1 max-w-[450px]"
+          style="box-sizing: border-box; -webkit-font-smoothing: inherit; outline: none; flex-direction: column; justify-content: flex-start; display: flex; white-space: pre-wrap; flex-shrink: 0; min-height: auto; position: relative; word-break: break-word; overflow-wrap: break-word;"
+        >
+          <p
+            style="margin: 0px; font-family: 'Inter', sans-serif; font-size: 16px; color: #0D1B15/70; line-height: 1.5em;"
+          >
+            Hey! I'm Mohammad Imran. Dental Surgeon at Orthodontics Align.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Custom prose overrides for Orthodontics Align brand */
+  .prose h2,
+  .prose h3 {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+</style>

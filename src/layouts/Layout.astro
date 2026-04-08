@@ -1,5 +1,19 @@
 ---
 import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const { 
+  title = "Orthodontics Align - 3D Treatment Planning & Clear Aligners",
+  description = "Get expert 3D orthodontic treatment planning and high-quality clear aligners. 24-hour turnaround for dental professionals worldwide.",
+  ogImage = "/images/og-image.png", // Default OG image
+  canonicalUrl = Astro.url.href
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,12 +24,56 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="orthodontic treatment planning, clear aligners manufacturing, 3D dental design, aligner planning services, orthodontic outsourcing, dental aligner fabricator" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Gilda+Display&display=swap" rel="stylesheet">
-		<title>Astro Basics</title>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Orthodontics Align",
+        "url": "https://orthodonticsalign.com",
+        "logo": "https://orthodonticsalign.com/images/LOGO.png",
+        "sameAs": [
+          "https://www.linkedin.com/company/orthodontics-align",
+          "https://www.instagram.com/orthodonticsalign"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+92-321-9473647",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English", "Urdu"]
+        },
+        "description": "Expert 3D orthodontic treatment planning and high-quality clear aligner manufacturing services for dental professionals worldwide. With an industry-leading 24-hour turnaround time and 10,000+ completed cases, we reliably empower clinics to predictably grow their clear aligner revenue."
+      }
+    </script>
+    <slot name="head" />
 	</head>
 	<body>
+		<a href="#main-content" class="skip-to-content">Skip to content</a>
 		<slot />
 
 		<script>
@@ -23,9 +81,9 @@ import "../styles/global.css";
 
 			const lenis = new Lenis({
 				duration: 1.2,
-				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom exponential easing
-				lerp: 0.08,             // Low lerp for more "weight" and smoothness
-				wheelMultiplier: 1.1,   // Slight responsiveness boost
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				lerp: 0.08,
+				wheelMultiplier: 1.1,
 				smoothWheel: true
 			});
 
@@ -61,53 +119,59 @@ import "../styles/global.css";
 				// Select buttons and potentially button-like links
 				const elements = document.querySelectorAll('button, a[href^="/"], a[href^="#"], .btn-premium-morph');
 				
+				// Batch READ operations (getComputedStyle)
+				const updates: {el: Element, bgColor: string}[] = [];
 				elements.forEach(el => {
-					// Detect if it should have the premium animation (heuristic: is it styled like a button or has a specific background?)
+					// Detect if it should have the premium animation
 					const style = window.getComputedStyle(el);
 					const isButtonLike = el.tagName === 'BUTTON' || 
 										el.classList.contains('p-[') || 
-										style.borderRadius !== '0px' || 
-										style.backgroundColor !== 'rgba(0, 0, 0, 0)';
+										(style.borderRadius && style.borderRadius !== '0px') || 
+										(style.backgroundColor && style.backgroundColor !== 'rgba(0, 0, 0, 0)');
 					
 					if (isButtonLike && !el.classList.contains('btn-premium-morph')) {
 						// Don't apply to pure text links that don't look like buttons
 						if (style.backgroundColor === 'rgba(0, 0, 0, 0)' && el.tagName === 'A') return;
 
-						el.classList.add('btn-premium-morph');
+						updates.push({
+							el,
+							bgColor: style.backgroundColor
+						});
+					}
+				});
+
+				// Batch WRITE operations (DOM manipulation)
+				updates.forEach(({ el, bgColor }) => {
+					el.classList.add('btn-premium-morph');
+					
+					// Check background to apply contrast variation
+					if (bgColor && (bgColor.includes('209, 252, 113') || bgColor.includes('rgb(209, 252, 113)'))) {
+						el.classList.add('btn-green-bg');
+					}
+
+					// WRAP RAW TEXT NODES for correct z-index layering
+					const nodes = Array.from(el.childNodes);
+					if (nodes.length > 0) {
+						let hasUnwrappedText = false;
 						
-						// Check background to apply contrast variation
-						const bgColor = style.backgroundColor;
-						// Match chartreuse green (#D1FC71)
-						if (bgColor.includes('209, 252, 113') || bgColor.includes('rgb(209, 252, 113)')) {
-							el.classList.add('btn-green-bg');
+						// Check if we need to wrap without mutating yet
+						for (const node of nodes) {
+							if (node.nodeType === Node.TEXT_NODE && (node.textContent || '').trim()) {
+								hasUnwrappedText = true;
+								break;
+							}
 						}
 
-						// WRAP RAW TEXT NODES for correct z-index layering
-						// (Moves nodes into a wrapper span if they aren't already wrapped)
-						const nodes = Array.from(el.childNodes);
-						if (nodes.length > 0) {
-							// Filter actual content nodes (text or other tags)
+						if (hasUnwrappedText) {
 							const fragment = document.createDocumentFragment();
-							let hasUnwrappedText = false;
+							nodes.forEach(node => fragment.appendChild(node));
 							
-							nodes.forEach(node => {
-								if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-									hasUnwrappedText = true;
-								}
-								fragment.appendChild(node);
-							});
-
-							if (hasUnwrappedText) {
-								const span = document.createElement('span');
-								span.style.zIndex = '10';
-								span.style.position = 'relative';
-								span.style.pointerEvents = 'none';
-								span.appendChild(fragment);
-								el.appendChild(span);
-							} else {
-								// Re-append if we didn't wrap
-								el.appendChild(fragment);
-							}
+							const span = document.createElement('span');
+							span.style.zIndex = '10';
+							span.style.position = 'relative';
+							span.style.pointerEvents = 'none';
+							span.appendChild(fragment);
+							el.appendChild(span);
 						}
 					}
 				});

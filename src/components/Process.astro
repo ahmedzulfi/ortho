@@ -1,37 +1,42 @@
 ---
 /**
- * Process Section - High Fidelity Version
- * Illustrates the working process with an accordion-like or step-by-step layout.
+ * Process Section - Orthodontics Align
+ * 4-step interactive workflow for clear aligner treatment planning.
  */
 
 const steps = [
   {
     index: "01",
-    title: "Schedule Your Appointment",
-    description: "Don't wait to give your smile the care it deserves. Whether it's a routine check-up, cosmetic treatment, or dental emergency — our expert team is here for you. Book your visit in just a few clicks and experience personalized dental care in a comfortable, modern setting.",
-    image: "https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200", // Using existing content image or placeholder
-    features: ["Easy booking", "Flexible timings", "Friendly dentists", "Instant confirmations"],
-    isExpanded: true
+    title: "Upload Your .STL File",
+    description: "Upper and lower scan, intraoral and extraoral pictures, OPG and Rx Form. Simply upload your files through our secure portal and our team will get started immediately.",
+    image: "https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200",
+    features: ["Digital Scans", "Intraoral Photos", "OPG Upload", "Rx Form"]
   },
   {
     index: "02",
-    title: "Consultation & Assessment",
-    isExpanded: false
+    title: "Planning Phase",
+    description: "Our expert orthodontists analyze your case and create a precise 3D treatment plan using state-of-the-art software.",
+    image: "https://framerusercontent.com/images/pRfDLqmzu07eDPWmYEYmVlmqaXY.png?width=3472&height=3200",
+    features: ["3D Simulation", "Expert Review", "Precision Planning", "Fast Turn-around"]
   },
   {
     index: "03",
-    title: "Personalized Treatment Plan",
-    isExpanded: false
+    title: "Printing Phase",
+    description: "We use laboratory-grade 3D printers to fabricate high-accuracy models for your clear aligners.",
+    image: "https://framerusercontent.com/images/Xvo1Nlc2AUNcyQ6my8GsMxxi2M.png?scale-down-to=512&width=4600&height=3200",
+    features: ["High-Res Printing", "Quality Control", "Medical Grade", "Precise Fit"]
   },
   {
     index: "04",
-    title: "Treatment & Follow-Up",
-    isExpanded: false
+    title: "Customer Care",
+    description: "Constant support throughout the treatment duration to ensure maximum success for your practice.",
+    image: "https://framerusercontent.com/images/3fKqpTuR1TuGSP6iX2BAfRvmD4g.png?scale-down-to=512&width=1280&height=1180",
+    features: ["24/7 Support", "Case Tracking", "Expert Help", "Clinical Advice"]
   }
 ];
 ---
 
-<section style="width: 100%; background: var(--color-white-solid, white); overflow: hidden; justify-content: center; alignItems: center; display: flex; padding-top: 120px; padding-bottom: 120px;">
+<section id="process-section" style="width: 100%; background: var(--color-white-solid, white); overflow: hidden; justify-content: center; align-items: center; display: flex; padding-top: 120px; padding-bottom: 120px;">
   <div style="width: 100%; max-width: 1540px; padding-left: 50px; padding-right: 50px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: center; gap: 80px; display: inline-flex;">
     
     <!-- Section Header -->
@@ -43,78 +48,322 @@ const steps = [
             <div style="align-self: stretch; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px;">Our Process</div>
           </div>
         </div>
-        <div style="align-self: stretch; height: 1px; background: transparent;"></div>
       </div>
       
-      <div style="align-self: stretch; position: relative; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="align-self: stretch; position: relative; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
         <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 57.60px;">Working Process</h2>
         <div style="max-width: 571px; color: var(--color-grey-36); font-size: 18px; font-family: 'Inter'; font-weight: 400; line-height: 30.60px;">
-          From your first visit to your final check-up, we simplify dental care. <br/>Our team ensures you achieve the smile you deserve—hassle-free.
+          Get your orthodontic treatment planning done in 24 hours turn-around time using advanced technology under experts supervision.
         </div>
       </div>
     </div>
 
     <!-- Steps List -->
-    <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: center; gap: 16px; display: flex;">
+    <div class="process-steps-container" style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: center; gap: 24px; display: flex;">
       {steps.map((step, idx) => (
-        step.isExpanded ? (
-          /* Expanded Step (Step 01 style) */
-          <div class={`reveal-on-scroll stagger-${idx + 1}`} style="align-self: stretch; padding: 24px 70px 100px 70px; background: var(--color-spring-green-8); border-radius: 40px; position: relative; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: flex;">
-            <div style="width: 100%; flex-direction: column; justify-content: center; align-items: center; gap: 10px; display: flex;">
-              <!-- Step Header Row -->
-              <div style="align-self: stretch; justify-content: space-between; align-items: center; display: inline-flex; margin-bottom: 24px;">
-                <div style="flex: 1 1 0; justify-content: flex-start; align-items: center; gap: 24px; display: flex;">
-                  <div style="width: 60px; height: 60px; position: relative; border-radius: 100px; border: 2px white solid; display: flex; align-items: center; justify-content: center;">
-                    <div style="color: white; font-size: 16px; font-family: 'Inter'; font-weight: 400;">{step.index}</div>
-                  </div>
-                  <h3 style="margin: 0; color: white; font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 45px;">{step.title}</h3>
-                </div>
-                <!-- Toggle Button Placeholder -->
-                <div style="width: 80px; height: 80px; background: #F7F7F7; border-radius: 40px; border: 1px var(--color-grey-78) solid; display: flex; align-items: center; justify-content: center;">
-                   <div style="width: 12px; height: 12px; background: #0A0B0B;"></div>
-                </div>
+        <div 
+          class={`process-step-item reveal-on-scroll stagger-${idx + 1}`} 
+          data-index={idx}
+          data-expanded={idx === 0 ? "true" : "false"}
+        >
+          <!-- Collapsed Header (Always Visible) -->
+          <div class="step-header">
+            <div class="step-title-group">
+              <div class="step-number-circle">
+                <span class="step-number">{step.index}</span>
               </div>
+              <h3 class="step-title">{step.title}</h3>
+            </div>
+            <div class="step-toggle-btn">
+               <div class="toggle-icon"></div>
+            </div>
+          </div>
 
-              <!-- Content Row -->
-              <div style="align-self: stretch; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;">
-                <div style="width: 348px; height: 281px; border-radius: 32px; overflow: hidden;">
-                  <img src={step.image} alt={step.title} style="width: 100%; height: 100%; object-fit: cover;" />
+          <!-- Expanded Content -->
+          <div class="step-content">
+            <div class="content-inner">
+              <div class="image-wrapper">
+                <img src={step.image} alt={step.title} />
+              </div>
+              <div class="text-wrapper">
+                <p class="step-description">{step.description}</p>
+                <div class="features-group">
+                  <h4 class="features-label">What You Need</h4>
+                  <div class="features-list">
+                    {step.features?.map(feature => (
+                      <div class="feature-tag">{feature}</div>
+                    ))}
+                  </div>
                 </div>
-                <div style="flex: 1; flex-direction: column; gap: 24px; display: flex;">
-                  <p style="margin: 0; color: #F5F4F7; font-size: 20px; font-family: 'Inter'; font-weight: 400; line-height: 34px;">{step.description}</p>
-                  <div>
-                    <h4 style="margin: 0 0 8px 0; color: var(--color-grey-78); font-size: 16px; font-family: 'Inter'; font-weight: 600;">Features</h4>
-                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                      {step.features?.map(feature => (
-                        <div style="padding: 8px 16px; background: white; border-radius: 32px; color: var(--color-spring-green-8); font-size: 14px; font-family: 'Inter';">
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div style="margin-top: 24px;">
-                    <a href="#" style="padding: 11px 16px; background: var(--color-chartreuse-green-72); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; text-decoration: none; display: inline-block;">Make an Appointment</a>
-                  </div>
+                <div class="cta-wrapper">
+                  <a href="/contact" class="btn-primary">Get Started</a>
                 </div>
               </div>
             </div>
           </div>
-        ) : (
-          /* Collapsed Step (Steps 02-04 style) */
-          <div class={`reveal-on-scroll stagger-${idx + 1} hover-lift`} style="align-self: stretch; padding: 32px 70px; background: white; border-radius: 40px; border: 1px var(--color-grey-78) solid; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
-            <div style="flex: 1; justify-content: flex-start; align-items: center; gap: 24px; display: flex;">
-              <div style="width: 60px; height: 60px; position: relative; border-radius: 100px; border: 2px var(--color-spring-green-8) solid; display: flex; align-items: center; justify-content: center;">
-                <div style="color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400;">{step.index}</div>
-              </div>
-              <h3 style="margin: 0; color: var(--color-spring-green-8); font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 45px;">{step.title}</h3>
-            </div>
-            <!-- Toggle Icon -->
-            <div style="width: 64px; height: 64px; background: var(--color-chartreuse-green-72); border-radius: 40px; transform: rotate(45deg); display: flex; align-items: center; justify-content: center;">
-               <div style="width: 16px; height: 16px; background: #0A0B0B;"></div>
-            </div>
-          </div>
-        )
+        </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  /* Base Item Styling */
+  .process-step-item {
+    align-self: stretch;
+    background: #FFF;
+    border: 1px solid var(--color-grey-78);
+    border-radius: 40px;
+    overflow: hidden;
+    transition: all 0.5s var(--ease-out);
+    cursor: pointer;
+  }
+
+  .process-step-item[data-expanded="true"] {
+    background: var(--color-spring-green-8) !important;
+    border-color: transparent !important;
+    cursor: default;
+  }
+
+  /* Header Interaction */
+  .step-header {
+    padding: 32px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.5s var(--ease-out);
+  }
+
+  .process-step-item[data-expanded="true"] .step-header {
+    padding-bottom: 24px;
+    padding-top: 40px;
+  }
+
+  .step-title-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .step-number-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    border: 2px solid var(--color-spring-green-8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s var(--ease-out);
+  }
+
+  .process-step-item[data-expanded="true"] .step-number-circle {
+    border-color: #FFF;
+  }
+
+  .step-number {
+    font-family: 'Inter';
+    color: var(--color-spring-green-8);
+    font-size: 16px;
+    transition: color 0.5s var(--ease-out);
+  }
+
+  .process-step-item[data-expanded="true"] .step-number {
+    color: #FFF;
+  }
+
+  .step-title {
+    margin: 0;
+    font-family: 'Bricolage Grotesque';
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-spring-green-8);
+    transition: color 0.5s var(--ease-out);
+  }
+
+  .process-step-item[data-expanded="true"] .step-title {
+    color: #FFF;
+  }
+
+  /* Toggle Icon */
+  .step-toggle-btn {
+    width: 64px;
+    height: 64px;
+    background: var(--color-chartreuse-green-72);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s var(--ease-out);
+  }
+
+  .process-step-item[data-expanded="true"] .step-toggle-btn {
+    background: #F7F7F7;
+    transform: rotate(45deg);
+  }
+
+  .toggle-icon {
+    width: 16px;
+    height: 16px;
+    background: #0D1B15;
+    clip-path: polygon(45% 0%, 55% 0%, 55% 45%, 100% 45%, 100% 55%, 55% 55%, 55% 100%, 45% 100%, 45% 55%, 0% 55%, 0% 45%, 45% 45%);
+  }
+
+  /* Content Expansion */
+  .step-content {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: all 0.6s var(--ease-out);
+  }
+
+  .process-step-item[data-expanded="true"] .step-content {
+    max-height: 600px;
+    opacity: 1;
+    visibility: visible;
+    padding-bottom: 80px;
+  }
+
+  .content-inner {
+    padding: 0 70px;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+  }
+
+  .image-wrapper {
+    width: 380px;
+    height: 280px;
+    border-radius: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .step-description {
+    margin: 0;
+    color: #F5F4F7;
+    font-family: 'Inter';
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .features-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .features-label {
+    margin: 0;
+    color: var(--color-grey-78);
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .features-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .feature-tag {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+    color: white;
+    font-family: 'Inter';
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--color-chartreuse-green-72);
+    border-radius: 100px;
+    color: var(--color-spring-green-8);
+    font-family: 'Inter';
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.02);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 991px) {
+    .step-header {
+      padding: 24px 30px;
+    }
+    .content-inner {
+      padding: 0 30px;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .image-wrapper {
+      width: 100%;
+      height: 220px;
+    }
+    .step-title {
+      font-size: 24px;
+    }
+    .step-number-circle {
+      width: 48px;
+      height: 48px;
+    }
+    .step-toggle-btn {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>
+
+<script>
+  function initProcessAccordion() {
+    const items = document.querySelectorAll('.process-step-item');
+    
+    items.forEach(item => {
+      const header = item.querySelector('.step-header');
+      if (!header) return;
+
+      header.addEventListener('click', () => {
+        const isCurrentExpanded = item.getAttribute('data-expanded') === 'true';
+        
+        // Collapse all others
+        items.forEach(other => {
+          if (other !== item) {
+            other.setAttribute('data-expanded', 'false');
+          }
+        });
+
+        // Toggle current
+        item.setAttribute('data-expanded', isCurrentExpanded ? 'false' : 'true');
+      });
+    });
+  }
+
+  // Initial load
+  initProcessAccordion();
+
+  // Watch for Astro page transitions if using ViewTransitions
+  document.addEventListener('astro:after-swap', initProcessAccordion);
+</script>

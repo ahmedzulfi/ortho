@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "Our Aligner Design service focuses on the intricate geometry of aligner stages. We optimize attachment shapes and positioning for maximal rotational and translational control.",
+  "Using precision CAD/CAM tools, we ensure that the gingival line is perfectly captured, minimizing patient discomfort and maximizing the mechanical efficiency of the aligner material.",
+  "The outcome is a sequence of ready-to-print STL files, each calibrated to the specific shrinkage and expansion profiles of modern 3D printing resins."
+];
+
+const benefits = [
+  "Optimal Attachment Geometry",
+  "High-Fidelity Gingival Fit",
+  "Optimized Material Response",
+  "Reduced Patient Chair-Time"
+];
+
+const specs = [
+  { label: "Design Method", value: "CAD/CAM Digital Sculpting" },
+  { label: "File Resolution", value: "10-Micron Precision STL" },
+  { label: "Material Support", value: "All Major Dental Resins" },
+  { label: "Turnaround", value: "Within 48 Hours" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="CAD/CAM Aligner Design"
+  description="Designing the future of clear aligner biomechanics for every unique case."
+  heroImage="https://framerusercontent.com/images/ZHxi4wDoLoO2bFOOewbLKCw.png?width=3472&height=3200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

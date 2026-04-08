@@ -6,18 +6,32 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ServicesHero from '../components/ServicesHero.astro';
-import Services from '../components/Services.astro';
+import ServicesSection from '../components/Services.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Services | OralCare - Advanced Dental Solutions">
+<Layout 
+	title="Our Services | Orthodontics Align" 
+	description="Explore our orthodontic services including clear aligner designing, 3D treatment planning, and fabrication. We deliver highly accurate STL files in a rapid 24-hour turnaround time."
+>
+	<script type="application/ld+json" slot="head">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name": "Orthodontic Services & Clear Aligner Manufacturing",
+			"description": "Explore our orthodontic services including clear aligner designing, 3D treatment planning, and fabrication. We deliver highly accurate STL files in a rapid 24-hour turnaround time.",
+			"url": "https://orthodonticsalign.com/services"
+		}
+	</script>
 	<main class="min-h-screen bg-[#F6F7FF]">
 		<Navbar />
 		
+		<div id="main-content" class="sr-only">Main Content Starts Here</div>
+		
 		<ServicesHero />
 
-		<Services />
+		<ServicesSection />
 
 		<FAQ />
 

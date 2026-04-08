@@ -265,8 +265,7 @@
           <div
             style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--color-grey-36, #595E5C); fontSize: 18px; fontFamily: 'Inter'; fontWeight: 400; line-height: 30.60px; wordWrap: 'break-word';"
           >
-            From reservations to dietary preferences, here’s all the <br
-            />information you need before dining with us.
+            Get your orthodontic treatment planning done in 24 hours turn-around time using advanced technology under experts supervision.
           </div>
         </div>
       </div>
@@ -284,57 +283,76 @@
         {
           [
             {
-              q: "What services does Oralcare offer?",
-              a: "We provide general, cosmetic, orthodontic, and preventive dental treatments. Every service is tailored to enhance your smile and oral health.",
+              q: "What services does Orthodontics Align offer?",
+              a: "We specialize in 3D treatment planning, clear aligner designing, and fabrication services for dental professionals.",
             },
             {
-              q: "How often should I visit the dentist?",
-              a: "A visit every six months is ideal for cleanings and checkups. Your dentist may suggest more visits based on your oral condition.",
+              q: "How long does a treatment plan take?",
+              a: "Our expert team delivers ready-to-print STL files and treatment plans within a 24-hour turnaround time.",
             },
             {
-              q: "Do dental treatments hurt?",
-              a: "Most treatments are comfortable with modern, gentle techniques. Local anesthesia is used when needed to ensure a pain-free experience.",
+              q: "What do I need to upload?",
+              a: "You'll need to upload upper and lower scans (.STL), intraoral and extraoral pictures, OPG, and the Rx Form.",
             },
             {
-              q: "How do I know which treatment is right for me?",
-              a: "Our team evaluates your oral health and discusses your goals. We then recommend a personalized treatment plan that fits your needs.",
+              q: "Do you provide the physical aligners?",
+              a: "Yes, we offer both the digital planning files (STL) and full clear aligner manufacturing depending on your needs.",
             },
             {
-              q: "Are cosmetic dental procedures safe?",
-              a: "Yes, cosmetic treatments are safe when performed by trained professionals. We use proven materials and methods to protect your oral health.",
+              q: "Is the planning verified by experts?",
+              a: "Absolutely. Every case is worked on by expert orthodontic planners under professional supervision for maximum predictability.",
             },
             {
-              q: "Do you accept insurance or offer payment plans?",
-              a: "Yes, we accept various insurance plans and offer flexible financing options to make your dental care affordable and accessible.",
+              q: "How do I get started?",
+              a: "Simply reach out to us via our contact form or WhatsApp at +92 321 9473647 to set up your account and begin uploading cases.",
             },
           ].map((item, idx) => (
-            <details
-              class="faq-accordion-item hover-lift"
+            <div
+              class="faq-accordion-item"
               style="align-self: stretch; background: var(--color-white-solid, white); border-radius: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex; overflow: hidden; position: relative;"
             >
-              <summary style="list-style: none; align-self: stretch; padding: 24px 16px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
-                <div style="flex: 1 1 0; flexDirection: column; justify-content: flex-start; align-items: flex-start; display: inline-flex;">
+              <button
+                class="faq-trigger"
+                aria-expanded="false"
+                aria-controls={`faq-content-${idx}`}
+                style="appearance: none; border: none; background: none; text-align: left; list-style: none; align-self: stretch; padding: 24px 16px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; width: 100%; transition: background 0.3s ease;"
+              >
+                <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex; pointer-events: none;">
                   <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--color-spring-green-8, #0D1B15); font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 28px;">
                     {item.q}
                   </div>
                 </div>
-                <div style="width: 24px; height: 24px; position: relative; overflow: hidden; background: #D1FC71; border-radius: 4px; display:flex; align-items:center; justify-content:center;">
+                <div style="width: 24px; height: 24px; position: relative; overflow: hidden; background: #D1FC71; border-radius: 4px; display:flex; align-items:center; justify-content:center; shrink: 0; pointer-events: none;">
                   <div
                     class="icon-bar"
                     style="width: 10px; height: 2px; background: #595E5C;"
                   />
                   <div
                     class="icon-bar vertical"
-                    style="width: 2px; height: 10px; background: #595E5C; position: absolute; transition: transform 0.3s ease;"
+                    style="width: 2px; height: 10px; background: #595E5C; position: absolute; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;"
                   />
                 </div>
-              </summary>
-              <div style="padding: 0 16px 24px 16px; width: 100%;">
-                <div style="color: var(--color-grey-36, #595E5C); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px;">
-                  {item.a}
+              </button>
+
+              <div
+                id={`faq-content-${idx}`}
+                class="faq-content-wrapper"
+                role="region"
+                aria-labelledby={`faq-trigger-${idx}`}
+                style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.23, 1, 0.32, 1); width: 100%;"
+              >
+                <div style="overflow: hidden;">
+                  <div
+                    style="padding: 0 16px 24px 16px; width: 100%; opacity: 0; transform: translateY(-8px); transition: opacity 0.3s ease, transform 0.4s ease;"
+                    class="faq-content-inner"
+                  >
+                    <div style="color: var(--color-grey-36, #595E5C); font-size: 16px; font-family: 'Inter'; font-weight: 400; line-height: 27.20px;">
+                      {item.a}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </details>
+            </div>
           ))
         }
       </div>
@@ -343,21 +361,45 @@
 </section>
 
 <style>
-  summary::-webkit-details-marker {
-    display: none;
+  .faq-accordion-item {
+    transition: box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  details[open] .vertical {
+  /* Disable global premium button morph animation for FAQ */
+  .faq-trigger::before {
+    display: none !important;
+  }
+
+  .faq-trigger:hover {
+    background: none !important;
+    transform: none !important;
+  }
+
+  .faq-trigger:hover * {
+    color: var(--color-spring-green-8, #0d1b15) !important;
+  }
+
+  .faq-accordion-item.is-open {
+    box-shadow: 0 10px 30px rgba(13, 27, 21, 0.05);
+  }
+
+  .faq-accordion-item.is-open .vertical {
     transform: rotate(90deg);
     opacity: 0;
   }
 
-  details {
-    transition: all 0.3s ease;
+  .faq-accordion-item.is-open .faq-content-wrapper {
+    grid-template-rows: 1fr !important;
   }
 
-  details[open] {
-    box-shadow: 0 10px 30px rgba(13, 27, 21, 0.05);
+  .faq-accordion-item.is-open .faq-content-inner {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .faq-trigger:focus-visible {
+    outline: 2px solid #d1fc71;
+    outline-offset: -2px;
   }
 
   @media (max-width: 1024px) {
@@ -374,3 +416,42 @@
     }
   }
 </style>
+
+<script>
+  function initFAQ() {
+    const items = document.querySelectorAll(".faq-accordion-item");
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".faq-trigger");
+
+      trigger.addEventListener("click", () => {
+        const isOpen = item.classList.contains("is-open");
+
+        // Close other items (optional but creates a cleaner experience)
+        items.forEach((otherItem) => {
+          if (otherItem !== item && otherItem.classList.contains("is-open")) {
+            otherItem.classList.remove("is-open");
+            otherItem
+              .querySelector(".faq-trigger")
+              .setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // Toggle current item
+        if (isOpen) {
+          item.classList.remove("is-open");
+          trigger.setAttribute("aria-expanded", "false");
+        } else {
+          item.classList.add("is-open");
+          trigger.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+
+  // Init on load
+  initFAQ();
+
+  // Re-init after Astro page transitions
+  document.addEventListener("astro:after-swap", initFAQ);
+</script>
