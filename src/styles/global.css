@@ -80,6 +80,50 @@ h3 { line-height: 1.2 !important; }
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Mobile Font Size & Line Height Optimization */
+@media (max-width: 768px) {
+  :root {
+    --mobile-tight-leading: 1.1;
+  }
+  
+  h1 { 
+    font-size: 28px !important; 
+    line-height: var(--mobile-tight-leading) !important;
+    letter-spacing: -0.05em !important;
+  }
+  
+  h2 { 
+    font-size: 24px !important; 
+    line-height: var(--mobile-tight-leading) !important;
+    letter-spacing: -0.04em !important;
+  }
+  
+  h3 { 
+    font-size: 20px !important; 
+    line-height: 1.2 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  h4 {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+  }
+  
+  p, span, li, a, div { 
+    font-size: 14px !important; 
+    line-height: 1.4 !important; 
+  }
+  
+  /* Specific class overrides for common patterns */
+  .text-lg { font-size: 15px !important; }
+  .text-base { font-size: 14px !important; }
+  .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl { 
+    font-size: 28px !important; 
+    line-height: 1.05 !important; 
+  }
+  .text-3xl { font-size: 24px !important; line-height: 1.1 !important; }
+}
+
 /* Base button and actionable link tactile interactions */
 button, a {
   transition: transform var(--dur-fast) var(--ease-out), filter var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);

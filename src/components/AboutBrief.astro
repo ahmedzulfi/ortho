@@ -5,47 +5,47 @@
  */
 ---
 
-<section style="width: 100%; padding: 120px 50px; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;">
+<section class="w-full py-20 md:py-[120px] px-6 md:px-[50px] bg-white flex flex-col items-center justify-center box-border">
   
-  <div class="reveal-on-scroll" style="width: 100%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; gap: 40px;">
+  <div class="reveal-on-scroll w-full max-w-[1100px] flex flex-col items-center gap-10">
     
     <!-- Label -->
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <div style="width: 4px; height: 4px; background: var(--color-spring-green-8, #0D1B15); border-radius: 50%;"></div>
-      <div style="color: var(--color-spring-green-8, #0D1B15); font-size: 16px; font-family: 'Jost'; font-weight: 400;">About</div>
+    <div class="flex items-center gap-2">
+      <div class="w-1 h-1 bg-[var(--color-spring-green-8,#0D1B15)] rounded-full"></div>
+      <div class="text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Jost'] font-normal">About</div>
     </div>
 
     <!-- Main Headline -->
-    <div style="text-align: center; max-width: 1100px;">
-      <h2 style="margin: 0; color: var(--color-spring-green-8, #0D1B15); font-size: clamp(32px, 5vw, 48px); font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 1.2; letter-spacing: -3px;">
-        At Orthodontics Align we combine advanced technology with years of experience, allowing you to be completely worry-free in treatment planning and designing done in a very short time.
+    <div class="text-center max-w-[1100px]">
+      <h2 class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-[clamp(24px,5vw,48px)] font-['Bricolage_Grotesque'] font-medium leading-[1.2] tracking-[-1.5px] md:tracking-[-3px]">
+        At Orthodontics Align, we bridge the gap between digital design and clinical excellence, providing precision-engineered aligner manufacturing and expert 3D treatment planning.
       </h2>
     </div>
 
     <!-- Social Proof Section -->
-    <div class="reveal-on-scroll stagger-1" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-      <p style="margin: 0; color: var(--color-grey-36, #595E5C); font-size: 16px; font-family: 'Inter'; font-weight: 500;">
+    <div class="reveal-on-scroll stagger-1 flex flex-col items-center gap-5">
+      <p class="m-0 text-[var(--color-grey-36,#595E5C)] text-base font-['Inter'] font-medium">
         Loved by many clients, rated 4.9
       </p>
 
       <!-- Avatar Row -->
-      <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+      <div class="flex items-center justify-center relative">
         <!-- Overlapping Avatars -->
-        <div style="display: flex; margin-right: -10px;">
+        <div class="flex -mr-[10px]">
           {[ 
             "/images/avatar_1.png",
             "/images/avatar_2.png",
             "/images/avatar_3.png",
             "/images/avatar_1.png"
           ].map((src, i) => (
-            <div style={`width: 60px; height: 49px; border-radius: 8px; overflow: hidden; border: 2px solid white; margin-left: ${i === 0 ? '0' : '-15px'}; position: relative; z-index: ${5 - i}; transition: transform 0.3s ease;`} class="hover-lift">
-               <img src={src} alt="Client" style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class={`hover-lift w-[50px] md:w-[60px] h-[40px] md:h-[49px] rounded-lg overflow-hidden border-2 border-white relative transition-transform duration-300 ease-in-out ${i === 0 ? 'ml-0' : '-ml-[12px] md:-ml-[15px]'} z-[${5 - i}]`}>
+               <img src={src} alt="Client" class="w-full h-full object-cover" />
             </div>
           ))}
           
           <!-- "80+" Badge -->
-          <div style="width: 60px; height: 49px; background: var(--color-spring-green-8, #0D1B15); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-left: -15px; position: relative; z-index: 0; border: 2px solid white;">
-            <span style="color: white; font-size: 18px; font-family: 'Inter'; font-weight: 600;">80+</span>
+          <div class="w-[50px] md:w-[60px] h-[40px] md:h-[49px] bg-[var(--color-spring-green-8,#0D1B15)] rounded-lg flex items-center justify-center -ml-[12px] md:-ml-[15px] relative z-0 border-2 border-white">
+            <span class="text-white text-[15px] md:text-lg font-['Inter'] font-semibold">80+</span>
           </div>
         </div>
       </div>

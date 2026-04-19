@@ -3,59 +3,145 @@
  * Main Navbar Component
  * Floating white pill design with interactive hover states.
  */
+const { pathname } = Astro.url;
+// Normalize pathname to handle trailing slashes
+const normalizedPath = pathname.replace(/\/$/, "") || "/";
+
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'Team', path: '/#doctors' },
+  { name: 'Contact', path: '/contact' }
+];
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-start pointer-events-none reveal-on-scroll">
-  <div class="pointer-events-auto flex flex-col items-center w-full pb-4 pt-6 px-[50px]">
+<header class="fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-start pointer-events-none">
+  <div class="pointer-events-auto flex flex-col items-center w-full pb-4 pt-4 md:pt-6 px-4 md:px-8 lg:px-[50px]">
     <!-- Inner Pill Container -->
-    <div style="width: 100%; max-width: 1440px; padding: 12px 40px; background: var(--color-white-solid, white); box-shadow: 0px 4px 20px rgba(13, 27, 21, 0.04); border-radius: 16px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="w-full max-w-[1440px] px-4 md:px-10 py-3 bg-[var(--color-white-solid,white)] shadow-[0px_4px_20px_rgba(13,27,21,0.04)] rounded-2xl flex justify-between items-center relative">
       
       <!-- Left: Logo -->
-      <a href="/" class="hover-" style="display: flex; align-items: center; justify-content: center;">
+      <a href="/" class="flex items-center justify-center shrink-0">
         <img
           src="/images/LOGO.png"
           alt="Orthodontics Align Logo"
-          style="height: 50px; width: auto; object-fit: contain;"
+          class="h-10 md:h-[50px] w-auto object-contain"
         />
       </a>
 
-      <!-- Center: Navigation Links -->
-      <nav style="display: flex; align-items: center; gap: 8px;">
-        {[ 
-          { name: 'Home', path: '/' },
-          { name: 'About', path: '/about' },
-          { name: 'Services', path: '/services' },
-          { name: 'Blog', path: '/blog' },
-          { name: 'Experts', path: '/#doctors' },
-          { name: 'Contact', path: '/contact' }
-        ].map(link => (
-          <a href={link.path} class="nav-link group" style="position: relative; height: 36px; padding: 0 16px; display: flex; align-items: center; gap: 8px; border-radius: 50px; text-decoration: none; overflow: hidden;">
-            <!-- Hover Background -->
-            <div class="nav-bg" style="position: absolute; inset: 0; background: var(--color-chartreuse-green-72, #D1FC71); opacity: 0; transition: opacity var(--dur-normal) var(--ease-out); border-radius: 50px;"></div>
-            
-            <!-- Dot -->
-            <div class="nav-dot" style="width: 5px; height: 5px; background: var(--color-grey-36, #595E5C); border-radius: 50px; position: relative; z-index: 10; transition: background var(--dur-normal) var(--ease-out);"></div>
-            
-            <!-- Text -->
-            <span class="nav-text" style="color: var(--color-grey-36, #595E5C); font-size: 16px; font-family: 'Inter'; font-weight: 500; position: relative; z-index: 10; transition: color var(--dur-normal) var(--ease-out);">
-              {link.name}
-            </span>
-          </a>
-        ))}
+      <!-- Center: Navigation Links (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-2">
+        {navLinks.map(link => {
+          const isActive = normalizedPath === link.path;
+          return (
+            <a href={link.path} class="nav-link group relative h-9 px-4 flex items-center gap-2 rounded-full no-underline overflow-hidden">
+              <!-- Background (Visible when active or on hover) -->
+              <div class={`nav-bg absolute inset-0 bg-[#D1FC71] transition-opacity duration-300 rounded-full ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
+              
+              <!-- Dot -->
+              <div class={`nav-dot w-[5px] h-[5px] rounded-full relative z-10 transition-colors duration-300 ${isActive ? 'bg-[#0D1B15]' : 'bg-[#595E5C]'}`}></div>
+              
+              <!-- Text -->
+              <span class={`nav-text text-base font-['Inter'] font-medium relative z-10 transition-colors duration-300 ${isActive ? 'text-[#0D1B15]' : 'text-[#595E5C]'}`}>
+                {link.name}
+              </span>
+            </a>
+          );
+        })}
       </nav>
 
-      <!-- Right: CTA Button -->
-      <a href="/contact" class="hover-lift" style="padding: 12px 24px; background: var(--color-chartreuse-green-72, #D1FC71); border-radius: 100px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
-        <span style="color: var(--color-spring-green-8, #0D1B15); font-size: 16px; font-family: 'Inter'; font-weight: 500;">
-          Free Consultation
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn" 
+        class="lg:hidden p-2 flex flex-col gap-1.5 items-center justify-center z-50 pointer-events-auto"
+        aria-label="Toggle Menu"
+      >
+        <span class="block w-6 h-0.5 bg-[#0D1B15] transition-transform duration-300"></span>
+        <span class="block w-6 h-0.5 bg-[#0D1B15] transition-opacity duration-300"></span>
+        <span class="block w-6 h-0.5 bg-[#0D1B15] transition-transform duration-300"></span>
+      </button>
+
+      <!-- Right: CTA Button (Desktop) -->
+      <a href="/contact" class="hidden lg:flex hover-lift px-6 py-3 bg-[#D1FC71] rounded-full items-center justify-center no-underline">
+        <span class="text-[#0D1B15] text-base font-['Inter'] font-medium">
+          Book Now
         </span>
       </a>
 
     </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div 
+      id="mobile-nav-overlay" 
+      class="fixed inset-0 z-[60] bg-[#0D1B15]/95 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500 lg:hidden flex items-start justify-center pt-4 px-4 h-screen w-screen"
+    >
+      <div 
+        id="mobile-nav-card"
+        class="w-full max-w-[400px] bg-white g premium-noise rounded-[20px] p-6 shadow-2xl flex flex-col items-center gap-4 translate-y-[-40px] transition-all duration-500 ease-[var(--ease-out)]"
+      >
+        <!-- Header -->
+        <div class="w-full flex justify-between items-center mb-2 px-2">
+          <a href="/" class="flex items-center">
+            <img src="/images/LOGO.png" alt="OralCare Logo" class="h-8 md:h-10 w-auto object-contain" />
+          </a>
+          <button 
+            id="close-mobile-nav" 
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[#0D1B15] hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D1FC71]"
+            aria-label="Close Menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="w-full flex flex-col gap-2">
+          {navLinks.map((link, i) => {
+            const isActive = normalizedPath === link.path;
+            return (
+              <a 
+                href={link.path} 
+                class={`mobile-link group flex items-center gap-3 px-5 py-3 rounded-2xl w-full transition-all duration-300 ${isActive ? 'bg-[#D1FC71] text-[#0D1B15]' : 'text-gray-600 hover:bg-[#D1FC71]/10 hover:text-[#0D1B15]'}`}
+                style={`--stagger: ${i};`}
+              >
+                <div class="w-1.5 h-1.5 bg-current rounded-full group-hover:scale-150 transition-transform"></div>
+                <span class="text-lg font-['Inter'] font-semibold tracking-tight">{link.name}</span>
+              </a>
+            );
+          })}
+        </nav>
+
+        <!-- CTA Button -->
+        <a 
+          href="/contact" 
+          class="mt-2 w-full btn-premium-morph px-8 py-4 bg-[#D1FC71] text-[#0D1B15] rounded-2xl text-center font-bold shadow-lg hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2"
+        >
+          <span>Book Now</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="translate-x-0 group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </header>
 
+
 <style>
+  /* Staggered Entrance for Links */
+  #mobile-nav-overlay.is-active .mobile-link {
+    animation: slideIn 0.5s var(--ease-out) forwards;
+    animation-delay: calc(var(--stagger) * 60ms + 100ms);
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Navigation Hover States */
   @media (hover: hover) and (pointer: fine) {
     .nav-link:hover .nav-bg {
@@ -71,6 +157,75 @@
 
   /* Make sure the navbar stays above everything */
   header {
-    z-index: 100;
+    z-index: 1000;
+  }
+
+  /* Hamburger Animation */
+  button.is-nav-active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  button.is-nav-active span:nth-child(2) {
+    opacity: 0;
+  }
+  button.is-nav-active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Prevent scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
   }
 </style>
+
+<script>
+  function initNavbar() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileNavCard = document.getElementById('mobile-nav-card');
+    const closeMobileBtn = document.getElementById('close-mobile-nav');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (!mobileMenuBtn || !mobileNavOverlay || !mobileNavCard) return;
+
+    const openMenu = () => {
+      mobileNavOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      mobileNavOverlay.classList.add('opacity-100', 'pointer-events-auto', 'is-active');
+      mobileNavCard.classList.remove('translate-y-[-40px]');
+      mobileNavCard.classList.add('translate-y-0');
+      mobileMenuBtn.classList.add('is-nav-active');
+      document.body.classList.add('menu-open');
+    };
+
+    const closeMenu = () => {
+      mobileNavOverlay.classList.add('opacity-0', 'pointer-events-none');
+      mobileNavOverlay.classList.remove('opacity-100', 'pointer-events-auto', 'is-active');
+      mobileNavCard.classList.add('translate-y-[-40px]');
+      mobileNavCard.classList.remove('translate-y-0');
+      mobileMenuBtn.classList.remove('is-nav-active');
+      document.body.classList.remove('menu-open');
+    };
+
+    const toggleMenu = () => {
+      const isOpen = !mobileNavOverlay.classList.contains('opacity-0');
+      if (isOpen) closeMenu();
+      else openMenu();
+    };
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+    if (closeMobileBtn) closeMobileBtn.addEventListener('click', closeMenu);
+
+    // Close on backdrop click
+    mobileNavOverlay.addEventListener('click', (e) => {
+      if (e.target === mobileNavOverlay) closeMenu();
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // Initial init
+  initNavbar();
+  // Listen for view transitions
+  document.addEventListener('astro:after-swap', initNavbar);
+</script>

@@ -1,116 +1,81 @@
 ---
 /**
  * About Section
- * EXACT 1:1 Mirror of the provided React/Framer source.
+ * Cleaned up and migrated to Tailwind CSS
  */
 ---
 
-<div
-  class="framer-qaezjm"
-  style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); flex-flow: row; flex: 0 0 auto; place-content: center; gap: 10px; padding: 0px; background-color: var(--token-087350e2-532e-4036-9b93-ffcaf4cda9bb, #fff); height: min-content; align-items: center; width: 100%; display: flex; position: relative;"
->
-  <div
-    class="framer-1aygivr"
-    style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); flex-flow: column; flex: 1 0 0px; place-content: center flex-start; gap: 80px; padding: 120px 50px; max-width: 1540px; height: min-content; align-items: center; width: 100%; display: flex; position: relative;"
-  >
-    <div
-      class="framer-beehcu reveal-on-scroll"
-      style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); flex-flow: column; flex: 0 0 auto; place-content: center flex-start; gap: 10px; padding: 0px; height: min-content; align-items: center; width: 100%; display: flex; position: relative;"
-    >
-      <div
-        class="framer-feh0bk"
-        style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex-flow: row; flex: 0 0 auto; place-content: flex-start; gap: 60px; padding: 0px; overflow: visible; align-items: flex-start; width: 100%; height: min-content; display: flex; position: relative;"
-      >
-        <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-          <div class="framer-138i8bc-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 1 0 0px; width: 1px; height: auto; position: relative;">
-            <div
-              class="framer-f5gfW framer-PK6QH framer-117fw58 framer-v-117fw58"
-              style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex-flow: column; place-content: flex-end flex-start; gap: 16px; padding: 0px; overflow: visible; align-items: flex-end; height: min-content; display: flex; position: relative; width: 100%; opacity: 1;"
-            >
-              <div class="framer-1eextk1" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex-flow: row; flex: 0 0 auto; place-content: center; gap: 8px; padding: 0px; overflow: visible; align-items: center; width: 100%; height: min-content; display: flex; position: relative; opacity: 1;">
-                <div class="framer-bu6a27" style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); flex: 0 0 auto; aspect-ratio: 1 / 1; height: var(--framer-aspect-ratio-supported, 4px); will-change: var(--framer-will-change-override, transform); width: 4px; position: relative; border-radius: 30px; background-color: var(--token-64f28257-db51-4948-8bb9-570add17e4cf, rgb(13, 27, 21)); opacity: 1;"></div>
-                <div class="framer-1n0yoxd" style="box-sizing: border-box; -webkit-font-smoothing: inherit; outline: none; flex-direction: column; justify-content: flex-start; display: flex; white-space: pre-wrap; flex: 1 0 0px; word-break: break-word; overflow-wrap: break-word; flex-shrink: 0; width: 1px; height: auto; position: relative; transform: none; opacity: 1;">
-                  <p class="framer-text framer-styles-preset-1aqboz4" style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; text-wrap: var(--framer-text-wrap-override, var(--framer-text-wrap)); font-family: var(--framer-font-family-preview, var(--framer-blockquote-font-family, var(--framer-font-family, 'Inter', 'Inter Placeholder', sans-serif))); font-weight: 400; color: var(--framer-blockquote-text-color, var(--framer-text-color, #000)); font-size: calc(var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) * var(--framer-font-size-scale, 1)); line-height: var(--framer-blockquote-line-height, var(--framer-line-height, 1.2em));">About</p>
-                </div>
-              </div>
-              <div class="framer-ph8hpq-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; z-index: 1; width: 100%; height: 1px; position: relative; opacity: 1;">
-                <div class="framer-kD37p framer-bzagir framer-v-vz2in6" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex-flow: row; place-content: center flex-start; gap: 10px; padding: 0px; overflow: hidden; align-items: center; display: flex; position: relative; height: 100%; width: 100%; opacity: 1;">
-                  <div class="framer-1ese9s7" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; height: 1px; position: relative; width: 100%; background-color: var(--token-5f1344ab-09ef-47b1-960f-398c64fc9f85, rgb(201, 203, 197)); transform: none; transform-origin: 50% 50% 0px;"></div>
-                </div>
-              </div>
-            </div>
+<div class="w-full flex justify-center items-center bg-white overflow-hidden p-0 m-0">
+  <div class="w-full max-w-[1540px] flex flex-col items-center justify-start gap-8 md:gap-20 py-10 md:py-[120px] px-6 md:px-[50px] overflow-hidden">
+    
+    <!-- Top Text Section -->
+    <div class="reveal-on-scroll w-full flex flex-col justify-start items-center gap-[10px]">
+      <div class="w-full flex flex-col md:flex-row items-start justify-start gap-5 md:gap-[60px]">
+        
+        <!-- Left Title Group -->
+        <div class="hidden md:flex flex-1 w-[1px] flex-col justify-end items-end gap-4 h-auto pt-2">
+          <div class="w-full flex justify-center items-center gap-2">
+            <div class="w-1 h-1 bg-[var(--color-spring-green-8,#0D1B15)] rounded-[30px] shrink-0"></div>
+            <p class="m-0 flex-1 font-['Inter'] text-base font-normal text-black text-left leading-[1.2em]">About</p>
           </div>
+          <div class="w-full h-[1px] bg-[var(--color-grey-78,#C9CBC5)] mt-4"></div>
         </div>
-        <div class="framer-1twbqgt-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; width: 66%; max-width: 1100px; height: auto; position: relative;">
-          <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-            <p style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; padding: 0px; font-family: 'Bricolage Grotesque', 'Bricolage Grotesque Placeholder', sans-serif; font-size: 48px; font-style: normal; font-weight: 500; letter-spacing: -3px; line-height: 120%; text-align: left; color: var(--token-64f28257-db51-4948-8bb9-570add17e4cf, rgb(13, 27, 21));">
-              <span style="opacity: 1;">At</span> <span style="opacity: 1;">Orthodontics</span> <span style="opacity: 1;">Align</span> <span style="opacity: 1;">we</span> <span style="opacity: 1;">combine</span> <span style="opacity: 1;">advanced</span> <span style="opacity: 1;">technology</span> <span style="opacity: 1;">with</span> <span style="opacity: 1;">years</span> <span style="opacity: 1;">of</span> <span style="opacity: 1;">experience,</span> <span style="opacity: 1;">allowing</span> <span style="opacity: 1;">you</span> <span style="opacity: 1;">to</span> <span style="opacity: 1;">be</span> <span style="opacity: 1;">completely</span> <span style="opacity: 1;">worry-free</span> <span style="opacity: 1;">in</span> <span style="opacity: 1;">treatment</span> <span style="opacity: 1;">planning</span> <span style="opacity: 1;">and</span> <span style="opacity: 1;">designing</span> <span style="opacity: 1;">done</span> <span style="opacity: 1;">in</span> <span style="opacity: 1;">a</span> <span style="opacity: 1;">very</span> <span style="opacity: 1;">short</span> <span style="opacity: 1;">time.</span>
-            </p>
-          </div>
+        
+        <!-- Right Main Text -->
+        <div class="w-full md:w-[66%] max-w-[1100px]">
+          <h2 class="m-0 font-['Bricolage_Grotesque'] text-[24px] md:text-[48px] font-medium tracking-tight md:tracking-[-3px] leading-[1.2] text-[var(--color-spring-green-8,#0D1B15)]">
+            At Orthodontics Align, we specialize in high-precision dental aligner manufacturing and expert 3D treatment planning, delivering clinically-validated designs and ready-to-use STL files with industry-leading speed.
+          </h2>
         </div>
       </div>
     </div>
-    <div class="framer-18r5qhe reveal-on-scroll stagger-1" style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); flex-flow: column; flex: 0 0 auto; place-content: flex-end center; gap: 96px; padding: 0px; height: min-content; align-items: flex-end; width: 100%; display: flex; position: relative;">
-      <div class="framer-1oi8gzj" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex-flow: row; flex: 0 0 auto; place-content: flex-start center; gap: 32px; padding: 0px; overflow: visible; align-items: flex-start; width: 100%; max-width: 1000px; height: min-content; display: flex; position: relative;">
-        <div class="framer-119kip3" style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); border-radius: 16px; flex-flow: row; flex: 1 0 0px; place-content: center; gap: 10px; padding: 0px; max-width: 450px; height: min-content; will-change: var(--framer-will-change-override, transform); align-items: center; width: 1px; display: flex; position: relative;">
-          <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-            <figure class="framer-1stlfyh" style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; overflow: var(--overflow-clip-fallback, clip); flex: 1 0 0px; aspect-ratio: 0.9 / 1; height: var(--framer-aspect-ratio-supported, 500px); width: 1px; position: relative; will-change: transform; opacity: 1; transform: none;">
-              <div style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; inset: 0px; position: absolute;">
-                <img height="500" width="450" alt="Smiling person" src="https://framerusercontent.com/images/SumQrv8xqeTp8h32OOjvFSMmg.png?width=1800&height=2548" style="box-sizing: border-box; -webkit-font-smoothing: inherit; border-radius: inherit; display: block; width: 100%; height: 100%; object-position: center center; object-fit: cover;">
-              </div>
-            </figure>
-          </div>
+    
+    <!-- Middle Image and Text Section -->
+    <div class="reveal-on-scroll stagger-1 w-full flex flex-col items-end gap-8 md:gap-[96px]">
+      <div class="w-full max-w-[1000px] flex flex-col md:flex-row items-start justify-center gap-6 md:gap-8">
+        
+        <!-- Image -->
+        <div class="w-full md:flex-1 max-w-full md:max-w-[450px] rounded-[16px] overflow-hidden flex items-center justify-center">
+          <figure class="m-0 aspect-[0.9/1] w-full h-[220px] md:h-[500px]">
+            <img src="/aligner_lifestyle_smile_1776503878607.png" alt="Person wearing clear aligners" class="w-full h-full object-cover object-center block" />
+          </figure>
         </div>
-        <div class="framer-klqt03" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex-flow: column; flex: 1 0 0px; place-content: flex-start space-between; padding: 0px; overflow: visible; align-self: stretch; align-items: flex-start; width: 1px; height: auto; display: flex; position: relative;">
-          <div class="ssr-variant hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-            <div class="framer-1076b9l" style="box-sizing: border-box; -webkit-font-smoothing: inherit; outline: none; flex-direction: column; justify-content: flex-start; display: flex; flex: 0 0 auto; flex-shrink: 0; width: 100%; height: auto; position: relative; will-change: transform; opacity: 1; transform: none;">
-              <p class="framer-text framer-styles-preset-1qkrbgm" style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; font-family: var(--framer-font-family-preview, var(--framer-blockquote-font-family, var(--framer-font-family, 'Inter', 'Inter Placeholder', sans-serif))); font-weight: 400; color: var(--framer-blockquote-text-color, var(--framer-text-color, #000)); font-size: calc(var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) * var(--framer-font-size-scale, 1)); line-height: var(--framer-blockquote-line-height, var(--framer-line-height, 1.2em));">Our team of expert orthodontic planners work on designing the plan for your case. 3D Treatment Plan not only helps you to set up your orthodontic models for clear aligner fabrication but also delivers you the ready-to-print file in STL format.</p>
-              <br class="framer-text trailing-break" />
-              <p class="framer-text framer-styles-preset-1qkrbgm" style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; font-family: var(--framer-font-family-preview, var(--framer-blockquote-font-family, var(--framer-font-family, 'Inter', 'Inter Placeholder', sans-serif))); font-weight: 400; color: var(--framer-blockquote-text-color, var(--framer-text-color, #000)); font-size: calc(var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) * var(--framer-font-size-scale, 1)); line-height: var(--framer-blockquote-line-height, var(--framer-line-height, 1.2em)); margin-top: 10px;">From standard simulations to complex 3D Planning, we're here to deliver accuracy and speed. Because great orthodontic outcomes start with planning you can trust.</p>
-            </div>
+        
+        <!-- Text and Button -->
+        <div class="flex-1 flex flex-col items-start justify-between self-stretch gap-8 pt-4">
+          <div class="w-full flex flex-col gap-[10px]">
+             <p class="m-0 font-['Inter'] text-base font-normal text-black leading-[1.2em]">Our team of expert orthodontic technicians and designers work on crafting the perfect plan for your patients. Our 3D Treatment Planning service not only optimizes tooth movement for clear aligner fabrication but also delivers ready-to-print models in high-resolution STL format.</p>
+             <p class="m-0 font-['Inter'] text-base font-normal text-black leading-[1.2em] mt-[10px]">From high-volume aligner manufacturing to complex simulation planning, we provide the accuracy and speed your practice demands. Because predictable orthodontic success begins with manufacturing and planning you can trust.</p>
           </div>
-          <div class="framer-1j2mh0o-container hover-lift" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; width: auto; height: auto; position: relative; will-change: transform; opacity: 1; transform: none;">
-            <a class="framer-g3AFc framer-Mip4O framer-k3e3yk framer-v-k3e3yk framer-1co9ji0" href="/about" style="box-sizing: border-box; -webkit-font-smoothing: inherit; padding: 12px 16px; flex-flow: column; place-content: center flex-start; text-decoration: none; overflow: hidden; cursor: pointer; height: min-content; align-items: center; width: min-content; display: flex; position: relative; border-radius: 100px; background-color: var(--token-0e3236e5-a694-444c-9b0b-c7bc286d8037, rgb(209, 252, 113)); opacity: 1;">
-              <div class="framer-1lz5dhl" style="box-sizing: border-box; -webkit-font-smoothing: inherit; outline: none; flex-direction: column; justify-content: flex-start; display: flex; white-space: pre; flex: 0 0 auto; position: relative; opacity: 1;">
-                <p class="framer-text framer-styles-preset-1vqp3do" style="box-sizing: border-box; -webkit-font-smoothing: inherit; margin: 0px; font-family: var(--framer-font-family-preview, var(--framer-blockquote-font-family, var(--framer-font-family, 'Inter', 'Inter Placeholder', sans-serif))); font-size: calc(var(--framer-blockquote-font-size, var(--framer-font-size, 16px)) * var(--framer-font-size-scale, 1)); font-weight: 500;">About Orthodontics Align</p>
-              </div>
+          <div class="hover-lift mt-auto pb-4">
+            <a href="/about" class="px-4 py-3 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-[100px] flex flex-col items-center justify-center no-underline cursor-pointer">
+              <p class="m-0 font-['Inter'] text-base font-medium text-[var(--color-spring-green-8,#0D1B15)]">About Orthodontics Align</p>
             </a>
           </div>
         </div>
       </div>
-      <div class="framer-qswjb8" style="box-sizing: border-box; -webkit-font-smoothing: inherit; overflow: var(--overflow-clip-fallback, clip); flex-flow: row; flex: 0 0 auto; place-content: center space-between; padding: 0px; height: min-content; align-items: center; width: 100%; display: flex; position: relative;">
-        <!-- Stats Grid -->
-        <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-          <div class="framer-e0cauo-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; width: auto; height: auto; position: relative;">
-            <div class="framer-Bv8iV framer-Pp4iw framer-Mip4O framer-1cn3lta framer-v-1cn3lta" style="box-sizing: border-box; -webkit-font-smoothing: inherit; place-content: flex-start; gap: 16px; flex-flow: column; padding: 0px; overflow: visible; align-items: flex-start; width: min-content; height: min-content; display: flex; position: relative; opacity: 1;">
-              <h4 class="framer-text framer-styles-preset-qvvcg" style="margin:0px; font-size: 48px; font-weight: 400;">1200+</h4>
-              <p class="framer-text framer-styles-preset-1vqp3do" style="margin:0px; font-size: 16px;">Cases Completed</p>
-            </div>
-          </div>
+      
+      <!-- Stats area -->
+      <div class="w-full grid grid-cols-2 lg:grid-cols-4 items-center justify-between gap-6 md:gap-12">
+        
+        <div class="flex flex-col items-start justify-start gap-1 md:gap-4">
+          <h4 class="m-0 font-['Bricolage_Grotesque'] text-[24px] md:text-[48px] font-normal text-[var(--color-spring-green-8,#0D1B15)]">1200+</h4>
+          <p class="m-0 font-['Inter'] text-[13px] md:text-base font-medium text-[var(--color-spring-green-8,#0D1B15)]">Cases Completed</p>
         </div>
-        <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-          <div class="framer-1l1drvx-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; width: auto; height: auto; position: relative;">
-            <div class="framer-Bv8iV framer-Pp4iw framer-Mip4O framer-1cn3lta framer-v-1cn3lta" style="box-sizing: border-box; -webkit-font-smoothing: inherit; place-content: flex-start; gap: 16px; flex-flow: column; padding: 0px; overflow: visible; align-items: flex-start; width: min-content; height: min-content; display: flex; position: relative; opacity: 1;">
-              <h4 class="framer-text framer-styles-preset-qvvcg" style="margin:0px; font-size: 48px; font-weight: 400;">85+</h4>
-              <p class="framer-text framer-styles-preset-1vqp3do" style="margin:0px; font-size: 16px;">Active Partner Clinics</p>
-            </div>
-          </div>
+        
+        <div class="flex flex-col items-start justify-start gap-1 md:gap-4">
+          <h4 class="m-0 font-['Bricolage_Grotesque'] text-[24px] md:text-[48px] font-normal text-[var(--color-spring-green-8,#0D1B15)]">85+</h4>
+          <p class="m-0 font-['Inter'] text-[13px] md:text-base font-medium text-[var(--color-spring-green-8,#0D1B15)]">Active Partner Clinics</p>
         </div>
-        <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-          <div class="framer-fpxrar-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; width: auto; height: auto; position: relative;">
-            <div class="framer-Bv8iV framer-Pp4iw framer-Mip4O framer-1cn3lta framer-v-1cn3lta" style="box-sizing: border-box; -webkit-font-smoothing: inherit; place-content: flex-start; gap: 16px; flex-flow: column; padding: 0px; overflow: visible; align-items: flex-start; width: min-content; height: min-content; display: flex; position: relative; opacity: 1;">
-              <h4 class="framer-text framer-styles-preset-qvvcg" style="margin:0px; font-size: 48px; font-weight: 400;">60+</h4>
-              <p class="framer-text framer-styles-preset-1vqp3do" style="margin:0px; font-size: 16px;">Dental Partners</p>
-            </div>
-          </div>
+        
+        <div class="flex flex-col items-start justify-start gap-1 md:gap-4">
+          <h4 class="m-0 font-['Bricolage_Grotesque'] text-[24px] md:text-[48px] font-normal text-[var(--color-spring-green-8,#0D1B15)]">60+</h4>
+          <p class="m-0 font-['Inter'] text-[13px] md:text-base font-medium text-[var(--color-spring-green-8,#0D1B15)]">Dental Partners</p>
         </div>
-        <div class="ssr-variant hidden-oowq9a hidden-1vrlsi9" style="box-sizing: border-box; -webkit-font-smoothing: inherit; display: contents;">
-          <div class="framer-1abioew-container" style="box-sizing: border-box; -webkit-font-smoothing: inherit; flex: 0 0 auto; width: auto; height: auto; position: relative;">
-            <div class="framer-Bv8iV framer-Pp4iw framer-Mip4O framer-1cn3lta framer-v-1cn3lta" style="box-sizing: border-box; -webkit-font-smoothing: inherit; place-content: flex-start; gap: 16px; flex-flow: column; padding: 0px; overflow: visible; align-items: flex-start; width: min-content; height: min-content; display: flex; position: relative; opacity: 1;">
-              <h4 class="framer-text framer-styles-preset-qvvcg" style="margin:0px; font-size: 48px; font-weight: 400;">94%</h4>
-              <p class="framer-text framer-styles-preset-1vqp3do" style="margin:0px; font-size: 16px;">Client Satisfaction Score</p>
-            </div>
-          </div>
+        
+        <div class="flex flex-col items-start justify-start gap-1 md:gap-4">
+          <h4 class="m-0 font-['Bricolage_Grotesque'] text-[24px] md:text-[48px] font-normal text-[var(--color-spring-green-8,#0D1B15)]">94%</h4>
+          <p class="m-0 font-['Inter'] text-[13px] md:text-base font-medium text-[var(--color-spring-green-8,#0D1B15)]">Client Satisfaction Score</p>
         </div>
       </div>
     </div>

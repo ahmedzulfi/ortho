@@ -27,45 +27,50 @@ const testimonials = [
 ];
 ---
 
-<section style="box-sizing: border-box; display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; padding: 75px 0 0; position: relative; background: transparent;">
-  <div style="width: 100%; max-width: 1540px; padding: 0 50px; display: flex; justify-content: center;">
-    <div style="width: 100%; background: white; border-radius: 20px; padding: 80px 40px 130px; display: flex; flex-direction: column; align-items: center; gap: 100px; position: relative;">
+<section class="box-border flex flex-row items-center justify-center w-full pt-12 md:pt-[75px] relative bg-transparent">
+  <div class="w-full max-w-[1540px] px-6 md:px-[50px] flex justify-center">
+    <div class="w-full bg-white rounded-[20px] py-12 md:pt-[80px] px-6 md:px-[40px] md:pb-[130px] flex flex-col items-center gap-12 md:gap-[100px] relative">
       
       <!-- Header -->
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; text-align: center;">
-        <p style="margin: 0; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 400;">Testimonials</p>
-        <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500;">What our partners say.</h2>
+      <div class="flex flex-col items-center gap-5 w-full text-center">
+        <p class="m-0 text-[var(--color-spring-green-8)] text-base font-['Inter'] font-normal">Testimonials</p>
+        <h2 class="m-0 text-[var(--color-spring-green-8)] text-3xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium">What our partners say.</h2>
       </div>
 
       <!-- Testimonials Grid -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%;">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 lg:gap-[15px] gap-y-6 md:gap-y-24 w-full pb-10 md:pb-0">
         {testimonials.map((t, index) => (
-          <div style="position: relative; width: 100%;">
+          <div class="relative w-full">
             <!-- Card -->
-            <div style="background: #f6f7ff; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; min-height: 280px;">
-              <h4 style="margin: 0; font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500; color: var(--color-spring-green-8);">{t.quote}</h4>
-              <p style="margin: 0; font-size: 16px; font-family: 'Inter'; color: var(--color-grey-36); line-height: 1.6;">{t.text}</p>
+            <div class="bg-[#f6f7ff] rounded-[20px] p-6 md:p-[30px] flex flex-col gap-4 md:gap-5 min-h-0 md:min-h-[280px]">
+              <div class="flex flex-col gap-3">
+                <h4 class="m-0 text-[18px] md:text-[20px] font-['Bricolage_Grotesque'] font-medium text-[var(--color-spring-green-8)]">{t.quote}</h4>
+                <p class="m-0 text-[14px] md:text-[16px] font-['Inter'] text-[var(--color-grey-36)] leading-relaxed md:leading-[1.6]">{t.text}</p>
+              </div>
+
+              <!-- Author Info (Mobile Only - Integrated) -->
+              <div class="flex md:hidden items-center gap-3 pt-4 border-t border-black/5">
+                <div class="w-10 h-10 rounded-full overflow-hidden">
+                  <img src={t.image} alt={t.author} class="w-full h-full object-cover" />
+                </div>
+                <div class="flex flex-col gap-0.5">
+                  <h6 class="m-0 text-[15px] font-['Inter'] font-semibold text-[var(--color-spring-green-8)]">{t.author}</h6>
+                  <p class="m-0 text-[12px] font-['Inter'] text-[var(--color-grey-36)]">{t.service}</p>
+                </div>
+              </div>
             </div>
 
-            <!-- Floating Badge -->
-            <div style={`
-              position: absolute;
-              ${t.badgePosition === 'bottom' ? 'bottom: -50px; left: 40px;' : 'top: -55px; right: 30px;'}
-              background: white;
-              border-radius: 60px;
-              padding: 10px 30px 10px 10px;
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              box-shadow: rgba(64, 65, 209, 0.1) 0px 4px 34px 0px;
-              z-index: 10;
+            <!-- Floating Badge (Desktop Only) -->
+            <div class={`
+              hidden md:flex absolute bg-white rounded-[60px] pl-[10px] pr-[30px] py-[10px] items-center gap-3 z-10 shadow-[0px_4px_34px_0px_rgba(64,65,209,0.1)]
+              ${t.badgePosition === 'bottom' ? 'md:-bottom-[50px] md:left-[40px]' : 'md:-top-[55px] md:right-[30px]'}
             `}>
-              <div style="width: 46px; height: 46px; border-radius: 50%; overflow: hidden;">
-                <img src={t.image} alt={t.author} style="width: 100%; height: 100%; object-fit: cover;" />
+              <div class="w-[46px] h-[46px] rounded-full overflow-hidden">
+                <img src={t.image} alt={t.author} class="w-full h-full object-cover" />
               </div>
-              <div style="display: flex; flex-direction: column; gap: 4px;">
-                <h6 style="margin: 0; font-size: 16px; font-family: 'Inter'; font-weight: 600; color: var(--color-spring-green-8);">{t.author}</h6>
-                <p style="margin: 0; font-size: 13px; font-family: 'Inter'; color: var(--color-grey-36);">{t.service}</p>
+              <div class="flex flex-col gap-1">
+                <h6 class="m-0 text-[16px] font-['Inter'] font-semibold text-[var(--color-spring-green-8)]">{t.author}</h6>
+                <p class="m-0 text-[13px] font-['Inter'] text-[var(--color-grey-36)]">{t.service}</p>
               </div>
             </div>
           </div>

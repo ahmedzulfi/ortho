@@ -10,71 +10,71 @@ const images = [
 ];
 ---
 
-<section style="width: 100%; padding: 112px 50px; display: flex; flex-direction: column; align-items: center; gap: 80px; box-sizing: border-box; background: #F6F7FF;">
+<section class="w-full py-12 md:py-[112px] px-6 md:px-[50px] flex flex-col items-center gap-10 md:gap-20 box-border bg-[#F6F7FF]">
   
-  <div class="reveal-on-scroll" style="width: 100%; max-width: 1440px; display: flex; flex-direction: column; gap: 80px;">
+  <div class="reveal-on-scroll w-full max-w-[1440px] flex flex-col gap-10 md:gap-20">
     
     <!-- Header Row -->
-    <div style="width: 100%; display: flex; flex-direction: column; gap: 20px;">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <div style="width: 4px; height: 4px; background: var(--color-spring-green-8, #0D1B15); border-radius: 50%;"></div>
-        <div style="color: var(--color-spring-green-8, #0D1B15); font-size: 16px; font-family: 'Jost'; font-weight: 400;">Our words</div>
+    <div class="w-full flex flex-col gap-5">
+      <div class="flex items-center gap-2">
+        <div class="w-1 h-1 bg-[var(--color-spring-green-8,#0D1B15)] rounded-full"></div>
+        <div class="text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Jost'] font-normal">Our words</div>
       </div>
       
-      <div style="width: 100%; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-        <div style="max-width: 440px;">
-            <h2 style="margin: 0; color: var(--color-spring-green-8, #0D1B15); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 1.1; letter-spacing: -2px;">
-                Dental Innovation <br/> at the Speed of Care
+      <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end flex-wrap gap-5">
+        <div class="max-w-full md:max-w-[440px]">
+            <h2 class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.1] tracking-[-1px] md:tracking-[-2px]">
+                Dental Innovation <br class="hidden md:block"/> at the Speed of Care
             </h2>
         </div>
-        <a href="/team" class="btn-premium-morph btn-green-bg" style="padding: 12px 24px; background: var(--color-chartreuse-green-72, #D1FC71); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 500; text-decoration: none;">
+        <a href="/team" class="btn-premium-morph btn-green-bg py-3 px-6 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline">
           Meet the Team
         </a>
       </div>
     </div>
 
     <!-- Testimonial Grid -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
+    <div class="flex flex-col gap-6">
       
       <!-- Row 1 -->
-      <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px;">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-6">
         <!-- Card: Green Testimonial -->
-        <div class="reveal-on-scroll stagger-1" style="padding: 32px; background: var(--color-chartreuse-green-72, #D1FC71); border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; min-height: 540px;">
-          <h3 style="margin: 0; color: var(--color-spring-green-8, #0D1B15); font-size: 48px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 1.2;">
-            We'll keep relying on <br/>Orthodontics Align at every <br/>stage of our growth; <br/>it's trusted care.
+        <div class="reveal-on-scroll stagger-1 p-6 md:p-8 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-xl flex flex-col justify-between min-h-[260px] md:min-h-[540px]">
+          <h3 class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-[22px] md:text-[40px] lg:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.2]">
+            We'll keep relying on <br class="hidden md:block"/>Orthodontics Align at every <br class="hidden md:block"/>stage of our growth; <br class="hidden md:block"/>it's trusted care.
           </h3>
-          <div style="color: var(--color-spring-green-8, #0D1B15); font-size: 28px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Orthodontics Align Team</div>
+          <div class="text-[var(--color-spring-green-8,#0D1B15)] text-lg md:text-[28px] font-['Bricolage_Grotesque'] font-medium">Orthodontics Align Team</div>
         </div>
         
         <!-- Image 1 -->
-        <div class="reveal-on-scroll stagger-2" style="border-radius: 12px; overflow: hidden; height: 540px;">
-           <img src={images[0]} style="width: 100%; height: 100%; object-fit: cover;" />
+        <div class="reveal-on-scroll stagger-2 rounded-xl overflow-hidden h-64 md:h-[540px]">
+           <img src={images[0]} class="w-full h-full object-cover" />
         </div>
       </div>
 
       <!-- Row 2 -->
-      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+      <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
         
         <!-- Card Group: White Testimonial + Image -->
-        <div class="reveal-on-scroll stagger-3" style="display: flex; gap: 24px; padding: 32px; background: white; border-radius: 12px; align-items: stretch;">
-          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-            <p style="margin: 0; color: var(--color-grey-36, #595E5C); font-size: 20px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 1.5;">
-              Partnering with Orthodontics Align has been <br/>crucial for site Innovations. This <br/>collaboration enhances our capabilities and <br/>aligns with our vision to revolutionize dental <br/>care. Together, we will seek innovative <br/>solutions for our clients and the industry.
+        <div class="reveal-on-scroll stagger-3 flex flex-col md:flex-row gap-6 p-8 bg-white rounded-xl items-stretch">
+          <div class="flex-1 flex flex-col justify-between gap-6">
+            <p class="m-0 text-[var(--color-grey-36,#595E5C)] text-lg md:text-[20px] font-['Bricolage_Grotesque'] font-medium leading-relaxed md:leading-[1.5]">
+              Partnering with Orthodontics Align has been crucial for site Innovations. This collaboration enhances our capabilities and aligns with our vision to revolutionize dental care. Together, we will seek innovative solutions for our clients and the industry.
             </p>
-            <div style="color: var(--color-spring-green-8, #0D1B15); font-size: 28px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Dentist, Orthodontics Align</div>
+            <div class="text-[var(--color-spring-green-8,#0D1B15)] text-xl md:text-[28px] font-['Bricolage_Grotesque'] font-medium">Dentist, Orthodontics Align</div>
           </div>
-          <div style="flex: 1; border-radius: 12px; overflow: hidden; background: #F2F2EF; padding: 12px;">
-             <img src={images[1]} style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />
+          <div class="flex-1 min-h-[250px] rounded-xl overflow-hidden bg-[#F2F2EF] p-3">
+             <img src={images[1]} class="w-full h-full object-cover rounded-lg" />
           </div>
         </div>
 
         <!-- Card: Dark Stat Card -->
-        <div class="reveal-on-scroll stagger-4" style="padding: 32px; background: var(--color-spring-green-8, #0D1B15); border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="color: white; font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500;">$120M+</div>
-            <div style="color: white; font-size: 36px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 1.2;">The largest in dental <br/>advancements in <br/>the region.</div>
+        <div class="reveal-on-scroll stagger-4 p-6 md:p-8 bg-[var(--color-spring-green-8,#0D1B15)] rounded-xl flex flex-col justify-between min-h-[260px] md:min-h-[300px]">
+          <div class="flex flex-col gap-3 md:gap-4">
+            <div class="text-white text-2xl md:text-[36px] font-['Bricolage_Grotesque'] font-medium">$120M+</div>
+            <div class="text-white text-[20px] md:text-[36px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.2]">The largest in dental advancements in the region.</div>
           </div>
-          <div style="color: var(--color-grey-96, #F5F4F7); font-size: 28px; font-family: 'Bricolage Grotesque'; font-weight: 500;">Dental Surgeon</div>
+          <div class="text-[var(--color-grey-96,#F5F4F7)] text-lg md:text-[28px] font-['Bricolage_Grotesque'] font-medium pt-4 md:pt-8">Dental Surgeon</div>
         </div>
 
       </div>

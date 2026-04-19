@@ -6,26 +6,26 @@
 
 const teamMembers = [
   {
-    name: "Abdul Sami",
-    role: "COO",
+    name: "Dr. Imran",
+    role: "CEO & Founder",
     phone: "+92 321 9473647",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    image: "https://framerusercontent.com/images/i51F5Pye2h2lXWmET6L6xg4nu6o.png?width=800",
+    bio: "The clinical and visionary force behind Orthodontics Align, dedicated to revolutionizing 3D treatment planning and clear aligner manufacturing.",
+    image: "/images/325e7d76-c141-4a16-9ef2-690d6e75325a.jfif",
     socials: { x: "#", linkedin: "#", instagram: "#" }
   },
   {
-    name: "Dr. Muhammad Imran",
-    role: "Expert Planner",
+    name: "Abdul Sami",
+    role: "COO",
     phone: "+92 321 9473647",
-    bio: "Recreating the patients smile and make them laugh effortlessly.",
-    image: "https://framerusercontent.com/images/vMz9OdzFeY1ocTWV8LofJOEA.png?width=800",
+    bio: "Driving operational excellence and global logistics to ensure every clinical partner receives precision-engineered solutions on time.",
+    image: "https://framerusercontent.com/images/i51F5Pye2h2lXWmET6L6xg4nu6o.png?width=800",
     socials: { x: "#", linkedin: "#", instagram: "#" }
   },
   {
     name: "Dr. Abdul Muneeb",
     role: "Expert Planner",
     phone: "+92 321 9473647",
-    bio: "The art of aligners seeks to provide comfortable orthodontic treatment with a strong emphasis on aesthetics and art of smile design.",
+    bio: "Combining orthodontic expertise with digital design to provide comfortable treatment and perfect smile designs.",
     image: "https://framerusercontent.com/images/mNnfxtlCi5hp2ZvLyYUsscSSTc.png?scale-down-to=1024&width=2552&height=2664",
     socials: { x: "#", linkedin: "#", instagram: "#" }
   },
@@ -33,72 +33,106 @@ const teamMembers = [
     name: "Dr. Maham Bilal",
     role: "Expert Planner",
     phone: "+92 321 9473647",
-    bio: "I am a dentist by profession, who is always up for innovative and challenging tasks that will enhance my professional skills.",
+    bio: "Focusing on innovative 3D planning techniques to enhance clinical outcomes and practice efficiency.",
     image: "https://framerusercontent.com/images/i51F5Pye2h2lXWmET6L6xg4nu6o.png?width=800",
     socials: { x: "#", linkedin: "#", instagram: "#" }
   }
 ];
+
+const [ceo, ...specialists] = teamMembers;
 ---
 
-<section id="doctors" style="width: 100%; background: white;">
-  <div style="box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; max-width: 1540px; margin: 0 auto; padding: 120px 50px; gap: 80px; position: relative;">
+<section id="doctors" class="w-full bg-white">
+  <div class="box-border flex flex-col items-center justify-start w-full max-w-[1540px] mx-auto py-12 md:py-[120px] px-6 md:px-[50px] gap-8 md:gap-[80px] relative">
   
   <!-- Header Group -->
-  <div class="reveal-on-scroll" style="width: 100%; display: flex; flex-direction: column; gap: 20px;">
+  <div class="reveal-on-scroll w-full flex flex-col gap-[20px]">
     <!-- Label -->
-    <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
-      <div style="width: 4px; height: 4px; background: var(--color-spring-green-8); border-radius: 30px;"></div>
-      <div style="color: var(--color-spring-green-8); font-size: 16px; font-family: 'Jost'; font-weight: 400;">Planning Team</div>
+    <div class="flex items-center gap-2 w-full">
+      <div class="w-1 h-1 bg-[var(--color-spring-green-8)] rounded-full"></div>
+      <div class="text-[var(--color-spring-green-8)] text-[16px] font-['Jost'] font-normal">Our Foundation</div>
     </div>
-    <div style="width: 100%; height: 1px; background: var(--color-grey-78);"></div>
+    <div class="w-full h-[1px] bg-[var(--color-grey-78)]"></div>
     
     <!-- Title and Subtitle -->
-    <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
-      <p style="margin: 0; color: var(--color-grey-36); font-size: 18px; font-family: 'Inter'; line-height: 1.6;">We deliver excellence in every 3D treatment plan.</p>
-      <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-        <h2 style="margin: 0; color: var(--color-spring-green-8); font-size: 64px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 73.60px;">Our Planning Experts</h2>
-        <a href="/contact" style="padding: 12px 24px; background: var(--color-chartreuse-green-72); border-radius: 100px; color: var(--color-spring-green-8); font-size: 16px; font-family: 'Inter'; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 8px;">
-          Contact Us
+    <div class="w-full flex flex-col gap-3 md:gap-4">
+      <p class="m-0 text-[var(--color-grey-36)] text-sm md:text-[18px] font-['Inter'] leading-[1.6]">Led by clinical visionaries and expert designers.</p>
+      <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <h2 class="m-0 text-[var(--color-spring-green-8)] text-[28px] md:text-[64px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[73.60px]">Planning Leadership</h2>
+        <a href="/contact" class="px-6 py-3 bg-[var(--color-chartreuse-green-72)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline flex items-center gap-2">
+          Contact Leadership
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Team Grid -->
-  <div style="width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-    {teamMembers.map((member, idx) => (
-      <div class={`reveal-on-scroll stagger-${idx + 1} `} style="background: white; border-radius: 16px; display: flex; flex-direction: column; gap: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);">
-        <!-- Member Image -->
-        <div style="width: 100%; aspect-ratio: 0.9579; overflow: hidden; border-radius: 16px;">
-          <img src={member.image} alt={member.name} style="width: 100%; height: 100%; object-fit: cover;" />
+  <!-- New Hierarchical Stack Layout -->
+  <div class="w-full flex flex-col gap-12 md:gap-24">
+    
+    <!-- Top Row: Featured CEO Horizontal Card -->
+    <div class="reveal-on-scroll w-full">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 bg-[#F9FAFB] p-6 md:p-12 rounded-[40px] border border-black/5 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(13,27,21,0.06)] items-center">
+        <!-- CEO Image (Left on Desktop) -->
+        <div class="w-full lg:w-[380px] xl:w-[420px] aspect-[0.9] overflow-hidden rounded-3xl bg-[#eee] flex-shrink-0 shadow-lg">
+          <img 
+            src={ceo.image} 
+            alt={ceo.name} 
+            class="w-full h-full object-cover object-top"
+            style="object-position: center 10%;"
+          />
         </div>
-
-        <!-- Member Info -->
-        <div style="padding: 16px 12px; display: flex; flex-direction: column; gap: 24px;">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <h4 style="margin: 0; color: var(--color-spring-green-8); font-size: 28px; font-family: 'Bricolage Grotesque'; font-weight: 500; line-height: 36px;">{member.name}</h4>
-            
-            <div style="display: flex; flex-direction: column; gap: 7px;">
-              <p style="margin: 0; color: var(--color-grey-36); font-size: 14px; font-family: 'Inter'; font-weight: 600;">{member.role}</p>
-              <p style="margin: 0; color: var(--color-grey-36); font-size: 14px; font-family: 'Inter'; line-height: 1.5;">{member.bio}</p>
-              
-              <!-- Socials -->
-              <div style="display: flex; gap: 12px; margin-top: 8px;">
-                <a href={member.socials.x} style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f5f5f5; transition: background 0.2s;">
-                  <img src="https://framerusercontent.com/images/13OVRZCM0XAYzQB5ntqN9wt61o.svg" style="width: 18px; height: 18px;" />
-                </a>
-                <a href={member.socials.linkedin} style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f5f5f5; transition: background 0.2s;">
-                  <img src="https://framerusercontent.com/images/nPc7SX3zQOl0N4C05zFuh1PXsQ.svg" style="width: 18px; height: 18px;" />
-                </a>
-                <a href={member.socials.instagram} style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f5f5f5; transition: background 0.2s;">
-                  <img src="https://framerusercontent.com/images/amcnTj2qniRVVe75PxUGpNO8SK0.svg" style="width: 18px; height: 18px;" />
-                </a>
-              </div>
+        <!-- CEO Info (Right on Desktop) -->
+        <div class="flex flex-col gap-6 lg:max-w-[700px]">
+          <div class="flex flex-col gap-3">
+             <div class="flex items-center gap-3">
+               <div class="w-8 h-[2px] bg-[var(--color-chartreuse-green-72)]"></div>
+               <p class="m-0 text-[var(--color-grey-36)] text-xs md:text-sm font-['Inter'] font-bold uppercase tracking-[0.2em]">{ceo.role}</p>
+             </div>
+             <h3 class="m-0 text-[var(--color-spring-green-8)] text-[36px] md:text-[56px] font-['Bricolage_Grotesque'] font-medium leading-[1.1]">{ceo.name}</h3>
+          </div>
+          <p class="m-0 text-[var(--color-grey-36)] text-lg md:text-[22px] font-['Inter'] font-normal leading-relaxed opacity-95">
+            {ceo.bio}
+          </p>
+          
+          <!-- Socials & Action -->
+          <div class="flex flex-wrap items-center gap-6 mt-4">
+            <div class="flex gap-3">
+              <a href={ceo.socials.linkedin} class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon">
+                <img src="https://framerusercontent.com/images/nPc7SX3zQOl0N4C05zFuh1PXsQ.svg" class="w-5 h-5 transition-transform group-hover/icon:scale-110" />
+              </a>
+              <a href={ceo.socials.instagram} class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon">
+                <img src="https://framerusercontent.com/images/amcnTj2qniRVVe75PxUGpNO8SK0.svg" class="w-5 h-5 transition-transform group-hover/icon:scale-110" />
+              </a>
             </div>
+            <div class="hidden md:block w-[1px] h-10 bg-black/10"></div>
+            <p class="m-0 text-[var(--color-grey-36)] text-sm font-['Inter'] italic opacity-60">Founder's vision for perfection.</p>
           </div>
         </div>
       </div>
-    ))}
+    </div>
+
+    <!-- Bottom Row: Specialists Typographic Grid -->
+    <div class="w-full flex flex-col gap-10">
+      <div class="flex flex-col gap-4">
+        <h4 class="m-0 text-[var(--color-spring-green-8)] text-sm font-['Inter'] font-bold uppercase tracking-[0.3em] opacity-40">The Expert Planning Unit</h4>
+        <div class="w-16 h-[2px] bg-[var(--color-chartreuse-green-72)]"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        {specialists.map((member, idx) => (
+          <div class={`reveal-on-scroll stagger-${idx + 2} flex flex-col gap-6 p-8 rounded-[32px] border border-black/[0.03] bg-white transition-all duration-300 hover:border-[var(--color-chartreuse-green-72)] hover:translate-y-[-4px]`}>
+            <div class="flex flex-col gap-2">
+              <h4 class="m-0 text-[var(--color-spring-green-8)] text-[24px] lg:text-[28px] font-['Bricolage_Grotesque'] font-medium leading-tight">{member.name}</h4>
+              <p class="m-0 text-[var(--color-grey-36)] text-[11px] font-['Inter'] font-bold uppercase tracking-wider opacity-60">{member.role}</p>
+            </div>
+            <p class="m-0 text-[var(--color-grey-36)] text-base font-['Inter'] leading-relaxed opacity-80">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
   </div>
   </div>
 </section>

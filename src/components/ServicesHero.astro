@@ -7,35 +7,35 @@
 
 // Image configuration to match the organic, irregular widths of the original design
 const galleryCards = [
-  { src: "/images/dental_clinic.png", width: "359px" },
-  { src: "/images/patient_smile.png", width: "250px" },
-  { src: "/images/dentist_friendly.png", width: "359px" },
-  { src: "/images/dental_clinic.png", width: "480px" },
-  { src: "/images/patient_smile.png", width: "251px" },
-  { src: "/images/dentist_friendly.png", width: "354px" }
+  { src: "/images/dental_clinic.png", width: "w-[359px]" },
+  { src: "/images/patient_smile.png", width: "w-[250px]" },
+  { src: "/images/dentist_friendly.png", width: "w-[359px]" },
+  { src: "/images/dental_clinic.png", width: "w-[480px]" },
+  { src: "/images/patient_smile.png", width: "w-[251px]" },
+  { src: "/images/dentist_friendly.png", width: "w-[354px]" }
 ];
 ---
 
-<section class="w-full flex flex-col items-center justify-start bg-white overflow-hidden pt-[180px] pb-20 relative">
+<section class="w-full flex flex-col items-center justify-start bg-white overflow-hidden pt-32 md:pt-[180px] pb-12 md:pb-20 relative">
   
-  <div class="w-full max-w-[1540px] px-[50px] mx-auto flex flex-col lg:flex-row justify-between items-end gap-10 lg:gap-20 mb-20 z-10 relative reveal-on-scroll">
+  <div class="w-full max-w-[1540px] px-6 md:px-[50px] mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 lg:gap-20 mb-12 md:mb-20 z-10 relative reveal-on-scroll">
     
     <!-- Left: Large Heading -->
     <div class="shrink-0 w-full lg:w-[700px]">
-      <h1 class="m-0 text-(--color-spring-green-8) font-bricolage text-[72px] lg:text-[96px] font-medium leading-none tracking-tight">
-        Precision Workflows<br/>for Orthodontists
+      <h1 class="m-0 text-(--color-spring-green-8) font-bricolage text-5xl md:text-[72px] lg:text-[96px] font-medium leading-none tracking-tight">
+        Precision Workflows<br class="hidden md:block"/>for Orthodontists
       </h1>
     </div>
 
     <!-- Right: Description & Year -->
-    <div class="flex w-full lg:w-auto items-end gap-6 pb-2">
+    <div class="flex flex-col md:flex-row w-full lg:w-auto items-start md:items-end gap-6 pb-2">
       <div class="flex flex-col">
         <p class="m-0 text-(--color-grey-36) font-inter text-base leading-[1.7] max-w-[420px]">
-          Dedicated clinical support and digital fabrication<br/>to scale your practice with predictable results.
+          Dedicated clinical support and digital fabrication<br class="hidden md:block"/>to scale your practice with predictable results.
         </p>
       </div>
-      <div class="flex flex-col mb-[-10px]">
-        <span class="text-(--color-spring-green-8) font-bricolage text-[86px] font-medium leading-[0.8] tracking-tight">
+      <div class="flex flex-col mb-0 md:mb-[-10px]">
+        <span class="text-(--color-spring-green-8) font-bricolage text-6xl md:text-[86px] font-medium leading-[0.8] tracking-tight">
           ©26
         </span>
       </div>
@@ -44,19 +44,19 @@ const galleryCards = [
   </div>
 
   <!-- Bottom: Infinite Image Marquee with Irregular Widths -->
-  <div class="w-full relative mt-10" style="height: 270px; display: flex; overflow: hidden;">
-    <div class="marquee-track flex gap-4" style="height: 100%;">
+  <div class="w-full relative mt-10 h-[270px] flex overflow-hidden">
+    <div class="marquee-track flex gap-4 h-full">
       
       <!-- Original Set -->
       {galleryCards.map((card, idx) => (
-        <div class="marquee-item shrink-0 h-full rounded-3xl overflow-hidden relative" style={`width: ${card.width};`}>
+        <div class={`marquee-item shrink-0 h-full rounded-3xl overflow-hidden relative ${card.width}`}>
            <img src={card.src} alt={`Dental Practice ${idx}`} class="w-full h-full object-cover" />
         </div>
       ))}
       
       <!-- Cloned Set for Seamless Loop -->
       {galleryCards.map((card, idx) => (
-        <div class="marquee-item shrink-0 h-full rounded-3xl overflow-hidden relative" style={`width: ${card.width};`} aria-hidden="true">
+        <div class={`marquee-item shrink-0 h-full rounded-3xl overflow-hidden relative ${card.width}`} aria-hidden="true">
            <img src={card.src} alt={`Dental Practice clone ${idx}`} class="w-full h-full object-cover" />
         </div>
       ))}
