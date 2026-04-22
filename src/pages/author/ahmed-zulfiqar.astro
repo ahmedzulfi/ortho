@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import BlogProse from "../components/BlogProse.astro";
+import Footer from "../components/Footer.astro";
+
+const author = {
+  name: "Ahmed Zulfiqar",
+  title: "Founder & Lead Architect at ValidMVPs",
+  bio: "Ahmed Zulfiqar is a software architect and entrepreneur with over 10 years of experience in rapid product development. Having launched 50+ MVPs across fintech, SaaS, and AI sectors, he specialized in bridging the gap between raw ideas and production-grade execution.",
+  experience: [
+    "Launched 50+ startups to market.",
+    "Specialist in MERN stack and Agentic AI workflows.",
+    "Technical consultant for seed-stage startups.",
+  ],
+  image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+};
+---
+
+<Layout
+  title={`${author.name} | Lead Architect at ValidMVPs`}
+  description={`Learn more about ${author.name}, the Lead Architect behind ValidMVPs and a specialist in rapid 4-week MVP development.`}
+>
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ahmed Zulfiqar",
+      "url": "https://validmvps.com/author/ahmed-zulfiqar",
+      "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+      "jobTitle": "Lead Architect",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "ValidMVPs"
+      },
+      "description": "Software architect specializing in rapid MVP development and AI-native engineering."
+    }
+  </script>
+
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <section class="pt-32 pb-20 px-6">
+      <div
+        class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-center text-[#0D1B15]"
+      >
+        <div
+          class="w-48 h-48 rounded-full overflow-hidden shadow-xl flex-none border-4 border-[#D1FC71]"
+        >
+          <img
+            src={author.image}
+            alt={author.name}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <h1
+            class="font-['Bricolage_Grotesque'] text-5xl md:text-6xl tracking-tight mb-4"
+          >
+            {author.name}
+          </h1>
+          <p
+            class="text-xl font-bold text-[#D1FC71] bg-[#0D1B15] inline-block px-4 py-1 rounded-full mb-6"
+          >
+            {author.title}
+          </p>
+          <p class="text-xl leading-relaxed font-inter opacity-80">
+            {author.bio}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <BlogProse>
+      <div class="max-w-4xl mx-auto py-12 border-t">
+        <h2 class="font-['Bricolage_Grotesque'] text-4xl mb-8">
+          Expertise & Experience
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            author.experience.map((item) => (
+              <div class="p-6 bg-white rounded-2xl border border-black/5 hover:border-[#D1FC71] transition-all group">
+                <p class="text-lg font-inter group-hover:translate-x-2 transition-transform">
+                  {item}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-16">
+          <h3 class="font-['Bricolage_Grotesque'] text-3xl mb-6">
+            Recent Insights
+          </h3>
+          <p class="opacity-70 mb-8">
+            Ahmed regularly writes about "Insight Velocity" and "AI-Native
+            Engineering" to help founders navigate the pre-seed ecosystem.
+          </p>
+          <a
+            href="/blog"
+            class="inline-block py-4 px-8 bg-[#D1FC71] text-[#0D1B15] font-bold rounded-full hover:bg-[#c4ed65] transition-all"
+          >
+            Browse Publications
+          </a>
+        </div>
+      </div>
+    </BlogProse>
+
+    <Footer />
+  </div>
+</Layout>
