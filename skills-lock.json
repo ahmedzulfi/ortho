@@ -6,6 +6,41 @@
       "sourceType": "github",
       "computedHash": "3a70f9666e7b6a03efb939b7e62938f4d3a6a5d956b2cc3c10011fda6ba27e9b"
     },
+    "blog": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "computedHash": "bd40cb301a7e43172cb568d546bb4b29714e08afd726a5d442303ede85b84d12"
+    },
+    "blog-image": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "computedHash": "8a5fd3bfd86a2d8f6d184dc0ff376c98f6756dc195827e98f1460832b1d57270"
+    },
+    "blog-outline": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "computedHash": "364cf586c1a80cb6b8fc0d1e3eb4a3dae999ae23e099bacf46e2e74a7db52d91"
+    },
+    "blog-page-generator": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "computedHash": "59fb3c930b50a049e90ec1b88997b02c8fbd561a2b2a8ad885788cfafa208a37"
+    },
+    "blog-post": {
+      "source": "langchain-ai/deepagents",
+      "sourceType": "github",
+      "computedHash": "9cc2da2d8b60cfdeacdc51c910fe9363b95ab568c1203201c909c14f10524432"
+    },
+    "blog-seo-check": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "computedHash": "b3e080359a35167961b6d8813e2a315c2f515adb875d00335b6a3dba5347bda7"
+    },
+    "blog-strategy": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "computedHash": "dd502f2164f31ace87ebaa7c6e440f7c150c69b7c18b25b0af646b5bc9df53c3"
+    },
     "emil-design-eng": {
       "source": "emilkowalski/skill",
       "sourceType": "github",

@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "In today's market, AI is no longer optional. We help startups differentiate early by incorporating intelligent features like LLM-powered automation, data processing, and smart workflows directly into their MVPs.",
+  "We specialize in integrating APIs from OpenAI, Anthropic, and other leading providers to create bespoke experiences. Whether it's an intelligent search, automated content generation, or predictive analytics, we bring AI to life in your product.",
+  "Our approach focuses on practical AI execution—finding the highest-impact use cases that provide immediate value to your users without unnecessary complexity."
+];
+
+const benefits = [
+  "Custom LLM Integrations",
+  "AI-Driven Automation",
+  "Competitive Product Edge",
+  "Modern Data Workflows"
+];
+
+const specs = [
+  { label: "APIs", value: "OpenAI, Claude, LangChain" },
+  { label: "Processing", value: "Vector DBs (Pinecone/Supabase)" },
+  { label: "Execution", value: "Serverless & Robust Backend" },
+  { label: "Safety", value: "Enterprise-Grade Data Handling" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="AI & Emerging Tech Integration"
+  description="Differentiating your product with intelligent, automated, and high-impact AI features."
+  heroImage="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

@@ -1,0 +1,168 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import BlogDetailsHero from "../../components/BlogDetailsHero.astro";
+import BlogProse from "../../components/BlogProse.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import Contact from "../../components/Contact.astro";
+import FAQ from "../../components/FAQ.astro";
+import Footer from "../../components/Footer.astro";
+
+const post = {
+  id: "building-in-public-mvp-lessons",
+  data: {
+    title:
+      "Building in Public: Lessons from Launching 50+ MVPs for Early-Stage Teams",
+    excerpt:
+      "We've seen it all. From viral successes to expensive failures, here are the top hard-earned lessons from building 50+ MVPs in the tech trenches.",
+    publishDate: "2026-04-22",
+    image: "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg",
+    author: {
+      name: "Ahmed Zulfiqar",
+      image:
+        "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    },
+  },
+};
+---
+
+<Layout
+  title={`${post.data.title} | ValidMVPs`}
+  description={post.data.excerpt}
+>
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Building in Public: Lessons from Launching 50+ MVPs for Early-Stage Teams",
+      "image": "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg",
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed Zulfiqar"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ValidMVPs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://validmvps.com/images/LOGO.png"
+        }
+      },
+      "datePublished": "2026-04-22",
+      "description": "A case-study-driven article sharing insights and lessons learned from the rapid development and launch of over 50 MVPs."
+    }
+  </script>
+
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <BlogDetailsHero
+      title={post.data.title}
+      excerpt={post.data.excerpt}
+      authorName={post.data.author.name}
+      authorImage={post.data.author.image}
+      publishDate={new Date(post.data.publishDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+      featuredImage={post.data.image}
+    />
+
+    <BlogProse>
+      <div
+        class="flex flex-col items-center gap-10 md:gap-20 w-full mx-auto text-[#0D1B15]"
+      >
+        <div class="w-full">
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
+          >
+            <strong>There is no substitute for the 'Technical Trenches'.</strong
+            > Over the past two years, ValidMVPs has partnered with over 50 founding
+            teams to turn concepts into production-grade software. We've seen startups
+            fail to onboard their first user and others secure seven-figure seed rounds
+            within weeks of deployment. These are the patterns that separate the winners
+            from the dreamers.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
+          >
+            Lesson 1: The 'Polished Prototype' Trap
+          </h2>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
+          >
+            The most expensive mistake we see is founders spending $50k on a
+            "perfect" UI for a product that hasn't validated its core logic. In
+            2026, investors care more about <strong>retention metrics</strong> and
+            <strong>API response times</strong> than they do about your custom button
+            gradients. Build for utility first; polish the surface once you have proof
+            of life.
+          </p>
+        </div>
+
+        <div class="w-full flex flex-col md:flex-row gap-6">
+          <div
+            class="flex-1 p-8 bg-white border border-black/5 rounded-2xl shadow-sm"
+          >
+            <h3 class="font-bold text-xl mb-4">Fail Case: The Overtaxed MVP</h3>
+            <p class="opacity-70">
+              A team built 12 'unique' features for launch. Result? Users were
+              confused, maintenance was a nightmare, and the core value was
+              buried. 0.5% conversion rate.
+            </p>
+          </div>
+          <div class="flex-1 p-8 bg-[#D1FC71] rounded-2xl shadow-sm">
+            <h3 class="font-bold text-xl mb-4 text-[#0D1B15]">
+              Win Case: The Focused Engine
+            </h3>
+            <p class="text-[#0D1B15]">
+              A founder focused on ONE AI-driven workflow that saved users 2
+              hours a day. Result? Viral growth and 45% retention. 12%
+              conversion rate.
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full">
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
+          >
+            Lesson 2: Scaling is a 'High-Class Problem'
+          </h2>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
+          >
+            Founders often worry about "what happens when we have a million
+            users" while they currently have zero. Build your MVP to handle
+            1,000 users comfortably. If you hit 100,000, you will have the
+            capital and the data to re-architect. Don't let theoretical scale
+            paralyze your actual execution.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12"
+          >
+            The Power of Building in Public
+          </h2>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-12"
+          >
+            Transparency is your biggest marketing tool. Sharing your 'Build in
+            Public' journey creates trust with early adopters and signals to
+            investors that you are a resilient, execution-focused founder. At
+            ValidMVPs, we don't just build your code; we help you document the
+            journey so you can win before you even launch.
+          </p>
+        </div>
+      </div>
+    </BlogProse>
+
+    <RelatedPosts currentSlug={post.id} />
+
+    <Contact />
+    <FAQ />
+    <Footer />
+  </div>
+</Layout>

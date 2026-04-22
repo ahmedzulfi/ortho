@@ -1,68 +1,78 @@
 ---
 const posts = [
   {
-    id: "10-tips-for-lifelong-oral-health",
+    id: "10-tips-for-technical-success",
     data: {
-      title: "10 Simple Tips for Lifelong Oral Health",
-      excerpt: "Maintain a powerful asset—your smile—with these 10 dentist-approved habits for long-term dental wellness.",
+      title: "10 Simple Tips for Technical Product Success",
+      excerpt:
+        "Launch and grow a successful technical product with these 10 advisor-approved habits for long-term startup health.",
       publishDate: "2026-04-07",
-      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
-    }
+      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    },
   },
   {
     id: "future-of-3d-treatment-planning",
     data: {
-      title: "The Future of 3D Treatment Planning in Orthodontics",
-      excerpt: "Explore how AI and high-resolution 3D simulations are transforming clear aligner workflows, offering more predictable results in less time.",
+      title: "The Future of Rapid MVP Development",
+      excerpt:
+        "Explore how AI and rapid prototyping frameworks are transforming startup workflows, offering functional products in record time.",
       publishDate: "2026-04-06",
-      image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg"
-    }
+      image:
+        "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+    },
   },
   {
-    id: "clear-aligners-vs-braces",
+    id: "in-house-vs-technical-partner",
     data: {
-      title: "Clear Aligners vs. Traditional Braces",
-      excerpt: "Wondering whether to choose clear aligners or traditional braces? Here's a comprehensive comparison to help you decide.",
+      title: "In-House Development vs. Technical Partnerships",
+      excerpt:
+        "Should you build your MVP with a local team or a specialized technical partner? Here's a comparison to help you decide.",
       publishDate: "2026-04-09",
-      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
-    }
+      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    },
   },
   {
-    id: "how-to-care-for-your-aligners",
+    id: "how-to-scale-your-mvp",
     data: {
-      title: "How to Care for Your Clear Aligners",
-      excerpt: "Keep your aligners clean and clear with these easy, practical tips for daily aligner maintenance and care.",
+      title: "How to Scale Your Initial MVP",
+      excerpt:
+        "Move beyond the prototype phase with these practical tips for scaling your technical infrastructure.",
       publishDate: "2026-04-10",
-      image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg"
-    }
+      image:
+        "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+    },
   },
   {
-    id: "benefits-of-early-orthodontic-evaluation",
+    id: "benefits-of-early-technical-audits",
     data: {
-      title: "The Benefits of Early Orthodontic Evaluation",
-      excerpt: "Why the American Association of Orthodontists recommends your child's first check-up by age 7.",
+      title: "The Benefits of Early Technical Audits",
+      excerpt:
+        "Why technical experts recommend your first product audit during the prototyping phase.",
       publishDate: "2026-04-11",
-      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
-    }
+      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    },
   },
   {
-    id: "the-role-of-digital-scans-in-orthodontics",
+    id: "the-role-of-cloud-infrastructure",
     data: {
-      title: "The Role of Digital Scans in Orthodontics",
-      excerpt: "Say goodbye to gooey impressions. Digital intraoral scanners offer greater patient comfort and precise 3D models.",
+      title: "The Role of Cloud Infrastructure in Scaling",
+      excerpt:
+        "Say goodbye to server maintenance. Modern cloud offerings allow for greater developer comfort and precise scaling models.",
       publishDate: "2026-04-12",
-      image: "https://framerusercontent.com/images/DjC5pMWJdlfxcNqmLKEPK4bycJk.jpg"
-    }
+      image:
+        "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+    },
   },
   {
-    id: "maintaining-your-smile-after-treatment",
+    id: "maintaining-your-product-after-launch",
     data: {
-      title: "Maintaining Your Smile After Treatment",
-      excerpt: "Your treatment is complete! Here is how to keep your newly aligned teeth perfectly straight for the rest of your life.",
+      title: "Maintaining Your Product After Launch",
+      excerpt:
+        "Your MVP is live! Here is how to keep your application stable and performing perfectly for the long term.",
       publishDate: "2026-04-13",
-      image: "https://framerusercontent.com/images/lhHhUnyKhPclLkxHyj2BcF6Ek.png"
-    }
-  }
+      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    },
+  },
 ];
 
 const sortedPosts = posts;
@@ -70,57 +80,62 @@ const sortedPosts = posts;
 
 <section class="w-full bg-[#F6F7FF] py-12 md:py-20 pb-24 md:pb-32">
   <div class="w-full max-w-[1540px] px-6 md:px-[50px] mx-auto">
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-[15px]">
-      {sortedPosts.map((post, idx) => (
-        <div class={`reveal-on-scroll stagger-${(idx % 3) + 1}`}>
-          <a
-            href={`/blog/${post.id.replace(/\.mdx?$/, '')}`}
-            class="group flex flex-col items-start gap-5 p-5 bg-white rounded-[20px] no-underline transition-all duration-500 h-full"
-          >
-            {/* Image Container */}
-            <div class="w-full h-[220px] md:h-[320px] rounded-[16px] overflow-hidden relative">
-              <img
-                src={post.data.image}
-                alt={post.data.title}
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-            </div>
-
-            {/* Content Container */}
-            <div class="flex flex-col gap-5 md:gap-[30px] w-full grow justify-between">
-              <div class="flex flex-col gap-2.5 w-full">
-                {/* Date */}
-                <p class="m-0 text-(--color-grey-36) font-inter text-sm leading-[1.2]">
-                  {new Date(post.data.publishDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </p>
-
-                {/* Title */}
-                <h5 class="m-0 text-(--color-spring-green-8) font-bricolage text-[20px] md:text-[24px] lg:text-[28px] font-medium leading-[1.2] transition-colors group-hover:text-black/60">
-                  {post.data.title}
-                </h5>
-
-                {/* Excerpt */}
-                <p class="m-0 text-(--color-grey-36) font-inter text-sm md:text-base leading-[1.6]">
-                  {post.data.excerpt}
-                </p>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-[15px]"
+    >
+      {
+        sortedPosts.map((post, idx) => (
+          <div class={`reveal-on-scroll stagger-${(idx % 3) + 1}`}>
+            <a
+              href={`/blog/${post.id.replace(/\.mdx?$/, "")}`}
+              class="group flex flex-col items-start gap-5 p-5 bg-white rounded-[20px] no-underline transition-all duration-500 h-full"
+            >
+              {/* Image Container */}
+              <div class="w-full h-[220px] md:h-[320px] rounded-[16px] overflow-hidden relative">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
               </div>
 
-              {/* Read More Button */}
-              <div class="px-[30px] py-[10px] bg-[#D1FC71] rounded-[60px] cursor-pointer transition-all duration-500 group-hover:bg-black w-fit">
-                <p class="m-0 text-[14px] font-inter font-medium text-[#0D1B15] leading-[1.2] transition-colors duration-500 group-hover:text-white!">
-                  Read More
-                </p>
+              {/* Content Container */}
+              <div class="flex flex-col gap-5 md:gap-[30px] w-full grow justify-between">
+                <div class="flex flex-col gap-2.5 w-full">
+                  {/* Date */}
+                  <p class="m-0 text-(--color-grey-36) font-inter text-sm leading-[1.2]">
+                    {new Date(post.data.publishDate).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      },
+                    )}
+                  </p>
+
+                  {/* Title */}
+                  <h5 class="m-0 text-(--color-spring-green-8) font-bricolage text-[20px] md:text-[24px] lg:text-[28px] font-medium leading-[1.2] transition-colors group-hover:text-black/60">
+                    {post.data.title}
+                  </h5>
+
+                  {/* Excerpt */}
+                  <p class="m-0 text-(--color-grey-36) font-inter text-sm md:text-base leading-[1.6]">
+                    {post.data.excerpt}
+                  </p>
+                </div>
+
+                {/* Read More Button */}
+                <div class="px-[30px] py-[10px] bg-[#D1FC71] rounded-[60px] cursor-pointer transition-all duration-500 group-hover:bg-black w-fit">
+                  <p class="m-0 text-[14px] font-inter font-medium text-[#0A0F1E] leading-[1.2] transition-colors duration-500 group-hover:text-white!">
+                    Read More
+                  </p>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-      ))}
+            </a>
+          </div>
+        ))
+      }
     </div>
-
   </div>
 </section>

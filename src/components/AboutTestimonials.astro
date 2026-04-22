@@ -4,30 +4,46 @@
  * Complex grid of testimonials and stats for the About page.
  */
 const images = [
-  "/images/dental_clinic.png",
-  "/images/dentist_friendly.png",
-  "/images/patient_smile.png"
+  "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800", // Code
+  "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=800", // Team
+  "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800", // Developer
 ];
 ---
 
-<section class="w-full py-12 md:py-[112px] px-6 md:px-[50px] flex flex-col items-center gap-10 md:gap-20 box-border bg-[#F6F7FF]">
-  
-  <div class="reveal-on-scroll w-full max-w-[1440px] flex flex-col gap-10 md:gap-20">
-    
+<section
+  class="w-full py-12 md:py-[112px] px-6 md:px-[50px] flex flex-col items-center gap-10 md:gap-20 box-border bg-[#F6F7FF]"
+>
+  <div
+    class="reveal-on-scroll w-full max-w-[1440px] flex flex-col gap-10 md:gap-20"
+  >
     <!-- Header Row -->
     <div class="w-full flex flex-col gap-5">
       <div class="flex items-center gap-2">
-        <div class="w-1 h-1 bg-[var(--color-spring-green-8,#0D1B15)] rounded-full"></div>
-        <div class="text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Jost'] font-normal">Our words</div>
-      </div>
-      
-      <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end flex-wrap gap-5">
-        <div class="max-w-full md:max-w-[440px]">
-            <h2 class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.1] tracking-[-1px] md:tracking-[-2px]">
-                Dental Innovation <br class="hidden md:block"/> at the Speed of Care
-            </h2>
+        <div
+          class="w-1 h-1 bg-[var(--color-spring-green-8,#0D1B15)] rounded-full"
+        >
         </div>
-        <a href="/team" class="btn-premium-morph btn-green-bg py-3 px-6 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline">
+        <div
+          class="text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Jost'] font-normal"
+        >
+          Our words
+        </div>
+      </div>
+
+      <div
+        class="w-full flex flex-col md:flex-row justify-between items-start md:items-end flex-wrap gap-5"
+      >
+        <div class="max-w-full md:max-w-[440px]">
+          <h2
+            class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.1] tracking-[-1px] md:tracking-[-2px]"
+          >
+            Software Innovation <br class="hidden md:block" /> at the Speed of Growth
+          </h2>
+        </div>
+        <a
+          href="/team"
+          class="btn-premium-morph btn-green-bg py-3 px-6 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline"
+        >
           Meet the Team
         </a>
       </div>
@@ -35,52 +51,89 @@ const images = [
 
     <!-- Testimonial Grid -->
     <div class="flex flex-col gap-6">
-      
       <!-- Row 1 -->
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-6">
         <!-- Card: Green Testimonial -->
-        <div class="reveal-on-scroll stagger-1 p-6 md:p-8 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-xl flex flex-col justify-between min-h-[260px] md:min-h-[540px]">
-          <h3 class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-[22px] md:text-[40px] lg:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.2]">
-            We'll keep relying on <br class="hidden md:block"/>Orthodontics Align at every <br class="hidden md:block"/>stage of our growth; <br class="hidden md:block"/>it's trusted care.
+        <div
+          class="reveal-on-scroll stagger-1 p-6 md:p-8 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-xl flex flex-col justify-between min-h-[260px] md:min-h-[540px]"
+        >
+          <h3
+            class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-[22px] md:text-[40px] lg:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.2]"
+          >
+            We'll keep relying on <br class="hidden md:block" />ValidMVPs at
+            every <br class="hidden md:block" />stage of our growth; <br
+              class="hidden md:block"
+            />it's trusted tech.
           </h3>
-          <div class="text-[var(--color-spring-green-8,#0D1B15)] text-lg md:text-[28px] font-['Bricolage_Grotesque'] font-medium">Orthodontics Align Team</div>
+          <div
+            class="text-[var(--color-spring-green-8,#0D1B15)] text-lg md:text-[28px] font-['Bricolage_Grotesque'] font-medium"
+          >
+            ValidMVPs Team
+          </div>
         </div>
-        
+
         <!-- Image 1 -->
-        <div class="reveal-on-scroll stagger-2 rounded-xl overflow-hidden h-64 md:h-[540px]">
-           <img src={images[0]} class="w-full h-full object-cover" />
+        <div
+          class="reveal-on-scroll stagger-2 rounded-xl overflow-hidden h-64 md:h-[540px]"
+        >
+          <img src={images[0]} class="w-full h-full object-cover" />
         </div>
       </div>
 
       <!-- Row 2 -->
       <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
-        
         <!-- Card Group: White Testimonial + Image -->
-        <div class="reveal-on-scroll stagger-3 flex flex-col md:flex-row gap-6 p-8 bg-white rounded-xl items-stretch">
+        <div
+          class="reveal-on-scroll stagger-3 flex flex-col md:flex-row gap-6 p-8 bg-white rounded-xl items-stretch"
+        >
           <div class="flex-1 flex flex-col justify-between gap-6">
-            <p class="m-0 text-[var(--color-grey-36,#595E5C)] text-lg md:text-[20px] font-['Bricolage_Grotesque'] font-medium leading-relaxed md:leading-[1.5]">
-              Partnering with Orthodontics Align has been crucial for site Innovations. This collaboration enhances our capabilities and aligns with our vision to revolutionize dental care. Together, we will seek innovative solutions for our clients and the industry.
+            <p
+              class="m-0 text-[var(--color-grey-36,#595E5C)] text-lg md:text-[20px] font-['Bricolage_Grotesque'] font-medium leading-relaxed md:leading-[1.5]"
+            >
+              Partnering with ValidMVPs has been crucial for core innovation.
+              This collaboration enhances our technical capabilities and aligns
+              with our vision to help founders succeed. Together, we build
+              products that scale.
             </p>
-            <div class="text-[var(--color-spring-green-8,#0D1B15)] text-xl md:text-[28px] font-['Bricolage_Grotesque'] font-medium">Dentist, Orthodontics Align</div>
+            <div
+              class="text-[var(--color-spring-green-8,#0D1B15)] text-xl md:text-[28px] font-['Bricolage_Grotesque'] font-medium"
+            >
+              Founder, ValidMVPs Client
+            </div>
           </div>
-          <div class="flex-1 min-h-[250px] rounded-xl overflow-hidden bg-[#F2F2EF] p-3">
-             <img src={images[1]} class="w-full h-full object-cover rounded-lg" />
+          <div
+            class="flex-1 min-h-[250px] rounded-xl overflow-hidden bg-[#F2F2EF] p-3"
+          >
+            <img
+              src={images[1]}
+              class="w-full h-full object-cover rounded-lg"
+            />
           </div>
         </div>
 
         <!-- Card: Dark Stat Card -->
-        <div class="reveal-on-scroll stagger-4 p-6 md:p-8 bg-[var(--color-spring-green-8,#0D1B15)] rounded-xl flex flex-col justify-between min-h-[260px] md:min-h-[300px]">
+        <div
+          class="reveal-on-scroll stagger-4 p-6 md:p-8 bg-[var(--color-spring-green-8,#0D1B15)] rounded-xl flex flex-col justify-between min-h-[260px] md:min-h-[300px]"
+        >
           <div class="flex flex-col gap-3 md:gap-4">
-            <div class="text-white text-2xl md:text-[36px] font-['Bricolage_Grotesque'] font-medium">$120M+</div>
-            <div class="text-white text-[20px] md:text-[36px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.2]">The largest in dental advancements in the region.</div>
+            <div
+              class="text-white text-2xl md:text-[36px] font-['Bricolage_Grotesque'] font-medium"
+            >
+              50+ MVPs
+            </div>
+            <div
+              class="text-white text-[20px] md:text-[36px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[1.2]"
+            >
+              Launched and validated across global markets.
+            </div>
           </div>
-          <div class="text-[var(--color-grey-96,#F5F4F7)] text-lg md:text-[28px] font-['Bricolage_Grotesque'] font-medium pt-4 md:pt-8">Dental Surgeon</div>
+          <div
+            class="text-[var(--color-grey-96,#F5F4F7)] text-lg md:text-[28px] font-['Bricolage_Grotesque'] font-medium pt-4 md:pt-8"
+          >
+            Technical Strategy
+          </div>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>

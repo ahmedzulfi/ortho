@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "In the early stages of a startup, speed of learning is your greatest asset. Our Rapid Iteration & Delivery service is built around tight feedback loops and continuous feature delivery.",
+  "We work in weekly sprints, providing you with working software every few days. This allows you to test assumptions in the real world, pivot where necessary, and refine your product direction in real time based on user behavior.",
+  "Our direct founder-access model ensures that there are no communication silos. You talk directly to the partners building your product, leading to faster decisions and better outcomes."
+];
+
+const benefits = [
+  "Weekly Sprints/Delivery",
+  "Real-Time Market Feedback",
+  "Direct Technical Partner Access",
+  "Flexible Roadmap Execution"
+];
+
+const specs = [
+  { label: "Cycle Time", value: "New Features Every 3-5 Days" },
+  { label: "Communication", value: "Dedicated Slack & Weekly Syncs" },
+  { label: "Tools", value: "Linear, GitHub, Figma" },
+  { label: "Feedback", value: "Production-ready stage environment" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="Rapid Iteration & Delivery"
+  description="Accelerating your learning cycle with continuous delivery and tight feedback loops."
+  heroImage="https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

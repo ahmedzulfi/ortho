@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "Our End-to-End MVP Development service is designed for founders who need to move from idea to market in record time. We don't just write code; we build functional, investor-ready products that solve real problems.",
+  "Every MVP we build utilizes a modern, scalable stack like MERN or PostgreSQL, ensuring that your foundation is solid from day one. We handle everything from complex authentication and user roles to intricate dashboards and real-time data flows.",
+  "With an average delivery time of 4-8 weeks, we help you reduce time-to-market, allowing you to collect early feedback and iterate based on real user behavior rather than assumptions."
+];
+
+const benefits = [
+  "Investor-Ready Architecture",
+  "4-8 Week Delivery Timeline",
+  "Scalable MERN Foundation",
+  "Direct Founder Collaboration"
+];
+
+const specs = [
+  { label: "Stack", value: "React, Node.js, MongoDB/PostgreSQL" },
+  { label: "Deployment", value: "Vercel, AWS, or DigitalOcean" },
+  { label: "Methodology", value: "Agile Weekly Sprints" },
+  { label: "Support", value: "Post-Launch Technical Audit" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="End-to-End MVP Development"
+  description="Turning complex startup ideas into functional, scalable products in weeks, not months."
+  heroImage="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

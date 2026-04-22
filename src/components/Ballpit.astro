@@ -1,0 +1,510 @@
+---
+/**
+ * Ballpit.astro
+ * A 3D interactive ballpit background using Three.js
+ * Heavily inspired by the provided React component
+ */
+interface Props {
+  count?: number;
+  gravity?: number;
+  friction?: number;
+  wallBounce?: number;
+  followCursor?: boolean;
+  colors?: number[];
+  minSize?: number;
+  maxSize?: number;
+  maxVelocity?: number;
+}
+
+const {
+  count = 25,
+  gravity = 100,
+  friction = 0.6,
+  wallBounce = 0.9,
+  followCursor = false,
+  colors = [0xd1fc71, 0xd1fc71, 0x595e5c],
+  minSize = 1,
+  maxSize = 1.5,
+  maxVelocity = 0.1,
+} = Astro.props;
+---
+
+<div
+  class="ballpit-container w-full h-full relative overflow-hidden"
+  data-config={JSON.stringify({
+    count,
+    gravity,
+    friction,
+    wallBounce,
+    followCursor,
+    colors,
+    minSize,
+    maxSize,
+    maxVelocity,
+  })}
+>
+  <canvas class="ballpit-canvas w-full h-full block"></canvas>
+</div>
+
+<script>
+  // @ts-nocheck
+  import * as THREE from "three";
+  import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+
+  // --- INTERNAL CLASSES (Extracted from provided code) ---
+
+  class ThreeScene {
+    #e;
+    canvas;
+    camera;
+    cameraMinAspect;
+    cameraMaxAspect;
+    cameraFov;
+    maxPixelRatio;
+    minPixelRatio;
+    scene;
+    renderer;
+    #t;
+    size = {
+      width: 0,
+      height: 0,
+      wWidth: 0,
+      wHeight: 0,
+      ratio: 0,
+      pixelRatio: 0,
+    };
+    render = this.#i;
+    onBeforeRender = (h: any) => {};
+    onAfterRender = (h: any) => {};
+    onAfterResize = (s: any) => {};
+    #s = false;
+    #n = false;
+    isDisposed = false;
+    #o;
+    #r;
+    #a;
+    #c = new THREE.Clock();
+    #h = { elapsed: 0, delta: 0 };
+    #l: any;
+
+    constructor(e: any) {
+      this.#e = { ...e };
+      this.#m();
+      this.#d();
+      this.#p();
+      this.resize();
+      this.#g();
+    }
+    #m() {
+      this.camera = new THREE.PerspectiveCamera();
+      this.cameraFov = this.camera.fov;
+    }
+    #d() {
+      this.scene = new THREE.Scene();
+    }
+    #p() {
+      this.canvas = this.#e.canvas;
+      const e = {
+        canvas: this.canvas,
+        powerPreference: "high-performance",
+        ...(this.#e.rendererOptions ?? {}),
+      };
+      this.renderer = new THREE.WebGLRenderer(e);
+      this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+    }
+    #g() {
+      window.addEventListener("resize", this.#f.bind(this));
+      if (this.#e.size === "parent" && this.canvas.parentNode) {
+        this.#r = new ResizeObserver(this.#f.bind(this));
+        this.#r.observe(this.canvas.parentNode);
+      }
+      this.#o = new IntersectionObserver(this.#u.bind(this), { threshold: 0 });
+      this.#o.observe(this.canvas);
+    }
+    #u(e: any) {
+      this.#s = e[0].isIntersecting;
+      this.#s ? this.#w() : this.#z();
+    }
+    #f() {
+      if (this.#a) clearTimeout(this.#a);
+      this.#a = setTimeout(this.resize.bind(this), 100);
+    }
+    resize() {
+      let e, t;
+      if (this.#e.size === "parent" && this.canvas.parentNode) {
+        e = this.canvas.parentNode.offsetWidth;
+        t = this.canvas.parentNode.offsetHeight;
+      } else {
+        e = window.innerWidth;
+        t = window.innerHeight;
+      }
+      this.size.width = e;
+      this.size.height = t;
+      this.size.ratio = e / t;
+      this.#x();
+      this.#b();
+      this.onAfterResize(this.size);
+    }
+    #x() {
+      this.camera.aspect = this.size.width / this.size.height || 1;
+      this.camera.updateProjectionMatrix();
+      this.updateWorldSize();
+    }
+    updateWorldSize() {
+      const e = (this.camera.fov * Math.PI) / 180;
+      this.size.wHeight = 2 * Math.tan(e / 2) * this.camera.position.length();
+      this.size.wWidth = this.size.wHeight * this.camera.aspect;
+    }
+    #b() {
+      this.renderer.setSize(this.size.width, this.size.height);
+      let e = window.devicePixelRatio;
+      this.renderer.setPixelRatio(e);
+      this.size.pixelRatio = e;
+    }
+    #w() {
+      if (this.#n) return;
+      const animate = () => {
+        this.#l = requestAnimationFrame(animate);
+        this.#h.delta = this.#c.getDelta();
+        this.#h.elapsed += this.#h.delta;
+        this.onBeforeRender(this.#h);
+        this.render();
+        this.onAfterRender(this.#h);
+      };
+      this.#n = true;
+      this.#c.start();
+      animate();
+    }
+    #z() {
+      if (this.#n) {
+        cancelAnimationFrame(this.#l);
+        this.#n = false;
+        this.#c.stop();
+      }
+    }
+    #i() {
+      this.renderer.render(this.scene, this.camera);
+    }
+    dispose() {
+      window.removeEventListener("resize", this.#f.bind(this));
+      this.#r?.disconnect();
+      this.#o?.disconnect();
+      this.#z();
+      this.renderer.dispose();
+    }
+  }
+
+  // --- Physics classes ---
+  const F = new THREE.Vector3(),
+    I = new THREE.Vector3(),
+    O = new THREE.Vector3(),
+    V = new THREE.Vector3(),
+    B = new THREE.Vector3(),
+    N = new THREE.Vector3(),
+    _ = new THREE.Vector3(),
+    j = new THREE.Vector3(),
+    H = new THREE.Vector3(),
+    T = new THREE.Vector3();
+  const { randFloat: k, randFloatSpread: E } = THREE.MathUtils;
+
+  class Physics {
+    config;
+    positionData;
+    velocityData;
+    sizeData;
+    center = new THREE.Vector3();
+    constructor(e: any) {
+      this.config = e;
+      this.positionData = new Float32Array(3 * e.count).fill(0);
+      this.velocityData = new Float32Array(3 * e.count).fill(0);
+      this.sizeData = new Float32Array(e.count).fill(1);
+      this.#R();
+      this.setSizes();
+    }
+    #R() {
+      for (let i = 0; i < this.config.count; i++) {
+        const s = 3 * i;
+        this.positionData[s] = E(2 * this.config.maxX);
+        this.positionData[s + 1] = E(2 * this.config.maxY);
+        this.positionData[s + 2] = E(2 * this.config.maxZ);
+      }
+    }
+    setSizes() {
+      this.sizeData[0] = this.config.size0 || 1;
+      for (let i = 1; i < this.config.count; i++) {
+        this.sizeData[i] = k(this.config.minSize, this.config.maxSize);
+      }
+    }
+    update(e: any) {
+      const {
+        config: t,
+        center: i,
+        positionData: s,
+        sizeData: n,
+        velocityData: o,
+      } = this;
+      let r = 0;
+      if (t.controlSphere0) {
+        r = 1;
+        F.fromArray(s, 0);
+        F.lerp(i, 0.1).toArray(s, 0);
+        V.set(0, 0, 0).toArray(o, 0);
+      }
+      for (let idx = r; idx < t.count; idx++) {
+        const base = 3 * idx;
+        I.fromArray(s, base);
+        B.fromArray(o, base);
+        B.y -= e.delta * t.gravity * n[idx];
+        B.multiplyScalar(t.friction);
+        B.clampLength(0, t.maxVelocity || 0.15); // dynmaxVelocity
+        I.add(B);
+        I.toArray(s, base);
+        B.toArray(o, base);
+      }
+      for (let idx = r; idx < t.count; idx++) {
+        const base = 3 * idx;
+        I.fromArray(s, base);
+        B.fromArray(o, base);
+        const radius = n[idx];
+        for (let jdx = idx + 1; jdx < t.count; jdx++) {
+          const otherBase = 3 * jdx;
+          O.fromArray(s, otherBase);
+          N.fromArray(o, otherBase);
+          const otherRadius = n[jdx];
+          _.copy(O).sub(I);
+          const dist = _.length();
+          const sumRadius = radius + otherRadius;
+          if (dist < sumRadius) {
+            const overlap = sumRadius - dist;
+            j.copy(_)
+              .normalize()
+              .multiplyScalar(0.5 * overlap);
+            H.copy(j).multiplyScalar(Math.max(B.length(), 1));
+            T.copy(j).multiplyScalar(Math.max(N.length(), 1));
+            I.sub(j);
+            B.sub(H);
+            I.toArray(s, base);
+            B.toArray(o, base);
+            O.add(j);
+            N.add(T);
+            O.toArray(s, otherBase);
+            N.toArray(o, otherBase);
+          }
+        }
+        if (t.controlSphere0) {
+          _.copy(F).sub(I);
+          const dist = _.length();
+          const sumRadius0 = radius + n[0];
+          if (dist < sumRadius0) {
+            const diff = sumRadius0 - dist;
+            j.copy(_.normalize()).multiplyScalar(diff);
+            H.copy(j).multiplyScalar(Math.max(B.length(), 2));
+            I.sub(j);
+            B.sub(H);
+          }
+        }
+        if (Math.abs(I.x) + radius > t.maxX) {
+          I.x = Math.sign(I.x) * (t.maxX - radius);
+          B.x = -B.x * t.wallBounce;
+        }
+        if (t.gravity === 0) {
+          if (Math.abs(I.y) + radius > t.maxY) {
+            I.y = Math.sign(I.y) * (t.maxY - radius);
+            B.y = -B.y * t.wallBounce;
+          }
+        } else if (I.y - radius < -t.maxY) {
+          I.y = -t.maxY + radius;
+          B.y = -B.y * t.wallBounce;
+        }
+        const maxBoundary = Math.max(t.maxZ, 2);
+        if (Math.abs(I.z) + radius > maxBoundary) {
+          I.z = Math.sign(I.z) * (t.maxZ - radius);
+          B.z = -B.z * t.wallBounce;
+        }
+        I.toArray(s, base);
+        B.toArray(o, base);
+      }
+    }
+  }
+
+  class ScatteringMaterial extends THREE.MeshPhysicalMaterial {
+    uniforms: any;
+    constructor(e: any) {
+      super(e);
+      this.defines = this.defines || {};
+      this.defines.USE_UV = "";
+      this.uniforms = {
+        thicknessDistortion: { value: 0.1 },
+        thicknessAmbient: { value: 0 },
+        thicknessAttenuation: { value: 0.1 },
+        thicknessPower: { value: 2 },
+        thicknessScale: { value: 10 },
+      };
+      this.onBeforeCompile = (sh: any) => {
+        Object.assign(sh.uniforms, this.uniforms);
+        sh.fragmentShader = `
+          uniform float thicknessPower; uniform float thicknessScale;
+          uniform float thicknessDistortion; uniform float thicknessAmbient; uniform float thicknessAttenuation;
+          ${sh.fragmentShader}
+        `.replace(
+          "void main() {",
+          `
+          void RE_Direct_Scattering(const in IncidentLight directLight, const in vec2 uv, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, inout ReflectedLight reflectedLight) {
+            vec3 scatteringHalf = normalize(directLight.direction + (geometryNormal * thicknessDistortion));
+            float scatteringDot = pow(saturate(dot(geometryViewDir, -scatteringHalf)), thicknessPower) * thicknessScale;
+            #ifdef USE_COLOR
+              vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * vColor.rgb;
+            #else
+              vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * diffuse.rgb;
+            #endif
+            reflectedLight.directDiffuse += scatteringIllu * thicknessAttenuation * directLight.color;
+          }
+          void main() {`,
+        );
+        sh.fragmentShader = sh.fragmentShader.replace(
+          "#include <lights_fragment_begin>",
+          THREE.ShaderChunk.lights_fragment_begin.replaceAll(
+            "RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );",
+            `RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );
+             RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);`,
+          ),
+        );
+      };
+    }
+  }
+
+  class BallpitMesh extends THREE.InstancedMesh {
+    config;
+    physics;
+    ambientLight: any;
+    light: any;
+    constructor(renderer: THREE.WebGLRenderer, t = {}) {
+      const i = {
+        count: 20,
+        colors: [0xd1fc71, 0x0d1b15, 0x595e5c],
+        ambientColor: 0xffffff,
+        ambientIntensity: 1,
+        lightIntensity: 200,
+        materialParams: {
+          metalness: 0.5,
+          roughness: 0.5,
+          clearcoat: 1,
+          clearcoatRoughness: 0.15,
+        },
+        minSize: 0.5,
+        maxSize: 1.2,
+        size0: 1.2,
+        gravity: 1,
+        friction: 0.9975,
+        wallBounce: 0.95,
+        maxVelocity: 0.2,
+        maxX: 5,
+        maxY: 5,
+        maxZ: 2,
+        controlSphere0: false,
+        followCursor: false,
+        ...t,
+      };
+      const env = new THREE.PMREMGenerator(renderer).fromScene(
+        new RoomEnvironment(),
+      ).texture;
+      const geo = new THREE.SphereGeometry();
+      const mat = new ScatteringMaterial({ envMap: env, ...i.materialParams });
+      mat.envMapRotation.x = -Math.PI / 2;
+      super(geo, mat, i.count);
+      this.config = i;
+      this.physics = new Physics(i);
+      this.ambientLight = new THREE.AmbientLight(
+        i.ambientColor,
+        i.ambientIntensity,
+      );
+      this.add(this.ambientLight);
+      this.light = new THREE.PointLight(i.colors[0], i.lightIntensity);
+      this.add(this.light);
+      this.setColors(i.colors);
+    }
+    setColors(e: any) {
+      const colors = e.map((c: any) => new THREE.Color(c));
+      for (let i = 0; i < this.count; i++) {
+        const col = colors[i % colors.length];
+        this.setColorAt(i, col);
+        if (i === 0) this.light.color.copy(col);
+      }
+      if (this.instanceColor) this.instanceColor.needsUpdate = true;
+    }
+    update(e: any) {
+      this.physics.update(e);
+      const dummy = new THREE.Object3D();
+      for (let i = 0; i < this.count; i++) {
+        dummy.position.fromArray(this.physics.positionData, 3 * i);
+        if (i === 0 && !this.config.followCursor) dummy.scale.setScalar(0);
+        else dummy.scale.setScalar(this.physics.sizeData[i]);
+        dummy.updateMatrix();
+        this.setMatrixAt(i, dummy.matrix);
+        if (i === 0) this.light.position.copy(dummy.position);
+      }
+      this.instanceMatrix.needsUpdate = true;
+    }
+  }
+
+  // --- INITIALIZATION ---
+  function initBallpit() {
+    const containers = document.querySelectorAll(
+      ".ballpit-container:not(.initialized)",
+    );
+    containers.forEach((container) => {
+      container.classList.add("initialized");
+      const canvas = container.querySelector(".ballpit-canvas");
+      const config = JSON.parse(container.getAttribute("data-config") || "{}");
+
+      const scene = new ThreeScene({
+        canvas,
+        size: "parent",
+        rendererOptions: { antialias: true, alpha: true },
+      });
+      scene.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      scene.camera.position.set(0, 0, 20);
+      scene.camera.lookAt(0, 0, 0);
+
+      const ballpit = new BallpitMesh(scene.renderer, config);
+      scene.scene.add(ballpit);
+
+      scene.onBeforeRender = (e) => ballpit.update(e);
+      scene.onAfterResize = (e) => {
+        if (e.wWidth && e.wHeight) {
+          ballpit.config.maxX = e.wWidth / 2;
+          ballpit.config.maxY = e.wHeight / 2;
+        }
+      };
+
+      // Interaction
+      if (config.followCursor) {
+        const raycaster = new THREE.Raycaster();
+        const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+        const mouse = new THREE.Vector2();
+        const point = new THREE.Vector3();
+
+        container.addEventListener("pointermove", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          if (rect.width === 0 || rect.height === 0) return;
+          mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+          raycaster.setFromCamera(mouse, scene.camera);
+          raycaster.ray.intersectPlane(plane, point);
+          ballpit.physics.center.copy(point);
+          ballpit.config.controlSphere0 = true;
+        });
+
+        container.addEventListener("pointerleave", () => {
+          ballpit.config.controlSphere0 = false;
+        });
+      }
+    });
+  }
+
+  // Load safely
+  initBallpit();
+  document.addEventListener("astro:page-load", initBallpit);
+  document.addEventListener("DOMContentLoaded", initBallpit);
+</script>

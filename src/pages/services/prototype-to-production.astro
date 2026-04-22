@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "Many founders start with 'vibe coding' or prototypes in tools like Replit and no-code platforms. While great for validation, these often lack the structure needed for scaling. Our Prototype to Production service bridges this gap.",
+  "We take your existing logic, refactor it into clean, maintainable code, and implement a production-ready architecture. This includes setting up proper backend services, robust database schemas, and automated deployment pipelines.",
+  "Our goal is to preserve the 'magic' of your initial prototype while ensuring it can handle thousands of users without buckling under technical debt."
+];
+
+const benefits = [
+  "Seamless Code Migration",
+  "Technical Debt Elimination",
+  "High-Scale Architecture",
+  "Automated CI/CD Pipelines"
+];
+
+const specs = [
+  { label: "Original Tools", value: "Replit, Cursor, No-Code" },
+  { label: "Target Stack", value: "Production-Grade JS/TS" },
+  { label: "Audit", value: "Full Code Review Included" },
+  { label: "Timeline", value: "Typical 2-4 Week Refactor" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="Prototypes to Production"
+  description="Converting rough code and prototypes into stable, scalable, and investor-ready systems."
+  heroImage="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

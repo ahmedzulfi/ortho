@@ -5,6 +5,12 @@
   --color-grey-36: #595E5C;
   --color-chartreuse-green-72: #D1FC71;
   --color-grey-78: #C9CBC5;
+  --border-radius-xs: 4px;
+}
+
+/* Enforce border radius everywhere, overriding inline and utility classes */
+* {
+  border-radius: var(--border-radius-xs) !important;
 }
 
 /* Lenis Recommended CSS */

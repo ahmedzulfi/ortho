@@ -1,138 +1,157 @@
 ---
 /**
- * Team Section - Orthodontics Align
+ * Team Section - ValidMVPs
  * Features the qualified doctors with their details.
  */
 
-const teamMembers = [
-  {
-    name: "Dr. Imran",
-    role: "CEO & Founder",
-    phone: "+92 321 9473647",
-    bio: "The clinical and visionary force behind Orthodontics Align, dedicated to revolutionizing 3D treatment planning and clear aligner manufacturing.",
-    image: "/images/325e7d76-c141-4a16-9ef2-690d6e75325a.jfif",
-    socials: { x: "#", linkedin: "#", instagram: "#" }
+const ceo = {
+  name: "Ahmed Zulfiqar ",
+  role: "CEO & Founder",
+  bio: "The technical and visionary force behind ValidMVPs, dedicated to helping founders bridge the gap between rough prototypes and production-ready systems.",
+  image: "/images/325e7d76-c141-4a16-9ef2-690d6e75325a.png",
+  socials: {
+    x: "https://x.com/AhmedZulfiqr",
+    linkedin: "https://www.linkedin.com/in/ahmedwebdesign/",
+    instagram: "https://www.instagram.com/mvpdevs/",
   },
-  {
-    name: "Abdul Sami",
-    role: "COO",
-    phone: "+92 321 9473647",
-    bio: "Driving operational excellence and global logistics to ensure every clinical partner receives precision-engineered solutions on time.",
-    image: "https://framerusercontent.com/images/i51F5Pye2h2lXWmET6L6xg4nu6o.png?width=800",
-    socials: { x: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    name: "Dr. Abdul Muneeb",
-    role: "Expert Planner",
-    phone: "+92 321 9473647",
-    bio: "Combining orthodontic expertise with digital design to provide comfortable treatment and perfect smile designs.",
-    image: "https://framerusercontent.com/images/mNnfxtlCi5hp2ZvLyYUsscSSTc.png?scale-down-to=1024&width=2552&height=2664",
-    socials: { x: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    name: "Dr. Maham Bilal",
-    role: "Expert Planner",
-    phone: "+92 321 9473647",
-    bio: "Focusing on innovative 3D planning techniques to enhance clinical outcomes and practice efficiency.",
-    image: "https://framerusercontent.com/images/i51F5Pye2h2lXWmET6L6xg4nu6o.png?width=800",
-    socials: { x: "#", linkedin: "#", instagram: "#" }
-  }
-];
-
-const [ceo, ...specialists] = teamMembers;
+};
 ---
 
 <section id="doctors" class="w-full bg-white">
-  <div class="box-border flex flex-col items-center justify-start w-full max-w-[1540px] mx-auto py-12 md:py-[120px] px-6 md:px-[50px] gap-8 md:gap-[80px] relative">
-  
-  <!-- Header Group -->
-  <div class="reveal-on-scroll w-full flex flex-col gap-[20px]">
-    <!-- Label -->
-    <div class="flex items-center gap-2 w-full">
-      <div class="w-1 h-1 bg-[var(--color-spring-green-8)] rounded-full"></div>
-      <div class="text-[var(--color-spring-green-8)] text-[16px] font-['Jost'] font-normal">Our Foundation</div>
-    </div>
-    <div class="w-full h-[1px] bg-[var(--color-grey-78)]"></div>
-    
-    <!-- Title and Subtitle -->
-    <div class="w-full flex flex-col gap-3 md:gap-4">
-      <p class="m-0 text-[var(--color-grey-36)] text-sm md:text-[18px] font-['Inter'] leading-[1.6]">Led by clinical visionaries and expert designers.</p>
-      <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <h2 class="m-0 text-[var(--color-spring-green-8)] text-[28px] md:text-[64px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[73.60px]">Planning Leadership</h2>
-        <a href="/contact" class="px-6 py-3 bg-[var(--color-chartreuse-green-72)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline flex items-center gap-2">
-          Contact Leadership
+  <div
+    class="box-border flex flex-col items-center justify-start w-full max-w-[1440px] mx-auto py-12 md:py-[120px] px-6 md:px-[0px] gap-8 md:gap-[80px] relative"
+  >
+    <!-- Section Header (Standardized) -->
+    <div class="w-full flex flex-col gap-6 mb-4 reveal-on-scroll">
+      <div class="flex items-center gap-2">
+        <div
+          class="w-1.5 h-1.5 bg-[var(--color-spring-green-8,#0D1B15)] rounded-full"
+        >
+        </div>
+        <div
+          class="text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Jost'] font-normal tracking-wide"
+        >
+          Technical Leadership
+        </div>
+      </div>
+      <div class="w-full h-[1px] bg-[var(--color-grey-78,#C9CBC5)] opacity-30">
+      </div>
+
+      <div
+        class="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
+      >
+        <div class="flex flex-col gap-4">
+          <h2
+            class="m-0 text-[var(--color-spring-green-8,#0D1B15)] text-4xl md:text-[64px] font-['Bricolage_Grotesque'] font-medium leading-[1.1] tracking-[-1.5px] md:tracking-[-2px]"
+          >
+            Technical Infrastructure
+          </h2>
+          <p
+            class="m-0 text-[var(--color-grey-36,#595E5C)] text-base md:text-lg font-['Inter'] font-normal leading-relaxed max-w-[600px]"
+          >
+            Led by technical partners dedicated to high-speed startup execution
+            and production-ready architecture.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          class="btn-premium-morph btn-green-bg px-8 py-4 bg-[var(--color-chartreuse-green-72,#D1FC71)] rounded-full text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Inter'] font-medium no-underline"
+        >
+          Work with Us
         </a>
       </div>
     </div>
-  </div>
 
-  <!-- New Hierarchical Stack Layout -->
-  <div class="w-full flex flex-col gap-12 md:gap-24">
-    
-    <!-- Top Row: Featured CEO Horizontal Card -->
-    <div class="reveal-on-scroll w-full">
-      <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 bg-[#F9FAFB] p-6 md:p-12 rounded-[40px] border border-black/5 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(13,27,21,0.06)] items-center">
-        <!-- CEO Image (Left on Desktop) -->
-        <div class="w-full lg:w-[380px] xl:w-[420px] aspect-[0.9] overflow-hidden rounded-3xl bg-[#eee] flex-shrink-0 shadow-lg">
-          <img 
-            src={ceo.image} 
-            alt={ceo.name} 
-            class="w-full h-full object-cover object-top"
-            style="object-position: center 10%;"
-          />
-        </div>
-        <!-- CEO Info (Right on Desktop) -->
-        <div class="flex flex-col gap-6 lg:max-w-[700px]">
-          <div class="flex flex-col gap-3">
-             <div class="flex items-center gap-3">
-               <div class="w-8 h-[2px] bg-[var(--color-chartreuse-green-72)]"></div>
-               <p class="m-0 text-[var(--color-grey-36)] text-xs md:text-sm font-['Inter'] font-bold uppercase tracking-[0.2em]">{ceo.role}</p>
-             </div>
-             <h3 class="m-0 text-[var(--color-spring-green-8)] text-[36px] md:text-[56px] font-['Bricolage_Grotesque'] font-medium leading-[1.1]">{ceo.name}</h3>
+    <!-- New Hierarchical Stack Layout -->
+    <div class="w-full flex flex-col gap-12 md:gap-24">
+      <!-- Top Row: Featured CEO Horizontal Card -->
+      <div class="reveal-on-scroll w-full">
+        <div
+          class="flex flex-col lg:flex-row gap-8 lg:gap-16 bg-[#F9FAFB] p-6 md:p-12 rounded-[40px] border border-black/5 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(13,27,21,0.06)] items-center"
+        >
+          <!-- CEO Image (Left on Desktop) -->
+          <div
+            class="w-full lg:w-[380px] xl:w-[420px] aspect-[0.9] overflow-hidden rounded-3xl bg-[#eee] flex-shrink-0 shadow-lg"
+          >
+            <img
+              src={ceo.image}
+              alt={ceo.name}
+              class="w-full h-full object-cover object-top"
+              style="object-position: center 10%;"
+            />
           </div>
-          <p class="m-0 text-[var(--color-grey-36)] text-lg md:text-[22px] font-['Inter'] font-normal leading-relaxed opacity-95">
-            {ceo.bio}
-          </p>
-          
-          <!-- Socials & Action -->
-          <div class="flex flex-wrap items-center gap-6 mt-4">
-            <div class="flex gap-3">
-              <a href={ceo.socials.linkedin} class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon">
-                <img src="https://framerusercontent.com/images/nPc7SX3zQOl0N4C05zFuh1PXsQ.svg" class="w-5 h-5 transition-transform group-hover/icon:scale-110" />
+          <!-- CEO Info (Right on Desktop) -->
+          <div class="flex flex-col gap-6 lg:max-w-[700px]">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-[2px] bg-[var(--color-chartreuse-green-72)]">
+                </div>
+                <p
+                  class="m-0 text-[var(--color-grey-36)] text-xs md:text-sm font-['Inter'] font-bold uppercase tracking-[0.2em]"
+                >
+                  {ceo.role}
+                </p>
+              </div>
+              <h3
+                class="m-0 text-[var(--color-spring-green-8)] text-[36px] md:text-[56px] font-['Bricolage_Grotesque'] font-medium leading-[1.1]"
+              >
+                {ceo.name}
+              </h3>
+            </div>
+            <p
+              class="m-0 text-[var(--color-grey-36)] text-lg md:text-[22px] font-['Inter'] font-normal leading-relaxed opacity-95"
+            >
+              {ceo.bio}
+            </p>
+
+            <!-- Socials & Action -->
+            <div class="flex flex-wrap items-center gap-6 mt-4">
+              <!-- LinkedIn -->
+              <a
+                href={ceo.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon"
+              >
+                <img
+                  src="https://framerusercontent.com/images/nPc7SX3zQOl0N4C05zFuh1PXsQ.svg"
+                  class="w-5 h-5 transition-transform group-hover/icon:scale-110"
+                />
               </a>
-              <a href={ceo.socials.instagram} class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon">
-                <img src="https://framerusercontent.com/images/amcnTj2qniRVVe75PxUGpNO8SK0.svg" class="w-5 h-5 transition-transform group-hover/icon:scale-110" />
+              <!-- Instagram -->
+              <a
+                href={ceo.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon"
+              >
+                <img
+                  src="https://framerusercontent.com/images/amcnTj2qniRVVe75PxUGpNO8SK0.svg"
+                  class="w-5 h-5 transition-transform group-hover/icon:scale-110"
+                />
+              </a>
+              <!-- Twitter (X) -->
+              <a
+                href={ceo.socials.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full flex items-center justify-center bg-white border border-black/5 transition-all duration-300 hover:bg-[var(--color-chartreuse-green-72)] hover:border-transparent group/icon"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="text-black transition-transform group-hover/icon:scale-110"
+                  ><path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  ></path></svg
+                >
               </a>
             </div>
-            <div class="hidden md:block w-[1px] h-10 bg-black/10"></div>
-            <p class="m-0 text-[var(--color-grey-36)] text-sm font-['Inter'] italic opacity-60">Founder's vision for perfection.</p>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Bottom Row: Specialists Typographic Grid -->
-    <div class="w-full flex flex-col gap-10">
-      <div class="flex flex-col gap-4">
-        <h4 class="m-0 text-[var(--color-spring-green-8)] text-sm font-['Inter'] font-bold uppercase tracking-[0.3em] opacity-40">The Expert Planning Unit</h4>
-        <div class="w-16 h-[2px] bg-[var(--color-chartreuse-green-72)]"></div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-        {specialists.map((member, idx) => (
-          <div class={`reveal-on-scroll stagger-${idx + 2} flex flex-col gap-6 p-8 rounded-[32px] border border-black/[0.03] bg-white transition-all duration-300 hover:border-[var(--color-chartreuse-green-72)] hover:translate-y-[-4px]`}>
-            <div class="flex flex-col gap-2">
-              <h4 class="m-0 text-[var(--color-spring-green-8)] text-[24px] lg:text-[28px] font-['Bricolage_Grotesque'] font-medium leading-tight">{member.name}</h4>
-              <p class="m-0 text-[var(--color-grey-36)] text-[11px] font-['Inter'] font-bold uppercase tracking-wider opacity-60">{member.role}</p>
-            </div>
-            <p class="m-0 text-[var(--color-grey-36)] text-base font-['Inter'] leading-relaxed opacity-80">{member.bio}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-
-  </div>
-
-  </div>
   </div>
 </section>

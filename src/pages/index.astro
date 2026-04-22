@@ -1,77 +1,75 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Services from '../components/Services.astro';
-import Process from '../components/Process.astro';
-import ComparisonGallery from '../components/ComparisonGallery.astro';
-import Team from '../components/Team.astro';
-import Gallery from '../components/Gallery.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FAQ from '../components/FAQ.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import Process from "../components/Process.astro";
+
+import Team from "../components/Team.astro";
+import Gallery from "../components/Gallery.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FAQ from "../components/FAQ.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Orthodontics Align - 3D Treatment Planning & Clear Aligners">
-	<script type="application/ld+json" slot="head">
-		{
-			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			"mainEntity": [
-				{
-					"@type": "Question",
-					"name": "What services does Orthodontics Align offer?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "We specialize in 3D treatment planning, clear aligner designing, and fabrication services for dental professionals worldwide. Over the past 5 years, we have successfully optimized treatment plans for more than 10,000 cases, empowering 500+ clinics to scale their aligner operations."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "How long does a treatment plan take?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Our expert orthodontic team delivers ready-to-print STL files and optimal treatment plans within a guaranteed 24-hour turnaround time. Clinics leveraging our rapid 24-hour planning see up to a 35% higher patient acceptance rate due to faster consultation times."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Do you provide the physical aligners?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Yes, we offer both digital planning files (STL) and end-to-end clear aligner manufacturing. We utilize premium, FDA-approved biocompatible materials that are proven to deliver 99% precise tooth movements."
-					}
-				}
-			]
-		}
-	</script>
-	<main class="min-h-screen bg-[#F6F7FF]">
-		<Navbar />
-		
-		<div id="main-content" class="sr-only">Main Content Starts Here</div>
-		
-		<Hero />
-		
-		<About />
+<Layout title="ValidMVPs - Turn Your Idea Into an Investor-Ready Product">
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is ValidMVPs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ValidMVPs is a fast-execution development service designed for founders and startups. We focus on building functional, investor-ready MVPs that validate business ideas early and scale reliably."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can you build an MVP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our approach prioritizes speed and clarity. Depending on complexity, we can deliver a functional, usable product with essential features like authentication, dashboards, and APIs in as little as 4-8 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help move my prototype from Replit to production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We specialize in bridging the gap for founders using no-code or 'vibe coding' tools. We take rough prototypes and convert them into structured, scalable applications with proper architecture and deployment pipelines."
+          }
+        }
+      ]
+    }
+  </script>
+  <main class="min-h-screen bg-[#F6F7FF]">
+    <Navbar />
 
-		<Services />
-		
-		<Process />
+    <div id="main-content" class="sr-only">Main Content Starts Here</div>
 
-		<ComparisonGallery />
+    <Hero />
 
-		<Team />
+    <About />
 
-		<Gallery />
+    <Services />
 
-		<Testimonials />
+    <Process />
 
-		<FAQ />
+    <Team />
 
-		<Contact />
+    <Gallery />
 
-		<Footer />
-	</main>
+    <Testimonials />
+
+    <FAQ />
+
+    <Contact />
+
+    <Footer />
+  </main>
 </Layout>

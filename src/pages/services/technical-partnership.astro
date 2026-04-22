@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "We act as your Fractional CTO and technical co-founder. We don't just execute on a brief; we help you shape it, ensuring that your technical roadmap aligns perfectly with your business goals.",
+  "From strategic consulting on tech stack choices to roadmap planning and founder-led design, we provide the architectural oversight needed to build a sustainable tech company. We speak both 'business' and 'code'.",
+  "Our partnership model is designed for founders who need more than just a dev agency. We provide the technical leadership that helps you navigate complexities, hire your initial team, and scale beyond the MVP."
+];
+
+const benefits = [
+  "Fractional CTO Leadership",
+  "Strategic Tech Consulting",
+  "Architectural Oversight",
+  "Team Hiring & Handover Support"
+];
+
+const specs = [
+  { label: "Collaboration", value: "Strategic Partner Level" },
+  { label: "Planning", value: "Roadmap & Tech Strategy" },
+  { label: "Advisory", value: "Investor Call Support" },
+  { label: "Duration", value: "Long-term Strategic Engagement" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="Technical Strategy & Partnership"
+  description="Acting as your technical co-founder to bridge the gap between business vision and technical execution."
+  heroImage="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

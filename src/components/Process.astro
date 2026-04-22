@@ -7,37 +7,37 @@
 const steps = [
   {
     index: "01",
-    title: "Upload Patient Records",
-    description: "Submit Upper/Lower scans (.STL), intraoral/extraoral photos, and the Rx Form through our secure clinical portal to begin the process.",
-    image: "/aligner_3d_planning_software_1776503684006.png",
-    features: ["Digital STL Scans", "Intraoral Photos", "Rx Form Submission", "Secure Portal"]
+    title: "Discovery & Blueprinting",
+    description: "We work directly with founders to identify the smallest viable version of their product. We define core features, user personas, and technical architecture.",
+    image: "/process/discovery.jfif",
+    features: ["Feature Scoping", "User Flow Mapping", "Tech Stack Selection", "Architecture Design"]
   },
   {
     index: "02",
-    title: "Digital Planning",
-    description: "Our expert orthodontic designers craft a precise 3D treatment simulation, optimizing tooth movements for maximum clinical predictability.",
-    image: "/aligner_3d_planning_software_1776503684006.png",
-    features: ["3D Simulation", "Expert Design", "Predictable Results", "24-Hour Planning"]
+    title: "Rapid Execution Phase",
+    description: "Our technical partners move into higher-gear development, building functional software with clean UI and scalable backend logic in record time.",
+    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+    features: ["MERN/PostgreSQL Build", "AI Feature Integration", "API Development", "Auth & State Mgmt"]
   },
   {
     index: "03",
-    title: "Precision Manufacturing",
-    description: "We utilize industrial 3D printers and high-grade thermoforming technology to manufacture your clear aligners with pixel-perfect accuracy.",
-    image: "/aligner_manufacturing_machine_1776503510227.png",
-    features: ["Industrial Printing", "Premium Materials", "Strict Quality Control", "Crystal Clarity"]
+    title: "Production Stabilization",
+    description: "We bridge the gap from prototype to production. This includes setting up automated deployment pipelines, cloud infrastructure, and rigorous testing.",
+    image: "/process/test.png",
+    features: ["Cloud Deployment", "Test Automation", "CI/CD Setup", "Performance Tuning"]
   },
   {
     index: "04",
-    title: "Expert Support",
-    description: "Enjoy constant clinical and technical support throughout the treatment lifecycle, ensuring the highest standards of care for your practice.",
-    image: "/aligner_high_volume_batch_1776504000020.png",
-    features: ["Clinical Guidance", "24/7 Logistics", "Case Progress Help", "Technical Support"]
+    title: "Launch & Iterate",
+    description: "Your investor-ready product goes live. We support the initial launch and help you iterate based on real-world user feedback and traction.",
+    image: "/process/launch.png",
+    features: ["Public Launch", "User Onboarding", "Feedback Collection", "Growth Support"]
   }
 ];
 ---
 
 <section id="process-section" class="w-full bg-[var(--color-white-solid,white)] overflow-hidden justify-center items-center flex py-20 md:py-[120px]">
-  <div class="w-full max-w-[1540px] px-6 md:px-[50px] overflow-hidden flex-col justify-start items-center gap-12 md:gap-20 inline-flex">
+  <div class="w-full max-w-[1440px] px-6 md:px-[0px] overflow-hidden flex-col justify-start items-center gap-12 md:gap-20 inline-flex">
     
     <!-- Section Header -->
     <div class="reveal-on-scroll w-full flex-col justify-start items-start gap-5 flex">
@@ -45,15 +45,15 @@ const steps = [
         <div class="self-stretch justify-center items-center gap-2 inline-flex">
           <div class="w-1 h-1 relative bg-[var(--color-spring-green-8)] rounded-[30px]"></div>
           <div class="flex-1 flex-col justify-start items-start inline-flex">
-            <div class="self-stretch text-[var(--color-spring-green-8)] text-base font-['Inter'] font-normal leading-[27.20px]">Our Process</div>
+            <div class="self-stretch text-[var(--color-spring-green-8)] text-base font-['Inter'] font-normal leading-[27.20px]">Our Execution</div>
           </div>
         </div>
       </div>
       
       <div class="self-stretch relative flex flex-col md:flex-row justify-between items-start md:items-end flex-wrap gap-5">
-        <h2 class="m-0 text-[var(--color-spring-green-8)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[57.60px]">Working Process</h2>
+        <h2 class="m-0 text-[var(--color-spring-green-8)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[57.60px]">How We Build</h2>
         <div class="max-w-[571px] text-[var(--color-grey-36)] text-base md:text-lg font-['Inter'] font-normal leading-relaxed md:leading-[30.60px]">
-          Get your orthodontic treatment planning done in 24 hours turn-around time using advanced technology under experts supervision.
+          From idea to launch in weeks. Our streamlined workflow ensures constant visibility and rapid delivery of working software.
         </div>
       </div>
     </div>
@@ -66,7 +66,6 @@ const steps = [
           data-index={idx}
           data-expanded={idx === 0 ? "true" : "false"}
         >
-          <!-- Collapsed Header (Always Visible) -->
           <div class="step-header">
             <div class="step-title-group">
               <div class="step-number-circle">
@@ -127,7 +126,7 @@ const steps = [
 
   /* Header Interaction */
   .step-header {
-    padding: 32px 70px;
+    padding: 22px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -149,7 +148,6 @@ const steps = [
     width: 60px;
     height: 60px;
     border-radius: 100px;
-    border: 2px solid var(--color-spring-green-8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,7 +155,7 @@ const steps = [
   }
 
   .process-step-item[data-expanded="true"] .step-number-circle {
-    border-color: #FFF;
+    border-color: #ffffff00;
   }
 
   .step-number {
@@ -188,7 +186,6 @@ const steps = [
   .step-toggle-btn {
     width: 64px;
     height: 64px;
-    background: var(--color-chartreuse-green-72);
     border-radius: 100px;
     display: flex;
     align-items: center;
@@ -197,13 +194,14 @@ const steps = [
   }
 
   .process-step-item[data-expanded="true"] .step-toggle-btn {
-    background: #F7F7F7;
     transform: rotate(45deg);
   }
-
+.process-step-item[data-expanded="true"] .toggle-icon{
+  background: #fff;
+}
   .toggle-icon {
-    width: 16px;
-    height: 16px;
+    width: 19px;
+    height: 19px;
     background: #0D1B15;
     clip-path: polygon(45% 0%, 55% 0%, 55% 45%, 100% 45%, 100% 55%, 55% 55%, 55% 100%, 45% 100%, 45% 55%, 0% 55%, 0% 45%, 45% 45%);
   }

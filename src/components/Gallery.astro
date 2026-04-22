@@ -1,62 +1,97 @@
 ---
 const galleryImages = [
-  "/aligner_3d_planning_software_1776503684006.png",
-  "/aligner_manufacturing_machine_1776503510227.png",
-  "/aligner_lifestyle_smile_1776503878607.png",
-  "/hero_aligner_tray_close_up_1776503491227.png",
-  "/aligner_high_volume_batch_1776504000020.png",
-  "/aligner_3d_planning_software_1776503684006.png",
-  "/aligner_manufacturing_machine_1776503510227.png",
-  "/aligner_lifestyle_smile_1776503878607.png"
+  "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/3182811/pexels-photo-3182811.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
 ];
 ---
-<section class="gallery-section w-full py-12 md:py-[112px] overflow-hidden bg-[#F6F7FF] flex flex-col items-center gap-5">
-  
+
+<section
+  class="gallery-section w-full py-12 md:py-[112px] overflow-hidden bg-[#F6F7FF] flex flex-col items-center gap-5"
+>
   <!-- Top Marquee Row (Staggered Offsets) -->
   <div class="marquee-container h-[210px] md:h-[270px]">
     <div class="marquee-track">
-      {Array(3).fill(galleryImages).flat().map((img, i) => {
-        const offsets = ['mt-0', 'mt-[40px]', 'mt-[80px]', 'mt-[120px]', 'mt-[160px]', 'mt-[120px]', 'mt-[80px]', 'mt-[40px]'];
-        const topOffset = offsets[i % offsets.length];
-        return (
-          <div class={`gallery-item ${topOffset}`}>
-            <img src={img} alt="Precision treatment plan" loading="lazy" />
-          </div>
-        );
-      })}
+      {
+        Array(3)
+          .fill(galleryImages)
+          .flat()
+          .map((img, i) => {
+            const offsets = [
+              "mt-0",
+              "mt-[40px]",
+              "mt-[80px]",
+              "mt-[120px]",
+              "mt-[160px]",
+              "mt-[120px]",
+              "mt-[80px]",
+              "mt-[40px]",
+            ];
+            const topOffset = offsets[i % offsets.length];
+            return (
+              <div class={`gallery-item ${topOffset}`}>
+                <img
+                  src={img}
+                  alt="Startup technical execution"
+                  loading="lazy"
+                />
+              </div>
+            );
+          })
+      }
     </div>
   </div>
 
   <!-- Center Content -->
-  <div class="w-full max-w-[610px] flex flex-col items-center justify-center gap-6 md:gap-10 px-6 py-6 md:py-10 z-10">
-    <div class="self-stretch flex flex-col justify-start items-center gap-4 md:gap-[24.01px]">
-      
+  <div
+    class="w-full max-w-[1440px] flex flex-col items-center justify-center gap-6 md:gap-10 px-6 py-6 md:py-10 z-10"
+  >
+    <div
+      class="w-full max-w-[610px] self-stretch flex flex-col justify-start items-center gap-4 md:gap-[24.01px] mx-auto"
+    >
       <!-- Label -->
-      <div class="self-stretch flex flex-col justify-center items-center">
-        <div class="inline-flex justify-center items-center gap-2">
-          <div class="w-1 h-1 bg-[#0D1B15] rounded-[30px]"></div>
-          <div class="flex flex-col justify-start items-start">
-            <div class="text-[#0D1B15] text-sm md:text-base font-['Jost'] font-normal leading-relaxed">Planning Gallery</div>
-          </div>
+      <div class="flex items-center gap-2">
+        <div
+          class="w-1.5 h-1.5 bg-[var(--color-spring-green-8,#0D1B15)] rounded-full"
+        >
+        </div>
+        <div
+          class="text-[var(--color-spring-green-8,#0D1B15)] text-base font-['Jost'] font-normal tracking-wide"
+        >
+          Showcase
         </div>
       </div>
 
       <!-- Heading & Paragraph -->
-      <div class="reveal-on-scroll self-stretch flex flex-col justify-start items-center gap-4 md:gap-6 text-center">
-        <h2 class="m-0 text-[#0D1B15] text-[24px] md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-[1.2]">
-          Visualizing Precision in Every Treatment Setup
+      <div
+        class="reveal-on-scroll self-stretch flex flex-col justify-start items-center gap-4 md:gap-6 text-center"
+      >
+        <h2
+          class="m-0 text-[#0D1B15] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-[1.1] tracking-[-1.5px] md:tracking-[-2px]"
+        >
+          Visualizing Precision in Every MVP Build
         </h2>
-        <p class="m-0 max-w-[540px] text-[#0D1B15] text-[15px] md:text-[18px] font-['Inter'] font-normal leading-[1.6]">
-          Check out our gallery featuring high-accuracy 3D setups, from simple alignment to complex bite corrections.
+        <p
+          class="m-0 max-w-[540px] text-[#0D1B15] text-[15px] md:text-[18px] font-['Inter'] font-normal leading-relaxed opacity-80"
+        >
+          Check out our portfolio featuring high-fidelity startup launches, from
+          complex dashboards to intelligent AI workflows.
         </p>
       </div>
-
     </div>
 
     <!-- Button -->
     <div class="flex flex-col justify-start items-start">
-      <a href="/contact" class="pt-[11px] pb-[12px] px-4 bg-[#D1FC71] rounded-full text-[#0D1B15] font-['Inter'] text-base font-normal leading-[27.20px] no-underline transition-transform duration-300 ease-in-out">
-        Start Your Case
+      <a
+        href="/contact"
+        class="btn-premium-morph btn-green-bg px-8 py-4 bg-[#D1FC71] rounded-full text-[#0D1B15] font-['Inter'] text-base font-medium no-underline transition-all ring-1 ring-black/5"
+      >
+        Plan Your Product
       </a>
     </div>
   </div>
@@ -64,18 +99,31 @@ const galleryImages = [
   <!-- Bottom Marquee Row (Reverse Staggered) -->
   <div class="marquee-container h-[210px] md:h-[270px]">
     <div class="marquee-track reverse">
-      {Array(3).fill(galleryImages.reverse()).flat().map((img, i) => {
-        const offsets = ['mt-[160px]', 'mt-[120px]', 'mt-[80px]', 'mt-[40px]', 'mt-0', 'mt-[40px]', 'mt-[80px]', 'mt-[120px]'];
-        const topOffset = offsets[i % offsets.length];
-        return (
-          <div class={`gallery-item ${topOffset}`}>
-            <img src={img} alt="Precision treatment plan" loading="lazy" />
-          </div>
-        );
-      })}
+      {
+        Array(3)
+          .fill(galleryImages.reverse())
+          .flat()
+          .map((img, i) => {
+            const offsets = [
+              "mt-[160px]",
+              "mt-[120px]",
+              "mt-[80px]",
+              "mt-[40px]",
+              "mt-0",
+              "mt-[40px]",
+              "mt-[80px]",
+              "mt-[120px]",
+            ];
+            const topOffset = offsets[i % offsets.length];
+            return (
+              <div class={`gallery-item ${topOffset}`}>
+                <img src={img} alt="Technical workplace clone" loading="lazy" />
+              </div>
+            );
+          })
+      }
     </div>
   </div>
-
 </section>
 
 <style>
@@ -83,7 +131,13 @@ const galleryImages = [
     width: 100%;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
   }
 
   .marquee-track {
@@ -103,12 +157,13 @@ const galleryImages = [
     flex-shrink: 0;
     border-radius: 12px;
     overflow: hidden;
+    background: #eee;
   }
 
   @media (min-width: 768px) {
     .gallery-item {
-      width: 115px;
-      height: 110px;
+      width: 135px;
+      height: 130px;
     }
   }
 
@@ -119,12 +174,20 @@ const galleryImages = [
   }
 
   @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   @keyframes scroll-reverse {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 </style>

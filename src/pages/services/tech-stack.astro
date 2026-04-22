@@ -1,0 +1,32 @@
+---
+import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
+
+const details = [
+  "Choice of technology can make or break a startup. We build on solid foundations using widely adopted, high-performance tech stacks that ensure maximum longevity and reliability for your product.",
+  "We specialize in the MERN stack (MongoDB, Express, React, Node.js) and relational databases like PostgreSQL. By using these industry standards, we ensure that your product is easy to maintain, scale, and eventually handover to an internal team.",
+  "From robust APIs to efficient database schemas, we design every layer of your technical infrastructure to serve your current needs while providing a clear path for future growth."
+];
+
+const benefits = [
+  "Industry Standard Stacks",
+  "Scalable Infrastructure",
+  "High Performance APIs",
+  "Easy Team Handover"
+];
+
+const specs = [
+  { label: "Frontend", value: "React, Next.js, TailwindCSS" },
+  { label: "Backend", value: "Node.js, Express, Go" },
+  { label: "Database", value: "PostgreSQL, MongoDB, Redis" },
+  { label: "Cloud", value: "AWS, GCP, DigitalOcean" }
+];
+---
+
+<ServiceDetailTemplate 
+  title="Modern & Scalable Tech Stacks"
+  description="Building on proven, reliable, and high-performance technologies for long-term startup health."
+  heroImage="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  details={details}
+  benefits={benefits}
+  specs={specs}
+/>

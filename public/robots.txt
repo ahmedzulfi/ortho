@@ -1,4 +1,4 @@
-# Orthodontics Align Robots.txt
+# ValidMVPs Robots.txt
 # Optimized for Search & AI Indexing (GEO)
 
 User-agent: *
@@ -19,5 +19,15 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 # Sitemap
-Sitemap: https://orthodonticsalign.com/sitemap.xml
+Sitemap: https://validmvps.com/sitemap.xml
+
