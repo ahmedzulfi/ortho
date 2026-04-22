@@ -16,29 +16,29 @@ metadata in a single structured entity.
 
 ### Full Property Reference
 
-**Note:** Google states "there are no required properties" for BlogPosting — all properties
+**Note:** Google states "there are no required properties" for BlogPosting all properties
 below are recommended. `@context` and `@type` are required by the JSON-LD spec itself.
 
-| Property | Status | Type | Description |
-|----------|--------|------|-------------|
-| `@context` | JSON-LD required | URL | Always `"https://schema.org"` |
-| `@type` | JSON-LD required | String | Always `"BlogPosting"` |
-| `@id` | Recommended | URI | Stable identifier: `{siteUrl}/blog/{slug}#article` |
-| `headline` | Recommended | String | Post title, max 110 characters |
-| `description` | Recommended | String | Meta description, 150-160 characters |
-| `datePublished` | Recommended | ISO 8601 | Original publish date |
-| `dateModified` | Recommended | ISO 8601 | Last content update date |
-| `author` | Recommended | Person | Author entity (use @id reference) |
-| `publisher` | Recommended | Organization | Site/company entity (use @id reference) |
-| `image` | Recommended | ImageObject or URL | Featured image, min 1200x630px |
-| `mainEntityOfPage` | Recommended | WebPage | The page URL |
-| `wordCount` | Recommended | Integer | Total word count of article body |
-| `articleSection` | Recommended | String | Category/topic (e.g., "SEO") |
-| `keywords` | Recommended | String or Array | Comma-separated or array of keywords |
-| `inLanguage` | Recommended | String | BCP 47 language code (e.g., "en-US") |
-| `url` | Recommended | URL | Canonical URL of the post |
-| `thumbnailUrl` | Optional | URL | Smaller preview image |
-| `articleBody` | Optional | String | Full text (usually omitted for size) |
+| Property           | Status           | Type               | Description                                        |
+| ------------------ | ---------------- | ------------------ | -------------------------------------------------- |
+| `@context`         | JSON-LD required | URL                | Always `"https://schema.org"`                      |
+| `@type`            | JSON-LD required | String             | Always `"BlogPosting"`                             |
+| `@id`              | Recommended      | URI                | Stable identifier: `{siteUrl}/blog/{slug}#article` |
+| `headline`         | Recommended      | String             | Post title, max 110 characters                     |
+| `description`      | Recommended      | String             | Meta description, 150-160 characters               |
+| `datePublished`    | Recommended      | ISO 8601           | Original publish date                              |
+| `dateModified`     | Recommended      | ISO 8601           | Last content update date                           |
+| `author`           | Recommended      | Person             | Author entity (use @id reference)                  |
+| `publisher`        | Recommended      | Organization       | Site/company entity (use @id reference)            |
+| `image`            | Recommended      | ImageObject or URL | Featured image, min 1200x630px                     |
+| `mainEntityOfPage` | Recommended      | WebPage            | The page URL                                       |
+| `wordCount`        | Recommended      | Integer            | Total word count of article body                   |
+| `articleSection`   | Recommended      | String             | Category/topic (e.g., "SEO")                       |
+| `keywords`         | Recommended      | String or Array    | Comma-separated or array of keywords               |
+| `inLanguage`       | Recommended      | String             | BCP 47 language code (e.g., "en-US")               |
+| `url`              | Recommended      | URL                | Canonical URL of the post                          |
+| `thumbnailUrl`     | Optional         | URL                | Smaller preview image                              |
+| `articleBody`      | Optional         | String             | Full text (usually omitted for size)               |
 
 ### Complete BlogPosting Example
 
@@ -69,7 +69,12 @@ below are recommended. `@context` and `@type` are required by the JSON-LD spec i
   },
   "wordCount": 3200,
   "articleSection": "SEO",
-  "keywords": ["technical SEO", "structured data", "Core Web Vitals", "schema markup"],
+  "keywords": [
+    "technical SEO",
+    "structured data",
+    "Core Web Vitals",
+    "schema markup"
+  ],
   "inLanguage": "en-US"
 }
 ```
@@ -82,19 +87,19 @@ Used for author attribution in BlogPosting and on dedicated author pages.
 
 ### Full Property Reference
 
-| Property | Required | Type | Description |
-|----------|----------|------|-------------|
-| `@type` | Yes | String | Always `"Person"` |
-| `@id` | Yes | URI | Stable: `{siteUrl}/author/{slug}#person` |
-| `name` | Yes | String | Full name |
-| `jobTitle` | Yes | String | Current professional title |
-| `url` | Yes | URL | Author page URL |
-| `image` | Yes | URL | Professional headshot |
-| `sameAs` | Yes | Array | Social profile URLs (LinkedIn, Twitter, GitHub, personal site) |
-| `worksFor` | Recommended | Organization | Current employer |
-| `alumniOf` | Optional | CollegeOrUniversity | Educational background |
-| `description` | Recommended | String | Brief professional bio |
-| `knowsAbout` | Optional | Array | Expertise topics |
+| Property      | Required    | Type                | Description                                                    |
+| ------------- | ----------- | ------------------- | -------------------------------------------------------------- |
+| `@type`       | Yes         | String              | Always `"Person"`                                              |
+| `@id`         | Yes         | URI                 | Stable: `{siteUrl}/author/{slug}#person`                       |
+| `name`        | Yes         | String              | Full name                                                      |
+| `jobTitle`    | Yes         | String              | Current professional title                                     |
+| `url`         | Yes         | URL                 | Author page URL                                                |
+| `image`       | Yes         | URL                 | Professional headshot                                          |
+| `sameAs`      | Yes         | Array               | Social profile URLs (LinkedIn, Twitter, GitHub, personal site) |
+| `worksFor`    | Recommended | Organization        | Current employer                                               |
+| `alumniOf`    | Optional    | CollegeOrUniversity | Educational background                                         |
+| `description` | Recommended | String              | Brief professional bio                                         |
+| `knowsAbout`  | Optional    | Array               | Expertise topics                                               |
 
 ### Complete Person Example
 
@@ -134,18 +139,18 @@ Represents the publishing entity. Referenced by every BlogPosting via the
 
 ### Full Property Reference
 
-| Property | Required | Type | Description |
-|----------|----------|------|-------------|
-| `@type` | Yes | String | `"Organization"` or `"LocalBusiness"` |
-| `@id` | Yes | URI | Stable: `{siteUrl}#organization` |
-| `name` | Yes | String | Company/brand name |
-| `url` | Yes | URL | Homepage URL |
-| `logo` | Yes | ImageObject | Company logo (min 112x112px, max 600px wide) |
-| `sameAs` | Recommended | Array | Social media profile URLs |
-| `contactPoint` | Recommended | ContactPoint | Support/contact info |
-| `description` | Optional | String | Brief company description |
-| `founder` | Optional | Person | Company founder |
-| `foundingDate` | Optional | Date | When the company was founded |
+| Property       | Required    | Type         | Description                                  |
+| -------------- | ----------- | ------------ | -------------------------------------------- |
+| `@type`        | Yes         | String       | `"Organization"` or `"LocalBusiness"`        |
+| `@id`          | Yes         | URI          | Stable: `{siteUrl}#organization`             |
+| `name`         | Yes         | String       | Company/brand name                           |
+| `url`          | Yes         | URL          | Homepage URL                                 |
+| `logo`         | Yes         | ImageObject  | Company logo (min 112x112px, max 600px wide) |
+| `sameAs`       | Recommended | Array        | Social media profile URLs                    |
+| `contactPoint` | Recommended | ContactPoint | Support/contact info                         |
+| `description`  | Optional    | String       | Brief company description                    |
+| `founder`      | Optional    | Person       | Company founder                              |
+| `foundingDate` | Optional    | Date         | When the company was founded                 |
 
 ### Complete Organization Example
 
@@ -234,7 +239,7 @@ Each breadcrumb item requires `@type`, `position`, `name`, and `item` (URL).
 
 **Important**: Since August 2023, Google restricted FAQ rich results to government and health
 authority websites only. For all other sites, **no FAQ rich results will appear in Google
-Search** — the markup produces no visual search enhancement.
+Search** the markup produces no visual search enhancement.
 
 However, the markup is still worth including for AI citation reasons: LLMs parse your page's
 **visible FAQ text** (not the JSON-LD) and Q&A-formatted content improves extractability for
@@ -303,16 +308,16 @@ Used within BlogPosting for featured images and inline article images.
 
 ### Properties
 
-| Property | Required | Type | Description |
-|----------|----------|------|-------------|
-| `@type` | Yes | String | `"ImageObject"` |
-| `url` | Yes | URL | Full image URL |
-| `width` | Yes | Integer | Width in pixels |
-| `height` | Yes | Integer | Height in pixels |
-| `caption` | Recommended | String | Descriptive caption |
-| `creditText` | Recommended | String | Photographer or source credit |
-| `copyrightHolder` | Optional | Person/Organization | Rights holder |
-| `license` | Optional | URL | Link to license (e.g., Creative Commons) |
+| Property          | Required    | Type                | Description                              |
+| ----------------- | ----------- | ------------------- | ---------------------------------------- |
+| `@type`           | Yes         | String              | `"ImageObject"`                          |
+| `url`             | Yes         | URL                 | Full image URL                           |
+| `width`           | Yes         | Integer             | Width in pixels                          |
+| `height`          | Yes         | Integer             | Height in pixels                         |
+| `caption`         | Recommended | String              | Descriptive caption                      |
+| `creditText`      | Recommended | String              | Photographer or source credit            |
+| `copyrightHolder` | Optional    | Person/Organization | Rights holder                            |
+| `license`         | Optional    | URL                 | Link to license (e.g., Creative Commons) |
 
 ### Complete ImageObject Example
 
@@ -340,19 +345,19 @@ AI visibility correlation (0.737). Each embedded video gets its own VideoObject.
 
 ### Properties
 
-| Property | Required | Type | Description |
-|----------|----------|------|-------------|
-| `@type` | Yes | String | `"VideoObject"` |
-| `@id` | Yes | URI | `{siteUrl}/blog/{slug}#video-{index}` |
-| `name` | Yes | String | Video title |
-| `description` | Yes | String | First 200 chars of video description |
-| `thumbnailUrl` | Yes | URL | `https://img.youtube.com/vi/{id}/hqdefault.jpg` |
-| `uploadDate` | Yes | ISO 8601 | Video publish date |
-| `contentUrl` | Yes | URL | `https://www.youtube.com/watch?v={id}` |
-| `embedUrl` | Yes | URL | `https://www.youtube.com/embed/{id}` |
-| `duration` | Recommended | ISO 8601 | Duration (e.g., `PT10M30S`) |
-| `interactionStatistic` | Recommended | InteractionCounter | View count |
-| `publisher` | Optional | Organization | Channel name and URL |
+| Property               | Required    | Type               | Description                                     |
+| ---------------------- | ----------- | ------------------ | ----------------------------------------------- |
+| `@type`                | Yes         | String             | `"VideoObject"`                                 |
+| `@id`                  | Yes         | URI                | `{siteUrl}/blog/{slug}#video-{index}`           |
+| `name`                 | Yes         | String             | Video title                                     |
+| `description`          | Yes         | String             | First 200 chars of video description            |
+| `thumbnailUrl`         | Yes         | URL                | `https://img.youtube.com/vi/{id}/hqdefault.jpg` |
+| `uploadDate`           | Yes         | ISO 8601           | Video publish date                              |
+| `contentUrl`           | Yes         | URL                | `https://www.youtube.com/watch?v={id}`          |
+| `embedUrl`             | Yes         | URL                | `https://www.youtube.com/embed/{id}`            |
+| `duration`             | Recommended | ISO 8601           | Duration (e.g., `PT10M30S`)                     |
+| `interactionStatistic` | Recommended | InteractionCounter | View count                                      |
+| `publisher`            | Optional    | Organization       | Channel name and URL                            |
 
 ### Complete VideoObject Example
 
@@ -401,12 +406,7 @@ Use `cssSelector` (preferred) or `xPath` to identify speakable content sections.
   "@type": "WebPage",
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-summary",
-      ".faq-answer",
-      "h1",
-      ".key-takeaway"
-    ]
+    "cssSelector": [".article-summary", ".faq-answer", "h1", ".key-takeaway"]
   }
 }
 ```
@@ -445,15 +445,15 @@ and AI systems to deduplicate references.
 
 ### Standard Patterns
 
-| Entity | @id Pattern | Example |
-|--------|-------------|---------|
-| Blog Post | `{siteUrl}/blog/{slug}#article` | `https://example.com/blog/seo-guide#article` |
-| Author | `{siteUrl}/author/{slug}#person` | `https://example.com/author/sarah-chen#person` |
-| Organization | `{siteUrl}#organization` | `https://example.com#organization` |
-| WebPage | `{siteUrl}/blog/{slug}` | `https://example.com/blog/seo-guide` |
+| Entity         | @id Pattern                        | Example                                         |
+| -------------- | ---------------------------------- | ----------------------------------------------- |
+| Blog Post      | `{siteUrl}/blog/{slug}#article`    | `https://example.com/blog/seo-guide#article`    |
+| Author         | `{siteUrl}/author/{slug}#person`   | `https://example.com/author/sarah-chen#person`  |
+| Organization   | `{siteUrl}#organization`           | `https://example.com#organization`              |
+| WebPage        | `{siteUrl}/blog/{slug}`            | `https://example.com/blog/seo-guide`            |
 | BreadcrumbList | `{siteUrl}/blog/{slug}#breadcrumb` | `https://example.com/blog/seo-guide#breadcrumb` |
-| FAQPage | `{siteUrl}/blog/{slug}#faq` | `https://example.com/blog/seo-guide#faq` |
-| VideoObject | `{siteUrl}/blog/{slug}#video-{N}` | `https://example.com/blog/seo-guide#video-1` |
+| FAQPage        | `{siteUrl}/blog/{slug}#faq`        | `https://example.com/blog/seo-guide#faq`        |
+| VideoObject    | `{siteUrl}/blog/{slug}#video-{N}`  | `https://example.com/blog/seo-guide#video-1`    |
 
 ### Rules
 
@@ -481,24 +481,24 @@ Instead of embedding a full Person object in every BlogPosting, reference the
 These types have been deprecated by Google. Using them does not cause penalties
 but wastes implementation effort and may trigger rich result validation warnings.
 
-| Type | Deprecated | Date | Notes |
-|------|------------|------|-------|
-| HowTo | Yes | September 2023 | Rich results removed entirely |
-| SpecialAnnouncement | Yes | July 2025 | COVID-era, no longer processed |
-| ClaimReview | Yes | June 2025 | Google structured data simplification; no longer generates rich results |
-| Practice Problem | Yes | -- | Educational, no longer generates rich results |
-| Dataset | Yes | -- | For general search; still works in Google Dataset Search |
-| Sitelinks Search Box | Yes | -- | Google generates these algorithmically now |
-| Q&A | Yes | January 2026 | Replaced by community forum features |
+| Type                 | Deprecated | Date           | Notes                                                                   |
+| -------------------- | ---------- | -------------- | ----------------------------------------------------------------------- |
+| HowTo                | Yes        | September 2023 | Rich results removed entirely                                           |
+| SpecialAnnouncement  | Yes        | July 2025      | COVID-era, no longer processed                                          |
+| ClaimReview          | Yes        | June 2025      | Google structured data simplification; no longer generates rich results |
+| Practice Problem     | Yes        | --             | Educational, no longer generates rich results                           |
+| Dataset              | Yes        | --             | For general search; still works in Google Dataset Search                |
+| Sitelinks Search Box | Yes        | --             | Google generates these algorithmically now                              |
+| Q&A                  | Yes        | January 2026   | Replaced by community forum features                                    |
 
 ### What to Use Instead
 
-| Deprecated Type | Alternative |
-|----------------|-------------|
-| HowTo | Use standard BlogPosting with clear step headings (H2/H3) |
-| Q&A | Use FAQPage for editorial Q&A; no replacement for community Q&A |
-| SpecialAnnouncement | Use standard Article or NewsArticle |
-| ClaimReview | No direct replacement for blogs; use Author entity with credentials |
+| Deprecated Type     | Alternative                                                         |
+| ------------------- | ------------------------------------------------------------------- |
+| HowTo               | Use standard BlogPosting with clear step headings (H2/H3)           |
+| Q&A                 | Use FAQPage for editorial Q&A; no replacement for community Q&A     |
+| SpecialAnnouncement | Use standard Article or NewsArticle                                 |
+| ClaimReview         | No direct replacement for blogs; use Author entity with credentials |
 
 ---
 
@@ -667,18 +667,18 @@ multiple schema types.
 
 ## Schema Validation Checklist
 
-| Check | Pass | Fail |
-|-------|------|------|
-| JSON-LD in HTML source (not JS-injected) | In `<head>` or `<body>` tag | Loaded via JavaScript |
-| Valid JSON syntax | Passes JSON.parse() | Syntax errors |
-| @context is `https://schema.org` | Exact match | Missing or HTTP |
-| @id uses stable fragment pattern | Consistent across builds | Random or missing |
-| dateModified matches actual update | Within 24 hours of last edit | Stale or fabricated |
-| Author @id matches author page | Same URI used everywhere | Inconsistent references |
-| Image URLs are absolute | Start with `https://` | Relative paths |
-| No deprecated types used | None from deprecated list | HowTo, Q&A, etc. |
-| 3+ schema types per page | BlogPosting + Person + Org + Breadcrumb minimum | Fewer than 3 |
-| Validates in Google Rich Results Test | No errors | Errors present |
+| Check                                    | Pass                                            | Fail                    |
+| ---------------------------------------- | ----------------------------------------------- | ----------------------- |
+| JSON-LD in HTML source (not JS-injected) | In `<head>` or `<body>` tag                     | Loaded via JavaScript   |
+| Valid JSON syntax                        | Passes JSON.parse()                             | Syntax errors           |
+| @context is `https://schema.org`         | Exact match                                     | Missing or HTTP         |
+| @id uses stable fragment pattern         | Consistent across builds                        | Random or missing       |
+| dateModified matches actual update       | Within 24 hours of last edit                    | Stale or fabricated     |
+| Author @id matches author page           | Same URI used everywhere                        | Inconsistent references |
+| Image URLs are absolute                  | Start with `https://`                           | Relative paths          |
+| No deprecated types used                 | None from deprecated list                       | HowTo, Q&A, etc.        |
+| 3+ schema types per page                 | BlogPosting + Person + Org + Breadcrumb minimum | Fewer than 3            |
+| Validates in Google Rich Results Test    | No errors                                       | Errors present          |
 
 ### Validation Tools
 

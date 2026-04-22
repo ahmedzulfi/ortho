@@ -1,0 +1,270 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import BlogDetailsHero from "../../components/BlogDetailsHero.astro";
+import BlogProse from "../../components/BlogProse.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import Contact from "../../components/Contact.astro";
+import FAQ from "../../components/FAQ.astro";
+import Footer from "../../components/Footer.astro";
+
+const post = {
+  id: "ai-assisted-workflow-uncle-website",
+  data: {
+    title:
+      "I Built My Uncle a Website in a Few Hours Using AI   The ValidMVPs Workflow",
+    excerpt:
+      "Storytelling meets engineering. Learn the exact AI-assisted workflow we used to transform a vague voice note into a professional, production-grade website in record time.",
+    publishDate: "2026-04-22",
+    image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg", // Accurate tech collaboration image
+    author: {
+      name: "Ahmed Zulfiqar",
+      image:
+        "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    },
+  },
+};
+---
+
+<Layout
+  title={`${post.data.title} | ValidMVPs`}
+  description={post.data.excerpt}
+>
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "I Built My Uncle a Website in a Few Hours Using AI   The ValidMVPs Workflow",
+      "image": "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed Zulfiqar"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ValidMVPs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://validmvps.com/images/LOGO.png"
+        }
+      },
+      "datePublished": "2026-04-22",
+      "dateModified": "2026-04-22",
+      "description": "A technical case study on using an AI-assisted workflow to build professional websites rapidly."
+    }
+  </script>
+  <meta property="og:type" content="article" slot="head" />
+  <meta property="article:published_time" content="2026-04-22" slot="head" />
+  <meta property="article:modified_time" content="2026-04-22" slot="head" />
+  <meta property="article:author" content="Ahmed Zulfiqar" slot="head" />
+  <meta property="article:section" content="Case Study" slot="head" />
+  <meta property="article:tag" content="AI Workflow" slot="head" />
+  <meta property="article:tag" content="Rapid Development" slot="head" />
+  <meta property="article:tag" content="Astro" slot="head" />
+
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <BlogDetailsHero
+      title={post.data.title}
+      excerpt={post.data.excerpt}
+      authorName={post.data.author.name}
+      authorImage={post.data.author.image}
+      publishDate={new Date(post.data.publishDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+      featuredImage={post.data.image}
+    />
+
+    <BlogProse>
+      <div
+        class="flex flex-col items-center gap-10 md:gap-20 w-full mx-auto text-[#0D1B15]"
+      >
+        <div class="w-full">
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
+          >
+            <strong
+              >AI-Assisted Workflows help technical founders deliver
+              high-fidelity web assets with 90% less manual overhead.</strong
+            > They utilize a structured multi-tool chain Briefing, Templating, Refining,
+            and Deploying to ensure production-grade results. Teams see execution
+            times drop from weeks to hours without compromising on design quality.
+          </p>
+
+          <div
+            class="p-6 bg-[#D1FC71]/10 border-l-4 border-[#D1FC71] italic text-xl mb-8"
+          >
+            <p>Triples:</p>
+            <ul class="list-disc pl-8">
+              <li>AI Workflows reduce manual overhead.</li>
+              <li>Structured toolchains ensure design quality.</li>
+            </ul>
+          </div>
+
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
+          >
+            This approach is at the heart of our [MVP
+            Development](/blog/what-is-mvp-development) philosophy: move fast,
+            but build for production.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
+          >
+            The Uncle Challenge: No Brief, Just Trust
+          </h2>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
+          >
+            My uncle sent me a voice note. He needed a professional website for
+            his business, but he had no brief, no references, and no copy. In
+            the past, this would be a high-friction project involving weeks of
+            back-and-forth. Using the ValidMVPs AI workflow, it took a focused
+            afternoon.
+          </p>
+        </div>
+
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div class="space-y-6">
+            <h3 class="font-['Bricolage_Grotesque'] text-3xl font-medium">
+              Why Most AI Sites Fail
+            </h3>
+            <p class="text-lg opacity-80">
+              Generic prompts lead to generic results. If you ask ChatGPT to
+              'build a website,' you get a template. To build a brand, you need
+              a workflow that treats AI as a <strong>leverage point</strong>,
+              not a magic wand.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-[30px] border border-black/5 shadow-sm"
+          >
+            <h4 class="font-bold mb-4 uppercase tracking-widest text-[#D1FC71]">
+              The Stack
+            </h4>
+            <ul class="space-y-4 font-inter text-lg">
+              <li>
+                • <strong>Framer:</strong> For high-fidelity energy and templates.
+              </li>
+              <li>
+                • <strong>Claude:</strong> For component refinement and logic.
+              </li>
+              <li>• <strong>Astro:</strong> For the final performant build.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-full">
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
+          >
+            The Workflow: Leverage, Not Replacement
+          </h2>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-10"
+          >
+            We follow a 4-step process to ensure the output looks "expensive"
+            and performs at scale.
+          </p>
+
+          <div class="space-y-12">
+            <div class="flex gap-8">
+              <div
+                class="w-16 h-16 bg-[#D1FC71] rounded-full shrink-0 flex items-center justify-center font-bold text-2xl"
+              >
+                01
+              </div>
+              <div>
+                <h4 class="text-2xl font-bold mb-2">The Deep Brief</h4>
+                <p class="text-lg opacity-70">
+                  Spend 20 minutes answering the hard questions: Who is the
+                  customer? What is the one action they should take? What energy
+                  should the site emit? This context is what Claude needs to be
+                  effective.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-8">
+              <div
+                class="w-16 h-16 bg-[#D1FC71] rounded-full shrink-0 flex items-center justify-center font-bold text-2xl"
+              >
+                02
+              </div>
+              <div>
+                <h4 class="text-2xl font-bold mb-2">Energy-First Templating</h4>
+                <p class="text-lg opacity-70">
+                  Don't find a template that matches your content. Find one that
+                  matches your <strong>rhythm</strong>. Export the code into
+                  your IDE to take full control.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-8">
+              <div
+                class="w-16 h-16 bg-[#D1FC71] rounded-full shrink-0 flex items-center justify-center font-bold text-2xl"
+              >
+                03
+              </div>
+              <div>
+                <h4 class="text-2xl font-bold mb-2">Claude Refinement</h4>
+                <p class="text-lg opacity-70">
+                  Talk to the code. Describe adjustments in plain language
+                  spacing, column layout, font hierarchy. Claude acts as your
+                  senior frontend engineer, executing the boring bits in
+                  seconds.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-8">
+              <div
+                class="w-16 h-16 bg-[#D1FC71] rounded-full shrink-0 flex items-center justify-center font-bold text-2xl"
+              >
+                04
+              </div>
+              <div>
+                <h4 class="text-2xl font-bold mb-2">Human Tuning</h4>
+                <p class="text-lg opacity-70">
+                  Write the copy yourself first, let AI polish it, then
+                  re-humanize it. Use real photos wherever possible authenticity
+                  beats AI-generated stock every time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full">
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12"
+          >
+            The Result: It Looks Expensive
+          </h2>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-12"
+          >
+            My uncle's response? "It looks expensive." That is the power of the
+            AI-augmented engineer. It's not about cheating; it's about shifting
+            your effort from the mechanical (writing CSS) to the strategic (user
+            experience and data moats).
+          </p>
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-12"
+          >
+            If you're ready to stop 'tinkering' with prompts and start building
+            with a professional workflow, let's architect your next big thing.
+          </p>
+        </div>
+      </div>
+    </BlogProse>
+
+    <RelatedPosts currentSlug={post.id} />
+
+    <Contact />
+    <FAQ />
+    <Footer />
+  </div>
+</Layout>

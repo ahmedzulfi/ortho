@@ -8,7 +8,6 @@ effort: medium
 
 # AI Engine Optimization (AEO) Skill
 
-
 **Purpose:** Optimize content for AI engines (ChatGPT, Claude, Perplexity, Google AI Overviews) so your brand gets cited in AI-generated answers.
 
 **Source:** Based on [HubSpot's AEO Guide](https://www.hubspot.com/aeo) and industry best practices.
@@ -35,6 +34,7 @@ effort: medium
 ```
 
 **Key Stats:**
+
 - 70% of consumers use ChatGPT for searches
 - 47% of Google queries show AI overviews
 - Average ChatGPT prompt: 23 words (vs 4.2 for Google)
@@ -51,6 +51,7 @@ AI engines use three main signals to select content for answers:
 Facts that appear across multiple credible sources get trusted and reused.
 
 **How to build consensus:**
+
 - Repeat key facts consistently across your own pages
 - Use same terminology as industry leaders
 - Link to and from authoritative external sources
@@ -61,6 +62,7 @@ Facts that appear across multiple credible sources get trusted and reused.
 Net-new insight beats generic advice. AI engines prefer content that adds value.
 
 **How to add information gain:**
+
 - Original research and data
 - Concrete examples with specifics
 - Clear point of view (not fence-sitting)
@@ -72,6 +74,7 @@ Net-new insight beats generic advice. AI engines prefer content that adds value.
 Clear entities and tidy structure reduce ambiguity and boost quotability.
 
 **How to optimize structure:**
+
 - Use semantic triples (Subject → Verb → Object)
 - Clear headings with entity names
 - Schema markup (Article, FAQ, Product)
@@ -102,6 +105,7 @@ Clear entities and tidy structure reduce ambiguity and boost quotability.
 ### Triple Checklist
 
 For every key claim, ask:
+
 - [ ] Is the subject a clear entity (product, feature, brand)?
 - [ ] Is the verb specific and active?
 - [ ] Is the object concrete and measurable?
@@ -144,24 +148,29 @@ meetings.
 **Goal:** Define the category, tie it to your product, earn citations.
 
 ```markdown
-# What is [Category]? — [1-2 line value promise]
+# What is [Category]? [1-2 line value promise]
 
 ## What is [Category]? (~80 words)
+
 [Plain definition in everyday language. Name adjacent entities.]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
 ## Why it matters now (~60 words)
+
 [One paragraph. Mention shift to answers over links; tie to buyer outcomes.]
 
 ## How to apply it (3-5 bullets)
+
 - [Action 1]
 - [Action 2]
 - [Action 3]
 
 ## FAQ
+
 **Q: [Question]?**
 A: [~1 sentence answer]
 
@@ -172,6 +181,7 @@ A: [~1 sentence answer]
 A: [~1 sentence answer]
 
 ---
+
 **Links:** [Category hub] | [Product/Feature] | [Credible source 1] | [Credible source 2]
 **CTA:** [Demo / Template / Signup]
 **Schema:** Article + FAQ. Author + last updated.
@@ -184,32 +194,39 @@ A: [~1 sentence answer]
 **Goal:** Clarify capability, fit, and next step; reinforce category linkage.
 
 ```markdown
-# [Product/Feature] — [Outcome in 3-5 words]
+# [Product/Feature] [Outcome in 3-5 words]
 
 **[Product/Feature] enables [Outcome] for [User/Role].**
 
 ## [Feature Area 1]
+
 [2-4 sentences using Feature → How → Outcome]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
 ## [Feature Area 2]
+
 [2-4 sentences using Feature → How → Outcome]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
 ## [Feature Area 3]
+
 [2-4 sentences using Feature → How → Outcome]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
 ## FAQ
+
 **Q: [Question]?**
 A: [~1 sentence]
 
@@ -220,6 +237,7 @@ A: [~1 sentence]
 A: [~1 sentence]
 
 ---
+
 **Links:** Back to [Category Explainer] | Forward to [Demo/Trial]
 **Proof:** [Benchmark/Analyst/Customer proof]
 **Notes:** Requirements/limits (pricing tier, integrations)
@@ -233,17 +251,17 @@ A: [~1 sentence]
 **Goal:** Help readers decide with clear criteria; earn fair citations.
 
 ```markdown
-# [Product] vs. [Alternative] — Which fits [Use case]?
+# [Product] vs. [Alternative] Which fits [Use case]?
 
 ## Comparison Table
 
-| Criterion | [Product] | [Alt A] | [Alt B] | Source |
-|-----------|-----------|---------|---------|--------|
-| [Feature/Limit] | [value] | [value] | [value] | [link] |
-| [Requirement] | [value] | [value] | [value] | [link] |
-| [Best for] | [value] | [value] | [value] | [link] |
+| Criterion       | [Product] | [Alt A] | [Alt B] | Source |
+| --------------- | --------- | ------- | ------- | ------ |
+| [Feature/Limit] | [value]   | [value] | [value] | [link] |
+| [Requirement]   | [value]   | [value] | [value] | [link] |
+| [Best for]      | [value]   | [value] | [value] | [link] |
 
-*Source-back all claims in the table or footnotes.*
+_Source-back all claims in the table or footnotes._
 
 ## Fit Statements
 
@@ -252,6 +270,7 @@ A: [~1 sentence]
 3. **[Alt B]** works for [Team/Use case] when [Condition].
 
 ---
+
 **Links:** [Category Explainer] | [Feature pages]
 **CTA:** [Try / Demo / Talk to Sales]
 **Schema:** Article. Author + last updated.
@@ -264,36 +283,43 @@ A: [~1 sentence]
 **Goal:** Connect product to outcomes in a context readers recognize.
 
 ```markdown
-# [Industry/Use Case] — [Outcome KPI]
+# [Industry/Use Case] [Outcome KPI]
 
 **Teams reduce [Metric] by [Y%] in [Timeframe].**
 
 ## Mini Case Study
+
 [Company/Role] used [Product/Feature] to [Action], resulting in
 [Metric improvement] within [Timeframe].
 
 ## How It Works
 
 ### [Feature 1]
+
 [Feature → How → Outcome paragraph]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
 ### [Feature 2]
+
 [Feature → How → Outcome paragraph]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
 ## Who Uses This
+
 **Roles:** [Role 1], [Role 2], [Role 3]
 **Workflows:** [Workflow 1], [Workflow 2]
 **Integrations:** [Integration 1], [Integration 2]
 
 ---
+
 **Links:** [Product/Feature pages] | [Supporting blog]
 **CTA:** [Industry template / Demo variant]
 **Schema:** Article. Author + last updated.
@@ -306,15 +332,18 @@ Triples:
 **Goal:** Add information gain and support your content cluster.
 
 ```markdown
-# [Topic] — [Specific promise]
+# [Topic] [Specific promise]
 
 ## Opening (~60-80 words)
+
 [State the problem. Align terminology with Category Explainer. Preview outcome.]
 
 ## [Section 1 Heading] (~120 words max)
+
 [Feature → How → Outcome]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
@@ -322,9 +351,11 @@ Triples:
 **External citation:** [Credible source]
 
 ## [Section 2 Heading] (~120 words max)
+
 [Feature → How → Outcome]
 
 Triples:
+
 1. [Subject] [verb] [object].
 2. [Subject] [verb] [object].
 
@@ -332,11 +363,13 @@ Triples:
 **External citation:** [Credible source]
 
 ## Key Takeaway
+
 [1-2 lines summarizing the main point]
 
 **CTA:** [Single primary action]
 
 ---
+
 **Schema:** Article. Author + last updated.
 ```
 
@@ -346,63 +379,63 @@ Triples:
 
 ### Required on Every Page
 
-| Element | Implementation |
-|---------|----------------|
-| **Schema markup** | Article + FAQ (if FAQ exists) |
-| **Author attribution** | Name, bio, credentials, photo |
-| **Last updated date** | Visible, machine-readable |
-| **Internal links** | 3-5 per page (upstream/downstream) |
-| **External citations** | 1-2 credible sources per section |
-| **Single CTA** | Demo, template, or signup (repeated once near end) |
+| Element                | Implementation                                     |
+| ---------------------- | -------------------------------------------------- |
+| **Schema markup**      | Article + FAQ (if FAQ exists)                      |
+| **Author attribution** | Name, bio, credentials, photo                      |
+| **Last updated date**  | Visible, machine-readable                          |
+| **Internal links**     | 3-5 per page (upstream/downstream)                 |
+| **External citations** | 1-2 credible sources per section                   |
+| **Single CTA**         | Demo, template, or signup (repeated once near end) |
 
 ### Schema Implementation
 
 ```html
 <!-- Article Schema -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "[Page Title]",
-  "author": {
-    "@type": "Person",
-    "name": "[Author Name]",
-    "url": "[Author Bio URL]"
-  },
-  "datePublished": "[ISO Date]",
-  "dateModified": "[ISO Date]",
-  "publisher": {
-    "@type": "Organization",
-    "name": "[Company]",
-    "logo": "[Logo URL]"
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "[Page Title]",
+    "author": {
+      "@type": "Person",
+      "name": "[Author Name]",
+      "url": "[Author Bio URL]"
+    },
+    "datePublished": "[ISO Date]",
+    "dateModified": "[ISO Date]",
+    "publisher": {
+      "@type": "Organization",
+      "name": "[Company]",
+      "logo": "[Logo URL]"
+    }
   }
-}
 </script>
 
 <!-- FAQ Schema (if FAQ section exists) -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "[Question 1]",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "[Answer 1]"
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "[Question 1]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[Answer 1]"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "[Question 2]",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "[Answer 2]"
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "[Question 2]",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "[Answer 2]"
-      }
-    }
-  ]
-}
+    ]
+  }
 </script>
 ```
 
@@ -432,6 +465,7 @@ Triples:
 ```
 
 **Linking Rules:**
+
 - Category Explainer links DOWN to all product pages
 - Product pages link UP to Category Explainer
 - Product pages link ACROSS to related features
@@ -483,13 +517,13 @@ Triples:
 
 ### Key Metrics
 
-| Metric | How to Track |
-|--------|--------------|
-| **AI citations** | Manual checks in ChatGPT, Claude, Perplexity |
-| **Brand mentions in AI** | Search "[brand] + [category]" in AI engines |
-| **Share of answer** | How often you're cited vs competitors |
-| **LLM traffic** | GA4 referral from chatgpt.com, claude.ai, perplexity.ai |
-| **Impressions-to-clicks gap** | GSC impressions vs actual clicks |
+| Metric                        | How to Track                                            |
+| ----------------------------- | ------------------------------------------------------- |
+| **AI citations**              | Manual checks in ChatGPT, Claude, Perplexity            |
+| **Brand mentions in AI**      | Search "[brand] + [category]" in AI engines             |
+| **Share of answer**           | How often you're cited vs competitors                   |
+| **LLM traffic**               | GA4 referral from chatgpt.com, claude.ai, perplexity.ai |
+| **Impressions-to-clicks gap** | GSC impressions vs actual clicks                        |
 
 ### Tools
 
@@ -502,40 +536,42 @@ Triples:
 
 ## Common AEO Mistakes
 
-| Mistake | Fix |
-|---------|-----|
-| Vague language ("it helps with things") | Use specific entities and triples |
-| No clear structure | Use Feature → How → Outcome |
-| Missing schema | Add Article + FAQ schema |
-| No author attribution | Add author name, bio, credentials |
-| Generic content | Add original data, examples, POV |
-| Orphan pages | Link into content cluster |
-| Fence-sitting ("it depends") | Take a clear position |
-| No external citations | Add 1-2 credible sources per section |
+| Mistake                                 | Fix                                  |
+| --------------------------------------- | ------------------------------------ |
+| Vague language ("it helps with things") | Use specific entities and triples    |
+| No clear structure                      | Use Feature → How → Outcome          |
+| Missing schema                          | Add Article + FAQ schema             |
+| No author attribution                   | Add author name, bio, credentials    |
+| Generic content                         | Add original data, examples, POV     |
+| Orphan pages                            | Link into content cluster            |
+| Fence-sitting ("it depends")            | Take a clear position                |
+| No external citations                   | Add 1-2 credible sources per section |
 
 ---
 
 ## AEO vs Traditional SEO
 
-| Aspect | Traditional SEO | AEO |
-|--------|-----------------|-----|
-| **Goal** | Rank on page 1 | Get cited in AI answers |
-| **Success metric** | Click-through rate | Share of answer |
-| **Content focus** | Keywords | Entities + facts |
-| **Structure** | Headers for scanning | Triples for extraction |
-| **Links** | Backlinks for authority | Citations for consensus |
-| **Updates** | Periodic refresh | Continuous accuracy |
+| Aspect             | Traditional SEO         | AEO                     |
+| ------------------ | ----------------------- | ----------------------- |
+| **Goal**           | Rank on page 1          | Get cited in AI answers |
+| **Success metric** | Click-through rate      | Share of answer         |
+| **Content focus**  | Keywords                | Entities + facts        |
+| **Structure**      | Headers for scanning    | Triples for extraction  |
+| **Links**          | Backlinks for authority | Citations for consensus |
+| **Updates**        | Periodic refresh        | Continuous accuracy     |
 
 ---
 
 ## Quick Reference
 
 ### Semantic Triple Pattern
+
 ```
 [Entity/Product] [active verb] [concrete object/result].
 ```
 
 ### Paragraph Pattern
+
 ```
 [Feature] helps [User] with [Job].
 It [mechanism] to [process].
@@ -543,6 +579,7 @@ Teams see [result] in [timeframe].
 ```
 
 ### Page Minimums
+
 - 3-5 internal links
 - 1-2 external citations per section
 - 3 FAQ questions with schema
@@ -550,6 +587,7 @@ Teams see [result] in [timeframe].
 - Single CTA
 
 ### Content Hierarchy
+
 1. Category Explainer (top)
 2. Product/Feature pages (middle)
 3. Use case / Comparison / Blog (supporting)

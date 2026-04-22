@@ -1,32 +1,32 @@
 ---
 import ServiceDetailTemplate from "../../components/ServiceDetailTemplate.astro";
 
-const details = [
-  "Many founders start with 'vibe coding' or prototypes in tools like Replit and no-code platforms. While great for validation, these often lack the structure needed for scaling. Our Prototype to Production service bridges this gap.",
-  "We take your existing logic, refactor it into clean, maintainable code, and implement a production-ready architecture. This includes setting up proper backend services, robust database schemas, and automated deployment pipelines.",
-  "Our goal is to preserve the 'magic' of your initial prototype while ensuring it can handle thousands of users without buckling under technical debt."
-];
-
-const benefits = [
-  "Seamless Code Migration",
-  "Technical Debt Elimination",
-  "High-Scale Architecture",
-  "Automated CI/CD Pipelines"
-];
-
-const specs = [
-  { label: "Original Tools", value: "Replit, Cursor, No-Code" },
-  { label: "Target Stack", value: "Production-Grade JS/TS" },
-  { label: "Audit", value: "Full Code Review Included" },
-  { label: "Timeline", value: "Typical 2-4 Week Refactor" }
-];
+const serviceData = {
+  title: "Prototype to Production",
+  description:
+    "Turning scattered Replit prototypes and 'vibe-coded' experiments into structured, scalable, and investor-ready production systems.",
+  heroImage:
+    "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  benefits: [
+    "Full Technical Migration (Replit → GCP/Vercel/AWS)",
+    "Comprehensive Code Refactoring & Logic Cleanup",
+    "Scalable Database Architecture (PostgreSQL/MongoDB)",
+    "Secure Authentication & Identity Management",
+    "Production-Grade Security & Performance Audits",
+    "Automated CI/CD & Cloud Deployment Pipelines",
+  ],
+  specs: [
+    { label: "Source Platform", value: "Replit, GitHub, Cursor, No-Code" },
+    { label: "Production Target", value: "GCP, AWS, Vercel, DigitalOcean" },
+    { label: "Core Stack", value: "MERN, TypeScript, Postgres, Docker" },
+    { label: "Speed to Launch", value: "2 - 4 Weeks (Typical)" },
+  ],
+  details: [
+    "The Vibe Logic Gap: Many successful MVPs start as 'vibe-coded' scripts or Replit experiments. While these are excellent for early market validation, they often lack the security, modularity, and database integrity required to onboard thousands of users or satisfy technical due diligence from investors.",
+    "Technical Refinement: We conduct a full structural sweep of your prototype. This includes extracting hardcoded secrets into secure environments, refactoring scattered logic into clean, modular components, and optimizing database schemas for long-term performance. We don't just 'move' your code; we upgrade its foundation.",
+    "Infrastructure & Scale: A professional product needs a professional home. We handle the entire DevOps pipeline, setting up load-balanced cloud clusters, automated SSL certificates, and persistent storage solutions that don't sleep or break. We transform your 'experiment' into a production-ready engine that evolves with your business.",
+  ],
+};
 ---
 
-<ServiceDetailTemplate 
-  title="Prototypes to Production"
-  description="Converting rough code and prototypes into stable, scalable, and investor-ready systems."
-  heroImage="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1200"
-  details={details}
-  benefits={benefits}
-  specs={specs}
-/>
+<ServiceDetailTemplate {...serviceData} />

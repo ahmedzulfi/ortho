@@ -1,48 +1,52 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import AboutHero from '../components/AboutHero.astro';
-import AboutBrief from '../components/AboutBrief.astro';
-import AboutTestimonials from '../components/AboutTestimonials.astro';
-import AboutCulture from '../components/AboutCulture.astro';
-import AboutVideoScroll from '../components/AboutVideoScroll.astro';
-import Footer from '../components/Footer.astro';
-import Team from '../components/Team.astro';
-import Process from '../components/Process.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import AboutBrief from "../components/AboutBrief.astro";
+import AboutTestimonials from "../components/AboutTestimonials.astro";
+import AboutCulture from "../components/AboutCulture.astro";
+import AboutVideoScroll from "../components/AboutVideoScroll.astro";
+import Footer from "../components/Footer.astro";
+import Team from "../components/Team.astro";
+import Process from "../components/Process.astro";
 ---
 
-<Layout 
-	title="About ValidMVPs | Fast-Execution Development Service" 
-	description="Learn about ValidMVPs' mission to help founders turn ideas into functional, investor-ready products in record time."
+<Layout
+  title="About ValidMVPs | Fast-Execution Development Service"
+  description="Learn about ValidMVPs' mission to help founders turn ideas into functional, investor-ready products in record time."
 >
-	<script type="application/ld+json" slot="head">
-		{
-			"@context": "https://schema.org",
-			"@type": "AboutPage",
-			"name": "About ValidMVPs",
-			"description": "ValidMVPs is a fast-execution development service focused on helping startups move from prototypes to production-ready systems.",
-			"url": "https://validmvps.com/about"
-		}
-	</script>
-	<main class="min-h-screen bg-[#F6F7FF]">
-		<Navbar />
-		
-		<div id="main-content" class="sr-only">Main Content Starts Here</div>
-		
-		<AboutHero />
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About ValidMVPs",
+      "description": "ValidMVPs is a fast-execution development service focused on helping startups move from prototypes to production-ready systems.",
+      "url": "https://validmvps.com/about"
+    }
+  </script>
+  <main class="min-h-screen bg-[#F6F7FF]">
+    <Navbar />
 
-		<AboutBrief />
+    <div id="main-content" class="sr-only">Main Content Starts Here</div>
 
-		<AboutTestimonials />
+    <Hero
+      title="Speed, Clarity, and Technical Execution"
+      description="We are a fast-execution development service dedicated to helping founders turn raw ideas into functional, investor-ready products in weeks."
+      ctaText="Work with Us"
+    />
 
-		<AboutCulture />
+    <AboutBrief />
 
-		<AboutVideoScroll />
+    <AboutTestimonials />
 
-        <Process />
+    <AboutCulture />
 
-        <Team />
-		
-		<Footer />
-	</main>
+    <AboutVideoScroll />
+
+    <Process />
+
+    <Team />
+
+    <Footer />
+  </main>
 </Layout>

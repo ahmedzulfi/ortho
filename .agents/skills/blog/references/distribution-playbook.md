@@ -14,10 +14,11 @@ is the dominant factor in whether AI systems cite your content.
 ## Reddit (Highest Growth Channel for AI Visibility)
 
 **Platform change (June 2023):** Reddit's API became paid ($0.24/1,000 calls). Free API
-access is gone. All Reddit strategy must rely on **organic participation only** — no
+access is gone. All Reddit strategy must rely on **organic participation only** no
 programmatic posting, scraping, or API-driven automation without a paid plan.
 
 ### Why Reddit Matters for AI
+
 - Reddit visibility in AI citations grew 450% (1.30% to 7.15%)
 - Google's $60M annual API deal surfaces Reddit content in AI training
 - 7,085 of 10,000 keyphrases show "Discussions and Forums" SERP features
@@ -34,13 +35,13 @@ programmatic posting, scraping, or API-driven automation without a paid plan.
 
 2. **Evaluate each subreddit before participating**:
 
-   | Check | What to Look For |
-   |-------|-----------------|
-   | Self-promotion rules | Most subs require max 10% self-promotional content |
-   | Post types allowed | Some ban links entirely; others require text posts |
-   | Active moderators | Dead subs provide no value |
-   | Comment quality | High-quality discussions = higher AI citation chance |
-   | Flair requirements | Some subs require specific post flair |
+   | Check                | What to Look For                                     |
+   | -------------------- | ---------------------------------------------------- |
+   | Self-promotion rules | Most subs require max 10% self-promotional content   |
+   | Post types allowed   | Some ban links entirely; others require text posts   |
+   | Active moderators    | Dead subs provide no value                           |
+   | Comment quality      | High-quality discussions = higher AI citation chance |
+   | Flair requirements   | Some subs require specific post flair                |
 
 3. **Observe before posting**: Spend 1-2 weeks reading and commenting
    before submitting any content. Understand what gets upvoted, what gets
@@ -53,6 +54,7 @@ content. For every 1 promotional post, you need 9 genuine contributions
 (comments, answers, discussions).
 
 **Format that works on Reddit**:
+
 - Lead with an insight or question, not a link
 - Share specific data points and findings in the post body
 - Provide standalone value -- the post should be useful without clicking any link
@@ -60,6 +62,7 @@ content. For every 1 promotional post, you need 9 genuine contributions
 - Use formatting: bold for key stats, bullet points for lists, TL;DR at top
 
 **Example post structure**:
+
 ```
 Title: [Specific finding] -- [context/data point]
 
@@ -95,6 +98,7 @@ adds value, your blog post becomes the authoritative source.
 ## YouTube (Strongest AI Visibility Correlation)
 
 ### Why YouTube Matters for AI
+
 - 0.737 correlation with AI visibility (strongest signal in Ahrefs 75,000-brand study)
 - Citations in AI Overviews up 414% (Q1 2025, NP Digital)
 - How-to video citations up 651%
@@ -107,16 +111,17 @@ adds value, your blog post becomes the authoritative source.
 Mirror your blog's H2 sections as video chapters. This creates cross-platform
 topical authority that AI systems recognize.
 
-| Blog Section | Video Chapter | Notes |
-|-------------|---------------|-------|
-| Introduction | 0:00 Hook + overview | Match blog's opening stat |
-| H2 Section 1 | Chapter 1 | Same data points, visual explanation |
-| H2 Section 2 | Chapter 2 | Show charts/data on screen |
-| H2 Section 3 | Chapter 3 | Demo or walkthrough if applicable |
-| FAQ | Q&A Chapter | Answer the same FAQ questions |
-| Conclusion | Summary + CTA | Link to blog in description |
+| Blog Section | Video Chapter        | Notes                                |
+| ------------ | -------------------- | ------------------------------------ |
+| Introduction | 0:00 Hook + overview | Match blog's opening stat            |
+| H2 Section 1 | Chapter 1            | Same data points, visual explanation |
+| H2 Section 2 | Chapter 2            | Show charts/data on screen           |
+| H2 Section 3 | Chapter 3            | Demo or walkthrough if applicable    |
+| FAQ          | Q&A Chapter          | Answer the same FAQ questions        |
+| Conclusion   | Summary + CTA        | Link to blog in description          |
 
 ### Title Optimization
+
 - Match the blog title format closely (builds topical association)
 - Include the target keyword within the first 60 characters
 - Keep total length under 70 characters
@@ -124,6 +129,7 @@ topical authority that AI systems recognize.
 - Front-load the value: "[Key Finding]: How to [Achieve Outcome]"
 
 ### Transcript SEO
+
 YouTube auto-captions are approximately 85% accurate. Always upload your own
 transcript for perfect accuracy:
 
@@ -138,16 +144,17 @@ transcript with proper keyword usage is a ranking signal.
 
 ### Thumbnail Best Practices
 
-| Element | Guideline |
-|---------|-----------|
-| Colors | Contrasting colors (complementary palette), avoid YouTube red |
-| Text | Maximum 4 words, large readable font (even on mobile) |
-| Face | Close-up with expressive emotion (increases CTR 30-40%) |
-| Consistency | Use brand template for recognizable channel identity |
-| Resolution | 1280x720 minimum, 16:9 aspect ratio |
-| File size | Under 2MB (YouTube compresses further) |
+| Element     | Guideline                                                     |
+| ----------- | ------------------------------------------------------------- |
+| Colors      | Contrasting colors (complementary palette), avoid YouTube red |
+| Text        | Maximum 4 words, large readable font (even on mobile)         |
+| Face        | Close-up with expressive emotion (increases CTR 30-40%)       |
+| Consistency | Use brand template for recognizable channel identity          |
+| Resolution  | 1280x720 minimum, 16:9 aspect ratio                           |
+| File size   | Under 2MB (YouTube compresses further)                        |
 
 ### YouTube Description Template
+
 ```
 [First 2 lines appear before "Show more" -- use them wisely]
 
@@ -170,18 +177,18 @@ Resources mentioned:
 
 ### Video Performance Targets
 
-| Metric | Target | Why |
-|--------|--------|-----|
-| Length | 10+ minutes | Longer videos get more AI citations |
-| Retention | 50%+ average | Signals quality to YouTube algorithm |
-| CTR | 5%+ | Indicates compelling title/thumbnail |
-| Upload frequency | 1-2/week | Consistent publishing builds authority |
+| Metric           | Target       | Why                                    |
+| ---------------- | ------------ | -------------------------------------- |
+| Length           | 10+ minutes  | Longer videos get more AI citations    |
+| Retention        | 50%+ average | Signals quality to YouTube algorithm   |
+| CTR              | 5%+          | Indicates compelling title/thumbnail   |
+| Upload frequency | 1-2/week     | Consistent publishing builds authority |
 
 ### YouTube Shorts Note
 
 **Algorithm change (late 2025):** YouTube Shorts' recommendation engine was fully decoupled
 from long-form video. Shorts no longer directly boost long-form channel authority or
-subscriber counts. Treat Shorts as a **separate discovery surface** with its own metrics —
+subscriber counts. Treat Shorts as a **separate discovery surface** with its own metrics  
 do not rely on Shorts to cross-promote your long-form content or blog. Use Shorts for
 top-of-funnel awareness only.
 
@@ -192,48 +199,52 @@ top-of-funnel awareness only.
 **Algorithm change (360Brew, late 2024-2025):** LinkedIn replaced its recommendation
 algorithm with an AI system called 360Brew. Impact: views down ~50%, engagement down ~25%
 industry-wide. External links are penalized ~60% in reach. **Native content strongly
-outperforms link posts** — text posts, native documents (carousels), and native video
+outperforms link posts** text posts, native documents (carousels), and native video
 dramatically outreach posts with external URLs.
 
 ### Content Adaptation
+
 Adapt blog posts for LinkedIn as shorter articles (800-1,200 words).
 LinkedIn audiences prefer opinion-led, personal, and industry-relevant content
 over keyword-optimized SEO content.
 
 ### Format Guidelines
 
-| Element | LinkedIn Optimization |
-|---------|----------------------|
-| Length | 800-1,200 words (shorter than blog) |
-| Tone | Personal, opinion-led, first-person |
-| Paragraphs | 1-2 sentences each (very short) |
-| Emphasis | **Bold text** for key phrases and stats |
-| Lists | Bullet points for scannable takeaways |
-| Closing | Ask a question to drive comments |
-| Links | Put external links in the FIRST COMMENT, not the body |
+| Element    | LinkedIn Optimization                                 |
+| ---------- | ----------------------------------------------------- |
+| Length     | 800-1,200 words (shorter than blog)                   |
+| Tone       | Personal, opinion-led, first-person                   |
+| Paragraphs | 1-2 sentences each (very short)                       |
+| Emphasis   | **Bold text** for key phrases and stats               |
+| Lists      | Bullet points for scannable takeaways                 |
+| Closing    | Ask a question to drive comments                      |
+| Links      | Put external links in the FIRST COMMENT, not the body |
 
 ### Why First Comment for Links
+
 LinkedIn's algorithm suppresses posts containing external links in the body.
 Posts with external links get 30-50% less reach than text-only posts. Place
 your blog link as the first comment immediately after publishing.
 
 ### Thought Leadership Positioning
 
-| Content Type | Purpose | Frequency |
-|-------------|---------|-----------|
-| Contrarian takes | Challenge industry assumptions with data | 1-2/month |
-| Industry analysis | Break down trends and what they mean | 2-4/month |
-| Lessons learned | Share failures and successes transparently | 1-2/month |
-| Data snapshots | Share one compelling stat with analysis | Weekly |
-| Frameworks | Original models or processes | Monthly |
+| Content Type      | Purpose                                    | Frequency |
+| ----------------- | ------------------------------------------ | --------- |
+| Contrarian takes  | Challenge industry assumptions with data   | 1-2/month |
+| Industry analysis | Break down trends and what they mean       | 2-4/month |
+| Lessons learned   | Share failures and successes transparently | 1-2/month |
+| Data snapshots    | Share one compelling stat with analysis    | Weekly    |
+| Frameworks        | Original models or processes               | Monthly   |
 
 ### Posting Schedule
+
 - **Best times**: 7-8 AM or 12 PM (local timezone of your audience)
 - **Critical window**: Engage with every comment within the first hour
 - LinkedIn's algorithm evaluates engagement velocity in the first 60 minutes
 - Reply to comments with substantive responses, not just "thanks"
 
 ### LinkedIn Post Template
+
 ```
 [Hook line with surprising stat or contrarian statement]
 
@@ -260,27 +271,30 @@ Here's what the data shows:
 ## Twitter / X
 
 ### Thread Format
+
 Convert blog posts into Twitter threads (7-9 tweets) for maximum reach:
 
 **Thread structure**:
+
 1. **Hook tweet**: Most surprising finding + promise of value
-2-7. **Insight tweets**: One key insight per tweet with standalone value
-8. **Summary tweet**: Key takeaway recap
-9. **CTA tweet**: Link to full blog post + retweet request
+   2-7. **Insight tweets**: One key insight per tweet with standalone value
+2. **Summary tweet**: Key takeaway recap
+3. **CTA tweet**: Link to full blog post + retweet request
 
 ### Tweet Optimization
 
-| Guideline | Rule |
-|-----------|------|
-| Hook tweet | Must stop the scroll -- use a surprising stat or counterintuitive claim |
-| Insight tweets | Each must deliver value independently |
-| Stats per tweet | Include one specific data point |
-| Length | 200-280 characters per tweet (not maximum, but substantive) |
-| Hashtags | Maximum 2 per tweet, use niche hashtags over broad ones |
-| Media | Add an image or chart to 2-3 tweets in the thread |
-| CTA | Clear and specific: "Read the full breakdown" not "check it out" |
+| Guideline       | Rule                                                                    |
+| --------------- | ----------------------------------------------------------------------- |
+| Hook tweet      | Must stop the scroll -- use a surprising stat or counterintuitive claim |
+| Insight tweets  | Each must deliver value independently                                   |
+| Stats per tweet | Include one specific data point                                         |
+| Length          | 200-280 characters per tweet (not maximum, but substantive)             |
+| Hashtags        | Maximum 2 per tweet, use niche hashtags over broad ones                 |
+| Media           | Add an image or chart to 2-3 tweets in the thread                       |
+| CTA             | Clear and specific: "Read the full breakdown" not "check it out"        |
 
 ### Thread Template
+
 ```
 Tweet 1 (Hook):
 [Surprising stat]. [What it means in one sentence].
@@ -312,6 +326,7 @@ If this was useful, retweet the first tweet so others can find it.
 ```
 
 ### Hashtag Strategy
+
 - Use niche hashtags that your target audience follows (e.g., `#SEOdata`, `#AISearch`)
 - Avoid broad hashtags that get lost (e.g., `#marketing`, `#AI`)
 - Research active hashtags: search the hashtag, check tweet frequency and quality
@@ -322,17 +337,18 @@ If this was useful, retweet the first tweet so others can find it.
 ## Email Newsletter
 
 ### Timing
+
 Send within 24 hours of blog post publication. Freshness drives engagement
 and early traffic signals that benefit both traditional and AI search.
 
 ### Subject Line Formulas
 
-| Formula | Example |
-|---------|---------|
-| `[Stat]: [Key Finding]` | "61% CTR Decline: How AI Overviews Are Reshaping Search" |
-| `How [Strategy] Delivers [Outcome]` | "How Answer-First Formatting Drives More AI Citations" |
-| `[Number] [Things] That [Outcome]` | "5 Off-Site Signals That Drive AI Citations (Data Inside)" |
-| `The [Adjective] Truth About [Topic]` | "The Uncomfortable Truth About SEO in 2026" |
+| Formula                                          | Example                                                       |
+| ------------------------------------------------ | ------------------------------------------------------------- |
+| `[Stat]: [Key Finding]`                          | "61% CTR Decline: How AI Overviews Are Reshaping Search"      |
+| `How [Strategy] Delivers [Outcome]`              | "How Answer-First Formatting Drives More AI Citations"        |
+| `[Number] [Things] That [Outcome]`               | "5 Off-Site Signals That Drive AI Citations (Data Inside)"    |
+| `The [Adjective] Truth About [Topic]`            | "The Uncomfortable Truth About SEO in 2026"                   |
 | `We Analyzed [N] [Things]. Here's What We Found` | "We Analyzed 75,000 Brands. Here's What Drives AI Visibility" |
 
 ### Excerpt Structure (150-200 Words)
@@ -357,49 +373,51 @@ and early traffic signals that benefit both traditional and AI search.
 
 ### Email Performance Benchmarks
 
-| Metric | Good | Excellent |
-|--------|------|-----------|
-| Open rate | 25-30% | 35%+ |
-| Click rate | 3-5% | 7%+ |
-| Unsubscribe rate | < 0.5% | < 0.2% |
-| Reply rate | 1-2% | 3%+ |
+| Metric           | Good   | Excellent |
+| ---------------- | ------ | --------- |
+| Open rate        | 25-30% | 35%+      |
+| Click rate       | 3-5%   | 7%+       |
+| Unsubscribe rate | < 0.5% | < 0.2%    |
+| Reply rate       | 1-2%   | 3%+       |
 
 ---
 
 ## Review Platforms (B2B)
 
 ### Why Reviews Drive AI Citations
+
 - Multi-platform review presence gives 2.6-3.5x citation multiplier
   (Authoritas, 2025)
 - G2 accounts for 22-23% of review-platform citations (Radix via G2's own blog;
-  self-reported — Hall.com independent analysis found only 8.25%)
+  self-reported Hall.com independent analysis found only 8.25%)
 - 33% of all review citations come from G2 (Profound via G2's blog; treat as directional)
 - Companies with profiles on 3+ platforms: 4.6-6.3 citations vs 1.8
   without (2.6-3.5x multiplier)
 
 ### Platform Priority (B2B)
 
-| Platform | Citation Share | Priority |
-|----------|---------------|----------|
-| G2 | 22-23% of review citations | Critical |
-| Capterra | 15-18% | High |
-| TrustRadius | 10-12% | High |
-| Gartner Peer Insights | 8-10% | Medium |
-| Trustpilot | Consumer-focused | If B2C |
+| Platform              | Citation Share             | Priority |
+| --------------------- | -------------------------- | -------- |
+| G2                    | 22-23% of review citations | Critical |
+| Capterra              | 15-18%                     | High     |
+| TrustRadius           | 10-12%                     | High     |
+| Gartner Peer Insights | 8-10%                      | Medium   |
+| Trustpilot            | Consumer-focused           | If B2C   |
 
 ### Profile Optimization Checklist
 
-| Element | Action |
-|---------|--------|
-| Company description | Keyword-rich, 250-500 words, mirrors website positioning |
-| Product categories | Select all relevant categories (increases discoverability) |
-| Screenshots | 5-10 product screenshots with descriptive captions |
-| Logo | High-resolution, matches website branding |
-| Pricing info | Keep current (outdated pricing hurts trust) |
-| Integration list | Link all integrations/partnerships |
-| Comparison pages | Claim and optimize vs-competitor pages |
+| Element             | Action                                                     |
+| ------------------- | ---------------------------------------------------------- |
+| Company description | Keyword-rich, 250-500 words, mirrors website positioning   |
+| Product categories  | Select all relevant categories (increases discoverability) |
+| Screenshots         | 5-10 product screenshots with descriptive captions         |
+| Logo                | High-resolution, matches website branding                  |
+| Pricing info        | Keep current (outdated pricing hurts trust)                |
+| Integration list    | Link all integrations/partnerships                         |
+| Comparison pages    | Claim and optimize vs-competitor pages                     |
 
 ### Review Generation Strategy
+
 - Ask customers at high-satisfaction moments (post-onboarding, after milestone)
 - Make the process frictionless: provide direct links to review forms
 - Respond to every review (positive and negative) within 48 hours
@@ -412,15 +430,18 @@ and early traffic signals that benefit both traditional and AI search.
 ## Wikipedia and Wikidata
 
 ### Why Wikipedia Matters
+
 - 7.8% of all ChatGPT citations reference Wikipedia (Profound)
 - Used as a "credibility tiebreaker" when AI sources conflict
 - Wikidata Q-IDs strengthen entity recognition in Knowledge Graph
 
 ### Strategy
+
 Wikipedia requires notability established through independent, reliable
 sources. You cannot create a Wikipedia page for self-promotion.
 
 **Pathway to Wikipedia presence**:
+
 1. Get covered by 3-5 independent reliable sources (news outlets, industry publications)
 2. Ensure coverage is substantive (not just mentions)
 3. Create a Wikidata entry for your organization (lower notability bar)
@@ -428,6 +449,7 @@ sources. You cannot create a Wikipedia page for self-promotion.
 5. Never edit your own Wikipedia page -- this violates Wikipedia policy
 
 ### Wikidata Entry
+
 ```
 Entity: [Organization Name]
 Instance of: Q4830453 (business enterprise) or Q7397 (software)
@@ -442,39 +464,39 @@ Industry: [Q-ID for your industry]
 
 ### Day 0 (Publication Day)
 
-| Time | Action | Channel |
-|------|--------|---------|
-| 9:00 AM | Publish blog post | Website |
-| 9:15 AM | Send email newsletter | Email |
-| 9:30 AM | Post LinkedIn text (link in comment) | LinkedIn |
-| 10:00 AM | Post Twitter/X thread | Twitter/X |
-| 12:00 PM | Share in relevant subreddits (if genuine value) | Reddit |
+| Time     | Action                                          | Channel   |
+| -------- | ----------------------------------------------- | --------- |
+| 9:00 AM  | Publish blog post                               | Website   |
+| 9:15 AM  | Send email newsletter                           | Email     |
+| 9:30 AM  | Post LinkedIn text (link in comment)            | LinkedIn  |
+| 10:00 AM | Post Twitter/X thread                           | Twitter/X |
+| 12:00 PM | Share in relevant subreddits (if genuine value) | Reddit    |
 
 ### Week 1
 
-| Day | Action | Channel |
-|-----|--------|---------|
-| Day 1-2 | Engage with all comments on LinkedIn/Twitter | Social |
-| Day 2-3 | Publish companion YouTube video | YouTube |
-| Day 3-5 | Answer related Reddit threads with insights | Reddit |
-| Day 5-7 | Repurpose as short-form content (carousel, clip) | Social |
+| Day     | Action                                           | Channel |
+| ------- | ------------------------------------------------ | ------- |
+| Day 1-2 | Engage with all comments on LinkedIn/Twitter     | Social  |
+| Day 2-3 | Publish companion YouTube video                  | YouTube |
+| Day 3-5 | Answer related Reddit threads with insights      | Reddit  |
+| Day 5-7 | Repurpose as short-form content (carousel, clip) | Social  |
 
 ### Month 1
 
-| Week | Action | Purpose |
-|------|--------|---------|
-| Week 2 | Pitch to industry newsletters | Earned media |
-| Week 3 | Engage in 2-3 Reddit threads per day | Community building |
-| Week 4 | Update blog post with new data (if available) | Freshness signal |
+| Week   | Action                                        | Purpose            |
+| ------ | --------------------------------------------- | ------------------ |
+| Week 2 | Pitch to industry newsletters                 | Earned media       |
+| Week 3 | Engage in 2-3 Reddit threads per day          | Community building |
+| Week 4 | Update blog post with new data (if available) | Freshness signal   |
 
 ### Quarterly
 
-| Action | Purpose |
-|--------|---------|
-| Refresh blog post with new statistics | Freshness (76% citation factor) |
-| Record updated YouTube video (if data changed significantly) | Cross-platform freshness |
-| Audit review platform profiles | Ensure accuracy |
-| Review AI citation metrics | Adjust strategy |
+| Action                                                       | Purpose                         |
+| ------------------------------------------------------------ | ------------------------------- |
+| Refresh blog post with new statistics                        | Freshness (76% citation factor) |
+| Record updated YouTube video (if data changed significantly) | Cross-platform freshness        |
+| Audit review platform profiles                               | Ensure accuracy                 |
+| Review AI citation metrics                                   | Adjust strategy                 |
 
 ---
 
@@ -482,14 +504,14 @@ Industry: [Q-ID for your industry]
 
 ### Metrics by Channel
 
-| Channel | Primary Metric | Secondary Metrics |
-|---------|---------------|-------------------|
-| Reddit | Thread engagement (upvotes + comments) | Referral traffic, keyword rankings for thread URLs |
-| YouTube | AI Overview citation rate | Watch time, subscriber growth, transcript keyword rankings |
-| LinkedIn | Engagement rate (reactions + comments / impressions) | Profile views, connection requests, referral traffic |
-| Twitter/X | Thread impressions and retweets | Profile clicks, link clicks |
-| Email | Click-through rate | Open rate, reply rate, unsubscribe rate |
-| Review platforms | Rating and review count | AI citation mentions, profile views |
+| Channel          | Primary Metric                                       | Secondary Metrics                                          |
+| ---------------- | ---------------------------------------------------- | ---------------------------------------------------------- |
+| Reddit           | Thread engagement (upvotes + comments)               | Referral traffic, keyword rankings for thread URLs         |
+| YouTube          | AI Overview citation rate                            | Watch time, subscriber growth, transcript keyword rankings |
+| LinkedIn         | Engagement rate (reactions + comments / impressions) | Profile views, connection requests, referral traffic       |
+| Twitter/X        | Thread impressions and retweets                      | Profile clicks, link clicks                                |
+| Email            | Click-through rate                                   | Open rate, reply rate, unsubscribe rate                    |
+| Review platforms | Rating and review count                              | AI citation mentions, profile views                        |
 
 ### AI Citation Tracking
 
@@ -504,13 +526,13 @@ Track AI citations manually (no automated tool covers all platforms yet):
 
 Create custom segments to track AI-referred visitors:
 
-| Source | GA4 Filter |
-|--------|-----------|
-| ChatGPT | source contains "chatgpt" OR "chat.openai" |
-| Perplexity | source contains "perplexity" |
-| Claude | source contains "claude" OR "anthropic" |
-| Google AI | medium equals "organic" AND landing page in AI Overview set |
-| Bing Copilot | source contains "bing" AND referrer contains "copilot" |
+| Source       | GA4 Filter                                                  |
+| ------------ | ----------------------------------------------------------- |
+| ChatGPT      | source contains "chatgpt" OR "chat.openai"                  |
+| Perplexity   | source contains "perplexity"                                |
+| Claude       | source contains "claude" OR "anthropic"                     |
+| Google AI    | medium equals "organic" AND landing page in AI Overview set |
+| Bing Copilot | source contains "bing" AND referrer contains "copilot"      |
 
 AI referral traffic currently represents ~1.08% of all web traffic but
 grew 527% from January to May 2025 (Similarweb). Track the trend monthly.

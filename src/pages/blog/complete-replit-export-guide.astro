@@ -1,0 +1,269 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import BlogDetailsHero from "../../components/BlogDetailsHero.astro";
+import BlogProse from "../../components/BlogProse.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import Contact from "../../components/Contact.astro";
+import FAQ from "../../components/FAQ.astro";
+import Footer from "../../components/Footer.astro";
+
+const post = {
+  id: "complete-replit-export-guide",
+  data: {
+    title:
+      "The Complete Replit Export Guide: How to Move Your App to Production",
+    excerpt:
+      "Stop your apps from sleeping. A step-by-step technical guide for non-technical founders on moving Replit projects to Vercel, AWS, Google Cloud, and more.",
+    publishDate: "2026-04-22",
+    image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+    author: {
+      name: "Ahmed Zulfiqar",
+      image:
+        "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    },
+  },
+};
+---
+
+<Layout
+  title={`${post.data.title} | ValidMVPs`}
+  description={post.data.excerpt}
+>
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The Complete Replit Export Guide: How to Move Your App to Production",
+      "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed Zulfiqar"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ValidMVPs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://validmvps.com/images/LOGO.png"
+        }
+      },
+      "datePublished": "2026-04-22",
+      "dateModified": "2026-04-22",
+      "description": "A comprehensive guide on exporting Replit code and migrating to professional cloud platforms like Vercel, AWS, and Google Cloud."
+    }
+  </script>
+  <meta property="og:type" content="article" slot="head" />
+  <meta property="article:published_time" content="2026-04-22" slot="head" />
+  <meta property="article:modified_time" content="2026-04-22" slot="head" />
+  <meta property="article:author" content="Ahmed Zulfiqar" slot="head" />
+  <meta property="article:section" content="Technical Guides" slot="head" />
+  <meta property="article:tag" content="Replit" slot="head" />
+  <meta property="article:tag" content="Migration" slot="head" />
+  <meta property="article:tag" content="Cloud Hosting" slot="head" />
+
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <BlogDetailsHero
+      title={post.data.title}
+      excerpt={post.data.excerpt}
+      authorName={post.data.author.name}
+      authorImage={post.data.author.image}
+      publishDate={new Date(post.data.publishDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+      featuredImage={post.data.image}
+    />
+
+    <BlogProse>
+      <div
+        class="flex flex-col items-center gap-10 md:gap-20 w-full mx-auto text-[#0D1B15]"
+      >
+        <!-- AEO Opening -->
+        <div class="w-full">
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
+          >
+            <strong
+              >Replit Export Workflows help founders achieve business continuity
+              by eliminating platform lock-in and cold-start latency.</strong
+            > They utilize standard Git practices and containerization to migrate
+            legacy repls to professional cloud environments like Vercel and AWS. Companies
+            see a 100% improvement in uptime and customer trust when transitioning
+            away from development-only sandboxes.
+          </p>
+
+          <div
+            class="p-6 bg-[#D1FC71]/10 border-l-4 border-[#D1FC71] italic text-xl mb-8"
+          >
+            <p>Triples:</p>
+            <ul class="list-disc pl-8">
+              <li>Replit exports guarantee business continuity.</li>
+              <li>Cloud migrations eliminate cold-start latency.</li>
+            </ul>
+          </div>
+
+          <p
+            class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
+          >
+            If your app is struggling with downtime, it's time for a
+            professional [Technical Audit](/blog/mvp-to-seed-investor-readiness)
+            and a migration strategy.
+          </p>
+        </div>
+
+        <!-- The Why Section -->
+        <div class="w-full">
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-8"
+          >
+            Why Use This Guide?
+          </h2>
+          <div
+            class="bg-white p-8 rounded-[30px] border border-black/5 shadow-sm mb-10"
+          >
+            <p class="text-xl italic mb-4">
+              "My app kept going to sleep. Customers would try to track their
+              freight shipments and get a blank screen... it looked
+              unprofessional."
+            </p>
+            <p class="font-bold">Marcus, Freight Logistics Founder</p>
+          </div>
+          <p class="text-lg opacity-80 leading-relaxed">
+            Most Replit apps are built for exploration, not production. When you
+            hit the limits of the sandbox, you need a professional exit
+            strategy. This guide covers every major platform path.
+          </p>
+        </div>
+
+        <!-- Path Table -->
+        <div class="w-full overflow-x-auto">
+          <table
+            class="w-full text-left border-collapse bg-white rounded-2xl overflow-hidden shadow-sm"
+          >
+            <thead>
+              <tr class="bg-black text-white">
+                <th class="p-6 font-bold uppercase tracking-wider">Path</th>
+                <th class="p-6 font-bold uppercase tracking-wider">Scenario</th>
+                <th class="p-6 font-bold uppercase tracking-wider">Best For</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-black/5">
+              <tr>
+                <td class="p-6 font-bold">Vercel</td>
+                <td class="p-6">WebApps & Modern Frontends</td>
+                <td class="p-6 text-sm">Next.js, React, Clean Dashboards</td>
+              </tr>
+              <tr>
+                <td class="p-6 font-bold">Google Cloud</td>
+                <td class="p-6">Mission-Critical Apps</td>
+                <td class="p-6 text-sm">Always-on containers, Zero Downtime</td>
+              </tr>
+              <tr>
+                <td class="p-6 font-bold">AWS</td>
+                <td class="p-6">Enterprise / Massively Scalable</td>
+                <td class="p-6 text-sm">High traffic, Complex backends</td>
+              </tr>
+              <tr>
+                <td class="p-6 font-bold">Railway</td>
+                <td class="p-6">Simple Backends / APIs</td>
+                <td class="p-6 text-sm"
+                  >Python scripts, Discord bots, Simple APIs</td
+                >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Step-by-Step Sections -->
+        <div class="w-full space-y-20">
+          <section id="vercel">
+            <h3 class="text-4xl font-['Bricolage_Grotesque'] mb-6 font-medium">
+              Guide 1: Replit to Vercel
+            </h3>
+            <p class="text-lg opacity-70 mb-8 font-inter">
+              Difficulty: Beginner • Time: 1–3 Hours
+            </p>
+            <div class="space-y-6 text-lg">
+              <p>
+                Vercel is the gold standard for modern web applications. If you
+                have a Next.js or React app on Replit, moving to Vercel is like
+                moving from a coworking desk to your own office building.
+              </p>
+              <ol class="list-decimal pl-8 space-y-4">
+                <li>
+                  <strong>Download Your Secrets:</strong> Open the padlock icon in
+                  Replit and copy every key-value pair.
+                </li>
+                <li>
+                  <strong>Connect GitHub:</strong> Use the Git tool to push your code
+                  to a private GitHub repository.
+                </li>
+                <li>
+                  <strong>Import to Vercel:</strong> Create a Vercel project, link
+                  the repo, and paste your secrets into the Environment Variables
+                  panel.
+                </li>
+                <li>
+                  <strong>Deploy:</strong> Click 'Deploy' and your app is live 24/7.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <section id="gcloud">
+            <h3 class="text-4xl font-['Bricolage_Grotesque'] mb-6 font-medium">
+              Guide 2: Replit to Google Cloud
+            </h3>
+            <p class="text-lg opacity-70 mb-8 font-inter">
+              Difficulty: Intermediate • Time: 2–5 Days
+            </p>
+            <div class="space-y-6 text-lg">
+              <p>
+                This is the path we chose for Marcus. Google Cloud Run provides
+                serverless container execution that scales to zero when not in
+                use but stays warm for mission-critical shipments.
+              </p>
+              <div class="p-6 bg-black text-[#D1FC71] rounded-2xl">
+                <h5 class="font-bold mb-2">Technical Warning:</h5>
+                <p class="text-sm">
+                  You will need a <code>Dockerfile</code> and a managed database (Cloud
+                  SQL). This is not a 'click and ship' process it requires engineering
+                  discipline.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="w-full bg-[#D1FC71] p-10 md:p-16 rounded-[40px] text-black">
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[56px] tracking-[-2px] leading-tight mb-6"
+          >
+            Need a professional migration?
+          </h2>
+          <p class="text-xl md:text-2xl mb-10 max-w-[800px] opacity-80">
+            We move apps from Replit to production-grade platforms every week.
+            We handle the code cleanup, database migration, and domain setup so
+            you can focus on your business.
+          </p>
+          <a
+            href="/contact"
+            class="inline-block px-10 py-5 bg-black text-white rounded-full text-xl font-medium hover:scale-105 transition-transform"
+            >Book a Free Migration Strategy Call</a
+          >
+        </div>
+      </div>
+    </BlogProse>
+
+    <RelatedPosts currentSlug={post.id} />
+
+    <Contact />
+    <FAQ />
+    <Footer />
+  </div>
+</Layout>

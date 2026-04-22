@@ -9,20 +9,22 @@ negatively impacted (ALM Corp). E-E-A-T requirements expanded beyond YMYL to ALL
 
 ### Authenticity Signals Google Evaluates
 
-| Signal | Description |
-|--------|-------------|
-| Original images/video | Not stock photos - real screenshots, photos, demos |
-| Specific language | Details only direct experience provides |
-| First-person perspective | "When we tested this..." "In our experience..." |
-| Original data | Proprietary surveys, case studies, experiments |
-| Build-in-public docs | Process documentation, behind-the-scenes |
+| Signal                   | Description                                        |
+| ------------------------ | -------------------------------------------------- |
+| Original images/video    | Not stock photos - real screenshots, photos, demos |
+| Specific language        | Details only direct experience provides            |
+| First-person perspective | "When we tested this..." "In our experience..."    |
+| Original data            | Proprietary surveys, case studies, experiments     |
+| Build-in-public docs     | Process documentation, behind-the-scenes           |
 
 ### What Gets Penalized
+
 - Articles that read like "summaries of top five search results"
 - Mass-produced AI content lacking human oversight
 - Content without unique perspective or original information
 
 ### Key Clarification
+
 John Mueller has stated in multiple Google Office Hours sessions that Google's systems
 evaluate content quality regardless of origin. AI as a research tool is fine; AI as sole
 content creator without human expertise and oversight is not.
@@ -30,6 +32,7 @@ content creator without human expertise and oversight is not.
 ### Post-Update Analysis -- Winners & Losers
 
 Post-December 2025 core update visibility shifts:
+
 - Sites with original testing, case studies, and first-hand experience gained visibility
 - 71% of affiliate sites without original testing lost rankings (ALM Corp analysis of 847
   sites across 23 industries; methodology not independently verified)
@@ -42,11 +45,13 @@ Post-December 2025 core update visibility shifts:
 ### Quality Rater Guidelines Updates
 
 **September 2025 QRG Update:**
+
 - Added AI Overview evaluation criteria - raters now assess AI-generated summary accuracy
 - Expanded YMYL definitions to cover broader range of topics affecting wellbeing
 - Key principle codified: "Trust is the most important member of the E-E-A-T family"
 
 **January 2025 QRG Update:**
+
 - First formal "generative AI" definition added to the guidelines
 - Scaled content abuse explicitly flagged - mass AI generation without human oversight
   marked as lowest quality
@@ -58,17 +63,19 @@ Post-December 2025 core update visibility shifts:
 **Critical**: December 2025 core update extended E-E-A-T to ALL competitive queries,
 not just YMYL.
 
-| Factor | Weight | Key Signals |
-|--------|--------|-------------|
-| Experience | 20% | First-hand knowledge, original content, case studies |
-| Expertise | 25% | Credentials, depth, technical accuracy |
-| Authoritativeness | 25% | Industry recognition, citations, reputation |
-| Trustworthiness | 30% | Contact info, transparency, security (most important) |
+| Factor            | Weight | Key Signals                                           |
+| ----------------- | ------ | ----------------------------------------------------- |
+| Experience        | 20%    | First-hand knowledge, original content, case studies  |
+| Expertise         | 25%    | Credentials, depth, technical accuracy                |
+| Authoritativeness | 25%    | Industry recognition, citations, reputation           |
+| Trustworthiness   | 30%    | Contact info, transparency, security (most important) |
 
 ### YMYL Topics (Highest Scrutiny)
+
 Health, finance, legal, news, elections, democratic processes, groups of people.
 
 ### AI Content Assessment (Sept 2025 QRG)
+
 - AI content acceptable IF it demonstrates genuine E-E-A-T
 - Low-quality AI markers: generic language, no unique insights, regurgitated facts
 
@@ -87,17 +94,19 @@ Identifies content from forums, social media, niche blogs where people share
 ## Structured Data 2026
 
 ### Active (Recommend Freely)
+
 - BlogPosting, Article
 - Organization, LocalBusiness
 - FAQPage (keep answers 40-60 words; note: rich results only shown for government/health
-  sites since Aug 2023 — still valuable for AI citation, not for Google rich snippets)
+  sites since Aug 2023 still valuable for AI citation, not for Google rich snippets)
 - BreadcrumbList
 - Person (author credentials)
 - Product, SoftwareApplication
 - AggregateRating, Review (only supported on eligible types: Product, Recipe,
-  SoftwareApplication, LocalBusiness, Movie, Book — NOT on BlogPosting directly)
+  SoftwareApplication, LocalBusiness, Movie, Book NOT on BlogPosting directly)
 
 ### Deprecated (Never Recommend)
+
 - HowTo (Sept 2023)
 - SpecialAnnouncement (July 2025)
 - ClaimReview (June 2025, Google structured data simplification)
@@ -106,24 +115,28 @@ Identifies content from forums, social media, niche blogs where people share
   primary Google documentation not directly confirmed for these three)
 
 ### Critical Technical Note
+
 Schema must appear in HTML source, not injected via JavaScript.
 Most AI crawlers cannot execute JS. 72% of first-page results use schema markup.
 
 ## Google AI Overviews & AI Mode
 
 ### Coverage
+
 - AI Overviews appear in 49% of SERPs (across all query types)
 - 15-21% global (conservative) to 60% US queries
 - Doubled from 6.49% (Jan 2025) to 24.61% peak (July 2025), stabilized ~15.69% (Semrush,
   10M+ keywords, Dec 2025)
 
 ### Traffic Impact (Seer Interactive, 3,119 queries, 42 orgs)
+
 - Organic CTR declined 61% with AI Overviews (1.76% → 0.61%)
 - Paid CTR declined 68% (19.7% → 6.34%)
 - Even without AI Overviews: 41% organic CTR decline
 - BUT: brands cited in AI Overviews see 35% higher organic CTR, 91% higher paid CTR
 
 ### AI Mode (Separate Product)
+
 - 200+ countries, 100 million monthly users
 - 300-word average responses (vs 157 for AI Overviews)
 - 12.6 links per response (vs 9.26)
@@ -169,6 +182,7 @@ Emerging trends reshaping search monetization:
 ## AMP Deprecation
 
 AMP (Accelerated Mobile Pages) is effectively dead:
+
 - Squarespace deprecated AMP support in February 2025
 - Google removed AMP as a Top Stories ranking requirement in 2021
 - No SEO benefit to AMP implementation - Core Web Vitals replaced AMP's purpose
@@ -183,7 +197,9 @@ Google DOES measure - bounce rate, time on page, scroll depth, and return
 visits.
 
 ### December 2025 Core Update: Readability Correlation
+
 Raptive analysis (published Feb 2026, high reliability) found:
+
 - Sites with <7% of pages ≤500 words had more stable rankings
 - Winning pages averaged 393 days freshness vs 500 for losers
 - Sites with >4% branded search clicks showed stronger resilience
@@ -193,11 +209,13 @@ Raptive analysis (published Feb 2026, high reliability) found:
 - Thin content, template-based pages, and generic AI aggregation were penalized
 
 ### E-E-A-T Expansion
+
 E-E-A-T now applies to virtually ALL content categories, not just YMYL. The
 December 2025 Core Update extended E-E-A-T evaluation to ALL competitive
 queries - the biggest scope expansion since E-A-T was introduced.
 
 ### Quality Rater Guidelines Updates
+
 - **January 2025 QRG**: Added "Filler" section penalizing pages that bury useful
   information under padding content. Topical dilution and entity drift are
   explicit quality signals raters evaluate.
@@ -206,6 +224,7 @@ queries - the biggest scope expansion since E-A-T was introduced.
   language, no unique insights, regurgitated facts.
 
 ### Hidden Gems Ranking System
+
 Hidden Gems is its own ranking system (Brad Kellett confirmation), separate from
 core ranking. It surfaces experience-based niche content from forums, social media,
 and small blogs. 70.85% of keyphrases with product reviews now show "Discussions and

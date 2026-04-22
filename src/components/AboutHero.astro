@@ -3,23 +3,30 @@
  * AboutHero Section
  * Complex layout with absolute-positioned floating elements and headline letters.
  */
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 // Image paths from the local assets
 const images = [
   "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=800", // Team Collaboration
   "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800", // Development
-  "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800"    // Code/Matrix
+  "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800", // Code/Matrix
 ];
 ---
 
-<section class="w-full min-h-[500px] md:h-[1000px] flex flex-col items-center justify-center relative overflow-hidden bg-[#F6F7FF] py-12 md:pt-[100px]">
-  
+<section
+  class="w-full min-h-[500px] md:h-[1000px] flex flex-col items-center justify-center relative overflow-hidden bg-[#F6F7FF] py-12 md:pt-[100px]"
+>
   <style>
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
     }
     .floating {
       animation: float 4s ease-in-out infinite;
@@ -27,69 +34,99 @@ const images = [
   </style>
 
   <!-- Floating Background Elements Layer -->
-  <div class="absolute inset-0 pointer-events-none max-w-[1440px] mx-auto opacity-30 md:opacity-100">
-    
+  <div
+    class="absolute inset-0 pointer-events-none max-w-[1440px] mx-auto opacity-30 md:opacity-100"
+  >
     <!-- Floating Images - Adjusted for mobile -->
-    <div class="floating w-[70px] h-[71px] md:w-[140px] md:h-[141px] left-[5%] top-[10%] md:left-[349px] md:top-[256px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:0s]">
+    <div
+      class="floating w-[70px] h-[71px] md:w-[140px] md:h-[141px] left-[5%] top-[10%] md:left-[349px] md:top-[256px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:0s]"
+    >
       <img src={images[0]} class="w-full h-full object-cover" />
     </div>
-    
-    <div class="floating w-[70px] h-[71px] md:w-[140px] md:h-[141px] right-[5%] top-[15%] md:left-[931px] md:top-[238px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:1s]">
+
+    <div
+      class="floating w-[70px] h-[71px] md:w-[140px] md:h-[141px] right-[5%] top-[15%] md:left-[931px] md:top-[238px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:1s]"
+    >
       <img src={images[1]} class="w-full h-full object-cover" />
     </div>
 
-    <div class="hidden md:block floating w-[140px] h-[141px] left-[636px] top-[257px] absolute overflow-hidden rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:0.5s]">
+    <div
+      class="hidden md:block floating w-[140px] h-[141px] left-[636px] top-[257px] absolute overflow-hidden rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:0.5s]"
+    >
       <img src={images[1]} class="w-full h-full object-cover" />
     </div>
 
-    <div class="floating w-[60px] h-[61px] md:w-[140px] md:h-[141px] left-[10%] bottom-[15%] md:left-[147px] md:top-[453px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] [animation-delay:1s]">
-        <img src={images[0]} class="w-full h-full object-cover" />
+    <div
+      class="floating w-[60px] h-[61px] md:w-[140px] md:h-[141px] left-[10%] bottom-[15%] md:left-[147px] md:top-[453px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] [animation-delay:1s]"
+    >
+      <img src={images[0]} class="w-full h-full object-cover" />
     </div>
 
-    <div class="floating w-[60px] h-[61px] md:w-[140px] md:h-[141px] right-[10%] bottom-[10%] md:left-[1060px] md:top-[467px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[20px_20px_60px_rgba(0,0,0,0.05)] [animation-delay:1.5s]">
-        <img src={images[1]} class="w-full h-full object-cover" />
+    <div
+      class="floating w-[60px] h-[61px] md:w-[140px] md:h-[141px] right-[10%] bottom-[10%] md:left-[1060px] md:top-[467px] absolute overflow-hidden rounded-[12px] md:rounded-[16px] shadow-[20px_20px_60px_rgba(0,0,0,0.05)] [animation-delay:1.5s]"
+    >
+      <img src={images[1]} class="w-full h-full object-cover" />
     </div>
 
     <!-- Extra decor for desktop stays same -->
-    <div class="hidden md:block floating w-[140px] h-[141px] left-[1033px] top-[889px] absolute overflow-hidden rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] [animation-delay:2s]">
-        <img src={images[1]} class="w-full h-full object-cover" />
+    <div
+      class="hidden md:block floating w-[140px] h-[141px] left-[1033px] top-[889px] absolute overflow-hidden rounded-[16px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] [animation-delay:2s]"
+    >
+      <img src={images[1]} class="w-full h-full object-cover" />
     </div>
-    <div class="hidden md:block floating w-[140px] h-[141px] left-[772px] top-[977px] absolute overflow-hidden rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:0.8s]">
-        <img src={images[0]} class="w-full h-full object-cover" />
+    <div
+      class="hidden md:block floating w-[140px] h-[141px] left-[772px] top-[977px] absolute overflow-hidden rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] [animation-delay:0.8s]"
+    >
+      <img src={images[0]} class="w-full h-full object-cover" />
     </div>
   </div>
 
   <!-- Main Content Center Stack -->
-  <div class="reveal-on-scroll w-full max-w-[600px] flex flex-col items-center gap-4 md:gap-6 relative z-10 px-6">
-    
+  <div
+    class="reveal-on-scroll w-full max-w-[600px] flex flex-col items-center gap-4 md:gap-6 relative z-10 px-6"
+  >
     <!-- Headline with individual letters (for staggered entry) -->
     <div class="w-full flex flex-col items-center">
       <div class="w-full h-auto relative flex justify-center">
-          <h1 class="flex flex-wrap justify-center gap-1 md:gap-4 m-0 p-0 text-center leading-[0.9]">
-             {["A", "b", "o", "u", "t", " ", "U", "s"].map((char, i) => (
-                char === " " ? <span class="w-4 md:w-8"></span> : 
-                <span class="letter text-[var(--color-spring-green-8)] text-5xl md:text-[96px] font-['Bricolage_Grotesque'] font-medium" style={`transition-delay: ${i * 40}ms`}>
+        <h1
+          class="flex flex-wrap justify-center gap-1 md:gap-4 m-0 p-0 text-center leading-[0.9]"
+        >
+          {
+            ["A", "b", "o", "u", "t", " ", "U", "s"].map((char, i) =>
+              char === " " ? (
+                <span class="w-4 md:w-8" />
+              ) : (
+                <span
+                  class="letter text-[var(--color-spring-green-8)] text-5xl md:text-[96px] font-['Bricolage_Grotesque'] font-medium"
+                  style={`transition-delay: ${i * 40}ms`}
+                >
                   {char}
                 </span>
-             ))}
-          </h1>
+              ),
+            )
+          }
+        </h1>
       </div>
     </div>
 
     <!-- Description -->
     <div class="reveal-on-scroll stagger-1 w-full max-w-[480px] text-center">
-       <p class="m-0 text-[var(--color-spring-green-8)] text-[18px] font-['Inter'] font-normal leading-[1.7] opacity-90">
-         We turn ideas into functional, investor-ready products. Focused on speed, technical execution, and startup strategy.
-       </p>
+      <p
+        class="m-0 text-[var(--color-spring-green-8)] text-[18px] font-['Inter'] font-normal leading-[1.7] opacity-90"
+      >
+        We turn ideas into functional, investor-ready products. Focused on
+        speed, technical execution, and startup strategy.
+      </p>
     </div>
 
     <!-- Call to Action Button -->
     <div class="reveal-on-scroll stagger-2 mt-4">
-        <a href="/contact" class="btn-premium-morph btn-green-bg px-8 py-4 bg-[var(--color-chartreuse-green-72)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline flex items-center justify-center">
-          Consult with a Partner
-        </a>
+      <a
+        href="/contact"
+        class="btn-premium-morph btn-green-bg px-8 py-4 bg-[var(--color-chartreuse-green-72)] rounded-full text-[var(--color-spring-green-8)] text-base font-['Inter'] font-medium no-underline flex items-center justify-center"
+      >
+        <span>Consult with a Partner</span>
+      </a>
     </div>
-
   </div>
-
 </section>
