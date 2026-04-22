@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import ClickSpark from "../components/ClickSpark.jsx";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title?: string;
@@ -252,6 +253,7 @@ const {
       // Re-run after any dynamic content changes or page transitions
       document.addEventListener("astro:after-swap", initPremiumButtons);
     </script>
+    <Analytics />
   </body>
 </html>
 
