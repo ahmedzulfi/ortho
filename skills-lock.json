@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "aeo-optimization": {
+      "source": "alinaqi/claude-bootstrap",
+      "sourceType": "github",
+      "computedHash": "98912c031f86bccb4b22f8ad3122256aef62132190db8b55d31f009d78959161"
+    },
     "astro": {
       "source": "astrolicious/agent-skills",
       "sourceType": "github",
@@ -50,6 +55,11 @@
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
+    },
+    "seo-aeo-best-practices": {
+      "source": "sanity-io/agent-toolkit",
+      "sourceType": "github",
+      "computedHash": "b6b2dd3af3c92f82f04b830dab2cc323f299d7c2e57f7d3619a5886caa7eeb08"
     },
     "seo-audit": {
       "source": "coreyhaines31/marketingskills",
