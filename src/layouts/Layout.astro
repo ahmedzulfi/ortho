@@ -137,10 +137,10 @@ const {
 
       // Initialize Lenis with optimized settings
       const lenis = new Lenis({
-        duration: 1.2,
+        duration: 1.0, // Snappier duration
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        lerp: 0.1, // Increased lerp slightly for responsiveness
-        wheelMultiplier: 1.1,
+        lerp: 0.12, // More responsive lerp
+        wheelMultiplier: 1.0,
         smoothWheel: true,
       });
 
@@ -151,92 +151,96 @@ const {
 
       requestAnimationFrame(raf);
 
-      /* Optimized IntersectionObserver */
-      const observerOptions = {
-        root: null,
-        rootMargin: "0px 0px -10% 0px", // Use percentage for better responsiveness
-        threshold: 0.05, // Lower threshold for faster trigger
-      };
-
-      const observer = new IntersectionObserver((entries) => {
+      /* Optimized IntersectionObserver for Scroll Reveal */
+      const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
-      }, observerOptions);
+      }, {
+        root: null,
+        rootMargin: "0px 0px -5% 0px",
+        threshold: 0.05,
+      });
 
-      const initScrollReveal = () => {
-        document.querySelectorAll(".reveal-on-scroll:not(.is-visible)").forEach((el) => {
-          observer.observe(el);
+      /* IntersectionObserver for Premium Button Initialization (Lazy Init) */
+      const buttonObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            initSingleButton(el);
+            buttonObserver.unobserve(el);
+          }
         });
+      }, {
+        root: null,
+        rootMargin: "100px", // Init slightly before they enter the viewport
+      });
+
+      const initSingleButton = (el: HTMLElement) => {
+        if (el.classList.contains("premium-init-done")) return;
+        
+        // Re-apply the base class if missing
+        if (!el.classList.contains("btn-premium-morph")) {
+          el.classList.add("btn-premium-morph");
+        }
+        
+        // Robust color detection (only if not already specified)
+        if (!el.classList.contains("btn-green-bg")) {
+          const style = window.getComputedStyle(el);
+          const bgColor = style.backgroundColor;
+          if (
+            bgColor &&
+            (bgColor.includes("209, 252, 113") ||
+              bgColor.includes("rgb(209, 252, 113)") ||
+              el.classList.contains('bg-[#D1FC71]'))
+          ) {
+            el.classList.add("btn-green-bg");
+          }
+        }
+
+        // WRAP RAW TEXT NODES - Only if needed
+        const nodes = Array.from(el.childNodes);
+        const hasUnwrappedText = nodes.some(node => 
+          node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
+        );
+
+        if (hasUnwrappedText) {
+          const span = document.createElement("span");
+          span.style.cssText = "z-index: 10; position: relative; pointer-events: none;";
+          while (el.firstChild) {
+            span.appendChild(el.firstChild);
+          }
+          el.appendChild(span);
+        }
+        
+        el.classList.add("premium-init-done");
       };
 
-      /* Optimized Premium Button Animation Initialization */
-      const initPremiumButtons = () => {
-        const elements = document.querySelectorAll('.btn-premium-morph, .btn-primary, button:not(.no-morph), a.hover-lift');
-        
-        if (elements.length === 0) return;
+      const initUI = () => {
+        // Scroll Reveal
+        document.querySelectorAll(".reveal-on-scroll:not(.is-visible)").forEach((el) => {
+          revealObserver.observe(el);
+        });
 
-        const task = () => {
-          elements.forEach((el) => {
-            if (el.classList.contains("premium-init-done")) return;
-            
-            // Re-apply the base class if missing
-            if (!el.classList.contains("btn-premium-morph")) {
-              el.classList.add("btn-premium-morph");
-            }
-            
-            // Robust color detection
-            const style = window.getComputedStyle(el);
-            const bgColor = style.backgroundColor;
-            
-            if (
-              bgColor &&
-              (bgColor.includes("209, 252, 113") ||
-                bgColor.includes("rgb(209, 252, 113)") ||
-                el.classList.contains('bg-[#D1FC71]'))
-            ) {
-              el.classList.add("btn-green-bg");
-            }
-
-            // WRAP RAW TEXT NODES
-            const nodes = Array.from(el.childNodes);
-            const hasUnwrappedText = nodes.some(node => 
-              node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
-            );
-
-            if (hasUnwrappedText) {
-              const span = document.createElement("span");
-              span.style.cssText = "z-index: 10; position: relative; pointer-events: none;";
-              
-              while (el.firstChild) {
-                span.appendChild(el.firstChild);
-              }
-              el.appendChild(span);
-            }
-            
-            el.classList.add("premium-init-done");
-          });
-        };
-
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(task, { timeout: 2000 });
-        } else {
-          setTimeout(task, 100); // Small delay to avoid blocking initial paint
-        }
+        // Lazy Button Init
+        const buttonSelectors = '.btn-premium-morph, .btn-primary, button:not(.no-morph), a.hover-lift';
+        document.querySelectorAll(buttonSelectors).forEach((el) => {
+          buttonObserver.observe(el);
+        });
       };
 
       // Initial run
-      initScrollReveal();
-      initPremiumButtons();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initUI);
+      } else {
+        initUI();
+      }
 
       // Re-run after page transitions
-      document.addEventListener("astro:after-swap", () => {
-        initScrollReveal();
-        initPremiumButtons();
-      });
+      document.addEventListener("astro:after-swap", initUI);
     </script>
     <Analytics />
   </body>
