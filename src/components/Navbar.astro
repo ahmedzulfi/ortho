@@ -20,7 +20,7 @@ const navLinks = [
 <header class="fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-start pointer-events-none">
   <div class="pointer-events-auto flex flex-col items-center w-full pb-4 pt-4 md:pt-6 px-4 md:px-8 lg:px-[50px]">
     <!-- Inner Pill Container -->
-    <div class="w-full max-w-[1440px] px-4 md:px-10 py-3 bg-[#0D1B15]/80 backdrop-blur-md border border-white/10 shadow-[0px_4px_20px_rgba(13,27,21,0.04)] rounded-2xl flex justify-between items-center relative">
+    <div class="w-full max-w-[1440px] px-4 md:px-10 py-3 bg-white/80 backdrop-blur-md border border-white/20 shadow-[0px_4px_20px_rgba(13,27,21,0.04)] rounded-2xl flex justify-between items-center relative">
       
       <!-- Left: Logo -->
       <a href="/" class="flex items-center justify-center shrink-0">
@@ -79,7 +79,7 @@ const navLinks = [
     >
       <div 
         id="mobile-nav-card"
-        class="w-full max-w-[400px] bg-[#0D1B15] border border-white/10 premium-noise rounded-[20px] p-6 shadow-2xl flex flex-col items-center gap-4 translate-y-[-40px] transition-all duration-500 ease-[var(--ease-out)]"
+        class="w-full max-w-[400px] bg-white premium-noise rounded-[20px] p-6 shadow-2xl flex flex-col items-center gap-4 translate-y-[-40px] transition-all duration-500 ease-[var(--ease-out)]"
       >
         <!-- Header -->
         <div class="w-full flex justify-between items-center mb-2 px-2">
@@ -88,7 +88,7 @@ const navLinks = [
           </a>
           <button 
             id="close-mobile-nav" 
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D1FC71]"
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[#0D1B15] hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D1FC71]"
             aria-label="Close Menu"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -102,7 +102,7 @@ const navLinks = [
             return (
               <a 
                 href={link.path} 
-                class={`mobile-link group flex items-center gap-3 px-5 py-3 rounded-2xl w-full transition-all duration-300 ${isActive ? 'bg-[#D1FC71] text-[#0D1B15]' : 'text-gray-400 hover:bg-[#D1FC71]/10 hover:text-[#D1FC71]'}`}
+                class={`mobile-link group flex items-center gap-3 px-5 py-3 rounded-2xl w-full transition-all duration-300 ${isActive ? 'bg-[#D1FC71] text-[#0D1B15]' : 'text-gray-600 hover:bg-[#D1FC71]/10 hover:text-[#0D1B15]'}`}
                 style={`--stagger: ${i};`}
               >
                 <div class="w-1.5 h-1.5 bg-current rounded-full group-hover:scale-150 transition-transform"></div>

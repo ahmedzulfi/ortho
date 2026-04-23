@@ -174,20 +174,29 @@ const {
 
       /* Optimized Premium Button Animation Initialization */
       const initPremiumButtons = () => {
-        // Use a more specific selector to avoid iterating over too many elements
-        const elements = document.querySelectorAll('.btn-premium-morph, .btn-primary, button:not(.no-morph)');
+        const elements = document.querySelectorAll('.btn-premium-morph, .btn-primary, button:not(.no-morph), a.hover-lift');
         
         if (elements.length === 0) return;
 
-        // Use requestIdleCallback for DOM mutations that aren't critical for initial paint
         const task = () => {
           elements.forEach((el) => {
             if (el.classList.contains("premium-init-done")) return;
             
-            el.classList.add("btn-premium-morph");
+            // Re-apply the base class if missing
+            if (!el.classList.contains("btn-premium-morph")) {
+              el.classList.add("btn-premium-morph");
+            }
             
-            // Check for green background via class instead of computed style if possible
-            if (el.classList.contains('bg-[#D1FC71]') || el.classList.contains('bg-chartreuse')) {
+            // Robust color detection
+            const style = window.getComputedStyle(el);
+            const bgColor = style.backgroundColor;
+            
+            if (
+              bgColor &&
+              (bgColor.includes("209, 252, 113") ||
+                bgColor.includes("rgb(209, 252, 113)") ||
+                el.classList.contains('bg-[#D1FC71]'))
+            ) {
               el.classList.add("btn-green-bg");
             }
 
@@ -214,7 +223,7 @@ const {
         if ('requestIdleCallback' in window) {
           window.requestIdleCallback(task, { timeout: 2000 });
         } else {
-          setTimeout(task, 1);
+          setTimeout(task, 100); // Small delay to avoid blocking initial paint
         }
       };
 
