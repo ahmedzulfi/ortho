@@ -134,10 +134,11 @@ const {
     <script>
       import Lenis from "lenis";
 
+      // Initialize Lenis with optimized settings
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        lerp: 0.08,
+        lerp: 0.1, // Increased lerp slightly for responsiveness
         wheelMultiplier: 1.1,
         smoothWheel: true,
       });
@@ -149,109 +150,83 @@ const {
 
       requestAnimationFrame(raf);
 
-      /* IntersectionObserver for scroll-based enter animations */
+      /* Optimized IntersectionObserver */
       const observerOptions = {
         root: null,
-        rootMargin: "0px 0px -50px 0px",
-        threshold: 0.1,
+        rootMargin: "0px 0px -10% 0px", // Use percentage for better responsiveness
+        threshold: 0.05, // Lower threshold for faster trigger
       };
 
-      const observer = new IntersectionObserver((entries, observer) => {
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target); // Animate once
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
-        observer.observe(el);
-      });
-
-      /* Global Premium Button Animation Initialization */
-      const initPremiumButtons = () => {
-        // Select buttons and potentially button-like links
-        const elements = document.querySelectorAll(
-          'button, a[href^="/"], a[href^="#"], .btn-premium-morph',
-        );
-
-        // Batch READ operations (getComputedStyle)
-        const updates: { el: Element; bgColor: string }[] = [];
-        elements.forEach((el) => {
-          // Detect if it should have the premium animation
-          const style = window.getComputedStyle(el);
-          const isButtonLike =
-            el.tagName === "BUTTON" ||
-            el.classList.contains("p-[") ||
-            (style.borderRadius && style.borderRadius !== "0px") ||
-            (style.backgroundColor &&
-              style.backgroundColor !== "rgba(0, 0, 0, 0)");
-
-          if (isButtonLike && !el.classList.contains("btn-premium-morph")) {
-            // Don't apply to pure text links that don't look like buttons
-            if (
-              style.backgroundColor === "rgba(0, 0, 0, 0)" &&
-              el.tagName === "A"
-            )
-              return;
-
-            updates.push({
-              el,
-              bgColor: style.backgroundColor,
-            });
-          }
-        });
-
-        // Batch WRITE operations (DOM manipulation)
-        updates.forEach(({ el, bgColor }) => {
-          el.classList.add("btn-premium-morph");
-
-          // Check background to apply contrast variation
-          if (
-            bgColor &&
-            (bgColor.includes("209, 252, 113") ||
-              bgColor.includes("rgb(209, 252, 113)"))
-          ) {
-            el.classList.add("btn-green-bg");
-          }
-
-          // WRAP RAW TEXT NODES for correct z-index layering
-          const nodes = Array.from(el.childNodes);
-          if (nodes.length > 0) {
-            let hasUnwrappedText = false;
-
-            // Check if we need to wrap without mutating yet
-            for (const node of nodes) {
-              if (
-                node.nodeType === Node.TEXT_NODE &&
-                (node.textContent || "").trim()
-              ) {
-                hasUnwrappedText = true;
-                break;
-              }
-            }
-
-            if (hasUnwrappedText) {
-              const fragment = document.createDocumentFragment();
-              nodes.forEach((node) => fragment.appendChild(node));
-
-              const span = document.createElement("span");
-              span.style.zIndex = "10";
-              span.style.position = "relative";
-              span.style.pointerEvents = "none";
-              span.appendChild(fragment);
-              el.appendChild(span);
-            }
-          }
+      const initScrollReveal = () => {
+        document.querySelectorAll(".reveal-on-scroll:not(.is-visible)").forEach((el) => {
+          observer.observe(el);
         });
       };
 
+      /* Optimized Premium Button Animation Initialization */
+      const initPremiumButtons = () => {
+        // Use a more specific selector to avoid iterating over too many elements
+        const elements = document.querySelectorAll('.btn-premium-morph, .btn-primary, button:not(.no-morph)');
+        
+        if (elements.length === 0) return;
+
+        // Use requestIdleCallback for DOM mutations that aren't critical for initial paint
+        const task = () => {
+          elements.forEach((el) => {
+            if (el.classList.contains("premium-init-done")) return;
+            
+            el.classList.add("btn-premium-morph");
+            
+            // Check for green background via class instead of computed style if possible
+            if (el.classList.contains('bg-[#D1FC71]') || el.classList.contains('bg-chartreuse')) {
+              el.classList.add("btn-green-bg");
+            }
+
+            // WRAP RAW TEXT NODES
+            const nodes = Array.from(el.childNodes);
+            const hasUnwrappedText = nodes.some(node => 
+              node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
+            );
+
+            if (hasUnwrappedText) {
+              const span = document.createElement("span");
+              span.style.cssText = "z-index: 10; position: relative; pointer-events: none;";
+              
+              while (el.firstChild) {
+                span.appendChild(el.firstChild);
+              }
+              el.appendChild(span);
+            }
+            
+            el.classList.add("premium-init-done");
+          });
+        };
+
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(task, { timeout: 2000 });
+        } else {
+          setTimeout(task, 1);
+        }
+      };
+
       // Initial run
+      initScrollReveal();
       initPremiumButtons();
 
-      // Re-run after any dynamic content changes or page transitions
-      document.addEventListener("astro:after-swap", initPremiumButtons);
+      // Re-run after page transitions
+      document.addEventListener("astro:after-swap", () => {
+        initScrollReveal();
+        initPremiumButtons();
+      });
     </script>
     <Analytics />
   </body>

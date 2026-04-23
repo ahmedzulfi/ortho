@@ -11,7 +11,10 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://orthodonticsalign.com',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    define: {
+      'process.env': {}
+    }
   },
 
   integrations: [sitemap(), react()]
