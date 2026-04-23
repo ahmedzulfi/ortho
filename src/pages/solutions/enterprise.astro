@@ -1,0 +1,113 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Services from "../../components/Services.astro";
+import Process from "../../components/Process.astro";
+import Team from "../../components/Team.astro";
+import Gallery from "../../components/Gallery.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import FAQ from "../../components/FAQ.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const heroProps = {
+  title: "Rapid Prototyping for Enterprise Teams",
+  description: "We partner with innovation labs and corporate teams to bypass internal bottlenecks, building secure, production-ready internal tools and new product initiatives in weeks.",
+  ctaText: "Start Your Initiative",
+  ctaHref: "/contact"
+};
+
+const aboutProps = {
+  headline: "ValidMVPs acts as an elite, external strike team for enterprise innovation, delivering modern software at startup speed.",
+  paragraph1: "Corporate IT departments are often bogged down by legacy systems and long release cycles. When you need to test a new market initiative or build a critical internal tool quickly, you need a different approach.",
+  paragraph2: "We build secure, compliant, and highly functional applications that can either operate independently or integrate securely with your existing enterprise architecture via APIs. We bring startup execution speed to corporate environments.",
+  image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
+};
+
+const servicesProps = {
+  title: "Enterprise Solutions",
+  description: "Modernizing operations and launching new initiatives without the traditional corporate overhead.",
+  servicesData: [
+    {
+      index: "01",
+      title: "Internal Tool Development",
+      description: "Custom dashboards, CRM extensions, and data visualization tools built to streamline your specific operational workflows.",
+      bullets: ["Custom Dashboards", "Workflow Automation", "Data Visualization", "API Integrations"],
+      image: "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    },
+    {
+      index: "02",
+      title: "New Product Initiatives",
+      description: "Test new markets with rapid MVPs. We build standalone products that prove traction before you commit to full internal integration.",
+      bullets: ["Rapid Prototyping", "Market Validation", "Standalone Architecture", "User Testing"],
+      image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    },
+    {
+      index: "03",
+      title: "Legacy System Modernization",
+      description: "We build modern, responsive web interfaces on top of your existing legacy databases and APIs, improving UX without rewriting the backend.",
+      bullets: ["Frontend Modernization", "API Wrapping", "UX Overhauls", "Mobile Optimization"],
+      image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    }
+  ]
+};
+
+const processProps = {
+  title: "Our Enterprise Workflow",
+  description: "A secure, transparent process designed to integrate seamlessly with corporate compliance requirements.",
+  stepsData: [
+    {
+      index: "01",
+      title: "Requirements & Security Scoping",
+      description: "We align on the business objectives, technical constraints, data privacy requirements, and the required compliance standards.",
+      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Compliance Check", "Security Architecture", "API Mapping", "Stakeholder Alignment"]
+    },
+    {
+      index: "02",
+      title: "Agile Sprint Execution",
+      description: "We operate in weekly sprints with total transparency. You get regular demonstrations of working software, allowing for course correction.",
+      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Weekly Demos", "Transparent Progress", "Iterative Development", "Rapid Feedback"]
+    },
+    {
+      index: "03",
+      title: "Security Review & Testing",
+      description: "Rigorous QA testing, vulnerability scanning, and ensuring the application meets all agreed-upon corporate standards.",
+      image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["QA Testing", "Security Audits", "Load Testing", "UAT Support"]
+    },
+    {
+      index: "04",
+      title: "Handoff or Managed Hosting",
+      description: "We can deploy to your internal cloud infrastructure and hand over the codebase, or provide fully managed, secure hosting.",
+      image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Infrastructure Setup", "Code Handoff", "Documentation", "Ongoing Support Option"]
+    }
+  ]
+};
+---
+
+<Layout title="Enterprise Innovation & Internal Tools | ValidMVPs">
+  <main class="min-h-screen">
+    <Navbar />
+    <div id="main-content" class="sr-only">Main Content Starts Here</div>
+    
+    <Hero {...heroProps} />
+    <About {...aboutProps} />
+    <Services {...servicesProps} />
+    <Process {...processProps} />
+    
+    <Team />
+    <Gallery />
+    <Testimonials />
+    <FAQ />
+    <Contact />
+    <Footer />
+  </main>
+</Layout>

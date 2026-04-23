@@ -1,0 +1,113 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Services from "../../components/Services.astro";
+import Process from "../../components/Process.astro";
+import Team from "../../components/Team.astro";
+import Gallery from "../../components/Gallery.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import FAQ from "../../components/FAQ.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const heroProps = {
+  title: "We Build AI Apps & LLM Wrappers In Weeks",
+  description: "Stop wrestling with LangChain and API limits. We partner with AI founders to architect, build, and deploy high-performance, production-grade AI systems rapidly.",
+  ctaText: "Start Your AI Build",
+  ctaHref: "/contact"
+};
+
+const aboutProps = {
+  headline: "ValidMVPs is an AI-first development service focused on helping founders deploy intelligent features and RAG pipelines in weeks, not months.",
+  paragraph1: "In the AI space, speed is everything. We prioritize functional, scalable AI integration over theoretical research. We help you identify the core AI value proposition and ship it to real users.",
+  paragraph2: "We bridge the gap for founders who have a great prompt or Colab notebook but need a full-stack application. We handle the vector databases, streaming responses, auth, and billing infrastructure.",
+  image: "https://images.pexels.com/photos/17483848/pexels-photo-17483848.jpeg?auto=compress&cs=tinysrgb&w=800"
+};
+
+const servicesProps = {
+  title: "AI-First Development",
+  description: "Specialized engineering for the generative AI era. We turn your models and prompts into robust products.",
+  servicesData: [
+    {
+      index: "01",
+      title: "Custom RAG Pipelines",
+      description: "Chat with your data. We build secure, hallucination-resistant Retrieval-Augmented Generation systems using leading vector databases.",
+      bullets: ["Vector Databases", "Document Parsing", "Semantic Search", "Context Injection"],
+      image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    },
+    {
+      index: "02",
+      title: "LLM Wrappers & Interfaces",
+      description: "Convert your specialized prompts into monetizable SaaS products. We build the UI, auth, and Stripe billing layers around OpenAI, Anthropic, or open-source models.",
+      bullets: ["Streaming UI", "Prompt Management", "Rate Limiting", "Monetization Setup"],
+      image: "https://images.pexels.com/photos/17483874/pexels-photo-17483874.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    },
+    {
+      index: "03",
+      title: "AI Agent Automation",
+      description: "Deploy autonomous agents to handle complex multi-step workflows, web scraping, and data processing tasks securely.",
+      bullets: ["Agentic Workflows", "Tool Use Integration", "Background Processing", "Error Recovery"],
+      image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    }
+  ]
+};
+
+const processProps = {
+  title: "How We Build AI Software",
+  description: "From prompt engineering to production deployment. Our AI-optimized workflow ensures reliable, fast delivery.",
+  stepsData: [
+    {
+      index: "01",
+      title: "Use Case & Model Selection",
+      description: "We define the exact AI functionality, select the right models (GPT-4, Claude 3.5, Llama), and scope the necessary data infrastructure.",
+      image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Prompt Engineering", "Model Evaluation", "Cost Analysis", "Architecture Design"]
+    },
+    {
+      index: "02",
+      title: "Core Infrastructure Build",
+      description: "We set up the full-stack application, including authentication, database schemas, and the API routes that handle LLM communication.",
+      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Next.js / Node Build", "PostgreSQL/pgvector", "API Development", "Auth Setup"]
+    },
+    {
+      index: "03",
+      title: "AI Integration & Tuning",
+      description: "Connecting the models, setting up RAG, building streaming UI components, and refining prompts to eliminate hallucinations and improve latency.",
+      image: "https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["RAG Implementation", "Streaming Responses", "Latency Tuning", "Edge Cases"]
+    },
+    {
+      index: "04",
+      title: "Launch & Iterate",
+      description: "Your AI app goes live. We monitor API costs, track model performance, and help you iterate based on user interactions.",
+      image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Cost Monitoring", "Analytics Integration", "User Feedback", "Performance Tuning"]
+    }
+  ]
+};
+---
+
+<Layout title="AI App Development Services | ValidMVPs">
+  <main class="min-h-screen">
+    <Navbar />
+    <div id="main-content" class="sr-only">Main Content Starts Here</div>
+    
+    <Hero {...heroProps} />
+    <About {...aboutProps} />
+    <Services {...servicesProps} />
+    <Process {...processProps} />
+    
+    <Team />
+    <Gallery />
+    <Testimonials />
+    <FAQ />
+    <Contact />
+    <Footer />
+  </main>
+</Layout>

@@ -4,7 +4,21 @@
  * 4-step interactive workflow for clear aligner treatment planning.
  */
 
-const steps = [
+interface ProcessStep {
+  index: string;
+  title: string;
+  description: string;
+  image: string;
+  features: string[];
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  stepsData?: ProcessStep[];
+}
+
+const defaultSteps = [
   {
     index: "01",
     title: "Discovery & Blueprinting",
@@ -34,6 +48,12 @@ const steps = [
     features: ["Public Launch", "User Onboarding", "Feedback Collection", "Growth Support"]
   }
 ];
+
+const {
+  title = "How We Build",
+  description = "From idea to launch in weeks. Our streamlined workflow ensures constant visibility and rapid delivery of working software.",
+  stepsData = defaultSteps
+} = Astro.props;
 ---
 
 <section id="process-section" class="w-full bg-[var(--color-white-solid,white)] overflow-hidden justify-center items-center flex py-20 md:py-[120px]">
@@ -51,16 +71,16 @@ const steps = [
       </div>
       
       <div class="self-stretch relative flex flex-col md:flex-row justify-between items-start md:items-end flex-wrap gap-5">
-        <h2 class="m-0 text-[var(--color-spring-green-8)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[57.60px]">How We Build</h2>
+        <h2 class="m-0 text-[var(--color-spring-green-8)] text-4xl md:text-[48px] font-['Bricolage_Grotesque'] font-medium leading-tight md:leading-[57.60px]">{title}</h2>
         <div class="max-w-[571px] text-[var(--color-grey-36)] text-base md:text-lg font-['Inter'] font-normal leading-relaxed md:leading-[30.60px]">
-          From idea to launch in weeks. Our streamlined workflow ensures constant visibility and rapid delivery of working software.
+          {description}
         </div>
       </div>
     </div>
 
     <!-- Steps List -->
     <div class="process-steps-container self-stretch flex-col justify-start items-center gap-6 flex">
-      {steps.map((step, idx) => (
+      {stepsData.map((step, idx) => (
         <div 
           class={`process-step-item reveal-on-scroll stagger-${idx + 1}`} 
           data-index={idx}

@@ -1,0 +1,113 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Services from "../../components/Services.astro";
+import Process from "../../components/Process.astro";
+import Team from "../../components/Team.astro";
+import Gallery from "../../components/Gallery.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import FAQ from "../../components/FAQ.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const heroProps = {
+  title: "We Build Your SaaS In Weeks Not Months",
+  description: "Solo founders and VC-backed teams partner with us to architect, build, and deploy high-performance, multi-tenant SaaS products that scale reliably.",
+  ctaText: "Start Your SaaS Build",
+  ctaHref: "/contact"
+};
+
+const aboutProps = {
+  headline: "ValidMVPs is a specialized development agency focused on helping SaaS founders turn ideas into MRR-generating products in weeks.",
+  paragraph1: "We understand the economics of SaaS. Spending 6 months and $100k+ before validating a market is a mistake. We build lean, scalable MVPs that get you to your first paying customers faster.",
+  paragraph2: "We handle the complex SaaS infrastructure so you can focus on marketing and sales. From multi-tenant databases and Stripe billing integrations to role-based access control and analytics, we build the foundation for your recurring revenue business.",
+  image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
+};
+
+const servicesProps = {
+  title: "SaaS Development Services",
+  description: "Everything you need to launch a subscription software business, built on modern, scalable technology.",
+  servicesData: [
+    {
+      index: "01",
+      title: "End-to-End MVP Development",
+      description: "We build functional, usable SaaS products that can onboard real users and collect payments. We focus on core value delivery first.",
+      bullets: ["Full-Stack Development", "Authentication", "Dashboard UI/UX", "Database Architecture"],
+      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    },
+    {
+      index: "02",
+      title: "SaaS Infrastructure Setup",
+      description: "We implement the critical but time-consuming features every SaaS needs: billing, subscriptions, multi-tenancy, and admin panels.",
+      bullets: ["Stripe Integration", "Multi-tenancy", "Role-Based Access", "Admin Dashboards"],
+      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    },
+    {
+      index: "03",
+      title: "Refactoring to Scale",
+      description: "Already have a prototype built in Bubble or Replit? We migrate your existing users and data to a scalable, custom codebase.",
+      bullets: ["No-code Migration", "Code Refactoring", "Database Migration", "Performance Optimization"],
+      image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+      path: "/contact"
+    }
+  ]
+};
+
+const processProps = {
+  title: "Our SaaS Delivery Model",
+  description: "A structured process designed to get your software to market quickly without sacrificing code quality.",
+  stepsData: [
+    {
+      index: "01",
+      title: "Feature Scoping & UX",
+      description: "We define the exact feature set required to charge users. We map out the user journeys, onboarding flows, and database schemas.",
+      image: "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Product Roadmap", "Database Design", "UX Wireframes", "Tech Stack Selection"]
+    },
+    {
+      index: "02",
+      title: "Core Functionality Build",
+      description: "We build the application engine: user authentication, the core value proposition features, and the primary dashboard interfaces.",
+      image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Next.js/React Build", "PostgreSQL", "Core Features", "Auth Implementation"]
+    },
+    {
+      index: "03",
+      title: "Monetization & Polish",
+      description: "Integrating Stripe for subscriptions, setting up webhooks, refining the UI/UX, and ensuring the application is secure and responsive.",
+      image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Stripe Billing", "Webhooks", "UI Polish", "Security Audits"]
+    },
+    {
+      index: "04",
+      title: "Go-to-Market Support",
+      description: "Deploying to production, setting up analytics, and ensuring your application is ready to handle real traffic and user signups.",
+      image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: ["Production Deploy", "Analytics Setup", "Performance Monitoring", "Launch Support"]
+    }
+  ]
+};
+---
+
+<Layout title="SaaS MVP Development Services | ValidMVPs">
+  <main class="min-h-screen">
+    <Navbar />
+    <div id="main-content" class="sr-only">Main Content Starts Here</div>
+    
+    <Hero {...heroProps} />
+    <About {...aboutProps} />
+    <Services {...servicesProps} />
+    <Process {...processProps} />
+    
+    <Team />
+    <Gallery />
+    <Testimonials />
+    <FAQ />
+    <Contact />
+    <Footer />
+  </main>
+</Layout>

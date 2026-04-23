@@ -3,6 +3,20 @@
  * About Section
  * Cleaned up and migrated to Tailwind CSS
  */
+
+interface Props {
+  headline?: string;
+  image?: string;
+  paragraph1?: string;
+  paragraph2?: string;
+}
+
+const {
+  headline = "ValidMVPs is a fast-execution development service focused on helping founders and early-stage teams turn ideas into functional, investor-ready products in weeks.",
+  image = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
+  paragraph1 = "Our core philosophy centers on speed, clarity, and practicality prioritizing working software over over-engineered systems. Instead of spending months on planning, we identify the smallest viable version of your product that can validate your business idea in the real market.",
+  paragraph2 = "We bridge the gap for founders stuck in 'vibe coding' or no-code tools. We take rough prototypes and convert them into structured, scalable applications with proper architecture, backend logic, and automated deployment pipelines."
+} = Astro.props;
 ---
 
 <div
@@ -40,9 +54,7 @@
           <h2
             class="m-0 font-['Bricolage_Grotesque'] text-[24px] md:text-[48px] font-medium tracking-tight md:tracking-[-3px] leading-[1.2] text-[var(--color-spring-green-8,#0A0F1E)]"
           >
-            ValidMVPs is a fast-execution development service focused on helping
-            founders and early-stage teams turn ideas into functional,
-            investor-ready products in weeks.
+            {headline}
           </h2>
         </div>
       </div>
@@ -61,7 +73,7 @@
         >
           <figure class="m-0 aspect-[0.9/1] w-full h-[220px] md:h-[500px]">
             <img
-              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src={image}
               alt="Collaborative MVP development"
               class="w-full h-full object-cover object-center block"
             />
@@ -76,19 +88,12 @@
             <p
               class="m-0 font-['Inter'] text-base font-normal text-black leading-[1.2em]"
             >
-              Our core philosophy centers on speed, clarity, and practicality
-              prioritizing working software over over-engineered systems.
-              Instead of spending months on planning, we identify the smallest
-              viable version of your product that can validate your business
-              idea in the real market.
+              {paragraph1}
             </p>
             <p
               class="m-0 font-['Inter'] text-base font-normal text-black leading-[1.2em] mt-[10px]"
             >
-              We bridge the gap for founders stuck in 'vibe coding' or no-code
-              tools. We take rough prototypes and convert them into structured,
-              scalable applications with proper architecture, backend logic, and
-              automated deployment pipelines.
+              {paragraph2}
             </p>
           </div>
           <div class="mt-auto pb-4">

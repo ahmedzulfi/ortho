@@ -15,6 +15,14 @@ const navLinks = [
   { name: 'Pricing', path: '/pricing' },
   { name: 'Contact', path: '/contact' }
 ];
+
+const solutionLinks = [
+  { name: 'AI Startups', path: '/solutions/ai-startups', icon: '🤖' },
+  { name: 'SaaS Founders', path: '/solutions/saas-founders', icon: '🚀' },
+  { name: 'Enterprise', path: '/solutions/enterprise', icon: '🏢' },
+];
+
+const isSolutionActive = solutionLinks.some(l => normalizedPath === l.path);
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-start pointer-events-none">
@@ -50,6 +58,27 @@ const navLinks = [
             </a>
           );
         })}
+
+        <!-- Solutions Dropdown -->
+        <div class="solutions-dropdown relative h-9">
+          <button class={`nav-link solutions-trigger group relative h-9 px-4 flex items-center gap-2 rounded-full overflow-hidden cursor-pointer border-none bg-transparent`}>
+            <div class={`nav-bg absolute inset-0 bg-[#D1FC71] transition-opacity duration-300 rounded-full ${isSolutionActive ? 'opacity-100' : 'opacity-0'}`}></div>
+            <div class={`nav-dot w-[5px] h-[5px] rounded-full relative z-10 transition-colors duration-300 ${isSolutionActive ? 'bg-[#0D1B15]' : 'bg-[#595E5C]'}`}></div>
+            <span class={`nav-text text-base font-['Inter'] font-medium relative z-10 transition-colors duration-300 ${isSolutionActive ? 'text-[#0D1B15]' : 'text-[#595E5C]'}`}>Solutions</span>
+            <svg class="solutions-chevron relative z-10 w-3 h-3 transition-transform duration-300" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <!-- Dropdown Panel -->
+          <div class="solutions-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[220px] bg-white/95 backdrop-blur-md border border-black/5 shadow-xl rounded-2xl p-2 opacity-0 pointer-events-none transition-all duration-200 translate-y-2">
+            {solutionLinks.map(link => (
+              <a href={link.path} class={`flex items-center gap-3 px-4 py-3 rounded-xl no-underline transition-all duration-150 hover:bg-[#D1FC71]/20 group ${normalizedPath === link.path ? 'bg-[#D1FC71]/30' : ''}`}>
+                <span class="text-xl leading-none">{link.icon}</span>
+                <span class={`text-sm font-['Inter'] font-medium ${normalizedPath === link.path ? 'text-[#0D1B15]' : 'text-[#595E5C] group-hover:text-[#0D1B15]'} transition-colors`}>{link.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </nav>
 
       <!-- Mobile Menu Button -->
@@ -110,6 +139,25 @@ const navLinks = [
               </a>
             );
           })}
+
+          <!-- Solutions Accordion (Mobile) -->
+          <div class="mobile-link" style={`--stagger: ${navLinks.length};`}>
+            <button id="mobile-solutions-btn" class={`flex items-center gap-3 px-5 py-3 rounded-2xl w-full transition-all duration-300 text-gray-600 hover:bg-[#D1FC71]/10 hover:text-[#0D1B15] ${isSolutionActive ? 'bg-[#D1FC71] text-[#0D1B15]' : ''}`}>
+              <div class="w-1.5 h-1.5 bg-current rounded-full"></div>
+              <span class="text-lg font-['Inter'] font-semibold tracking-tight flex-1 text-left">Solutions</span>
+              <svg id="mobile-solutions-chevron" class="w-4 h-4 transition-transform duration-300" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div id="mobile-solutions-panel" class="hidden flex-col gap-1 pt-1 pl-4">
+              {solutionLinks.map(link => (
+                <a href={link.path} class={`mobile-link flex items-center gap-3 px-5 py-2.5 rounded-xl no-underline transition-all duration-150 ${normalizedPath === link.path ? 'bg-[#D1FC71]/30 text-[#0D1B15]' : 'text-gray-500 hover:text-[#0D1B15] hover:bg-[#D1FC71]/10'}`}>
+                  <span class="text-lg">{link.icon}</span>
+                  <span class="text-base font-['Inter'] font-medium">{link.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <!-- CTA Button -->
@@ -171,6 +219,44 @@ const navLinks = [
     transform: translateY(-8px) rotate(-45deg);
   }
 
+  /* Solutions Dropdown */
+  .solutions-dropdown {
+    position: relative;
+  }
+
+  .solutions-trigger .nav-bg {
+    transition: opacity 0.3s;
+  }
+
+  .solutions-dropdown:hover .nav-bg,
+  .solutions-dropdown.is-open .nav-bg {
+    opacity: 1 !important;
+  }
+  .solutions-dropdown:hover .nav-dot,
+  .solutions-dropdown.is-open .nav-dot {
+    background: var(--color-spring-green-8, #0D1B15) !important;
+  }
+  .solutions-dropdown:hover .nav-text,
+  .solutions-dropdown.is-open .nav-text {
+    color: var(--color-spring-green-8, #0D1B15) !important;
+  }
+
+  .solutions-dropdown:hover .solutions-panel,
+  .solutions-dropdown.is-open .solutions-panel {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+
+  .solutions-dropdown:hover .solutions-chevron,
+  .solutions-dropdown.is-open .solutions-chevron {
+    transform: rotate(180deg);
+  }
+
+  .solutions-panel {
+    transform: translateX(-50%) translateY(8px);
+  }
+
   /* Prevent scrolling when menu is open */
   body.menu-open {
     overflow: hidden;
@@ -222,6 +308,26 @@ const navLinks = [
     mobileLinks.forEach(link => {
       link.addEventListener('click', closeMenu);
     });
+
+    // Mobile Solutions accordion
+    const mobileSolutionsBtn = document.getElementById('mobile-solutions-btn');
+    const mobileSolutionsPanel = document.getElementById('mobile-solutions-panel');
+    const mobileSolutionsChevron = document.getElementById('mobile-solutions-chevron');
+
+    if (mobileSolutionsBtn && mobileSolutionsPanel) {
+      mobileSolutionsBtn.addEventListener('click', () => {
+        const isOpen = !mobileSolutionsPanel.classList.contains('hidden');
+        if (isOpen) {
+          mobileSolutionsPanel.classList.add('hidden');
+          mobileSolutionsPanel.classList.remove('flex');
+          if (mobileSolutionsChevron) mobileSolutionsChevron.style.transform = '';
+        } else {
+          mobileSolutionsPanel.classList.remove('hidden');
+          mobileSolutionsPanel.classList.add('flex');
+          if (mobileSolutionsChevron) mobileSolutionsChevron.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
   }
 
   // Initial init

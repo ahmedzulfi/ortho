@@ -1,8 +1,4 @@
 ---
-/**
- * Blog Listing Page
- * Discover technical insights and startup execution strategies.
- */
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import BlogHero from '../../components/BlogHero.astro';
@@ -10,9 +6,21 @@ import BlogGrid from '../../components/BlogGrid.astro';
 import Contact from '../../components/Contact.astro';
 import FAQ from '../../components/FAQ.astro';
 import Footer from '../../components/Footer.astro';
+import { posts as allPosts } from '../../data/posts';
+
+export async function getStaticPaths({ paginate }) {
+  // Sort posts by date descending
+  const sortedPosts = allPosts.sort((a, b) => 
+    new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+  );
+
+  return paginate(sortedPosts, { pageSize: 6 });
+}
+
+const { page } = Astro.props;
 ---
 
-<Layout title="Blog & Insights | ValidMVPs - Startup Execution & Technical Strategy">
+<Layout title={`Blog - Page ${page.currentPage} | ValidMVPs`}>
 	<main class="min-h-screen bg-[#F6F7FF]">
 		<Navbar />
 		
@@ -20,7 +28,7 @@ import Footer from '../../components/Footer.astro';
 
 		<BlogHero />
 
-    <BlogGrid />
+    <BlogGrid posts={page.data} page={page} />
     
     <Contact />
     <FAQ />
@@ -28,7 +36,3 @@ import Footer from '../../components/Footer.astro';
 		<Footer />
 	</main>
 </Layout>
-
-<style is:global>
-  /* Base transitions if needed */
-</style>
