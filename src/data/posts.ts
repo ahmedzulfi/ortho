@@ -141,4 +141,15 @@ export const posts = [
         "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
     },
   },
+  {
+    id: "lovable-vs-claude-code-2026",
+    data: {
+      title: "Lovable vs. Claude Code: Which AI Architect Wins?",
+      excerpt:
+        "Choosing between a managed platform like Lovable and a CLI agent like Claude Code? Learn the 2026 standards.",
+      publishDate: "2026-04-24",
+      image:
+        "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg",
+    },
+  },
 ];
