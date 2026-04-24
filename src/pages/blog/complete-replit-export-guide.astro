@@ -11,8 +11,7 @@ import Footer from "../../components/Footer.astro";
 const post = {
   id: "complete-replit-export-guide",
   data: {
-    title:
-      "Replit Export Guide: Move Your App to Production (Case Study)",
+    title: "Replit Export Guide: Move to Production (Case Study)",
     excerpt:
       "Stop your apps from sleeping. Get a 100% uptime boost with our step-by-step technical guide on moving Replit projects to Vercel, AWS, or Google Cloud.",
     publishDate: "2026-04-22",
@@ -35,7 +34,7 @@ const post = {
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Replit Export Guide: Move Your App to Production (Case Study)",
+      "headline": "Replit Export Guide: Move to Production (Case Study)",
       "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
       "author": {
         "@type": "Person",
@@ -127,6 +126,42 @@ const post = {
             Most Replit apps are built for exploration, not production. When you
             hit the limits of the sandbox, you need a professional exit
             strategy. This guide covers every major platform path.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-8 mt-12"
+          >
+            How to Export Your Replit Secrets Safely?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            Your environment variables are the keys to your kingdom. Before you download your code, ensure you have documented every secret. Use tools like <a href="https://www.infisical.com" target="_blank" rel="noopener" class="underline">Infisical</a> or 1Password to store them securely. Never hard-code these into your GitHub repo, even if it is private.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-8 mt-12"
+          >
+            When is the Right Time to Migrate?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            If you are seeing more than 500ms of cold-start latency or if your app 'sleeps' more than 3 times a day, you have outgrown the free tier. For founders preparing for a <a href="/blog/mvp-to-seed-investor-readiness/" class="underline">seed round</a>, the right time is now. Professional infrastructure is a requirement for technical due diligence.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-8 mt-12"
+          >
+            What are the Production Hosting Costs?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            Migration doesn't have to be expensive. Vercel's hobby tier is free, and Google Cloud Run can cost as little as $5/month for low-traffic MVPs. The cost of 100% uptime is negligible compared to the cost of a lost customer. Compare this with our <a href="/pricing/" class="underline">fixed-price management</a> to see the ROI.
+          </p>
+
+          <h2
+            class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-8 mt-12"
+          >
+            How to Secure Your Production App?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            Once you leave the Replit ecosystem, you are responsible for your own security headers and SSL. Use Cloudflare for DDoS protection and ensure your <a href="https://clerk.com" target="_blank" rel="noopener" class="underline">Clerk</a> or NextAuth integration is correctly configured for your new production domain.
           </p>
         </div>
 
