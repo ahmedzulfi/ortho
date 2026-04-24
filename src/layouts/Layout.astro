@@ -11,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = "ValidMVPs - Fast-Execution Development for Founders",
-  description = "Turn your ideas into functional, investor-ready products in record time. We build scalable MVPs with MERN stack, AI integration, and production-ready architecture.",
+  title = "ValidMVPs | Fast-Execution Development Partner for Founders",
+  description = "Turn ideas into investor-ready products in record time. We build scalable MVPs with MERN stack, AI integration, and production-ready architecture.",
   ogImage = "/images/og-image.png", // Default OG image
   canonicalUrl = new URL(Astro.url.pathname.replace(/\/$/, '') + '/', Astro.site).href,
 } = Astro.props;
@@ -25,6 +25,7 @@ const {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->

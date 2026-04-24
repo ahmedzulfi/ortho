@@ -20,7 +20,10 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<Layout title={`Blog - Page ${page.currentPage} | ValidMVPs`}>
+<Layout 
+  title={page.currentPage === 1 ? "Expert Startup Insights & MVP Development Blog | ValidMVPs" : `Blog - Page ${page.currentPage} | ValidMVPs`}
+  description="Explore expert insights on startup execution, MVP development, AI integration, and production-ready architecture for founders."
+>
 	<main class="min-h-screen bg-[#F6F7FF]">
 		<Navbar />
 		

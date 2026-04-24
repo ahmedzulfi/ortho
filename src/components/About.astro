@@ -12,10 +12,10 @@ interface Props {
 }
 
 const {
-  headline = "ValidMVPs is a fast-execution development service focused on helping founders and early-stage teams turn ideas into functional, investor-ready products in weeks.",
+  headline = "ValidMVPs is a fast development service. We help founders turn ideas into functional, investor-ready products in weeks.",
   image = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
-  paragraph1 = "Our core philosophy centers on speed, clarity, and practicality prioritizing working software over over-engineered systems. Instead of spending months on planning, we identify the smallest viable version of your product that can validate your business idea in the real market.",
-  paragraph2 = "We bridge the gap for founders stuck in 'vibe coding' or no-code tools. We take rough prototypes and convert them into structured, scalable applications with proper architecture, backend logic, and automated deployment pipelines."
+  paragraph1 = "We prioritize speed and working software over complex, over-engineered systems. Instead of spending months on planning, we build the smallest version of your product that can validate your idea in the real market.",
+  paragraph2 = "We help founders who are stuck with basic prototypes or no-code tools. We turn these into professional, scalable apps with solid architecture and automated deployment.",
 } = Astro.props;
 ---
 
@@ -76,6 +76,7 @@ const {
               src={image}
               alt="Collaborative MVP development"
               class="w-full h-full object-cover object-center block"
+              loading="lazy"
             />
           </figure>
         </div>
@@ -98,7 +99,7 @@ const {
           </div>
           <div class="mt-auto pb-4">
             <a
-              href="/about"
+              href="/about-mvp-development/"
               class="btn-premium-morph btn-green-bg px-8 py-4 bg-[var(--color-chartreuse-green-72,#60A5FA)] rounded-full flex flex-col items-center justify-center no-underline cursor-pointer group"
             >
               <span

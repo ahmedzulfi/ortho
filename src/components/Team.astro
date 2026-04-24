@@ -75,9 +75,10 @@ const ceo = {
           >
             <img
               src={ceo.image}
-              alt={ceo.name}
+              alt={`${ceo.name} - ${ceo.role} at ValidMVPs`}
               class="w-full h-full object-cover object-top"
               style="object-position: center 10%;"
+              loading="lazy"
             />
           </div>
           <!-- CEO Info (Right on Desktop) -->
@@ -115,7 +116,9 @@ const ceo = {
               >
                 <img
                   src="https://framerusercontent.com/images/nPc7SX3zQOl0N4C05zFuh1PXsQ.svg"
+                  alt="LinkedIn Profile"
                   class="w-5 h-5 transition-transform group-hover/icon:scale-110"
+                  loading="lazy"
                 />
               </a>
               <!-- Instagram -->
@@ -127,7 +130,9 @@ const ceo = {
               >
                 <img
                   src="https://framerusercontent.com/images/amcnTj2qniRVVe75PxUGpNO8SK0.svg"
+                  alt="Instagram Profile"
                   class="w-5 h-5 transition-transform group-hover/icon:scale-110"
+                  loading="lazy"
                 />
               </a>
               <!-- Twitter (X) -->
