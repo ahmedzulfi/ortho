@@ -12,9 +12,9 @@ const post = {
   id: "building-in-public-mvp-lessons",
   data: {
     title:
-      "Building in Public: Lessons from Launching 50+ MVPs for Early-Stage Teams",
+      "Building in Public: Lessons from 50+ MVP Launches (Guide)",
     excerpt:
-      "We've seen it all. From viral successes to expensive failures, here are the top hard-earned lessons from building 50+ MVPs in the tech trenches.",
+      "Avoid the 'Polished Prototype' trap. Discover the hard-earned lessons from building 50+ MVPs and how radical transparency can boost engagement by 40%.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg",
     author: {
@@ -29,12 +29,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Building in Public: Lessons from Launching 50+ MVPs for Early-Stage Teams",
+      "headline": "Building in Public: Lessons from 50+ MVP Launches (Guide)",
       "image": "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg",
       "author": {
         "@type": "Person",
@@ -107,7 +108,7 @@ const post = {
           <h2
             class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
           >
-            Lesson 1: The 'Polished Prototype' Trap
+            What is the 'Polished Prototype' Trap?
           </h2>
           <p
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
@@ -169,10 +170,9 @@ const post = {
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-12"
           >
             Transparency is your biggest marketing tool. Sharing your 'Build in
-            Public' journey creates trust with early adopters and signals to
-            investors that you are a resilient, execution-focused founder. At
+            Public' journey on <a href="https://www.producthunt.com" target="_blank" rel="noopener" class="underline">Product Hunt</a> or <a href="https://x.com" target="_blank" rel="noopener" class="underline">X (Twitter)</a> creates trust with early adopters. At
             ValidMVPs, we don't just build your code; we help you document the
-            journey so you can win before you even launch.
+            journey so you can win before you even launch. Check our <a href="/pricing/" class="font-bold underline">transparent pricing</a> to get started.
           </p>
         </div>
       </div>

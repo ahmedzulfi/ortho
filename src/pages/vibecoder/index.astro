@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = [
+  {
+    title: "Why Replit is the new Localhost",
+    date: "April 24, 2026",
+    excerpt: "The shift from local development environments to cloud-native prototyping is accelerating. Here is why founders are choosing Replit over VS Code for their MVPs...",
+    category: "Opinion",
+    slug: "replit-is-localhost",
+    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    title: "5 Security Flaws in Your Replit Export",
+    date: "April 22, 2026",
+    excerpt: "Exporting from Replit is just the first step. If you aren't handling these five critical security hardening steps, your production app is at risk.",
+    category: "Technical",
+    slug: "replit-security-flaws",
+    image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    title: "How to Connect Replit to Google Cloud SQL",
+    date: "April 20, 2026",
+    excerpt: "A step-by-step guide to breaking out of the SQLite bottleneck and connecting your Replit Agent to a production-grade Postgres instance.",
+    category: "Tutorial",
+    slug: "replit-to-cloud-sql",
+    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800"
+  }
+];
+---
+
+<Layout title="Vibecoder | Engineering Authority by ValidMVPs">
+  <main class="min-h-screen bg-white relative">
+    <!-- Dashed Grid Background -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, black 1px, transparent 0); background-size: 60px 60px;"></div>
+    
+    <Navbar />
+    
+    <!-- Header Section -->
+    <section class="relative w-full pt-48 pb-20 px-6 md:px-[50px] flex flex-col items-center border-b border-black/5 relative z-10">
+       <div class="max-w-[1440px] w-full mx-auto">
+          <div class="flex flex-col gap-8 reveal-on-scroll text-center md:text-left">
+            <div class="flex items-center gap-3 justify-center md:justify-start">
+              <span class="px-3 py-1 bg-[#D1FC71]/30 text-[#0D1B15] text-xs font-bold rounded-full border border-[#D1FC71]/40 uppercase tracking-widest">Authority Engineering</span>
+            </div>
+            <h1 class="text-[#0D1B15] text-[clamp(48px,12vw,140px)] font-['Bricolage_Grotesque'] font-bold leading-[0.85] tracking-tighter m-0">
+              Vibe <br/> <span class="text-[#D1FC71] inline-block relative">Coding.<div class="absolute -bottom-2 left-0 w-full h-2 bg-[#D1FC71]/20 -z-10"></div></span> <br/> Production <span class="italic font-light opacity-20">Scaling.</span>
+            </h1>
+            <p class="text-black/50 text-xl md:text-2xl font-['Inter'] leading-relaxed max-w-[650px] mt-4 mx-auto md:mx-0">
+              Long-form engineering insights for founders who build with high vibes and scale with low latency.
+            </p>
+          </div>
+       </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="w-full bg-[#F6F7FF] py-24 md:py-32 px-6 md:px-[50px] relative z-10">
+      <div class="max-w-[1440px] mx-auto flex flex-col gap-16 md:gap-32">
+        {posts.map((post, idx) => (
+          <div class={`w-full reveal-on-scroll stagger-${(idx % 3) + 1} flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-32 py-16 border-b border-black/5 last:border-0 group`}>
+            
+            <!-- Image Block -->
+            <div class="shrink-0 w-full lg:w-[500px] aspect-[16/10] rounded-[48px] overflow-hidden relative shadow-xl">
+              <div class="absolute inset-0 bg-[#0D1B15]/5 group-hover:bg-transparent transition-colors z-10"></div>
+              <img src={post.image} alt={post.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out" loading="lazy" />
+              <div class="absolute bottom-6 left-6 z-20">
+                 <span class="px-4 py-2 bg-white/90 backdrop-blur-md text-[#0D1B15] text-xs font-bold rounded-full border border-black/10 uppercase tracking-widest shadow-sm">{post.category}</span>
+              </div>
+            </div>
+
+            <!-- Content Block -->
+            <div class="flex-1 flex flex-col items-start pt-4">
+              <div class="flex items-center gap-4 mb-8 text-sm font-mono uppercase tracking-[0.3em] text-black/30">
+                <span>{post.date}</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#D1FC71]"></span>
+                <span>5 min read</span>
+              </div>
+              
+              <h2 class="text-[#0D1B15] font-['Bricolage_Grotesque'] text-4xl md:text-6xl font-medium leading-[0.95] mb-8 tracking-tighter hover:text-[#D1FC71] transition-colors">
+                <a href={`/vibecoder/${post.slug}/`} class="no-underline text-inherit">{post.title}</a>
+              </h2>
+              
+              <p class="text-black/50 font-inter text-xl leading-relaxed max-w-[700px] mb-12">
+                {post.excerpt}
+              </p>
+              
+              <a href={`/vibecoder/${post.slug}/`} class="btn-premium-morph px-12 py-5 bg-[#D1FC71] text-[#0D1B15] rounded-full font-bold text-lg no-underline hover:scale-[0.98] transition-transform flex items-center gap-4">
+                <span>Read Article</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Authority Footer CTA -->
+    <section class="w-full bg-white py-48 px-6 md:px-[50px] border-t border-black/5 text-center relative overflow-hidden">
+       <div class="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,#D1FC7115_0%,transparent_70%)]"></div>
+       
+       <div class="max-w-[1000px] mx-auto relative z-10">
+          <h2 class="text-[#0D1B15] text-5xl md:text-[84px] font-['Bricolage_Grotesque'] font-bold leading-none tracking-tighter mb-10">Scale your vibe.</h2>
+          <p class="text-black/40 text-xl md:text-2xl mb-16 max-w-[700px] mx-auto leading-relaxed">Join 500+ founders receiving weekly production-grade engineering deep dives for the Replit economy.</p>
+          <div class="flex flex-col md:flex-row justify-center items-stretch gap-4 max-w-[500px] mx-auto">
+             <input type="email" placeholder="Enter your email" class="px-8 py-5 bg-black/[0.03] border border-black/10 rounded-3xl text-[#0D1B15] flex-1 outline-none focus:border-[#D1FC71] transition-colors font-medium text-lg" />
+             <button class="px-10 py-5 bg-[#0D1B15] text-white rounded-3xl font-bold text-lg hover:scale-[0.97] transition-transform">Subscribe</button>
+          </div>
+       </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+</style>

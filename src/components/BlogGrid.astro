@@ -18,7 +18,7 @@ const { posts, page } = Astro.props;
         posts.map((post, idx) => (
           <div>
             <a
-              href={`/blog/${post.id.replace(/\.mdx?$/, "")}`}
+              href={`/blog/${post.id.replace(/\.mdx?$/, "")}/`}
               class="group flex flex-col items-start gap-5 p-5 bg-white rounded-[20px] no-underline transition-all duration-500 h-full"
             >
               {/* Image Container */}

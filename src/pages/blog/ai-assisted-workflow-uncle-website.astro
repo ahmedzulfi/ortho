@@ -12,11 +12,11 @@ const post = {
   id: "ai-assisted-workflow-uncle-website",
   data: {
     title:
-      "I Built My Uncle a Website in a Few Hours Using AI   The ValidMVPs Workflow",
+      "AI Website Workflow: How I Built a Site in Hours (Case Study)",
     excerpt:
-      "Storytelling meets engineering. Learn the exact AI-assisted workflow we used to transform a vague voice note into a professional, production-grade website in record time.",
+      "See the 4-step AI workflow used to build a production-grade website in hours with 90% less overhead. Transform voice notes into high-end code with ValidMVPs.",
     publishDate: "2026-04-22",
-    image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg", // Accurate tech collaboration image
+    image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg", 
     author: {
       name: "Ahmed Zulfiqar",
       image:
@@ -29,12 +29,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "I Built My Uncle a Website in a Few Hours Using AI   The ValidMVPs Workflow",
+      "headline": "AI Website Workflow: How I Built a Site in Hours (Case Study)",
       "image": "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
       "author": {
         "@type": "Person",
@@ -138,12 +139,12 @@ const post = {
             </h3>
             <ul class="space-y-4 font-inter text-lg">
               <li>
-                • <strong>Framer:</strong> For high-fidelity energy and templates.
+                • <a href="https://www.framer.com" target="_blank" rel="noopener" class="text-[#0D1B15] font-bold underline">Framer:</a> For high-fidelity energy and templates.
               </li>
               <li>
-                • <strong>Claude:</strong> For component refinement and logic.
+                • <a href="https://claude.ai" target="_blank" rel="noopener" class="text-[#0D1B15] font-bold underline">Claude:</a> For component refinement and logic.
               </li>
-              <li>• <strong>Astro:</strong> For the final performant build.</li>
+              <li>• <a href="https://astro.build" target="_blank" rel="noopener" class="text-[#0D1B15] font-bold underline">Astro:</a> For the final performant build.</li>
             </ul>
           </div>
         </div>
@@ -245,7 +246,7 @@ const post = {
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-12"
           >
             If you're ready to stop 'tinkering' with prompts and start building
-            with a professional workflow, let's architect your next big thing.
+            with a professional workflow, let's <a href="/replit-to-production/" class="text-[#0D1B15] font-bold underline">architect your next big thing</a>.
           </p>
         </div>
       </div>

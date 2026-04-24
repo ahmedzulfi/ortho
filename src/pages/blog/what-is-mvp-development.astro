@@ -11,9 +11,9 @@ const post = {
   id: "what-is-mvp-development",
   data: {
     title:
-      "What is MVP Development?   Launching Production-Ready SaaS in 4 Weeks",
+      "What is MVP Development? 28-Day Launch Guide (Essential)",
     excerpt:
-      "MVP Development is the process of building a functional 'Minimum Viable Product' to validate a business hypothesis with real users. Learn how to bridge the gap from idea to production.",
+      "MVP Development is the process of building a functional product in exactly 28 days to validate your SaaS hypothesis. Learn the production-ready MERN workflow.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
     author: {
@@ -28,12 +28,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "What is MVP Development?   Launching Production-Ready SaaS in 4 Weeks",
+      "headline": "What is MVP Development? 28-Day Launch Guide (Essential)",
       "image": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
       "author": {
         "@type": "Person",
@@ -100,7 +101,7 @@ const post = {
           <h2
             class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
           >
-            What is MVP Development?
+            What is the Goal of MVP Development?
           </h2>
           <p
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
@@ -136,8 +137,8 @@ const post = {
             class="list-disc pl-8 space-y-4 text-lg md:text-xl font-inter mb-12"
           >
             <li>Identify the "Metric that Matters" for your SaaS.</li>
-            <li>Use a MERN stack for production-grade reliability.</li>
-            <li>Ship your first core hypothesis in under 30 days.</li>
+            <li>Use a <a href="https://www.mongodb.com" target="_blank" rel="noopener" class="underline">MERN stack</a> for production-grade reliability.</li>
+            <li>Check our <a href="/pricing/" class="font-bold underline">transparent pricing</a> to ship your first core hypothesis in under 30 days.</li>
           </ul>
         </div>
 
@@ -145,7 +146,7 @@ const post = {
           <h3 class="text-2xl font-bold mb-6">Explore the Category</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a
-              href="/blog/the-4-week-mvp"
+              href="/blog/the-4-week-mvp/"
               class="p-6 bg-white rounded-xl border hover:border-[#D1FC71] transition-colors"
             >
               <h4 class="font-bold">The 4-Week Blueprint →</h3>
@@ -154,7 +155,7 @@ const post = {
               </p>
             </a>
             <a
-              href="/blog/validating-saas-hypothesis"
+              href="/blog/validating-saas-hypothesis/"
               class="p-6 bg-white rounded-xl border hover:border-[#D1FC71] transition-colors"
             >
               <h4 class="font-bold">Market Validation Guide →</h3>

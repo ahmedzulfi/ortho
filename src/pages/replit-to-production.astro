@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Process from '../components/Process.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+// Niche-specific data for Replit-to-GCP
+const heroTitle = "We turn Replit prototypes into production-ready software.";
+const heroDesc = "Stop wrestling with LangChain timeouts and Replit-only limitations. We migrate your app to Google Cloud in 48 hours.";
+
+const replitServices = [
+  {
+    index: "01",
+    title: "Extract & Clean",
+    description: "We pull your Replit project and strip out the prototype-only limitations, cleaning the codebase for enterprise standards.",
+    bullets: ["Code Refactoring", "Dependency Management", "Secret Hardening", "Environment Setup"],
+    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+    path: "/contact"
+  },
+  {
+    index: "02",
+    title: "Harden & Secure",
+    description: "Moving from local SQLite to Cloud SQL. Setting up IAM roles, secrets management, and SSL certificates.",
+    bullets: ["Cloud SQL Migration", "IAM Access Control", "SSL/TLS Provisioning", "DB Optimization"],
+    image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+    path: "/contact"
+  },
+  {
+    index: "03",
+    title: "Deploy & Scale",
+    description: "Dockerization and deployment to Google Cloud Run with automated CI/CD pipelines. Zero downtime.",
+    bullets: ["Dockerization", "Cloud Run Orchestration", "GitHub Actions CI/CD", "Auto-scaling"],
+    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+    path: "/contact"
+  }
+];
+
+const replitProcessSteps = [
+  {
+    index: "01",
+    title: "Audit & Extraction",
+    description: "We clone your Replit environment and perform a deep-dive audit into your code structure, environment variables, and hidden prototype bottlenecks.",
+    image: "https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=800",
+    features: ["Security Audit", "Dependency Clean-up", "Code Modernization"]
+  },
+  {
+    index: "02",
+    title: "Production Hardening",
+    description: "We swap SQLite for Cloud SQL, implement Docker multi-stage builds, and configure Google Secret Manager to protect your production keys.",
+    image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+    features: ["GCP Infrastructure", "Secret Manager", "Cloud Run Setup"]
+  },
+  {
+    index: "03",
+    title: "Automated Deployment",
+    description: "We establish a zero-downtime CI/CD pipeline using GitHub Actions, ensuring every commit is automatically tested and deployed to the cloud.",
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+    features: ["GitHub Actions", "Unit Testing", "Artifact Registry"]
+  }
+];
+---
+
+<Layout title="Replit to Production | ValidMVPs">
+  <main class="min-h-screen bg-white">
+    <Navbar />
+    
+    <!-- Hero Section (Always Dark for Impact) -->
+    <Hero 
+      title={heroTitle}
+      description={heroDesc}
+      ctaText="Request Production Audit"
+      ctaHref="/contact/"
+    />
+
+    <!-- The Gap Section (Now Light Theme) -->
+    <section class="w-full py-24 md:py-32 px-6 md:px-[50px] bg-white border-y border-black/5 relative z-10 overflow-hidden">
+      <!-- Subtle Grid Background -->
+      <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, black 1px, transparent 0); background-size: 40px 40px;"></div>
+      
+      <div class="max-w-[1440px] mx-auto relative z-10">
+        <div class="grid md:grid-cols-2 gap-16 md:gap-32 items-center">
+          <div class="flex flex-col gap-8 reveal-on-scroll">
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 bg-[#D1FC71]/20 text-[#0D1B15] text-xs font-bold rounded-full border border-[#D1FC71]/30 uppercase tracking-widest">Engineering Authority</span>
+            </div>
+            <h2 class="text-[#0D1B15] text-[clamp(36px,8vw,64px)] font-['Bricolage_Grotesque'] leading-[1.05] m-0 tracking-tighter">
+              Bridge the Gap between <br/>
+              <span class="opacity-30 italic font-light">"It works locally"</span> and <br/>
+              <span class="text-[#0D1B15] relative inline-block">
+                "It works for 1k users"
+                <div class="absolute -bottom-2 left-0 w-full h-1 bg-[#D1FC71]"></div>
+              </span>
+            </h2>
+            <p class="text-black/60 text-xl font-['Inter'] leading-relaxed max-w-[550px]">
+              Replit is the best place to start, but Google Cloud is the best place to scale. We handle the technical debt so you can focus on user growth.
+            </p>
+            
+            <div class="grid grid-cols-2 gap-8 mt-4">
+              <div>
+                <div class="text-[#0D1B15] text-3xl font-bold mb-1">48h</div>
+                <div class="text-black/30 text-sm uppercase tracking-wider">Migration Time</div>
+              </div>
+              <div>
+                <div class="text-[#0D1B15] text-3xl font-bold mb-1">100%</div>
+                <div class="text-black/30 text-sm uppercase tracking-wider">GCP Optimized</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group reveal-on-scroll stagger-1">
+             <!-- Tactile Visual Interaction -->
+            <div class="absolute -inset-4 bg-[#D1FC71]/10 rounded-[40px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            <div class="relative bg-white border border-black/10 rounded-[40px] p-10 md:p-14 flex flex-col gap-10 shadow-xl overflow-hidden mag-btn-auto">
+              <!-- Grid background inside the card -->
+              <div class="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#0D1B15_1px,transparent_1px)] [background-size:20px_20px]"></div>
+              
+              <div class="flex flex-col gap-8 relative z-10">
+                <div class="flex items-center gap-6 opacity-20 group-hover:opacity-40 transition-opacity">
+                  <div class="w-12 h-12 rounded-2xl bg-gray-200 flex items-center justify-center text-lg font-bold text-black">R</div>
+                  <div class="h-[1px] flex-1 bg-black/10"></div>
+                  <div class="w-4 h-4 rounded-full border-2 border-red-500/30"></div>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                  <div class="w-12 h-12 rounded-2xl bg-[#D1FC71] flex items-center justify-center text-[#0D1B15] font-bold shadow-[0_10px_20px_rgba(209,252,113,0.3)] transition-transform group-hover:scale-110">G</div>
+                  <div class="h-2 flex-1 bg-black/5 rounded-full overflow-hidden">
+                    <div class="h-full w-full bg-[#D1FC71] shadow-[0_0_10px_#D1FC71]"></div>
+                  </div>
+                  <div class="w-6 h-6 rounded-full bg-green-500 border-[3px] border-white shadow-[0_0_15px_#4ade80] flex items-center justify-center">
+                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 bg-[#0D1B15] rounded-2xl font-mono text-[14px] text-[#D1FC71]/90 leading-relaxed shadow-lg relative z-10">
+                <span class="text-white/40">// Initializing Migration...</span><br/>
+                <span class="text-white/80">></span> Dockerizing Replit Project... <span class="text-green-400 font-bold">DONE</span><br/>
+                <span class="text-white/80">></span> Cloud SQL (Postgres) Provisioning... <span class="text-green-400 font-bold">READY</span><br/>
+                <span class="text-white/80">></span> CI/CD Secret Hardening... <span class="text-green-400 font-bold">VERIFIED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section (Light Gray by Default) -->
+    <Services 
+      title="The Migration Sprint"
+      description="A high-intensity, fixed-price package designed to bridge the gap from Replit prototype to GCP production in 48 hours."
+      servicesData={replitServices}
+    />
+
+    <!-- Process Section (Using the Accordion Pattern - White) -->
+    <Process 
+      title="The Migration Workflow"
+      description="We've codified the Replit-to-GCP transition into a repeatable, high-fidelity process."
+      stepsData={replitProcessSteps}
+    />
+
+    <!-- Case Study Section (Dark Theme for Contrast) -->
+    <section class="w-full bg-[#0D1B15] py-32 md:py-48 px-6 md:px-[50px] relative overflow-hidden">
+      <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+      
+      <div class="w-full max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-16 items-center relative z-10">
+        
+        <div class="lg:col-span-7 reveal-on-scroll">
+          <div class="relative group">
+            <div class="absolute -inset-10 bg-[#D1FC71]/5 blur-3xl rounded-full"></div>
+            <div class="relative aspect-[16/10] bg-white/[0.03] backdrop-blur-xl rounded-[48px] overflow-hidden shadow-2xl border border-white/10 transform -rotate-2 hover:rotate-0 transition-transform duration-700">
+               <div class="absolute inset-0 bg-gradient-to-br from-[#D1FC71]/10 to-transparent"></div>
+               <div class="flex flex-col justify-center items-center h-full">
+                  <div class="text-[clamp(100px,15vw,180px)] font-['Bricolage_Grotesque'] font-bold text-white tracking-tighter leading-none select-none">
+                    0<span class="text-[#D1FC71]">→</span>1k
+                  </div>
+                  <div class="text-xl md:text-2xl text-white/40 font-['Inter'] uppercase tracking-[0.5em] mt-4">Growth Scaled</div>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex flex-col gap-8 reveal-on-scroll stagger-1">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-[#D1FC71] rounded-full"></div>
+            <span class="text-white/40 font-mono text-sm uppercase tracking-widest">Case Study: Viral AI Agent</span>
+          </div>
+          <h2 class="text-white text-4xl md:text-[64px] font-['Bricolage_Grotesque'] leading-[0.95] tracking-tighter m-0">
+            Prototypes <br/> Built to Scale.
+          </h2>
+          <p class="text-white/60 text-xl font-['Inter'] leading-relaxed">
+            We took a viral Replit Agent MVP that was crashing every 10 minutes under load and migrated it to a hardened Google Cloud Run environment. 
+          </p>
+          <div class="flex flex-col gap-4 border-l-2 border-[#D1FC71] pl-8 py-2">
+             <div class="text-white font-bold text-lg">"The team at ValidMVPs didn't just move our code; they hardened our entire business model."</div>
+             <div class="text-white/40 text-sm font-medium">— SaaS Founder, 1.2k Daily Active Users</div>
+          </div>
+          <a href="/contact/" class="btn-premium-morph px-10 py-5 bg-[#D1FC71] text-[#0D1B15] rounded-full no-underline transition-all hover:scale-[0.98] flex items-center justify-center gap-4 w-fit">
+            <span class="font-bold text-lg text-[#0D1B15]!">Start Your Sprint</span>
+            <svg class="w-6 h-6 text-[#0D1B15]!" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials (Light Gray) -->
+    <Testimonials />
+
+    <Contact />
+    
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+  
+  .premium-glow {
+    text-shadow: 0 0 30px rgba(209, 252, 113, 0.3);
+  }
+
+  /* Emil Design Engineering: Smooth hover transition for grid */
+  .mag-btn-auto {
+    transition: transform var(--dur-normal) var(--ease-out), box-shadow var(--dur-normal) var(--ease-out);
+  }
+  .mag-btn-auto:hover {
+    transform: translateY(-8px) scale(1.01);
+  }
+</style>

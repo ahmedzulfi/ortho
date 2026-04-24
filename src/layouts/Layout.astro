@@ -7,6 +7,7 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogType?: "website" | "article";
   canonicalUrl?: string;
 }
 
@@ -14,7 +15,9 @@ const {
   title = "ValidMVPs | Fast-Execution Development Partner for Founders",
   description = "Turn ideas into investor-ready products in record time. We build scalable MVPs with MERN stack, AI integration, and production-ready architecture.",
   ogImage = "/images/og-image.png", // Default OG image
-  canonicalUrl = new URL(Astro.url.pathname.replace(/\/$/, '') + '/', Astro.site).href,
+  ogType = "website",
+  canonicalUrl = new URL(Astro.url.pathname.replace(/\/$/, "") + "/", Astro.site)
+    .href,
 } = Astro.props;
 ---
 
@@ -41,7 +44,7 @@ const {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:site_name" content="ValidMVPs" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

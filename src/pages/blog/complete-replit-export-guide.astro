@@ -12,9 +12,9 @@ const post = {
   id: "complete-replit-export-guide",
   data: {
     title:
-      "The Complete Replit Export Guide: How to Move Your App to Production",
+      "Replit Export Guide: Move Your App to Production (Case Study)",
     excerpt:
-      "Stop your apps from sleeping. A step-by-step technical guide for non-technical founders on moving Replit projects to Vercel, AWS, Google Cloud, and more.",
+      "Stop your apps from sleeping. Get a 100% uptime boost with our step-by-step technical guide on moving Replit projects to Vercel, AWS, or Google Cloud.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
     author: {
@@ -29,12 +29,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "The Complete Replit Export Guide: How to Move Your App to Production",
+      "headline": "Replit Export Guide: Move Your App to Production (Case Study)",
       "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
       "author": {
         "@type": "Person",
@@ -102,8 +103,8 @@ const post = {
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"
           >
             If your app is struggling with downtime, it's time for a
-            professional [Technical Audit](/blog/mvp-to-seed-investor-readiness)
-            and a migration strategy.
+            professional [Technical Audit](/blog/mvp-to-seed-investor-readiness/)
+            and a <a href="/replit-to-production/" class="font-bold underline">migration strategy</a>.
           </p>
         </div>
 
@@ -143,22 +144,22 @@ const post = {
             </thead>
             <tbody class="divide-y divide-black/5">
               <tr>
-                <td class="p-6 font-bold">Vercel</td>
+                <td class="p-6 font-bold"><a href="https://vercel.com" target="_blank" rel="noopener" class="underline">Vercel</a></td>
                 <td class="p-6">WebApps & Modern Frontends</td>
                 <td class="p-6 text-sm">Next.js, React, Clean Dashboards</td>
               </tr>
               <tr>
-                <td class="p-6 font-bold">Google Cloud</td>
+                <td class="p-6 font-bold"><a href="https://cloud.google.com" target="_blank" rel="noopener" class="underline">Google Cloud</a></td>
                 <td class="p-6">Mission-Critical Apps</td>
                 <td class="p-6 text-sm">Always-on containers, Zero Downtime</td>
               </tr>
               <tr>
-                <td class="p-6 font-bold">AWS</td>
+                <td class="p-6 font-bold"><a href="https://aws.amazon.com" target="_blank" rel="noopener" class="underline">AWS</a></td>
                 <td class="p-6">Enterprise / Massively Scalable</td>
                 <td class="p-6 text-sm">High traffic, Complex backends</td>
               </tr>
               <tr>
-                <td class="p-6 font-bold">Railway</td>
+                <td class="p-6 font-bold"><a href="https://railway.app" target="_blank" rel="noopener" class="underline">Railway</a></td>
                 <td class="p-6">Simple Backends / APIs</td>
                 <td class="p-6 text-sm"
                   >Python scripts, Discord bots, Simple APIs</td
@@ -242,7 +243,7 @@ const post = {
             you can focus on your business.
           </p>
           <a
-            href="/contact"
+            href="/contact/"
             class="inline-block px-10 py-5 bg-black text-white rounded-full text-xl font-medium hover:scale-105 transition-transform"
             >Book a Free Migration Strategy Call</a
           >

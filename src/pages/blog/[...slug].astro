@@ -22,7 +22,11 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={`${post.data.title} | ValidMVPs`} description={post.data.excerpt}>
+<Layout
+  title={`${post.data.title} | ValidMVPs`}
+  description={post.data.excerpt}
+  ogType="article"
+>
   <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
     <Navbar />
 

@@ -12,9 +12,9 @@ const post = {
   id: "mvp-to-seed-investor-readiness",
   data: {
     title:
-      "From MVP to Seed: What Investors Actually Look for in Your Early Technical Execution",
+      "MVP to Seed: Get Your Early Technical Execution Investor-Ready (Case Study)",
     excerpt:
-      "A great pitch gets you a meeting; great technical execution gets you a check. Learn the 2026 standards for investor-ready MVPs.",
+      "Great technical execution gets you a check. Learn the 2026 standards for investor-ready MVPs and get 50% faster due diligence with ValidMVPs.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
     author: {
@@ -29,12 +29,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "From MVP to Seed: What Investors Actually Look for in Your Early Technical Execution",
+      "headline": "MVP to Seed: Get Your Early Technical Execution Investor-Ready (Case Study)",
       "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
       "author": {
         "@type": "Person",
@@ -106,7 +107,7 @@ const post = {
           <h2
             class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
           >
-            The 'Tech Due Diligence' Checklist
+            What is in the 'Tech Due Diligence' Checklist?
           </h2>
           <p
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
@@ -126,7 +127,7 @@ const post = {
               <h4 class="font-bold text-xl">Data Security & Compliance</h3>
               <p class="opacity-70">
                 Are you handling user PII correctly? In 2026, even seed-stage
-                companies are expected to have SOC2 readiness in mind.
+                companies listed on <a href="https://www.crunchbase.com" target="_blank" rel="noopener" class="underline">Crunchbase</a> or <a href="https://www.ycombinator.com" target="_blank" rel="noopener" class="underline">Y Combinator</a> are expected to have SOC2 readiness in mind.
               </p>
             </div>
           </div>
@@ -207,7 +208,7 @@ const post = {
           >
             The decisions you make in the first 4 weeks will follow you to your
             Series A and beyond. Build with intention. Build for scale. If
-            you're ready to build an investor-ready company, let's start today.
+            you're ready to build an investor-ready company, <a href="/contact/" class="font-bold underline">book a technical audit today</a>.
           </p>
         </div>
       </div>

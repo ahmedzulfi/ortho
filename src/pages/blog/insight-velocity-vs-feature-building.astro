@@ -12,9 +12,9 @@ const post = {
   id: "insight-velocity-vs-feature-building",
   data: {
     title:
-      "Insight Velocity over Feature Building: Why Validation is the New 2026 Competitive Advantage",
+      "Insight Velocity: Why Speed to Learning is the Ultimate Moat (2026)",
     excerpt:
-      "Stop building features in a vacuum. In the age of AI, the only sustainable moat is how fast you can learn from your users.",
+      "Stop building features in a vacuum. Learn why 42% of startups fail and how to use 'Insight Velocity' to find product-market fit faster than ever.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/3182811/pexels-photo-3182811.jpeg",
     author: {
@@ -29,12 +29,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Insight Velocity: Why Speed to Learning is Better Than Speed to Features",
+      "headline": "Insight Velocity: Why Speed to Learning is the Ultimate Moat (2026)",
       "image": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
       "author": {
         "@type": "Person",
@@ -107,14 +108,14 @@ const post = {
           <h2
             class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
           >
-            Why 42% of Startups Still Fail at the Finish Line
+            Why Do 42% of Startups Still Fail?
           </h2>
           <p
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
           >
             The tragedy of modern entrepreneurship is the "Polished Failure."
             This is a product with beautiful UI, complex backend logic, and zero
-            users. Industry research consistently shows that 42% of startups
+            users. Research from <a href="https://www.ycombinator.com" target="_blank" rel="noopener" class="underline">Y Combinator</a> consistently shows that 42% of startups
             fail because there was simply no market need for what they built.
             They spent 100% of their energy on <em>Feature Building</em> and 0% on
             <em>Insight Discovery</em>.
@@ -188,7 +189,7 @@ const post = {
           <p
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter mb-12"
           >
-            <strong>Ready to stop building and start learning?</strong> Let's get
+            <strong>Ready to stop building and start learning?</strong> <a href="/contact/" class="font-bold underline">Get in touch</a> and let's get
             your core value live in 4 weeks.
           </p>
         </div>

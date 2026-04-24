@@ -12,9 +12,9 @@ const post = {
   id: "replit-to-production-scalable-architecture",
   data: {
     title:
-      "Replit to Production: Bridging the Gap between AI Prototypes and Scalable Architecture",
+      "Replit to Production: Scale Your AI Prototype (Case Study)",
     excerpt:
-      "Your 'Vibe Coded' prototype looks great on Replit, but will it survive 1,000 concurrent users? Learn how to transition from AI draft to production-grade MERN.",
+      "Will your 'Vibe Coded' prototype survive 1,000 users? Learn how to transition from Replit drafts to production-grade MERN in exactly 28 days.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
     author: {
@@ -29,12 +29,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Replit to Production: Bridging the Gap between AI Prototypes and Scalable Architecture",
+      "headline": "Replit to Production: Scale Your AI Prototype (Case Study)",
       "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
       "author": {
         "@type": "Person",
@@ -107,7 +108,7 @@ const post = {
           <h2
             class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8"
           >
-            The Prototype is a Ghost
+            Is Your Prototype a Ghost Foundation?
           </h2>
           <p
             class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] font-inter"
@@ -140,7 +141,7 @@ const post = {
             <h4 class="text-[#D1FC71] font-bold mb-2">3. Hardened Auth</h3>
             <p class="opacity-80 text-sm">
               AI prototypes often skip session security. Implement
-              production-grade Clerk or NextAuth before the first real user
+              production-grade <a href="https://clerk.com" target="_blank" rel="noopener" class="underline">Clerk</a> or <a href="https://next-auth.js.org" target="_blank" rel="noopener" class="underline">NextAuth</a> before the first real user
               lands.
             </p>
           </div>
@@ -171,8 +172,7 @@ const post = {
           >
             Don't let a "great prototype" be the reason your startup fails
             later. Use AI to move fast, but use Engineering to move far. If you
-            have a prototype you're ready to take to the world, let's build the
-            production version together.
+            have a prototype you're ready to take to the world, let's <a href="/replit-to-production/" class="font-bold underline">build the production version</a> together.
           </p>
         </div>
       </div>

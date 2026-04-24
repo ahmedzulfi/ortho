@@ -11,9 +11,9 @@ import Footer from "../../components/Footer.astro";
 const post = {
   id: "ai-native-by-default-agentic-workflows",
   data: {
-    title: "AI-Native by Default: Why Your 2026 App Needs Agentic Workflows",
+    title: "AI-Native Apps: Why You Need Agentic Workflows (Case Study)",
     excerpt:
-      "A chatbot is not a strategy. In 2026, the winners are building agentic workflows that automate core business logic, not just chat about it.",
+      "A chatbot is not a strategy. Get a 10x reduction in manual operations by building agentic workflows that automate core business logic with ValidMVPs.",
     publishDate: "2026-04-22",
     image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
     author: {
@@ -28,12 +28,13 @@ const post = {
 <Layout
   title={`${post.data.title} | ValidMVPs`}
   description={post.data.excerpt}
+  ogType="article"
 >
   <script type="application/ld+json" slot="head">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "AI-Native by Default: Why Your 2026 App Needs Agentic Workflows",
+      "headline": "AI-Native Apps: Why You Need Agentic Workflows (Case Study)",
       "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
       "author": {
         "@type": "Person",
@@ -114,7 +115,7 @@ const post = {
             Unlike traditional software (which follows a static rule-set) or
             basic LLM integration (which yields a single response), an <strong
               >agentic workflow</strong
-            > uses LLMs as central reasoning engines that can use tools, access databases,
+            > uses <a href="https://www.langchain.com" target="_blank" rel="noopener" class="underline">LLMs as central reasoning engines</a> that can use tools, access databases,
             and perform multi-step tasks. It's the difference between a bot that tells
             you "your server is down" and an agent that diagnoses the error, restarts
             the service, and summarizes the post-mortem for you.
@@ -185,8 +186,7 @@ const post = {
           >
             Founders who embrace agentic workflows today are building the
             defensible companies of tomorrow. If you're ready to move beyond "AI
-            as a feature" and toward "AI as the engine," let's architect your
-            agentic MVP together.
+            as a feature" and toward "AI as the engine," let's <a href="/replit-to-production/" class="font-bold underline">architect your agentic MVP</a> together.
           </p>
         </div>
       </div>
