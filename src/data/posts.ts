@@ -130,4 +130,15 @@ export const posts = [
         "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
     },
   },
+  {
+    id: "replit-vs-lovable-2026-comparison",
+    data: {
+      title: "Replit vs. Lovable: Which AI Coding Tool Wins?",
+      excerpt:
+        "A deep-dive comparison of Replit and Lovable for AI-native startup development in 2026.",
+      publishDate: "2026-04-24",
+      image:
+        "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    },
+  },
 ];
