@@ -14,7 +14,7 @@ const {
   title = "ValidMVPs - Fast-Execution Development for Founders",
   description = "Turn your ideas into functional, investor-ready products in record time. We build scalable MVPs with MERN stack, AI integration, and production-ready architecture.",
   ogImage = "/images/og-image.png", // Default OG image
-  canonicalUrl = Astro.url.href,
+  canonicalUrl = new URL(Astro.url.pathname.replace(/\/$/, '') + '/', Astro.site).href,
 } = Astro.props;
 ---
 
@@ -111,7 +111,7 @@ const {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://validmvps.vercel.app/blog"
+            "item": "https://validmvps.vercel.app/blog/"
           }
         ]
       }

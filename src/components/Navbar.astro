@@ -9,31 +9,31 @@ const normalizedPath = pathname.replace(/\/$/, "") || "/";
 
 const navLinksFirst = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' }
+  { name: 'About', path: '/about/' },
+  { name: 'Services', path: '/services/' }
 ];
 
 const navLinksLast = [
-  { name: 'Blog', path: '/blog' },
-  { name: 'Pricing', path: '/pricing' },
-  { name: 'Contact', path: '/contact' }
+  { name: 'Blog', path: '/blog/' },
+  { name: 'Pricing', path: '/pricing/' },
+  { name: 'Contact', path: '/contact/' }
 ];
 
 const solutions = {
   products: {
     title: "By Product Type",
     links: [
-      { name: 'AI & LLM Apps', path: '/solutions/ai-startups', desc: 'Custom RAG and agentic systems' },
-      { name: 'SaaS Platforms', path: '/solutions/saas-founders', desc: 'Multi-tenant scalable MVPs' },
-      { name: 'Enterprise Tools', path: '/solutions/enterprise', desc: 'Internal apps and modernization' }
+      { name: 'AI & LLM Apps', path: '/solutions/ai-startups/', desc: 'Custom RAG and agentic systems' },
+      { name: 'SaaS Platforms', path: '/solutions/saas-founders/', desc: 'Multi-tenant scalable MVPs' },
+      { name: 'Enterprise Tools', path: '/solutions/enterprise/', desc: 'Internal apps and modernization' }
     ]
   },
   services: {
     title: "By Service",
     links: [
-      { name: 'Rapid Prototyping', path: '/solutions/ai-startups', desc: 'Idea to MVP in 4 weeks' },
-      { name: 'Product Strategy', path: '/solutions/saas-founders', desc: 'Roadmap and technical discovery' },
-      { name: 'Technical Audit', path: '/solutions/enterprise', desc: 'Legacy code review and optimization' }
+      { name: 'Rapid Prototyping', path: '/solutions/ai-startups/', desc: 'Idea to MVP in 4 weeks' },
+      { name: 'Product Strategy', path: '/solutions/saas-founders/', desc: 'Roadmap and technical discovery' },
+      { name: 'Technical Audit', path: '/solutions/enterprise/', desc: 'Legacy code review and optimization' }
     ]
   }
 };
@@ -114,7 +114,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
       </button>
 
       <!-- Right: CTA Button (Desktop) -->
-      <a href="/contact" class="hidden lg:flex hover-lift px-6 py-3 bg-[#D1FC71] rounded-full items-center justify-center no-underline">
+      <a href="/contact/" class="hidden lg:flex hover-lift px-6 py-3 bg-[#D1FC71] rounded-full items-center justify-center no-underline">
         <span class="text-[#0D1B15] text-base font-['Inter'] font-medium">
           Get Started
         </span>
@@ -230,7 +230,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
 
         <!-- CTA Button -->
         <a 
-          href="/contact" 
+          href="/contact/" 
           class="mt-2 w-full btn-premium-morph px-8 py-4 bg-[#D1FC71] text-[#0D1B15] rounded-2xl text-center font-bold shadow-lg hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2"
         >
           <span>Get Started</span>
