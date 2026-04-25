@@ -33,6 +33,17 @@ export const posts = [
     },
   },
   {
+    id: "vibe-coding-stack-2026",
+    data: {
+      title: "The 2026 Vibe Coding Stack: Building Scalable SaaS at the Speed of Thought",
+      excerpt:
+        "Vibe coding is the standard for elite teams in 2026. This is the definitive stack—React, Supabase, Claude Code, and Cursor—that allows a single founder to ship production-ready SaaS in days.",
+      publishDate: "2026-04-25",
+      image:
+        "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
+    },
+  },
+  {
     id: "ai-assisted-workflow-uncle-website",
     data: {
       title: "I Built My Uncle a Website in a Few Hours Using AI",
