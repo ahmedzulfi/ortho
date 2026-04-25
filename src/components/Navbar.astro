@@ -4,8 +4,10 @@
  * Floating white pill design with interactive hover states.
  */
 const { pathname } = Astro.url;
-// Normalize pathname to handle trailing slashes
-const normalizedPath = pathname.replace(/\/$/, "") || "/";
+
+// Helper to normalize paths for comparison (removes trailing slashes)
+const normalize = (p: string) => p.replace(/\/$/, "") || "/";
+const normalizedPath = normalize(pathname);
 
 const navLinksFirst = [
   { name: 'Home', path: '/' },
@@ -39,7 +41,7 @@ const solutions = {
 };
 
 const allSolutionLinks = [...solutions.products.links, ...solutions.services.links];
-const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
+const isSolutionActive = allSolutionLinks.some(l => normalizedPath === normalize(l.path));
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 flex flex-col items-center justify-start pointer-events-none">
@@ -59,7 +61,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
       <!-- Center: Navigation Links (Desktop) -->
       <nav class="hidden lg:flex items-center gap-2">
         {navLinksFirst.map(link => {
-          const isActive = normalizedPath === link.path;
+          const isActive = normalizedPath === normalize(link.path);
           return (
             <a href={link.path} class="nav-link group relative h-9 px-4 flex items-center gap-2 rounded-full no-underline overflow-hidden transition-transform active:scale-95">
               <div class={`nav-bg absolute inset-0 bg-[#D1FC71] transition-opacity duration-300 rounded-full ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
@@ -89,7 +91,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
         </div>
 
         {navLinksLast.map(link => {
-          const isActive = normalizedPath === link.path;
+          const isActive = normalizedPath === normalize(link.path);
           return (
             <a href={link.path} class="nav-link group relative h-9 px-4 flex items-center gap-2 rounded-full no-underline overflow-hidden transition-transform active:scale-95">
               <div class={`nav-bg absolute inset-0 bg-[#D1FC71] transition-opacity duration-300 rounded-full ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
@@ -181,7 +183,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
         <!-- Navigation Links -->
         <nav class="w-full flex flex-col gap-2">
           {navLinksFirst.map((link, i) => {
-            const isActive = normalizedPath === link.path;
+            const isActive = normalizedPath === normalize(link.path);
             return (
               <a 
                 href={link.path} 
@@ -205,7 +207,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
             </button>
             <div id="mobile-solutions-panel" class="hidden flex-col gap-1 pt-1 pl-4">
               {allSolutionLinks.map(link => (
-                <a href={link.path} class={`mobile-link flex items-center px-5 py-3 rounded-xl no-underline transition-all duration-150 ${normalizedPath === link.path ? 'bg-[#D1FC71]/30 text-[#0D1B15]' : 'text-gray-500 hover:text-[#0D1B15] hover:bg-gray-50'}`}>
+                <a href={link.path} class={`mobile-link flex items-center px-5 py-3 rounded-xl no-underline transition-all duration-150 ${normalizedPath === normalize(link.path) ? 'bg-[#D1FC71]/30 text-[#0D1B15]' : 'text-gray-500 hover:text-[#0D1B15] hover:bg-gray-50'}`}>
                   <span class="text-base font-['Inter'] font-medium">{link.name}</span>
                 </a>
               ))}
@@ -213,7 +215,7 @@ const isSolutionActive = allSolutionLinks.some(l => normalizedPath === l.path);
           </div>
 
           {navLinksLast.map((link, i) => {
-            const isActive = normalizedPath === link.path;
+            const isActive = normalizedPath === normalize(link.path);
             const staggerIdx = navLinksFirst.length + 1 + i;
             return (
               <a 
