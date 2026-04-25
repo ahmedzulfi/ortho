@@ -13,7 +13,7 @@ interface Props {
 
 const {
   headline = "ValidMVPs is a fast development service. We help founders turn ideas into functional, investor-ready products in weeks.",
-  image = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
+  image = "/public/Gemini_Generated_Image_jt8usfjt8usfjt8u.png",
   paragraph1 = "We prioritize speed and working software over complex, over-engineered systems. Instead of spending months on planning, we build the smallest version of your product that can validate your idea in the real market.",
   paragraph2 = "We help founders who are stuck with basic prototypes or no-code tools. We turn these into professional, scalable apps with solid architecture and automated deployment.",
 } = Astro.props;
@@ -71,11 +71,11 @@ const {
         <div
           class="w-full md:flex-1 max-w-full md:max-w-[450px] rounded-[16px] overflow-hidden flex items-center justify-center"
         >
-          <figure class="m-0 aspect-[0.9/1] w-full h-[220px] md:h-[500px]">
+          <figure class="m-0 w-full h-[220px] md:h-[500px]">
             <img
               src={image}
               alt="Collaborative MVP development"
-              class="w-full h-full object-cover object-center block"
+              class="w-full h-full object-contain object-center block"
               loading="lazy"
             />
           </figure>
