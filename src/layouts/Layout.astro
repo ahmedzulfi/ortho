@@ -59,10 +59,24 @@ const {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Non-render-blocking font load -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Gilda+Display&display=swap"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Gilda+Display&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Gilda+Display&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -126,7 +140,7 @@ const {
   <body>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
     <ClickSpark
-      client:load
+      client:idle
       sparkColor="#D1FC71"
       sparkSize={15}
       sparkRadius={20}
@@ -229,8 +243,8 @@ const {
           revealObserver.observe(el);
         });
 
-        // Lazy Button Init
-        const buttonSelectors = '.btn-premium-morph, .btn-primary, button:not(.no-morph), a.hover-lift';
+        // Lazy Button Init — scoped to explicit classes only, avoids querying all buttons
+        const buttonSelectors = '.btn-premium-morph, .btn-primary, .hover-lift';
         document.querySelectorAll(buttonSelectors).forEach((el) => {
           buttonObserver.observe(el);
         });

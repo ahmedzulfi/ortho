@@ -23,73 +23,98 @@
     <div
       class="w-full bg-transparent rounded-[20px] overflow-hidden min-h-[600px] mt-5"
     >
-      <!-- Cal inline embed code begins -->
+      <!-- Cal inline embed code — lazy loaded on scroll -->
       <div
-        style="width:100%;height:100%;overflow:scroll"
+        style="width:100%;height:100%;overflow:scroll;min-height:600px;"
         id="my-cal-inline-30min"
       >
+        <!-- Cal.com embed loads when this section scrolls into view -->
       </div>
       <script type="text/javascript" is:inline>
-        (function (C, A, L) {
-          let p = function (a, ar) {
-            a.q.push(ar);
-          };
-          let d = C.document;
-          C.Cal =
-            C.Cal ||
-            function () {
-              let cal = C.Cal;
-              let ar = arguments;
-              if (!cal.loaded) {
-                cal.ns = {};
-                cal.q = cal.q || [];
-                d.head.appendChild(d.createElement("script")).src = A;
-                cal.loaded = true;
-              }
-              if (ar[0] === L) {
-                const api = function () {
-                  p(api, arguments);
-                };
-                const namespace = ar[1];
-                api.q = api.q || [];
-                if (typeof namespace === "string") {
-                  cal.ns[namespace] = cal.ns[namespace] || api;
-                  p(cal.ns[namespace], ar);
-                  p(cal, ["initNamespace", namespace]);
-                } else p(cal, ar);
-                return;
-              }
-              p(cal, ar);
-            };
-        })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", "30min", { origin: "https://app.cal.com" });
+        (function () {
+          let calLoaded = false;
 
-        Cal.ns["30min"]("inline", {
-          elementOrSelector: "#my-cal-inline-30min",
-          config: {
-            layout: "month_view",
-            useSlotsViewOnSmallScreen: "true",
-            theme: "dark",
-          },
-          calLink: "ahmeddeveloper/30min",
-        });
+          function loadCal() {
+            if (calLoaded) return;
+            calLoaded = true;
 
-        Cal.ns["30min"]("ui", {
-          theme: "dark",
-          cssVarsPerTheme: {
-            light: {
-              "cal-bg": "",
-              "cal-brand": "#D1FC71",
-              "cal-text-emphasis": "#000",
-              "cal-text": "#ffffff",
-              "cal-text-muted": "#ffffff",
-              "cal-border-default": "rgba(255,255,255,0.1)",
-            },
-            dark: { "cal-brand": "#d1fc71" },
-          },
-          hideEventTypeDetails: false,
-          layout: "month_view",
-        });
+            (function (C, A, L) {
+              let p = function (a, ar) { a.q.push(ar); };
+              let d = C.document;
+              C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  const api = function () { p(api, arguments); };
+                  const namespace = ar[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === "string") {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                  } else p(cal, ar);
+                  return;
+                }
+                p(cal, ar);
+              };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
+
+            Cal("init", "30min", { origin: "https://app.cal.com" });
+
+            Cal.ns["30min"]("inline", {
+              elementOrSelector: "#my-cal-inline-30min",
+              config: {
+                layout: "month_view",
+                useSlotsViewOnSmallScreen: "true",
+                theme: "dark",
+              },
+              calLink: "ahmeddeveloper/30min",
+            });
+
+            Cal.ns["30min"]("ui", {
+              theme: "dark",
+              cssVarsPerTheme: {
+                light: {
+                  "cal-bg": "",
+                  "cal-brand": "#D1FC71",
+                  "cal-text-emphasis": "#000",
+                  "cal-text": "#ffffff",
+                  "cal-text-muted": "#ffffff",
+                  "cal-border-default": "rgba(255,255,255,0.1)",
+                },
+                dark: { "cal-brand": "#d1fc71" },
+              },
+              hideEventTypeDetails: false,
+              layout: "month_view",
+            });
+          }
+
+          // Use IntersectionObserver to lazy-load Cal embed only when visible
+          const calTarget = document.getElementById("my-cal-inline-30min");
+          if (calTarget && "IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    loadCal();
+                    observer.disconnect();
+                  }
+                });
+              },
+              { rootMargin: "200px" }
+            );
+            observer.observe(calTarget);
+          } else {
+            // Fallback: load after DOM is ready
+            window.addEventListener("load", loadCal);
+          }
+        })();
       </script>
       <!-- Cal inline embed code ends -->
     </div>
