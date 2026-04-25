@@ -22,6 +22,17 @@ export const posts = [
     },
   },
   {
+    id: "multi-agent-workflows-lovable-claude",
+    data: {
+      title: "Building Multi-Agent Workflows: Integrating Claude's Logic into Lovable UI",
+      excerpt:
+        "MVPs are evolving into autonomous agentic systems. Learn how to architect a 'Staff of Agents' using Claude Code and integrate logic into Lovable.",
+      publishDate: "2026-04-25",
+      image:
+        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg",
+    },
+  },
+  {
     id: "ai-assisted-workflow-uncle-website",
     data: {
       title: "I Built My Uncle a Website in a Few Hours Using AI",
