@@ -11,6 +11,17 @@ export const posts = [
     },
   },
   {
+    id: "export-lovable-to-github-production",
+    data: {
+      title: "How to Export Your Lovable App to a Production-Ready GitHub Repository",
+      excerpt:
+        "The exact step-by-step workflow to export your Lovable prototype to GitHub, harden it with Supabase RLS, and deploy to Vercel with CI/CD.",
+      publishDate: "2026-04-25",
+      image:
+        "https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg",
+    },
+  },
+  {
     id: "ai-assisted-workflow-uncle-website",
     data: {
       title: "I Built My Uncle a Website in a Few Hours Using AI",

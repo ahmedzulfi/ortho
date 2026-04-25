@@ -1,0 +1,149 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import BlogDetailsHero from "../../components/BlogDetailsHero.astro";
+import BlogProse from "../../components/BlogProse.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import Contact from "../../components/Contact.astro";
+import FAQ from "../../components/FAQ.astro";
+import Footer from "../../components/Footer.astro";
+
+const post = {
+  id: "export-lovable-to-github-production",
+  data: {
+    title: "How to Export Your Lovable App to a Production-Ready GitHub Repository",
+    excerpt:
+      "Lovable builds fast, but production requires ownership. This is the exact step-by-step workflow to export your Lovable prototype to GitHub, harden it with Supabase RLS, and deploy to Vercel with a proper CI/CD pipeline.",
+    publishDate: "2026-04-25",
+    image: "https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg",
+    author: {
+      name: "Ahmed Zulfiqar",
+      image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    },
+  },
+};
+---
+
+<Layout
+  title={`${post.data.title} | ValidMVPs`}
+  description={post.data.excerpt}
+  ogType="article"
+>
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Export Your Lovable App to a Production-Ready GitHub Repository",
+      "image": "https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg",
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed Zulfiqar"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ValidMVPs",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://validmvps.vercel.app/images/LOGO.png"
+        }
+      },
+      "datePublished": "2026-04-25",
+      "dateModified": "2026-04-25",
+      "description": "Step-by-step guide to exporting a Lovable prototype to GitHub, hardening it with Supabase RLS, and deploying to Vercel with CI/CD."
+    }
+  </script>
+
+  <div class="flex flex-col min-h-screen bg-[#F6F7FF]">
+    <Navbar />
+
+    <BlogDetailsHero
+      title={post.data.title}
+      excerpt={post.data.excerpt}
+      authorName={post.data.author.name}
+      authorImage={post.data.author.image}
+      publishDate={new Date(post.data.publishDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+      featuredImage={post.data.image}
+    />
+
+    <BlogProse>
+      <div class="flex flex-col items-center gap-10 md:gap-20 w-full mx-auto text-[#0D1B15]">
+        <div class="w-full">
+
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            <strong>Lovable is a launchpad, not a destination.</strong> The platform is optimized for speed — generating a full-stack React/Supabase app from a prompt in minutes. But when you are ready to raise funding, onboard real users, or integrate proprietary business logic, you need to own your code. This guide covers the exact workflow we use to migrate Lovable prototypes to production-grade GitHub repositories, ready for CI/CD deployment on <a href="https://vercel.com" target="_blank" rel="noopener" class="underline">Vercel</a>.
+          </p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-8">
+            Why Should You Export Your Lovable App to GitHub?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            Keeping your product inside Lovable's managed environment introduces three critical risks: <strong>platform dependency</strong> (your business infrastructure is controlled by a third-party), <strong>scaling constraints</strong> (Lovable's hosting is not optimized for high-traffic production workloads), and <strong>investor concerns</strong> (technical auditors during due diligence expect to see a properly managed GitHub repository with commit history, branching strategy, and CI/CD). Exporting to GitHub gives you full ownership, a professional audit trail, and the freedom to use tools like <a href="https://anthropic.com/claude" target="_blank" rel="noopener" class="underline">Claude Code</a> to harden your codebase without constraints.
+          </p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12">
+            How Do You Connect Lovable to GitHub?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-4 font-inter">
+            <a href="https://lovable.dev" target="_blank" rel="noopener" class="underline">Lovable</a> offers a built-in two-way sync with GitHub. Here is the exact process:
+          </p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>Step 1:</strong> Open your project in the Lovable editor and navigate to <strong>Settings → Connectors → GitHub</strong>.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>Step 2:</strong> Click <strong>Connect GitHub</strong> and authorize Lovable to access your account or organization.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>Step 3:</strong> Select the target repository (or create a new one) and click <strong>Transfer anyway</strong> to confirm.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"><strong>Step 4:</strong> Lovable will automatically push your current codebase — including the React frontend and Supabase configuration — to the repository. All future changes made inside Lovable will sync to the <code>main</code> branch automatically.</p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12">
+            What Hardening Steps Are Required Before Production?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-4 font-inter">
+            Exporting the code is just the beginning. In our experience hardening 50+ Lovable prototypes, these three steps are non-negotiable before any real user data enters your system:
+          </p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>1. Enable Supabase Row Level Security (RLS).</strong> Lovable's default <a href="https://supabase.com" target="_blank" rel="noopener" class="underline">Supabase</a> tables are often created without RLS policies, meaning any authenticated user can read or modify any row. Use Claude Code to generate and apply the correct RLS policies for every table before launch.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>2. Migrate environment variables.</strong> Lovable does not export your <code>.env</code> file for security reasons. Create a local <code>.env.local</code> file with your <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code>, then add these as Environment Variables in your Vercel project settings.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"><strong>3. Audit hardcoded URLs.</strong> AI-generated code frequently contains hardcoded development endpoints. Search the codebase for <code>localhost</code> and any Lovable-specific preview URLs and replace them with environment variable references before deploying.</p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12">
+            How Do You Deploy a Lovable Export to Vercel?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-4 font-inter">
+            Vercel's GitHub integration makes this the easiest part of the process:
+          </p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>Step 1:</strong> Log in to Vercel and click <strong>Add New → Project</strong>.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>Step 2:</strong> Import the GitHub repository Lovable created. Vercel will automatically detect the React/Vite framework.</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-2 font-inter"><strong>Step 3:</strong> In the project settings, set your Environment Variables (<code>VITE_SUPABASE_URL</code>, <code>VITE_SUPABASE_ANON_KEY</code>, and any other secrets).</p>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter"><strong>Step 4:</strong> Confirm the <strong>Build Command</strong> is <code>npm run build</code> and the <strong>Output Directory</strong> is <code>dist</code>. Click <strong>Deploy</strong>. Your production URL will be live within 60 seconds.</p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12">
+            What Branching Strategy Should You Use After Export?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            Once your code is on GitHub, adopt a two-branch strategy to prevent AI iterations from breaking your live product. Keep a <strong><code>main</code> branch</strong> for continuous development (connected to Lovable's sync and your local Claude Code sessions). Create a separate <strong><code>production</code> branch</strong> that Vercel deploys from. Only merge into <code>production</code> after thorough testing. This is the same workflow described in our <a href="/blog/ai-native-mvp-development-guide-2026/" class="underline">AI-Native MVP Development Guide</a> under Phase 3.
+          </p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12">
+            How Do You Continue Iterating with AI After Export?
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-8 font-inter">
+            After export, you have two paths. You can continue making UI changes inside Lovable (they sync to GitHub automatically), or you can work locally using Claude Code to make architectural changes that require more control. The optimal workflow is to use <strong>Lovable for visual, front-end iterations</strong> and <strong>Claude Code for backend logic, security policies, and API integrations</strong>. See our <a href="/blog/lovable-vs-claude-code-2026/" class="underline">Lovable vs. Claude Code guide</a> for a full breakdown of which tool to use at each stage.
+          </p>
+
+          <h2 class="font-['Bricolage_Grotesque'] font-medium text-3xl md:text-[48px] tracking-[-1px] md:tracking-[-3px] leading-[1.2] mb-4 mt-12">
+            Conclusion: Ownership Is Your Moat
+          </h2>
+          <p class="text-lg md:text-[22px] leading-relaxed md:leading-[1.6em] mb-12 font-inter">
+            Exporting to GitHub is the single most important step between "prototype" and "product." It gives you version control, a CI/CD pipeline, investor credibility, and the freedom to use any tool in the ecosystem. If you want a technical partner to manage this migration and harden your Lovable export for production — including RLS audits, environment configuration, and deployment — <a href="/contact/" class="font-bold underline">book a technical audit with ValidMVPs today</a>.
+          </p>
+
+        </div>
+      </div>
+    </BlogProse>
+
+    <RelatedPosts currentSlug={post.id} />
+    <Contact />
+    <FAQ />
+    <Footer />
+  </div>
+</Layout>
