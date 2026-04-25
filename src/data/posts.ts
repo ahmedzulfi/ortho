@@ -44,6 +44,17 @@ export const posts = [
     },
   },
   {
+    id: "hardening-ai-code-due-diligence",
+    data: {
+      title: "Hardening AI Code: How to Pass Technical Due Diligence in 2026",
+      excerpt:
+        "Vibe coding gets you to market, but engineering rigor gets you funded. Learn the 2026 standards for auditing AI-generated code to satisfy investors.",
+      publishDate: "2026-04-25",
+      image:
+        "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
+    },
+  },
+  {
     id: "ai-assisted-workflow-uncle-website",
     data: {
       title: "I Built My Uncle a Website in a Few Hours Using AI",
