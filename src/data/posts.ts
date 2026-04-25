@@ -1,5 +1,16 @@
 export const posts = [
   {
+    id: "ai-native-mvp-development-guide-2026",
+    data: {
+      title: "The 2026 Guide to AI-Native MVP Development: Build with Lovable & Claude",
+      excerpt:
+        "Over 75% of new apps in 2026 are built with AI-native tools. Your complete framework for going from vibe-coded prototype to investor-ready product.",
+      publishDate: "2026-04-25",
+      image:
+        "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+    },
+  },
+  {
     id: "ai-assisted-workflow-uncle-website",
     data: {
       title: "I Built My Uncle a Website in a Few Hours Using AI",
