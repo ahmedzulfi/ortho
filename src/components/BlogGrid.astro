@@ -1,5 +1,4 @@
 ---
-
 interface Props {
   posts: any[];
   page: any;
@@ -20,17 +19,6 @@ const { posts, page } = Astro.props;
               href={`/blog/${post.id.replace(/\.mdx?$/, "")}/`}
               class="group flex flex-col items-start gap-5 p-5 bg-white rounded-[20px] no-underline transition-all duration-500 h-full"
             >
-              {/* Image Container */}
-              <div class="w-full h-[220px] md:h-[320px] rounded-[16px] overflow-hidden relative">
-                <img
-                  src={post.data.image}
-                  alt={post.data.title}
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-              </div>
-
-
               {/* Content Container */}
               <div class="flex flex-col gap-5 md:gap-[30px] w-full grow justify-between">
                 <div class="flex flex-col gap-2.5 w-full">
@@ -71,38 +59,40 @@ const { posts, page } = Astro.props;
     </div>
 
     {/* Pagination Navigation */}
-    {page && (page.url.prev || page.url.next) && (
-      <div class="flex justify-center items-center gap-4 mt-16">
-        {page.url.prev ? (
-          <a
-            href={page.url.prev}
-            class="px-8 py-3 bg-white border border-[#D1FC71]/30 rounded-full text-[#0D1B15] font-inter font-medium transition-all hover:bg-[#D1FC71] no-underline"
-          >
-            Previous
-          </a>
-        ) : (
-          <span class="px-8 py-3 bg-gray-100 rounded-full text-gray-400 font-inter font-medium cursor-not-allowed">
-            Previous
-          </span>
-        )}
+    {
+      page && (page.url.prev || page.url.next) && (
+        <div class="flex justify-center items-center gap-4 mt-16">
+          {page.url.prev ? (
+            <a
+              href={page.url.prev}
+              class="px-8 py-3 bg-white border border-[#D1FC71]/30 rounded-full text-[#0D1B15] font-inter font-medium transition-all hover:bg-[#D1FC71] no-underline"
+            >
+              Previous
+            </a>
+          ) : (
+            <span class="px-8 py-3 bg-gray-100 rounded-full text-gray-400 font-inter font-medium cursor-not-allowed">
+              Previous
+            </span>
+          )}
 
-        <span class="text-[#0D1B15] font-inter font-medium">
-          Page {page.currentPage} of {page.lastPage}
-        </span>
-
-        {page.url.next ? (
-          <a
-            href={page.url.next}
-            class="px-8 py-3 bg-[#D1FC71] rounded-full text-[#0D1B15] font-inter font-medium transition-all hover:bg-black hover:text-white no-underline"
-          >
-            Next
-          </a>
-        ) : (
-          <span class="px-8 py-3 bg-gray-100 rounded-full text-gray-400 font-inter font-medium cursor-not-allowed">
-            Next
+          <span class="text-[#0D1B15] font-inter font-medium">
+            Page {page.currentPage} of {page.lastPage}
           </span>
-        )}
-      </div>
-    )}
+
+          {page.url.next ? (
+            <a
+              href={page.url.next}
+              class="px-8 py-3 bg-[#D1FC71] rounded-full text-[#0D1B15] font-inter font-medium transition-all hover:bg-black hover:text-white no-underline"
+            >
+              Next
+            </a>
+          ) : (
+            <span class="px-8 py-3 bg-gray-100 rounded-full text-gray-400 font-inter font-medium cursor-not-allowed">
+              Next
+            </span>
+          )}
+        </div>
+      )
+    }
   </div>
 </section>
