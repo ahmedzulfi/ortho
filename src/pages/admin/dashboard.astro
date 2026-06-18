@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AdminSidebar from '../../components/admin/AdminSidebar.astro';
+import StatCard from '../../components/admin/StatCard.astro';
+import { Calendar, Users, CheckCircle2, Clock } from 'lucide-astro';
+import { connectToDatabase } from '../../lib/mongodb';
+import { Appointment } from '../../models/Appointment';
+import StatusBadge from '../../components/admin/StatusBadge.astro';
+
+export const prerender = false;
+
+// Middleware ensures we are authenticated by this point.
+await connectToDatabase();
+
+const total = await Appointment.countDocuments();
+const pending = await Appointment.countDocuments({ status: 'pending' });
+const confirmed = await Appointment.countDocuments({ status: 'confirmed' });
+const completed = await Appointment.countDocuments({ status: 'completed' });
+
+const recentAppointments = await Appointment.find().sort({ createdAt: -1 }).limit(5);
+---
+<Layout title="Dashboard | Admin">
+  <div class="flex min-h-screen bg-gray-50">
+    <AdminSidebar currentPath="/admin/dashboard" />
+    
+    <main class="flex-1 p-8 overflow-auto font-['Inter']">
+      <header class="mb-8 flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-bold text-[#0D1B15]">Dashboard Overview</h1>
+          <p class="text-gray-500 text-sm mt-1">Welcome back. Here is what's happening today.</p>
+        </div>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <StatCard title="Total Requests" value={total} icon={Calendar} />
+        <StatCard title="Pending" value={pending} icon={Clock} />
+        <StatCard title="Confirmed" value={confirmed} icon={Users} />
+        <StatCard title="Completed" value={completed} icon={CheckCircle2} />
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+          <h2 class="text-lg font-bold text-[#0D1B15]">Recent Appointments</h2>
+          <a href="/admin/appointments" class="text-sm text-gray-500 hover:text-[#0D1B15] font-medium transition-colors">View All</a>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                <th class="p-4 font-medium">Name</th>
+                <th class="p-4 font-medium">Service</th>
+                <th class="p-4 font-medium">Date/Time</th>
+                <th class="p-4 font-medium">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-sm">
+              {recentAppointments.length === 0 ? (
+                <tr>
+                  <td colspan="4" class="p-8 text-center text-gray-500">No recent appointments found.</td>
+                </tr>
+              ) : (
+                recentAppointments.map((app) => (
+                  <tr class="hover:bg-gray-50/50 transition-colors">
+                    <td class="p-4">
+                      <div class="font-medium text-[#0D1B15]">{app.name}</div>
+                      <div class="text-gray-500 text-xs">{app.phone}</div>
+                    </td>
+                    <td class="p-4 text-gray-600">{app.service}</td>
+                    <td class="p-4 text-gray-600">
+                      {app.preferredDate ? new Date(app.preferredDate).toLocaleDateString() : 'N/A'} <br/>
+                      <span class="text-xs text-gray-400">{app.preferredTime || ''}</span>
+                    </td>
+                    <td class="p-4">
+                      <StatusBadge status={app.status as any} />
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AdminSidebar from '../../components/admin/AdminSidebar.astro';
+import StatusBadge from '../../components/admin/StatusBadge.astro';
+import { connectToDatabase } from '../../lib/mongodb';
+import { Appointment } from '../../models/Appointment';
+
+export const prerender = false;
+
+await connectToDatabase();
+// Get all appointments. In a production app with thousands of rows, you'd add pagination here.
+const appointments = await Appointment.find().sort({ createdAt: -1 });
+---
+<Layout title="Appointments | Admin">
+  <div class="flex min-h-screen bg-gray-50">
+    <AdminSidebar currentPath="/admin/appointments" />
+    
+    <main class="flex-1 p-8 overflow-auto font-['Inter']">
+      <header class="mb-8">
+        <h1 class="text-2xl font-bold text-[#0D1B15]">Manage Appointments</h1>
+        <p class="text-gray-500 text-sm mt-1">View and update appointment statuses.</p>
+      </header>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+           <!-- Simple client-side search input -->
+           <input 
+             type="text" 
+             id="search-input"
+             placeholder="Search by name or phone..." 
+             class="px-4 py-2 border border-gray-200 rounded-lg text-sm w-64 focus:outline-none focus:border-[#D1FC71] focus:ring-1 focus:ring-[#D1FC71]"
+           />
+        </div>
+        <div class="overflow-x-auto min-h-[500px]">
+          <table class="w-full text-left border-collapse" id="appointments-table">
+            <thead>
+              <tr class="bg-white text-gray-500 text-xs uppercase tracking-wider border-b border-gray-100">
+                <th class="p-4 font-medium">Name & Contact</th>
+                <th class="p-4 font-medium">Service</th>
+                <th class="p-4 font-medium">Requested Time</th>
+                <th class="p-4 font-medium">Status</th>
+                <th class="p-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-sm">
+              {appointments.length === 0 ? (
+                <tr>
+                  <td colspan="5" class="p-8 text-center text-gray-500">No appointments found.</td>
+                </tr>
+              ) : (
+                appointments.map((app) => (
+                  <tr class="hover:bg-gray-50/50 transition-colors app-row" data-name={app.name.toLowerCase()} data-phone={app.phone}>
+                    <td class="p-4">
+                      <div class="font-medium text-[#0D1B15]">{app.name}</div>
+                      <div class="text-gray-500 text-xs">{app.phone} {app.email ? `• ${app.email}` : ''}</div>
+                    </td>
+                    <td class="p-4 text-gray-600 max-w-[200px] truncate" title={app.service}>{app.service}</td>
+                    <td class="p-4 text-gray-600">
+                      {app.preferredDate ? new Date(app.preferredDate).toLocaleDateString() : 'N/A'} <br/>
+                      <span class="text-xs text-gray-400">{app.preferredTime || ''}</span>
+                    </td>
+                    <td class="p-4" id={`status-cell-${app._id}`}>
+                      <StatusBadge status={app.status as any} />
+                    </td>
+                    <td class="p-4 text-right">
+                      <select 
+                        class="status-select bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-[#D1FC71] focus:border-[#D1FC71] p-1.5 outline-none"
+                        data-id={app._id}
+                      >
+                        <option value="pending" selected={app.status === 'pending'}>Pending</option>
+                        <option value="confirmed" selected={app.status === 'confirmed'}>Confirmed</option>
+                        <option value="completed" selected={app.status === 'completed'}>Completed</option>
+                        <option value="cancelled" selected={app.status === 'cancelled'}>Cancelled</option>
+                      </select>
+                      <button 
+                        class="delete-btn ml-2 text-red-500 hover:text-red-700 p-1.5"
+                        data-id={app._id}
+                        title="Delete"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Client-side search filtering
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rows = document.querySelectorAll('.app-row');
+
+    searchInput?.addEventListener('input', (e) => {
+      const term = (e.target as HTMLInputElement).value.toLowerCase();
+      rows.forEach(row => {
+        const name = row.getAttribute('data-name') || '';
+        const phone = row.getAttribute('data-phone') || '';
+        if (name.includes(term) || phone.includes(term)) {
+          (row as HTMLElement).style.display = '';
+        } else {
+          (row as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+
+    // Handle Status Update
+    const selects = document.querySelectorAll('.status-select');
+    selects.forEach(select => {
+      select.addEventListener('change', async (e) => {
+        const target = e.target as HTMLSelectElement;
+        const id = target.getAttribute('data-id');
+        const newStatus = target.value;
+        
+        target.disabled = true;
+        try {
+          const res = await fetch(`/api/appointments/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: newStatus })
+          });
+          if (res.ok) {
+            // Optional: Show toast
+            window.location.reload(); // Quick refresh to update badges
+          } else {
+            alert('Failed to update status');
+          }
+        } catch(err) {
+          console.error(err);
+          alert('Error updating status');
+        } finally {
+          target.disabled = false;
+        }
+      });
+    });
+
+    // Handle Delete
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    deleteBtns.forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        if(!confirm('Are you sure you want to delete this appointment?')) return;
+        
+        const target = e.currentTarget as HTMLButtonElement;
+        const id = target.getAttribute('data-id');
+        
+        target.disabled = true;
+        try {
+          const res = await fetch(`/api/appointments/${id}`, {
+            method: 'DELETE'
+          });
+          if (res.ok) {
+            window.location.reload();
+          } else {
+            alert('Failed to delete');
+          }
+        } catch(err) {
+          console.error(err);
+          alert('Error deleting');
+        } finally {
+          target.disabled = false;
+        }
+      });
+    });
+  </script>
+</Layout>

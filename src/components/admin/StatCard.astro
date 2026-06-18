@@ -1,0 +1,27 @@
+---
+export interface Props {
+  title: string;
+  value: string | number;
+  icon: any; // using lucide-astro component
+  trend?: string;
+  trendUp?: boolean;
+}
+
+const { title, value, icon: Icon, trend, trendUp } = Astro.props;
+---
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 font-['Inter'] flex flex-col justify-between">
+  <div class="flex items-start justify-between mb-4">
+    <div class="p-3 bg-gray-50 rounded-xl">
+      <Icon class="w-6 h-6 text-[#0D1B15]" />
+    </div>
+    {trend && (
+      <span class={`text-sm font-medium ${trendUp ? 'text-green-600' : 'text-gray-500'}`}>
+        {trend}
+      </span>
+    )}
+  </div>
+  <div>
+    <h3 class="text-gray-500 text-sm font-medium mb-1">{title}</h3>
+    <p class="text-3xl font-bold text-[#0D1B15]">{value}</p>
+  </div>
+</div>

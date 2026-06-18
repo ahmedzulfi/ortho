@@ -580,10 +580,17 @@
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // Simulate API call - Replace with actual endpoint if available
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const res = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
       
-      console.log('Form Submitted:', data);
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
       
       // Success Feedback
       if (feedback) {
@@ -592,7 +599,7 @@
         feedback.textContent = 'Message sent successfully! We will contact you soon.';
       }
       contactForm.reset();
-    } catch (error) {
+    } catch (error: any) {
       // Error Feedback
       if (feedback) {
         feedback.style.display = 'block';

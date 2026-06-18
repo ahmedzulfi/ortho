@@ -1,0 +1,47 @@
+---
+import { LayoutDashboard, CalendarDays, Users, Settings, LogOut } from 'lucide-astro';
+const { currentPath } = Astro.props;
+---
+<aside class="w-64 bg-[#0D1B15] min-h-screen text-white flex flex-col p-6 font-['Inter']">
+  <div class="mb-10 flex items-center gap-3">
+    <div class="w-8 h-8 rounded-full bg-[#D1FC71] flex items-center justify-center text-[#0D1B15] font-bold text-lg">
+      A
+    </div>
+    <span class="text-xl font-bold text-white tracking-tight">Admin</span>
+  </div>
+
+  <nav class="flex-1 space-y-2">
+    <a 
+      href="/admin/dashboard" 
+      class={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${currentPath === '/admin/dashboard' ? 'bg-[#D1FC71] text-[#0D1B15] font-medium' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+    >
+      <LayoutDashboard class="w-5 h-5" />
+      Dashboard
+    </a>
+    <a 
+      href="/admin/appointments" 
+      class={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${currentPath === '/admin/appointments' ? 'bg-[#D1FC71] text-[#0D1B15] font-medium' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+    >
+      <CalendarDays class="w-5 h-5" />
+      Appointments
+    </a>
+  </nav>
+
+  <div class="pt-6 border-t border-white/10 mt-auto">
+    <button id="logout-btn" class="flex w-full items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-[#D1FC71] hover:bg-white/5 transition-colors text-left">
+      <LogOut class="w-5 h-5" />
+      Log Out
+    </button>
+  </div>
+</aside>
+
+<script>
+  document.getElementById('logout-btn')?.addEventListener('click', async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      window.location.href = '/admin/login';
+    } catch (e) {
+      console.error(e);
+    }
+  });
+</script>
