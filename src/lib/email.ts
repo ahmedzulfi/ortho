@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import fs from 'fs';
+import path from 'path';
 
 interface SendEmailParams {
   to: string;
@@ -6,12 +8,48 @@ interface SendEmailParams {
   html: string;
 }
 
+// Fallback runtime .env parser if variables are not synced into process/meta env
+function loadEnvFallback() {
+  const env: Record<string, string> = {};
+  try {
+    const envPath = path.resolve(process.cwd(), '.env');
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, 'utf-8');
+      content.split(/\r?\n/).forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('#')) return;
+        const eqIdx = trimmed.indexOf('=');
+        if (eqIdx > 0) {
+          const key = trimmed.substring(0, eqIdx).trim();
+          let val = trimmed.substring(eqIdx + 1).trim();
+          if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+            val = val.substring(1, val.length - 1);
+          }
+          env[key] = val;
+        }
+      });
+    }
+  } catch (err) {
+    console.error('[SMTP Fallback] Failed to read .env file:', err);
+  }
+  return env;
+}
+
 export async function sendEmail({ to, subject, html }: SendEmailParams) {
-  const host = import.meta.env.SMTP_HOST;
-  const port = import.meta.env.SMTP_PORT;
-  const user = import.meta.env.SMTP_USER;
-  const pass = import.meta.env.SMTP_PASS;
-  const fromEmail = import.meta.env.FROM_EMAIL || 'appointments@orthodonticsalign.com';
+  const fallbackEnv = (!import.meta.env.SMTP_HOST && !process.env.SMTP_HOST) ? loadEnvFallback() : {};
+
+  const host = import.meta.env.SMTP_HOST || process.env.SMTP_HOST || fallbackEnv.SMTP_HOST;
+  const port = import.meta.env.SMTP_PORT || process.env.SMTP_PORT || fallbackEnv.SMTP_PORT;
+  const user = import.meta.env.SMTP_USER || process.env.SMTP_USER || fallbackEnv.SMTP_USER;
+  const pass = import.meta.env.SMTP_PASS || process.env.SMTP_PASS || fallbackEnv.SMTP_PASS;
+  const fromEmail = import.meta.env.FROM_EMAIL || process.env.FROM_EMAIL || fallbackEnv.FROM_EMAIL || 'appointments@orthodonticsalign.com';
+
+  console.log('[SMTP Debug] Loaded Variables:');
+  console.log('  host:', host);
+  console.log('  port:', port);
+  console.log('  user:', user);
+  console.log('  pass length:', pass ? pass.length : 0);
+  console.log('  fromEmail:', fromEmail);
 
   if (!host || !port || !user || !pass) {
     console.warn('\n==================================================');
