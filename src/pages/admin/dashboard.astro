@@ -2,76 +2,201 @@
 import Layout from '../../layouts/Layout.astro';
 import AdminSidebar from '../../components/admin/AdminSidebar.astro';
 import StatCard from '../../components/admin/StatCard.astro';
-import { Calendar, Users, CheckCircle2, Clock } from 'lucide-astro';
+import { Calendar, Users, CheckCircle2, Clock, ChevronLeft, ChevronRight, Check, X, FileText } from 'lucide-astro';
 import { connectToDatabase } from '../../lib/mongodb';
 import { Appointment } from '../../models/Appointment';
+import { autoClosePastAppointments } from '../../lib/appointments';
 import StatusBadge from '../../components/admin/StatusBadge.astro';
 
 export const prerender = false;
 
-// Middleware ensures we are authenticated by this point.
+// Middleware ensures we are authenticated. Auto-close past ones.
 await connectToDatabase();
+await autoClosePastAppointments();
 
 const total = await Appointment.countDocuments();
 const pending = await Appointment.countDocuments({ status: 'pending' });
 const confirmed = await Appointment.countDocuments({ status: 'confirmed' });
 const completed = await Appointment.countDocuments({ status: 'completed' });
 
+// Fetch all appointments for the calendar (sorted by date)
+const allAppointments = await Appointment.find().sort({ preferredDate: 1 });
 const recentAppointments = await Appointment.find().sort({ createdAt: -1 }).limit(5);
+
+// Safely serialize appointments for client-side JS
+const serializedAppointments = allAppointments.map(app => ({
+  _id: app._id.toString(),
+  name: app.name,
+  phone: app.phone,
+  email: app.email || '',
+  service: app.service,
+  preferredDate: app.preferredDate ? app.preferredDate.toISOString() : null,
+  preferredTime: app.preferredTime || '',
+  message: app.message || '',
+  status: app.status,
+  notes: app.notes || ''
+}));
 ---
 <Layout title="Dashboard | Admin">
-  <div class="flex min-h-screen bg-gray-50">
+  <div class="flex min-h-screen bg-[#F8FAF9]">
     <AdminSidebar currentPath="/admin/dashboard" />
     
-    <main class="flex-1 p-8 overflow-auto font-['Inter']">
+    <main class="flex-1 p-8 overflow-auto font-['Inter'] relative">
       <header class="mb-8 flex justify-between items-center">
         <div>
-          <h1 class="text-2xl font-bold text-[#0D1B15]">Dashboard Overview</h1>
-          <p class="text-gray-500 text-sm mt-1">Welcome back. Here is what's happening today.</p>
+          <h1 class="text-2xl font-bold text-[#0D1B15] tracking-tight">Dashboard Overview</h1>
+          <p class="text-[#595E5C] text-sm mt-1">Manage requests, schedule appointments, and coordinate aligner treatments.</p>
         </div>
       </header>
 
+      <!-- Bento-style Stats Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <StatCard title="Total Requests" value={total} icon={Calendar} />
-        <StatCard title="Pending" value={pending} icon={Clock} />
-        <StatCard title="Confirmed" value={confirmed} icon={Users} />
-        <StatCard title="Completed" value={completed} icon={CheckCircle2} />
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-gray-50 rounded-xl text-[#0D1B15]">
+              <Calendar class="w-6 h-6" />
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700">All Time</span>
+          </div>
+          <div>
+            <h3 class="text-[#595E5C] text-sm font-medium mb-1">Total Requests</h3>
+            <p class="text-3xl font-bold text-[#0D1B15] tracking-tight">{total}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-amber-50 rounded-xl text-amber-600">
+              <Clock class="w-6 h-6" />
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700">Review Required</span>
+          </div>
+          <div>
+            <h3 class="text-[#595E5C] text-sm font-medium mb-1">Pending</h3>
+            <p class="text-3xl font-bold text-[#0D1B15] tracking-tight">{pending}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-emerald-50 rounded-xl text-emerald-600">
+              <Users class="w-6 h-6" />
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700">Scheduled</span>
+          </div>
+          <div>
+            <h3 class="text-[#595E5C] text-sm font-medium mb-1">Accepted</h3>
+            <p class="text-3xl font-bold text-[#0D1B15] tracking-tight">{confirmed}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-gray-50 rounded-xl text-gray-700">
+              <CheckCircle2 class="w-6 h-6" />
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700">Completed</span>
+          </div>
+          <div>
+            <h3 class="text-[#595E5C] text-sm font-medium mb-1">Completed / Closed</h3>
+            <p class="text-3xl font-bold text-[#0D1B15] tracking-tight">{completed}</p>
+          </div>
+        </div>
       </div>
 
+      <!-- Calendar & Day Panel Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <!-- Calendar Component -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-bold text-[#0D1B15] flex items-center gap-2">
+              <Calendar class="w-5 h-5 text-[#0D1B15]" />
+              Interactive Calendar
+            </h2>
+            <div class="flex items-center gap-2">
+              <button id="prev-month-btn" class="p-2 hover:bg-gray-50 rounded-lg border border-gray-200 transition-colors">
+                <ChevronLeft class="w-4 h-4 text-gray-600" />
+              </button>
+              <span id="calendar-month-year" class="text-sm font-semibold text-[#0D1B15] min-w-[100px] text-center">June 2026</span>
+              <button id="next-month-btn" class="p-2 hover:bg-gray-50 rounded-lg border border-gray-200 transition-colors">
+                <ChevronRight class="w-4 h-4 text-gray-600" />
+              </button>
+            </div>
+          </div>
+
+          <!-- Calendar Grid Header -->
+          <div class="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-[#595E5C] mb-2 uppercase tracking-wider">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+
+          <!-- Calendar Days Grid -->
+          <div id="calendar-days-grid" class="grid grid-cols-7 gap-2 flex-1 min-h-[280px]">
+            <!-- Generated Dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Selected Date Schedule Panel -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col min-h-[380px]">
+          <div class="border-b border-gray-100 pb-4 mb-4">
+            <h3 class="text-md font-bold text-[#0D1B15]" id="selected-day-title">Schedule for June 18, 2026</h3>
+            <p class="text-xs text-[#595E5C] mt-0.5">Click any time slot to view details and update.</p>
+          </div>
+          <div class="flex-1 overflow-y-auto space-y-3 pr-1" id="agenda-list-container">
+            <!-- Agenda List Generated Dynamically by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Submissions Table -->
       <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-          <h2 class="text-lg font-bold text-[#0D1B15]">Recent Appointments</h2>
-          <a href="/admin/appointments" class="text-sm text-gray-500 hover:text-[#0D1B15] font-medium transition-colors">View All</a>
+          <h2 class="text-lg font-bold text-[#0D1B15]">Recent Requests</h2>
+          <a href="/admin/appointments" class="text-sm text-gray-500 hover:text-[#0D1B15] font-semibold transition-colors">View All</a>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse">
             <thead>
-              <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                <th class="p-4 font-medium">Name</th>
-                <th class="p-4 font-medium">Service</th>
-                <th class="p-4 font-medium">Date/Time</th>
-                <th class="p-4 font-medium">Status</th>
+              <tr class="bg-gray-50/50 text-[#595E5C] text-xs uppercase tracking-wider border-b border-gray-100">
+                <th class="p-4 font-semibold">Patient Name</th>
+                <th class="p-4 font-semibold">Required Service</th>
+                <th class="p-4 font-semibold">Pref. Date & Time</th>
+                <th class="p-4 font-semibold">Status</th>
+                <th class="p-4 font-semibold text-right">Actions</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 text-sm">
               {recentAppointments.length === 0 ? (
                 <tr>
-                  <td colspan="4" class="p-8 text-center text-gray-500">No recent appointments found.</td>
+                  <td colspan="5" class="p-8 text-center text-gray-400 font-medium">No recent appointment requests.</td>
                 </tr>
               ) : (
                 recentAppointments.map((app) => (
-                  <tr class="hover:bg-gray-50/50 transition-colors">
+                  <tr class="hover:bg-gray-50/30 transition-colors">
                     <td class="p-4">
-                      <div class="font-medium text-[#0D1B15]">{app.name}</div>
-                      <div class="text-gray-500 text-xs">{app.phone}</div>
+                      <div class="font-bold text-[#0D1B15]">{app.name}</div>
+                      <div class="text-[#595E5C] text-xs mt-0.5">{app.phone}</div>
                     </td>
-                    <td class="p-4 text-gray-600">{app.service}</td>
-                    <td class="p-4 text-gray-600">
-                      {app.preferredDate ? new Date(app.preferredDate).toLocaleDateString() : 'N/A'} <br/>
+                    <td class="p-4 text-[#595E5C] font-medium">{app.service}</td>
+                    <td class="p-4 text-[#595E5C]">
+                      <div>{app.preferredDate ? new Date(app.preferredDate).toLocaleDateString() : 'N/A'}</div>
                       <span class="text-xs text-gray-400">{app.preferredTime || ''}</span>
                     </td>
                     <td class="p-4">
                       <StatusBadge status={app.status as any} />
+                    </td>
+                    <td class="p-4 text-right">
+                      <button 
+                        class="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 text-xs font-semibold rounded-lg transition-all view-details-btn"
+                        data-id={app._id.toString()}
+                      >
+                        View & Triage
+                      </button>
                     </td>
                   </tr>
                 ))
@@ -82,4 +207,493 @@ const recentAppointments = await Appointment.find().sort({ createdAt: -1 }).limi
       </div>
     </main>
   </div>
+
+  <!-- Global Appointment Detail Modal -->
+  <div id="appointment-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#0D1B15]/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200">
+    <div class="bg-white w-full max-w-lg rounded-2xl shadow-xl border border-gray-100 overflow-hidden transform scale-95 transition-transform duration-200">
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+        <h3 class="text-lg font-bold text-[#0D1B15]" id="modal-title">Appointment Details</h3>
+        <button id="modal-close-btn" class="p-1 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors">
+          <X class="w-5 h-5" />
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Patient Name</label>
+            <p class="text-sm font-semibold text-[#0D1B15] mt-0.5" id="modal-name">Sarah Connor</p>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Contact Phone</label>
+            <p class="text-sm font-semibold text-[#0D1B15] mt-0.5" id="modal-phone">+1 (555) 019-9281</p>
+          </div>
+          <div class="col-span-2">
+            <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Email Address</label>
+            <p class="text-sm font-semibold text-[#0D1B15] mt-0.5" id="modal-email">sarah.connor@example.com</p>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Requested Service</label>
+            <p class="text-sm font-semibold text-[#0D1B15] mt-0.5" id="modal-service">Aligners Treatment Planning</p>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Date & Time</label>
+            <p class="text-sm font-semibold text-[#0D1B15] mt-0.5" id="modal-datetime">June 25, 2026 at 10:00 AM</p>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Patient Message</label>
+          <div class="text-sm text-gray-600 bg-gray-50 border border-gray-100 rounded-xl p-3 mt-1 min-h-[60px]" id="modal-message">
+            Patient submitted request messages will appear here.
+          </div>
+        </div>
+
+        <div class="border-t border-gray-100 pt-4">
+          <label class="text-xs font-bold text-[#0D1B15] block mb-1">Clinical Notes & Email Message</label>
+          <p class="text-xs text-gray-400 mb-2">These notes are saved and will be emailed to the patient upon review.</p>
+          <textarea 
+            id="modal-notes" 
+            rows="3" 
+            placeholder="E.g., Please remember to bring your 3D scan files. The clinic will open 10 mins prior."
+            class="w-full text-sm px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#D1FC71] focus:ring-1 focus:ring-[#D1FC71] resize-none"
+          ></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 pt-2" id="modal-status-container">
+          <span class="text-xs font-semibold text-gray-500">Current Status:</span>
+          <div id="modal-status-badge">
+            <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending Review</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-6 border-t border-gray-100 bg-gray-50/50 flex gap-3 justify-end">
+        <button 
+          id="decline-action-btn"
+          class="flex items-center justify-center gap-2 px-4 py-2 border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-700 text-sm font-semibold rounded-xl transition-all"
+        >
+          <X class="w-4 h-4" />
+          Decline Request
+        </button>
+        <button 
+          id="accept-action-btn"
+          class="flex items-center justify-center gap-2 px-4 py-2 bg-[#D1FC71] hover:bg-[#c0ec60] text-[#0D1B15] text-sm font-bold rounded-xl transition-all shadow-sm"
+        >
+          <Check class="w-4 h-4 text-[#0D1B15]" />
+          Accept & Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Raw appointments list serialized for JavaScript -->
+  <div id="appointments-data" data-json={JSON.stringify(serializedAppointments)} class="hidden"></div>
 </Layout>
+
+<script>
+  // Extract and parse appointments list
+  const dataEl = document.getElementById('appointments-data');
+  const appointmentsList = JSON.parse(dataEl?.getAttribute('data-json') || '[]');
+
+  // Calendar State
+  let currentYear = 2026;
+  let currentMonth = 5; // June (0-indexed)
+  let selectedDateStr = '2026-06-18'; // Default selected day
+
+  // Format Helper: Get YYYY-MM-DD string from Javascript Date
+  function getLocalDateStr(dateObj: Date) {
+    const y = dateObj.getFullYear();
+    const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const d = String(dateObj.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  // Populate Month/Year strings
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  // Calendar render elements
+  const gridEl = document.getElementById('calendar-days-grid');
+  const monthYearEl = document.getElementById('calendar-month-year');
+  const selectedDayTitleEl = document.getElementById('selected-day-title');
+  const agendaContainerEl = document.getElementById('agenda-list-container');
+
+  // Initial Calendar Draw
+  function initCalendar() {
+    renderCalendar(currentYear, currentMonth);
+    renderAgenda(selectedDateStr);
+  }
+
+  function renderCalendar(year: number, month: number) {
+    if (!gridEl || !monthYearEl) return;
+    
+    // Set Header
+    monthYearEl.textContent = `${months[month]} ${year}`;
+
+    // Clear Grid
+    gridEl.innerHTML = '';
+
+    // First day of current month (day of the week, 0-6)
+    const firstDay = new Date(year, month, 1).getDay();
+    // Days in current month
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    // Map appointments by local date string
+    const appMap: Record<string, any[]> = {};
+    appointmentsList.forEach((app: any) => {
+      if (app.preferredDate) {
+        // Parse UTC date to Local Date string
+        const dateStr = getLocalDateStr(new Date(app.preferredDate));
+        if (!appMap[dateStr]) appMap[dateStr] = [];
+        appMap[dateStr].push(app);
+      }
+    });
+
+    // 1. Render empty grid items for leading days of previous month
+    for (let i = 0; i < firstDay; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.className = 'p-2 border border-transparent min-h-[48px]';
+      gridEl.appendChild(emptyCell);
+    }
+
+    // 2. Render actual days
+    for (let day = 1; day <= totalDays; day++) {
+      const cellDateObj = new Date(year, month, day);
+      const dateStr = getLocalDateStr(cellDateObj);
+      const dayApps = appMap[dateStr] || [];
+
+      const dayButton = document.createElement('button');
+      dayButton.type = 'button';
+      dayButton.className = `p-2 rounded-xl border flex flex-col justify-between items-center min-h-[52px] transition-all hover:border-[#D1FC71] focus:outline-none relative ${
+        dateStr === selectedDateStr 
+          ? 'bg-[#0D1B15] text-white border-[#0D1B15]' 
+          : 'bg-white text-[#0D1B15] border-gray-100 hover:bg-gray-50/50'
+      }`;
+      dayButton.setAttribute('data-date', dateStr);
+
+      // Day Number Label
+      const dayNumLabel = document.createElement('span');
+      dayNumLabel.className = `text-sm font-semibold ${dateStr === selectedDateStr ? 'text-white' : 'text-[#0D1B15]'}`;
+      dayNumLabel.textContent = String(day);
+      dayButton.appendChild(dayNumLabel);
+
+      // Indicators Area (dots)
+      const indicatorsDiv = document.createElement('div');
+      indicatorsDiv.className = 'flex gap-1 mt-1 justify-center max-w-full overflow-hidden';
+
+      dayApps.slice(0, 3).forEach((app: any) => {
+        const dot = document.createElement('span');
+        dot.className = `w-1.5 h-1.5 rounded-full ${
+          app.status === 'pending' ? 'bg-amber-500' :
+          app.status === 'confirmed' ? 'bg-emerald-500' :
+          app.status === 'completed' ? 'bg-gray-400' : 'bg-rose-500'
+        }`;
+        indicatorsDiv.appendChild(dot);
+      });
+      
+      // If overflow
+      if (dayApps.length > 3) {
+        const plusDot = document.createElement('span');
+        plusDot.className = 'text-[7px] text-gray-400 leading-none';
+        plusDot.textContent = '+';
+        indicatorsDiv.appendChild(plusDot);
+      }
+
+      dayButton.appendChild(indicatorsDiv);
+
+      // Event listener for selection
+      dayButton.addEventListener('click', () => {
+        // Toggle selected state in state
+        selectedDateStr = dateStr;
+        // Re-render
+        renderCalendar(currentYear, currentMonth);
+        renderAgenda(selectedDateStr);
+      });
+
+      gridEl.appendChild(dayButton);
+    }
+  }
+
+  function renderAgenda(dateStr: string) {
+    if (!selectedDayTitleEl || !agendaContainerEl) return;
+
+    // Display formatted selected date header
+    const dateObj = new Date(dateStr + 'T00:00:00');
+    selectedDayTitleEl.textContent = `Schedule for ${dateObj.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    })}`;
+
+    // Get matching appointments
+    const filteredApps = appointmentsList.filter((app: any) => {
+      if (!app.preferredDate) return false;
+      return getLocalDateStr(new Date(app.preferredDate)) === dateStr;
+    });
+
+    // Clear items
+    agendaContainerEl.innerHTML = '';
+
+    if (filteredApps.length === 0) {
+      agendaContainerEl.innerHTML = `
+        <div class="h-full flex flex-col items-center justify-center p-8 text-center text-gray-400">
+          <div class="p-3 bg-gray-50 rounded-2xl mb-3 text-gray-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <p class="text-sm font-semibold">No appointments scheduled</p>
+          <p class="text-xs text-gray-400 mt-1">Select another day or triage pending requests.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Render items sorted by time slots
+    filteredApps.forEach((app: any) => {
+      const card = document.createElement('div');
+      card.className = `p-4 rounded-2xl border transition-all cursor-pointer hover:border-gray-300 hover:shadow-sm ${
+        app.status === 'pending' ? 'bg-amber-50/20 border-amber-200/40 hover:bg-amber-50/40' :
+        app.status === 'confirmed' ? 'bg-emerald-50/20 border-emerald-200/40 hover:bg-emerald-50/40' :
+        app.status === 'completed' ? 'bg-gray-50 border-gray-100 hover:bg-gray-100/50' : 'bg-rose-50/10 border-rose-200/20 hover:bg-rose-50/20'
+      }`;
+      card.setAttribute('data-id', app._id);
+
+      const statusLabels: Record<string, string> = {
+        pending: 'Pending',
+        confirmed: 'Accepted',
+        completed: 'Completed',
+        cancelled: 'Declined'
+      };
+
+      const badgeStyles: Record<string, string> = {
+        pending: 'bg-amber-100 text-amber-800',
+        confirmed: 'bg-emerald-100 text-emerald-800',
+        completed: 'bg-gray-100 text-gray-700',
+        cancelled: 'bg-rose-100 text-rose-800'
+      };
+
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-2">
+          <span class="text-xs font-bold text-[#0D1B15]">${app.preferredTime || 'No time set'}</span>
+          <span class="px-2 py-0.5 text-[10px] font-bold rounded-full uppercase tracking-wider ${badgeStyles[app.status]}">
+            ${statusLabels[app.status]}
+          </span>
+        </div>
+        <h4 class="font-bold text-[#0D1B15] text-sm">${app.name}</h4>
+        <p class="text-xs text-[#595E5C] mt-0.5 truncate">${app.service}</p>
+      `;
+
+      card.addEventListener('click', () => {
+        openModal(app._id);
+      });
+
+      agendaContainerEl.appendChild(card);
+    });
+  }
+
+  // Month navigation events
+  document.getElementById('prev-month-btn')?.addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  document.getElementById('next-month-btn')?.addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  // Modal Setup
+  const modalEl = document.getElementById('appointment-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalName = document.getElementById('modal-name');
+  const modalPhone = document.getElementById('modal-phone');
+  const modalEmail = document.getElementById('modal-email');
+  const modalService = document.getElementById('modal-service');
+  const modalDateTime = document.getElementById('modal-datetime');
+  const modalMessage = document.getElementById('modal-message');
+  const modalNotes = document.getElementById('modal-notes') as HTMLTextAreaElement;
+  const modalStatusBadge = document.getElementById('modal-status-badge');
+  const acceptActionBtn = document.getElementById('accept-action-btn') as HTMLButtonElement;
+  const declineActionBtn = document.getElementById('decline-action-btn') as HTMLButtonElement;
+
+  let activeModalAppId = '';
+
+  function openModal(id: string) {
+    const app = appointmentsList.find((a: any) => a._id === id);
+    if (!app || !modalEl) return;
+
+    activeModalAppId = id;
+
+    // Fill content
+    if (modalName) modalName.textContent = app.name;
+    if (modalPhone) modalPhone.textContent = app.phone;
+    if (modalEmail) {
+      modalEmail.textContent = app.email || 'N/A';
+      modalEmail.parentElement!.style.display = app.email ? 'block' : 'none';
+    }
+    if (modalService) modalService.textContent = app.service;
+    if (modalDateTime) {
+      const dateText = app.preferredDate ? new Date(app.preferredDate).toLocaleDateString() : 'N/A';
+      modalDateTime.textContent = `${dateText} at ${app.preferredTime || 'N/A'}`;
+    }
+    if (modalMessage) {
+      modalMessage.textContent = app.message || 'No additional message submitted.';
+    }
+    if (modalNotes) {
+      modalNotes.value = app.notes || '';
+    }
+
+    // Status Badge
+    if (modalStatusBadge) {
+      const labels: Record<string, string> = {
+        pending: 'Pending Review',
+        confirmed: 'Accepted',
+        completed: 'Completed',
+        cancelled: 'Declined'
+      };
+      const styles: Record<string, string> = {
+        pending: 'bg-amber-50 text-amber-700 border border-amber-200/50',
+        confirmed: 'bg-emerald-50 text-emerald-700 border border-emerald-200/50',
+        completed: 'bg-gray-100 text-gray-700 border border-gray-200/50',
+        cancelled: 'bg-rose-50 text-rose-700 border border-rose-200/50'
+      };
+      
+      modalStatusBadge.innerHTML = `
+        <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full ${styles[app.status]}">
+          ${labels[app.status]}
+        </span>
+      `;
+    }
+
+    // Modal Action Buttons Visibility & Text
+    if (app.status === 'completed') {
+      // Completed, can't change
+      acceptActionBtn.style.display = 'none';
+      declineActionBtn.style.display = 'none';
+    } else {
+      acceptActionBtn.style.display = '';
+      declineActionBtn.style.display = '';
+      
+      // If confirmed, make accept display "Update Notes Only"
+      if (app.status === 'confirmed') {
+        acceptActionBtn.innerHTML = `
+          <svg class="w-4 h-4 text-[#0D1B15]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="none" d="M5 13l4 4L19 7"></path></svg>
+          Update Notes
+        `;
+        declineActionBtn.style.display = ''; // Can still decline/cancel
+      } else if (app.status === 'cancelled') {
+        declineActionBtn.style.display = 'none'; // Already declined, can only Accept/Re-confirm
+        acceptActionBtn.innerHTML = `
+          <svg class="w-4 h-4 text-[#0D1B15]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="none" d="M5 13l4 4L19 7"></path></svg>
+          Accept Request
+        `;
+      } else {
+        // Pending
+        acceptActionBtn.innerHTML = `
+          <svg class="w-4 h-4 text-[#0D1B15]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="none" d="M5 13l4 4L19 7"></path></svg>
+          Accept Request
+        `;
+        declineActionBtn.style.display = '';
+      }
+    }
+
+    // Open animations
+    modalEl.classList.remove('opacity-0', 'pointer-events-none');
+    modalEl.firstElementChild?.classList.remove('scale-95');
+    modalEl.firstElementChild?.classList.add('scale-100');
+  }
+
+  function closeModal() {
+    if (!modalEl) return;
+    modalEl.classList.add('opacity-0', 'pointer-events-none');
+    modalEl.firstElementChild?.classList.remove('scale-100');
+    modalEl.firstElementChild?.classList.add('scale-95');
+    activeModalAppId = '';
+  }
+
+  modalCloseBtn?.addEventListener('click', closeModal);
+  modalEl?.addEventListener('click', (e) => {
+    if (e.target === modalEl) closeModal();
+  });
+
+  // Attach click listeners to "View & Triage" buttons on table rows
+  document.querySelectorAll('.view-details-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = (e.currentTarget as HTMLButtonElement).getAttribute('data-id');
+      if (id) openModal(id);
+    });
+  });
+
+  // Action: Accept Appointment
+  acceptActionBtn?.addEventListener('click', async () => {
+    if (!activeModalAppId) return;
+
+    acceptActionBtn.disabled = true;
+    const notesValue = modalNotes ? modalNotes.value : '';
+
+    try {
+      const res = await fetch(`/api/appointments/${activeModalAppId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'confirmed', notes: notesValue })
+      });
+      if (res.ok) {
+        closeModal();
+        window.location.reload(); // Refresh stats, calendar and list
+      } else {
+        alert('Failed to accept appointment request.');
+      }
+    } catch(err) {
+      console.error(err);
+      alert('Error updating status.');
+    } finally {
+      acceptActionBtn.disabled = false;
+    }
+  });
+
+  // Action: Decline Appointment
+  declineActionBtn?.addEventListener('click', async () => {
+    if (!activeModalAppId) return;
+    if (!confirm('Are you sure you want to decline this appointment request?')) return;
+
+    declineActionBtn.disabled = true;
+    const notesValue = modalNotes ? modalNotes.value : '';
+
+    try {
+      const res = await fetch(`/api/appointments/${activeModalAppId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'cancelled', notes: notesValue })
+      });
+      if (res.ok) {
+        closeModal();
+        window.location.reload();
+      } else {
+        alert('Failed to decline appointment request.');
+      }
+    } catch(err) {
+      console.error(err);
+      alert('Error updating status.');
+    } finally {
+      declineActionBtn.disabled = false;
+    }
+  });
+
+  // Load calendar on DOM ready
+  document.addEventListener('DOMContentLoaded', initCalendar);
+  // Also call initCalendar directly in case DOMContentLoaded has already fired
+  initCalendar();
+</script>
