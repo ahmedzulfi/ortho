@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { connectToDatabase } from '../../../lib/mongodb';
 import { Appointment } from '../../../models/Appointment';
+import { sendEmail, getConfirmationEmailHtml, getCancellationEmailHtml } from '../../../lib/email';
 
 export const prerender = false;
 
@@ -19,10 +20,46 @@ export const PATCH: APIRoute = async ({ params, request }) => {
       return new Response(JSON.stringify({ error: 'Appointment not found' }), { status: 404 });
     }
 
+    const oldStatus = appointment.status;
+
     if (status) appointment.status = status;
     if (notes !== undefined) appointment.notes = notes;
 
     await appointment.save();
+
+    // Trigger status update email if status changed
+    if (status && status !== oldStatus && appointment.email) {
+      let subject = '';
+      let html = '';
+
+      if (status === 'confirmed') {
+        subject = 'Appointment Confirmed! - Orthodontics Align';
+        html = getConfirmationEmailHtml(
+          appointment.name,
+          appointment.service,
+          appointment.preferredDate ? appointment.preferredDate.toISOString() : undefined,
+          appointment.preferredTime,
+          appointment.notes
+        );
+      } else if (status === 'cancelled') {
+        subject = 'Appointment Request Update - Orthodontics Align';
+        html = getCancellationEmailHtml(
+          appointment.name,
+          appointment.service,
+          appointment.notes
+        );
+      }
+
+      if (subject && html) {
+        sendEmail({
+          to: appointment.email,
+          subject,
+          html
+        }).catch(err => {
+          console.error('Error sending status update email:', err);
+        });
+      }
+    }
 
     return new Response(JSON.stringify(appointment), { status: 200 });
   } catch (error) {

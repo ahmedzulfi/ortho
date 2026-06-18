@@ -3,6 +3,7 @@ import { connectToDatabase } from '../../../lib/mongodb';
 import { Appointment } from '../../../models/Appointment';
 import { appointmentSchema } from '../../../lib/validators';
 import { checkRateLimit } from '../../../lib/rateLimit';
+import { sendEmail, getReceiptEmailHtml } from '../../../lib/email';
 
 export const prerender = false;
 
@@ -53,6 +54,22 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     });
 
     await newAppointment.save();
+
+    // Trigger email confirmation receipt
+    if (result.data.email) {
+      sendEmail({
+        to: result.data.email,
+        subject: 'Appointment Request Received - Orthodontics Align',
+        html: getReceiptEmailHtml(
+          result.data.name,
+          result.data.service,
+          result.data.date,
+          result.data.time
+        )
+      }).catch(err => {
+        console.error('Error sending receipt email:', err);
+      });
+    }
 
     return new Response(JSON.stringify({ success: true, message: 'Appointment requested successfully' }), { status: 201 });
   } catch (error) {

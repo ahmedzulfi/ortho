@@ -8,7 +8,7 @@ export const loginSchema = z.object({
 export const appointmentSchema = z.object({
   name: z.string().min(2, 'Name is required'),
   phone: z.string().min(5, 'Phone number is required'),
-  email: z.string().email('Invalid email address').optional().or(z.literal('')),
+  email: z.string().email('Invalid email address'),
   service: z.string().min(1, 'Service is required'),
   date: z.string().optional(),
   time: z.string().optional(),
