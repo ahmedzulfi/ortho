@@ -7,11 +7,11 @@ interface SendEmailParams {
 }
 
 export async function sendEmail({ to, subject, html }: SendEmailParams) {
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const fromEmail = process.env.FROM_EMAIL || 'appointments@orthodonticsalign.com';
+  const host = import.meta.env.SMTP_HOST;
+  const port = import.meta.env.SMTP_PORT;
+  const user = import.meta.env.SMTP_USER;
+  const pass = import.meta.env.SMTP_PASS;
+  const fromEmail = import.meta.env.FROM_EMAIL || 'appointments@orthodonticsalign.com';
 
   if (!host || !port || !user || !pass) {
     console.warn('\n==================================================');
