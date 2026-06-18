@@ -1,6 +1,4 @@
-/**
- * Email Notification Utility using Resend API (via fetch)
- */
+import nodemailer from 'nodemailer';
 
 interface SendEmailParams {
   to: string;
@@ -9,12 +7,15 @@ interface SendEmailParams {
 }
 
 export async function sendEmail({ to, subject, html }: SendEmailParams) {
-  const apiKey = process.env.RESEND_API_KEY;
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
   const fromEmail = process.env.FROM_EMAIL || 'appointments@orthodonticsalign.com';
 
-  if (!apiKey) {
+  if (!host || !port || !user || !pass) {
     console.warn('\n==================================================');
-    // console.warn('WARNING: RESEND_API_KEY is not defined in .env.');
+    console.warn('WARNING: SMTP credentials are not fully defined in .env.');
     console.warn(`[Mock Email Sent]`);
     console.warn(`To: ${to}`);
     console.warn(`From: ${fromEmail}`);
@@ -24,31 +25,27 @@ export async function sendEmail({ to, subject, html }: SendEmailParams) {
   }
 
   try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
+    const transporter = nodemailer.createTransport({
+      host,
+      port: parseInt(port, 10),
+      secure: port === '465', // true for 465, false for 587 or other ports
+      auth: {
+        user,
+        pass,
       },
-      body: JSON.stringify({
-        from: fromEmail,
-        to,
-        subject,
-        html,
-      }),
     });
 
-    const data = await response.json();
+    const info = await transporter.sendMail({
+      from: fromEmail,
+      to,
+      subject,
+      html,
+    });
 
-    if (!response.ok) {
-      console.error('Resend API error response:', data);
-      return { success: false, error: data };
-    }
-
-    console.log(`Email successfully sent to ${to} via Resend. ID: ${data.id}`);
-    return { success: true, data };
+    console.log(`Email successfully sent to ${to} via SMTP. MessageId: ${info.messageId}`);
+    return { success: true, data: info };
   } catch (error) {
-    console.error('Failed to send email via Resend:', error);
+    console.error('Failed to send email via SMTP:', error);
     return { success: false, error };
   }
 }
